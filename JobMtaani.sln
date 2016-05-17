@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common.Contracts", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common.ServiceModel", "Core.Common.ServiceModel\Core.Common.ServiceModel.csproj", "{73FBE0BF-9DB9-498E-8AEF-68210104D0C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Business.Entities", "JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj", "{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Client.Entities", "JobMtaani.Client.Entities\JobMtaani.Client.Entities.csproj", "{C820ABB4-2EC1-465F-AD48-4501B5BB0537}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{73FBE0BF-9DB9-498E-8AEF-68210104D0C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73FBE0BF-9DB9-498E-8AEF-68210104D0C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73FBE0BF-9DB9-498E-8AEF-68210104D0C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C820ABB4-2EC1-465F-AD48-4501B5BB0537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C820ABB4-2EC1-465F-AD48-4501B5BB0537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C820ABB4-2EC1-465F-AD48-4501B5BB0537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C820ABB4-2EC1-465F-AD48-4501B5BB0537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
