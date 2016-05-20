@@ -39,6 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -50,12 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Repositories\AccountRepository.cs" />
+    <Compile Include="Data Repositories\ReviewRepository.cs" />
+    <Compile Include="DataRepositoryBase.cs" />
     <Compile Include="JobMtaaniContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
       <Project>{5F9B5530-F150-4BF0-9D07-0AD8A4C6EF7D}</Project>
@@ -68,6 +70,14 @@
     <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
       <Project>{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}</Project>
       <Name>JobMtaani.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Client.Entities\JobMtaani.Client.Entities.csproj">
+      <Project>{C820ABB4-2EC1-465F-AD48-4501B5BB0537}</Project>
+      <Name>JobMtaani.Client.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Data.Contracts\JobMtaani.Data.Contracts.csproj">
+      <Project>{FEDCD659-ED58-43AA-8A53-D5674A91BE43}</Project>
+      <Name>JobMtaani.Data.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
