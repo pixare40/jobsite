@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Client.Entities
 {
-    public class Review
+    public class Review : ObjectBase
     {
         private int reviewId;
         private int accountId;
@@ -64,6 +65,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 reviewTitle = value;
+                OnPropertyChanged(() => ReviewTitle);
             }
         }
 
@@ -77,6 +79,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 reviewText = value;
+                OnPropertyChanged(() => ReviewText);
             }
         }
 
@@ -90,6 +93,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 rating = value;
+                OnPropertyChanged(() => Rating);
             }
         }
     }

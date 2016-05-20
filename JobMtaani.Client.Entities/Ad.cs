@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Client.Entities
 {
-    public class Ad
+    public class Ad : ObjectBase
     {
         private int adId;
         private int accountId;
@@ -51,6 +52,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 adApplicants = value;
+                OnPropertyChanged(() => AdApplicants);
             }
         }
 
@@ -64,6 +66,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 categoryId = value;
+                OnPropertyChanged(() => CategoryId);
             }
         }
 
@@ -77,6 +80,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 adLocation = value;
+                OnPropertyChanged(() => AdLocation);
             }
         }
 
@@ -90,6 +94,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 adStatus = value;
+                OnPropertyChanged(() => AdStatus);
             }
         }
     }

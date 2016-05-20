@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Common.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Client.Entities
 {
-    public class Category
+    public class Category : ObjectBase
     {
         private int categoryId;
         private string categoryName;
@@ -34,6 +35,7 @@ namespace JobMtaani.Client.Entities
             set
             {
                 categoryName = value;
+                OnPropertyChanged(() => CategoryName);
             }
         }
     }
