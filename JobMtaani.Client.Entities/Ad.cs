@@ -14,7 +14,7 @@ namespace JobMtaani.Client.Entities
         private List<Account> adApplicants;
         private int categoryId;
         private string adLocation;
-        private string adStatus;
+        private bool adClosed;
 
         public int AdId
         {
@@ -84,17 +84,17 @@ namespace JobMtaani.Client.Entities
             }
         }
 
-        public string AdStatus
+        public bool AdClosed
         {
             get
             {
-                return adStatus;
+                return adClosed;
             }
 
             set
             {
-                adStatus = value;
-                OnPropertyChanged(() => AdStatus);
+                adClosed = value;
+                OnPropertyChanged(() => AdClosed);
             }
         }
     }
