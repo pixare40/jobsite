@@ -45,6 +45,7 @@
     <Compile Include="Repository Interfaces\IAccountRepository.cs" />
     <Compile Include="Repository Interfaces\IAdRepository.cs" />
     <Compile Include="Repository Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Repository Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repository Interfaces\IReviewRepository.cs" />
   </ItemGroup>
   <ItemGroup>

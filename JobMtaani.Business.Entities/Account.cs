@@ -31,6 +31,9 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public int PhoneNumber { get; set; }
 
+        [DataMember]
+        public decimal AccountBalance { get; set; }
+
         public int EntityId
         {
             get { return AccountId; }

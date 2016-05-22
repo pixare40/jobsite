@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobMtaani.Data.Data_Repositories
+namespace JobMtaani.Data
 {
     [Export(typeof(IReviewRepository))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
@@ -20,17 +20,21 @@ namespace JobMtaani.Data.Data_Repositories
 
         protected override IEnumerable<Review> GetEntities(JobMtaaniContext entityContext)
         {
-            throw new NotImplementedException();
+            return from e in entityContext.ReviewSet
+                   select e;
         }
 
         protected override Review GetEntity(JobMtaaniContext entityContext, int id)
         {
-            throw new NotImplementedException();
+            return (from e in entityContext.ReviewSet
+                    where e.ReviewId == id
+                    select e).FirstOrDefault();
         }
-
         protected override Review UpdateEntity(JobMtaaniContext entityContext, Review entity)
         {
-            throw new NotImplementedException();
+            return (from e in entityContext.ReviewSet
+                    where e.ReviewId == entity.ReviewId
+                    select e).FirstOrDefault();
         }
     }
 }
