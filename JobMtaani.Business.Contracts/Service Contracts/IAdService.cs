@@ -1,4 +1,5 @@
-﻿using JobMtaani.Business.Entities;
+﻿using Core.Common.Exceptions;
+using JobMtaani.Business.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace JobMtaani.Business.Contracts
     public interface IAdService
     {
         [OperationContract]
+        [FaultContract(typeof(NotFoundException))]
         Ad GetAd(int adId);
 
         [OperationContract]
@@ -21,6 +23,15 @@ namespace JobMtaani.Business.Contracts
         Ad[] GetOpenAdsByCity(string city);
 
         [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
         Ad CreateAd(Ad ad);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        void DeleteAd(int adId);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)]
+        Ad UpdateAd(Ad ad);
     }
 }
