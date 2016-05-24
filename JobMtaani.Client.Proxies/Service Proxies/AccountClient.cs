@@ -6,9 +6,12 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using JobMtaani.Client.Entities;
+using System.ComponentModel.Composition;
 
 namespace JobMtaani.Client.Proxies.Service_Proxies
 {
+    [Export(typeof(IAccountService))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AccountClient : ClientBase<IAccountService>, IAccountService
     {
         public Account GetCustomerAccountInfo(string loginEmail)

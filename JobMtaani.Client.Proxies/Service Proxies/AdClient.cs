@@ -1,6 +1,7 @@
 ﻿using JobMtaani.Client.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Client.Proxies
 {
+    [Export(typeof(IAdService))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AdClient : ClientBase<IAdService>, IAdService
     {
         public Entities.Ad CreateAd(Entities.Ad ad, string loginEmail)
