@@ -17,7 +17,6 @@ namespace JobMtaani.Business.Bootstrapper
 
             //Create Catalog
             catalog.Catalogs.Add(new AssemblyCatalog(typeof(AccountRepository).Assembly));
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(AdManager).Assembly));
 
             CompositionContainer container = new CompositionContainer(catalog);
 

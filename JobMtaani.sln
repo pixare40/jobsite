@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Client.Bootstrapp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Client.Proxies", "JobMtaani.Client.Proxies\JobMtaani.Client.Proxies.csproj", "{2C000846-E647-42EC-AEBE-28914FB1BE26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Client.Proxies.Test", "JobMtaani.Client.Proxies.Test\JobMtaani.Client.Proxies.Test.csproj", "{A7D27759-DAB1-429F-9D94-BC3B8A2758BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,10 @@ Global
 		{2C000846-E647-42EC-AEBE-28914FB1BE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C000846-E647-42EC-AEBE-28914FB1BE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C000846-E647-42EC-AEBE-28914FB1BE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D27759-DAB1-429F-9D94-BC3B8A2758BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D27759-DAB1-429F-9D94-BC3B8A2758BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D27759-DAB1-429F-9D94-BC3B8A2758BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D27759-DAB1-429F-9D94-BC3B8A2758BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,5 +160,6 @@ Global
 		{EA0117BB-DF64-404E-86E4-6812E16A7C30} = {607FF0E9-6702-4B5F-8E21-14721472BE42}
 		{6F848176-FD73-40D5-8E0F-47D798D695F1} = {607FF0E9-6702-4B5F-8E21-14721472BE42}
 		{2C000846-E647-42EC-AEBE-28914FB1BE26} = {607FF0E9-6702-4B5F-8E21-14721472BE42}
+		{A7D27759-DAB1-429F-9D94-BC3B8A2758BC} = {5A142D45-0EE5-419C-B834-38DA6DC9925A}
 	EndGlobalSection
 EndGlobal
