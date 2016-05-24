@@ -16,10 +16,10 @@ namespace JobMtaani.ServiceHost
                 new GenericIdentity("Kabaji"), new string[] { "CarRentalAdmin" });
             Thread.CurrentPrincipal = principal;
 
+            ObjectBase.Container = MEFLoader.Init();
+
             Console.WriteLine("Starting up services");
             Console.WriteLine("");
-
-            ObjectBase.Container = MEFLoader.Init();
 
             SM.ServiceHost hostAdManager = new SM.ServiceHost((typeof(AdManager)));
             SM.ServiceHost hostAccountManager = new SM.ServiceHost((typeof(AccountManager)));
@@ -30,6 +30,9 @@ namespace JobMtaani.ServiceHost
             Console.WriteLine("");
             Console.WriteLine("Press [ ENTER ] to exit");
             Console.ReadLine();
+
+            StopService(hostAdManager, "Ad Manager");
+            StopService(hostAccountManager, "Account Manager");
         }
 
         static void StartService(SM.ServiceHost host, string serviceDescription)
@@ -46,6 +49,12 @@ namespace JobMtaani.ServiceHost
             }
 
             Console.WriteLine();
+        }
+
+        static void StopService(SM.ServiceHost host, string serviceDescription)
+        {
+            host.Close();
+            Console.WriteLine("Service {0} stopped.", serviceDescription);
         }
     }
 }
