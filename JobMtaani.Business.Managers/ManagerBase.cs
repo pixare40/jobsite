@@ -47,7 +47,7 @@ namespace JobMtaani.Business.Managers
 
         protected void ValidateAuthorization(IAccountOwnedEntity entity)
         {
-            if (!Thread.CurrentPrincipal.IsInRole(Security.JonMtaaniAdminRole))
+            if (!Thread.CurrentPrincipal.IsInRole(SecurityValueObject.JonMtaaniAdminRole))
             {
                 if (_AuthorizationAccount != null)
                 {

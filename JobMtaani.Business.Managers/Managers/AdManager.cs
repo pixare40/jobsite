@@ -11,6 +11,8 @@ using JobMtaani.Business.Entities;
 using JobMtaani.Data.Contracts;
 using System.ServiceModel;
 using Core.Common.Exceptions;
+using System.Security.Permissions;
+using JobMtaani.Common;
 
 namespace JobMtaani.Business.Managers
 {
@@ -31,24 +33,34 @@ namespace JobMtaani.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        public Ad CreateAd(Ad ad)
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        public Ad CreateAd(Ad ad, string loginEmail)
         {
             throw new NotImplementedException();
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        public void DeleteAd(int adId)
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        public void DeleteAd(int adId, string loginEmail)
         {
             ExecuteFaultHandledOperation(() =>
             {
                 IAdRepository adRepository = dataRepositoryFactory.GetDataRepository<IAdRepository>();
+                IAccountRepository accountRepository = dataRepositoryFactory.GetDataRepository<IAccountRepository>();
+
+                Account authAccount = accountRepository.GetByLogin(loginEmail);
+                ValidateAuthorization(authAccount);
 
                 adRepository.Remove(adId);
             });
         }
 
         [OperationBehavior(TransactionScopeRequired =true)]
-        public Ad UpdateAd(Ad ad)
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        public Ad UpdateAd(Ad ad, string loginEmail)
         {
             return ExecuteFaultHandledOperation(() =>
             {
@@ -68,6 +80,8 @@ namespace JobMtaani.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad GetAd(int adId)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -84,14 +98,30 @@ namespace JobMtaani.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad[] GetOpenAdsByCategory(int categoryId)
         {
             throw new NotImplementedException();
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad[] GetOpenAdsByCity(string city)
         {
             throw new NotImplementedException();
+        }
+
+        protected override Account LoadAuthorizationValidationAccount(string loginName)
+        {
+            IAccountRepository accountRepository = dataRepositoryFactory.GetDataRepository<IAccountRepository>();
+            Account authAccount = accountRepository.GetByLogin(loginName);
+            if (authAccount == null)
+            {
+                NotFoundException ex =  new NotFoundException(string.Format("Cannot find account for login name {0} to use for security", loginName));
+                throw new FaultException<NotFoundException>(ex, ex.Message);
+            }
+            return authAccount;
         }
     }
 }

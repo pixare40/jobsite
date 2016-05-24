@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service Contracts\IAccountService.cs" />
     <Compile Include="Service Contracts\IAdService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
       <Project>{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}</Project>
       <Name>JobMtaani.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Common\JobMtaani.Common.csproj">
+      <Project>{7C6A35E1-37FA-4CBA-8B42-B56CD0CC062E}</Project>
+      <Name>JobMtaani.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

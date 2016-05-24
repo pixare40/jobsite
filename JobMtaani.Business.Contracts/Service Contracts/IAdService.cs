@@ -24,14 +24,14 @@ namespace JobMtaani.Business.Contracts
 
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
-        Ad CreateAd(Ad ad);
+        Ad CreateAd(Ad ad, string loginEmail);
 
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
-        void DeleteAd(int adId);
+        void DeleteAd(int adId, string loginEmail);
 
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)]
-        Ad UpdateAd(Ad ad);
+        Ad UpdateAd(Ad ad, string loginEmail);
     }
 }

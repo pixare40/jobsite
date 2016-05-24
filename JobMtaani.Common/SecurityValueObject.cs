@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Common
 {
-    public static class Security
+    public static class SecurityValueObject
     {
         public const string JonMtaaniUser = "JonMtaaniUser";
 
