@@ -11,7 +11,7 @@ using Core.Common.Exceptions;
 using System.ComponentModel.Composition;
 using Core.Common.Contracts;
 
-namespace JobMtaani.Business.Managers.Managers
+namespace JobMtaani.Business.Managers
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall,
         ConcurrencyMode = ConcurrencyMode.Multiple)]
