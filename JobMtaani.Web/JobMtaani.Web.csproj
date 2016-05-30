@@ -263,10 +263,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\ads\adsTemplate.html" />
+    <Content Include="app\home\homeTemplate.html" />
+    <Content Include="app\payments\paymentsTemplate.html" />
+    <Content Include="app\profile\profileTemplate.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -335,6 +342,11 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1107,6 +1119,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="tslint.json" />
+    <Content Include="Views\Shared\_Topbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
@@ -1143,7 +1156,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\ads\ad.ts" />
     <TypeScriptCompile Include="app\ads\ads.module.ts" />
+    <TypeScriptCompile Include="app\ads\adsController.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
     <TypeScriptCompile Include="app\app.core.module.ts" />
     <TypeScriptCompile Include="app\app.run.ts" />
@@ -1151,9 +1166,15 @@
     <TypeScriptCompile Include="app\blocks\blocks.module.ts" />
     <TypeScriptCompile Include="app\blocks\logdecorator.config.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
+    <TypeScriptCompile Include="app\home\home.module.ts" />
+    <TypeScriptCompile Include="app\home\homeController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\payments\payment.ts" />
     <TypeScriptCompile Include="app\payments\payments.module.ts" />
+    <TypeScriptCompile Include="app\payments\paymentsController.ts" />
     <TypeScriptCompile Include="app\profile\profile.module.ts" />
+    <TypeScriptCompile Include="app\profile\profileController.ts" />
+    <TypeScriptCompile Include="app\services\adService.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />

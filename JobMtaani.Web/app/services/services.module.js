@@ -1,6 +1,5 @@
 (function () {
     'use strict';
     angular
-        .module('app.services', []);
+        .module('app.services', ["ngResource"]);
 })();
-//# sourceMappingURL=services.module.js.map

@@ -1,1 +1,5 @@
-//# sourceMappingURL=payments.module.js.map
+(function () {
+    'use strict';
+    angular
+        .module('app.payments', []);
+})();

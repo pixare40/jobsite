@@ -6,26 +6,10 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Job Mtaani", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<body ng-app="app">
+    @Html.Partial("~/Views/Shared/_Topbar.cshtml")
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -44,10 +28,32 @@
         JobMtaani.rootPath = '@Url.Content("~")';
     </script>
 
+    <!--Library Scripts-->
     @Scripts.Render("~/bundles/jquery")
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.min.js"></script>
-    <script src="~/Scripts/angular-animate.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+
+    <!--Application Script-->
+    <script src="~/app/app.module.js"></script>
+
+    <!--Module Scripts-->
+    <script src="~/app/services/services.module.js"></script>
+    <script src="~/app/ads/ads.module.js"></script>
+    <script src="~/app/home/home.module.js"></script>
+
+    <!--Domain Classes-->
+    <script src="~/app/ads/ad.js"></script>
+
+    <!--Services Scripts-->
+    <script src="~/app/services/adService.js"></script>
+
+    <!--Controller Scripts-->
+    <script src="~/app/home/homeController.js"></script>
+    <script src="~/app/ads/adsController.js"></script>
+
+    <!--Other Scripts-->
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

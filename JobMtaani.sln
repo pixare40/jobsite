@@ -58,10 +58,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobMtaani.Web", "JobMtaani.Web\JobMtaani.Web.csproj", "{A642844C-AAD5-4F01-A5F6-511D687C50B2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6EB3BD5-E53A-4A80-8156-FE463CA72912}"
-	ProjectSection(SolutionItems) = preProject
-		WE-Markdown.css = WE-Markdown.css
-		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
