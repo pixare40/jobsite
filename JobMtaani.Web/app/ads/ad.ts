@@ -7,6 +7,7 @@
         categoryId: string;
         adLocation: string;
         adClosed: boolean;
+        adDescription: string;
     }
 
     export class Ad implements IAd {
@@ -17,7 +18,8 @@
             public adApplicants: any,
             public categoryId: string,
             public adLocation: string,
-            public adClosed: boolean) {
+            public adClosed: boolean,
+            public adDescription) {
         }
     }
 

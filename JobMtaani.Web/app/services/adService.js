@@ -18,7 +18,8 @@ var app;
                         adApplicants: [],
                         categoryId: "House Helps",
                         adLocation: "Nairobi",
-                        adClosed: false
+                        adClosed: false,
+                        adDescription: "Looking for house girl to take care of my baby, must have good recommendations from stakeholders and clean fingernails"
                     }
                 ];
             };
@@ -31,3 +32,4 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=adService.js.map

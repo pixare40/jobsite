@@ -11,7 +11,10 @@ namespace JobMtaani.Client.Entities
     {
         private int paymentId;
         private decimal paymentAmount;
-        private int accountId;
+        private int fromAccountId;
+        private int toAccountId;
+        private string paymentType;
+        private DateTime transactionDate;
 
         public int PaymentId
         {
@@ -39,16 +42,55 @@ namespace JobMtaani.Client.Entities
             }
         }
 
-        public int AccountId
+        public int FromAccountId
         {
             get
             {
-                return accountId;
+                return fromAccountId;
             }
 
             set
             {
-                accountId = value;
+                fromAccountId = value;
+            }
+        }
+
+        public string PaymentType
+        {
+            get
+            {
+                return paymentType;
+            }
+
+            set
+            {
+                paymentType = value;
+            }
+        }
+
+        public int ToAccountId
+        {
+            get
+            {
+                return toAccountId;
+            }
+
+            set
+            {
+                toAccountId = value;
+            }
+        }
+
+        public DateTime TransactionDate
+        {
+            get
+            {
+                return transactionDate;
+            }
+
+            set
+            {
+                transactionDate = value;
             }
         }
     }

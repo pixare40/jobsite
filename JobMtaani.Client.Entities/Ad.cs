@@ -15,6 +15,7 @@ namespace JobMtaani.Client.Entities
         private int categoryId;
         private string adLocation;
         private bool adClosed;
+        private bool adDescription;
 
         public int AdId
         {
@@ -95,6 +96,19 @@ namespace JobMtaani.Client.Entities
             {
                 adClosed = value;
                 OnPropertyChanged(() => AdClosed);
+            }
+        }
+
+        public bool AdDescription
+        {
+            get
+            {
+                return adDescription;
+            }
+
+            set
+            {
+                adDescription = value;
             }
         }
     }

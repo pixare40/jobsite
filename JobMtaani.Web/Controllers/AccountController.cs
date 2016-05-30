@@ -16,12 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using JobMtaani.Web.Models;
 using JobMtaani.Web.Providers;
 using JobMtaani.Web.Results;
+using JobMtaani.Web.Core;
 
 namespace JobMtaani.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : ApiControllerBase
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;

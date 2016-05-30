@@ -28,7 +28,8 @@
                     adApplicants: [],
                     categoryId: "House Helps",
                     adLocation: "Nairobi",
-                    adClosed: false
+                    adClosed: false,
+                    adDescription: "Looking for house girl to take care of my baby, must have good recommendations from stakeholders and clean fingernails"
                 }
                 ]
         }

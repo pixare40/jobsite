@@ -24,6 +24,8 @@ namespace JobMtaani.Business.Entities
         public List<Account> AdApplicants { get; set; }
         [DataMember]
         public bool AdClosed { get; set; }
+        [DataMember]
+        public bool AdDescription { get; set; }
         public int EntityId
         {
             get

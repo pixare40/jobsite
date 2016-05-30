@@ -17,7 +17,11 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public decimal PaymentAmount { get; set; }
         [DataMember]
-        public int AccountId { get; set; }
+        public int FromAccountId { get; set; }
+        [DataMember]
+        public int ToAccountId { get; set; }
+        [DataMember]
+        public DateTime TransactionDate { get; set; }
         public int EntityId
         {
             get
@@ -35,7 +39,7 @@ namespace JobMtaani.Business.Entities
         {
             get
             {
-                return AccountId;
+                return FromAccountId;
             }
         }
     }
