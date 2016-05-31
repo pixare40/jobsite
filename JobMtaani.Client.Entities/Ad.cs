@@ -15,7 +15,7 @@ namespace JobMtaani.Client.Entities
         private int categoryId;
         private string adLocation;
         private bool adClosed;
-        private bool adDescription;
+        private string adDescription;
 
         public int AdId
         {
@@ -99,7 +99,7 @@ namespace JobMtaani.Client.Entities
             }
         }
 
-        public bool AdDescription
+        public string AdDescription
         {
             get
             {

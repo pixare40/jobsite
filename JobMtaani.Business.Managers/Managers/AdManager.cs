@@ -33,16 +33,21 @@ namespace JobMtaani.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad CreateAd(Ad ad, string loginEmail)
         {
-            throw new NotImplementedException();
+            return ExecuteFaultHandledOperation(() =>
+            {
+                IAdRepository adRepository = dataRepositoryFactory.GetDataRepository<IAdRepository>();
+                Ad newad = adRepository.Add(ad);
+                return newad;
+            });
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public void DeleteAd(int adId, string loginEmail)
         {
             ExecuteFaultHandledOperation(() =>
@@ -58,8 +63,8 @@ namespace JobMtaani.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired =true)]
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad UpdateAd(Ad ad, string loginEmail)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -80,8 +85,8 @@ namespace JobMtaani.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad GetAd(int adId)
         {
             return ExecuteFaultHandledOperation(() =>
@@ -98,15 +103,15 @@ namespace JobMtaani.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad[] GetOpenAdsByCategory(int categoryId)
         {
             throw new NotImplementedException();
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
-        [PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = SecurityValueObject.JonMtaaniAdminRole)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = SecurityValueObject.JonMtaaniUser)]
         public Ad[] GetOpenAdsByCity(string city)
         {
             throw new NotImplementedException();

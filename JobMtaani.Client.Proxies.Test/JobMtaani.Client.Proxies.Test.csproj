@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <Choose>
@@ -59,9 +60,21 @@
       <Project>{73fbe0bf-9db9-498e-8aef-68210104d0c1}</Project>
       <Name>Core.Common.ServiceModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{8648A3AD-4253-4408-83C7-4501F4B750F6}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
+      <Project>{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}</Project>
+      <Name>JobMtaani.Business.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Contracts\JobMtaani.Client.Contracts.csproj">
       <Project>{ea0117bb-df64-404e-86e4-6812e16a7c30}</Project>
       <Name>JobMtaani.Client.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Client.Entities\JobMtaani.Client.Entities.csproj">
+      <Project>{C820ABB4-2EC1-465F-AD48-4501B5BB0537}</Project>
+      <Name>JobMtaani.Client.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Proxies\JobMtaani.Client.Proxies.csproj">
       <Project>{2C000846-E647-42EC-AEBE-28914FB1BE26}</Project>

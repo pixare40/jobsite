@@ -268,6 +268,10 @@
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
+    <Content Include="App_Data\JobMtaani.mdf" />
+    <Content Include="App_Data\JobMtaani_log.ldf">
+      <DependentUpon>JobMtaani.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1124,7 +1128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
-    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
