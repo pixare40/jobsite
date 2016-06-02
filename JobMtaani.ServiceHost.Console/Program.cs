@@ -13,7 +13,7 @@ namespace JobMtaani.ServiceHost
         static void Main(string[] args)
         {
             GenericPrincipal principal = new GenericPrincipal(
-                new GenericIdentity("Kabaji"), new string[] { "JobMtaaniAdmin" });
+                new GenericIdentity("Kabaji"), new string[] { "Administrators","JobMtaaniAdmin" });
             Thread.CurrentPrincipal = principal;
 
             ObjectBase.Container = MEFLoader.Init();

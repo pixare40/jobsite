@@ -1,0 +1,27 @@
+﻿<div>Registration Page</div>
+
+<form ng-hide="vm.isLoggedIn()" class="navbar-form navbar-right">
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="username (email)"
+               ng-model="vm.userdata.email">
+    </div>
+    <div class="form-group">
+        <input type="password"
+               class="form-control"
+               placeholder="password"
+               ng-model="vm.userdata.password">
+    </div>
+    <button type="submit"
+            class="btn btn-default"
+            ng-click="vm.login()">
+        Login
+    </button>
+    <button type="submit"
+            class="btn btn-default"
+            ng-click="vm.registerUser()">
+        Register
+    </button>
+    <div ng-show="vm.message">{{vm.message}}</div>
+</form>

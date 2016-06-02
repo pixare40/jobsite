@@ -13,7 +13,7 @@
         //*/
         //'app.dashboard',
         'app.ads',
-        //'app.profile',
+        'app.profile',
         //'app.users',
         'app.home'
     ]);
@@ -29,6 +29,11 @@
             .when('/ads', {
             templateUrl: '/app/ads/adsTemplate.html',
             controller: 'app.ads.AdsController',
+            controllerAs: 'vm'
+        })
+            .when('/register', {
+            templateUrl: '/app/profile/registerTemplate.html',
+            controller: 'app.profile.AccountController',
             controllerAs: 'vm'
         })
             .when('/ad/:adId', {
@@ -59,4 +64,3 @@
             .otherwise('/home');
     }
 })();
-//# sourceMappingURL=app.module.js.map

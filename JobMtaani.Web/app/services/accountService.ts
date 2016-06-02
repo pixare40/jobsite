@@ -1,9 +1,33 @@
 ﻿module app.services {
 
     export interface IAccountService {
+        register(userdata: app.profile.IUserData, onsuccess: any, onfailure: any): ng.IHttpPromise<any>;
+        login(userdata: app.profile.IUserData): ng.IHttpPromise<any>;
     }
 
-    export class AccountService {
+    export class AccountService implements IAccountService {
+
+        static $inject = ['$http'];
+        constructor(private $http: ng.IHttpService) {
+        }
+        
+        register(userdata: app.profile.IUserData): ng.IHttpPromise<any>{
+            return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
+        }
+
+        login(userdata: app.profile.IUserData): ng.IHttpPromise<any>{
+            return this.$http.post("http://localhost:53039/Token", userdata,
+                {
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        transformRequest: function (data, headersGetter) {
+                            var str = [];
+                            for (var d in data)
+                                str.push(encodeURIComponent(d) + "=" +
+                                    encodeURIComponent(data[d]));
+                            return str.join("&");
+                        }
+                });
+        }
     }
 
 

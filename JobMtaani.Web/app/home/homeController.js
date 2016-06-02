@@ -13,4 +13,3 @@ var app;
             .controller('app.home.HomeController', HomeController);
     })(home = app.home || (app.home = {}));
 })(app || (app = {}));
-//# sourceMappingURL=homeController.js.map

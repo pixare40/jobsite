@@ -268,6 +268,7 @@
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
+    <Content Include="app\profile\registerTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -1150,6 +1151,10 @@
       <Project>{8648a3ad-4253-4408-83c7-4501f4b750f6}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
+      <Project>{ae379156-f984-4f60-bda9-dd0f17f0b7c9}</Project>
+      <Name>JobMtaani.Business.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Bootstrapper\JobMtaani.Client.Bootstrapper.csproj">
       <Project>{6F848176-FD73-40D5-8E0F-47D798D695F1}</Project>
       <Name>JobMtaani.Client.Bootstrapper</Name>
@@ -1165,6 +1170,10 @@
     <ProjectReference Include="..\JobMtaani.Common\JobMtaani.Common.csproj">
       <Project>{7c6a35e1-37fa-4cba-8b42-b56cd0cc062e}</Project>
       <Name>JobMtaani.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Data.Contracts\JobMtaani.Data.Contracts.csproj">
+      <Project>{FEDCD659-ED58-43AA-8A53-D5674A91BE43}</Project>
+      <Name>JobMtaani.Data.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -1184,10 +1193,12 @@
     <TypeScriptCompile Include="app\payments\payment.ts" />
     <TypeScriptCompile Include="app\payments\payments.module.ts" />
     <TypeScriptCompile Include="app\payments\paymentsController.ts" />
+    <TypeScriptCompile Include="app\profile\accountController.ts" />
     <TypeScriptCompile Include="app\profile\profile.module.ts" />
     <TypeScriptCompile Include="app\profile\profileController.ts" />
     <TypeScriptCompile Include="app\services\accountService.ts" />
     <TypeScriptCompile Include="app\services\adService.ts" />
+    <TypeScriptCompile Include="app\services\currentUser.ts" />
     <TypeScriptCompile Include="app\services\paymentsService.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />

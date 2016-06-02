@@ -4,6 +4,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
 using JobMtaani.Client.Proxies;
+using JobMtaani.Data;
 
 namespace JobMtaani.Client.Bootstrapper
 {
@@ -18,7 +19,8 @@ namespace JobMtaani.Client.Bootstrapper
         {
             AggregateCatalog catalog = new AggregateCatalog();
 
-            catalog.Catalogs.Add(new AssemblyCatalog(typeof(AdClient).Assembly));
+           // catalog.Catalogs.Add(new AssemblyCatalog(typeof(AdClient).Assembly));
+            catalog.Catalogs.Add(new AssemblyCatalog(typeof(AdRepository).Assembly));
 
             if (catalogParts != null)
                 foreach (var part in catalogParts)

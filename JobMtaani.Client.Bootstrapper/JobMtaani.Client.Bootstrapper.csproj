@@ -49,6 +49,10 @@
       <Project>{2C000846-E647-42EC-AEBE-28914FB1BE26}</Project>
       <Name>JobMtaani.Client.Proxies</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Data\JobMtaani.Data.csproj">
+      <Project>{BD07D69C-A52B-4A78-9301-3AC89284C1EE}</Project>
+      <Name>JobMtaani.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

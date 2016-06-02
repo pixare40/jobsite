@@ -15,6 +15,7 @@ namespace JobMtaani.Data
     {
         protected override Ad AddEntity(JobMtaaniContext entityContext, Ad entity)
         {
+            entityContext.Database.Connection.Open();
             return entityContext.AdSet.Add(entity);
         }
 

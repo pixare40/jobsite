@@ -8,7 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Core.Common.Contracts;
-using JobMtaani.Client.Entities;
+using JobMtaani.Business.Entities;
+using JobMtaani.Data.Contracts;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -19,17 +20,12 @@ namespace JobMtaani.Web.Controllers
     [UsesDisposableService]
     public class AdApiController : ApiControllerBase
     {
-        private IAdService adService;
+        private IAdRepository adRepository;
 
         [ImportingConstructor]
-        public AdApiController(IAdService adService)
+        public AdApiController(IAdRepository adRepository)
         {
-            this.adService = adService;
-        }
-
-        protected override void RegisterServices(List<IServiceContract> disposableServices)
-        {
-            disposableServices.Add(adService);
+            this.adRepository = adRepository;
         }
 
         [HttpGet]
@@ -40,7 +36,7 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
-                Ad account = adService.GetAd(adId);
+                Ad account = adRepository.Get(adId);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
 
@@ -56,7 +52,7 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
-                Ad account = adService.CreateAd(newAd,"kabajie");
+                Ad account = adRepository.Add(newAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
 
@@ -72,7 +68,7 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
-                Ad account = adService.UpdateAd(updatedAd, "kabajie");
+                Ad account = adRepository.Update(updatedAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
 
