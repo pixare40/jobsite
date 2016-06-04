@@ -2,36 +2,27 @@
     'use strict';
 
     export interface IAdService {
-        getAdResource(): ng.resource.IResourceClass<IAdResource>;
-        getAllAds(): app.domain.IAd[];
-    }
-
-    interface IAdResource
-        extends ng.resource.IResource<app.domain.IAd> {
+        getAd(adId: number): ng.IHttpPromise<app.domain.Ad>;
+        getAllAds(): ng.IHttpPromise<app.domain.IAd[]>;
+        createAd(ad: app.domain.IAd): ng.IHttpPromise<app.domain.Ad>
     }
 
     export class AdService implements IAdService {
 
-        static $inject = ['$resource']
-        constructor(private $resource: ng.resource.IResourceService) {
+        static $inject = ['$http']
+        constructor(private $http: ng.IHttpService) {
         }
 
-        getAdResource(): ng.resource.IResourceClass<IAdResource> {
-            return this.$resource('/api/ads/:adId');
+        getAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
+            return this.$http.get('/api/ads/GetAd/' + adId);
         }
 
-        getAllAds(): app.domain.IAd[] {
-            return [
-                {
-                    adId: "1",
-                    accountId: "1",
-                    adApplicants: [],
-                    categoryId: "House Helps",
-                    adLocation: "Nairobi",
-                    adClosed: false,
-                    adDescription: "Looking for house girl to take care of my baby, must have good recommendations from stakeholders and clean fingernails"
-                }
-                ]
+        getAllAds(): ng.IHttpPromise<app.domain.IAd[]>{
+            return this.$http.get('/api/ads/GetAd/');
+        }
+
+        createAd(ad: app.domain.IAd): ng.IHttpPromise<app.domain.Ad>{
+            return this.$http.post('/api/ads/CreateAd', ad);
         }
     }
 

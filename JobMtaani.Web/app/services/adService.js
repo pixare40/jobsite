@@ -4,26 +4,19 @@ var app;
     (function (services) {
         'use strict';
         var AdService = (function () {
-            function AdService($resource) {
-                this.$resource = $resource;
+            function AdService($http) {
+                this.$http = $http;
             }
-            AdService.prototype.getAdResource = function () {
-                return this.$resource('/api/ads/:adId');
+            AdService.prototype.getAd = function (adId) {
+                return this.$http.get('/api/ads/GetAd/' + adId);
             };
             AdService.prototype.getAllAds = function () {
-                return [
-                    {
-                        adId: "1",
-                        accountId: "1",
-                        adApplicants: [],
-                        categoryId: "House Helps",
-                        adLocation: "Nairobi",
-                        adClosed: false,
-                        adDescription: "Looking for house girl to take care of my baby, must have good recommendations from stakeholders and clean fingernails"
-                    }
-                ];
+                return this.$http.get('/api/ads/GetAd/');
             };
-            AdService.$inject = ['$resource'];
+            AdService.prototype.createAd = function (ad) {
+                return this.$http.post('/api/ads/CreateAd', ad);
+            };
+            AdService.$inject = ['$http'];
             return AdService;
         }());
         services.AdService = AdService;

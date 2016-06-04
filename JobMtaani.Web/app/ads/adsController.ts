@@ -13,7 +13,6 @@
         static $inject = ['app.services.AdService']
         constructor(private adService: app.services.AdService) {
             this.title = 'Ads ';
-            this.ads = adService.getAllAds();
         }
     }
 

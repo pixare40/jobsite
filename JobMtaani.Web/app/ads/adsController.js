@@ -7,7 +7,6 @@ var app;
             function AdsController(adService) {
                 this.adService = adService;
                 this.title = 'Ads ';
-                this.ads = adService.getAllAds();
             }
             AdsController.$inject = ['app.services.AdService'];
             return AdsController;
