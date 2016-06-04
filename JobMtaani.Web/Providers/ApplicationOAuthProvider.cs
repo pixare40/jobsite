@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using JobMtaani.Web.Models;
+using JobMtaani.Business.Entities;
 
 namespace JobMtaani.Web.Providers
 {
@@ -31,7 +32,7 @@ namespace JobMtaani.Web.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
+            Account user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {

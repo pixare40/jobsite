@@ -239,6 +239,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdApiController.cs" />
+    <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\ApiControllerBase.cs" />
@@ -265,6 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\ads\adsTemplate.html" />
+    <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
@@ -1175,6 +1177,10 @@
       <Project>{FEDCD659-ED58-43AA-8A53-D5674A91BE43}</Project>
       <Name>JobMtaani.Data.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Data\JobMtaani.Data.csproj">
+      <Project>{BD07D69C-A52B-4A78-9301-3AC89284C1EE}</Project>
+      <Name>JobMtaani.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\ads\ad.ts" />
@@ -1186,10 +1192,12 @@
     <TypeScriptCompile Include="app\app.values.ts" />
     <TypeScriptCompile Include="app\blocks\blocks.module.ts" />
     <TypeScriptCompile Include="app\blocks\logdecorator.config.ts" />
+    <TypeScriptCompile Include="app\dashboard\categoryController.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\homeController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\payments\payment.ts" />
     <TypeScriptCompile Include="app\payments\payments.module.ts" />
     <TypeScriptCompile Include="app\payments\paymentsController.ts" />
@@ -1198,6 +1206,7 @@
     <TypeScriptCompile Include="app\profile\profileController.ts" />
     <TypeScriptCompile Include="app\services\accountService.ts" />
     <TypeScriptCompile Include="app\services\adService.ts" />
+    <TypeScriptCompile Include="app\services\categoryService.ts" />
     <TypeScriptCompile Include="app\services\currentUser.ts" />
     <TypeScriptCompile Include="app\services\paymentsService.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />

@@ -17,12 +17,12 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public decimal PaymentAmount { get; set; }
         [DataMember]
-        public int FromAccountId { get; set; }
+        public string FromAccountId { get; set; }
         [DataMember]
-        public int ToAccountId { get; set; }
+        public string ToAccountId { get; set; }
         [DataMember]
         public DateTime TransactionDate { get; set; }
-        public int EntityId
+        public object EntityId
         {
             get
             {
@@ -31,11 +31,11 @@ namespace JobMtaani.Business.Entities
 
             set
             {
-                PaymentId = value;
+                PaymentId = (int)value;
             }
         }
 
-        public int OwnerAccountId
+        public string OwnerAccountId
         {
             get
             {

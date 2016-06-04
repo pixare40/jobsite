@@ -12,7 +12,7 @@
             ///*
             //*feature areas
             //*/
-            //'app.dashboard',
+            'app.dashboard',
             'app.ads',
             'app.profile',
             //'app.users',
@@ -63,6 +63,11 @@
             .when('/payment/:paymentId', {
                 templateUrl: '/app/payments.paymentTemplate',
                 controller: 'app.payments.PaymentController',
+                controllerAs: 'vm'
+            })
+            .when('/category', {
+                templateUrl: '/app/dashboard/categoryTemplate.html',
+                controller: 'app.dashboard.CategoryController',
                 controllerAs: 'vm'
             })
             .otherwise('/home');

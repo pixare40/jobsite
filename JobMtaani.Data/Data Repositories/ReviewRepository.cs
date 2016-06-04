@@ -13,24 +13,24 @@ namespace JobMtaani.Data
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class ReviewRepository : DataRepositoryBase<Review>, IReviewRepository
     {
-        protected override Review AddEntity(JobMtaaniContext entityContext, Review entity)
+        protected override Review AddEntity(JobMtaaniDbContext entityContext, Review entity)
         {
             return entityContext.ReviewSet.Add(entity);
         }
 
-        protected override IEnumerable<Review> GetEntities(JobMtaaniContext entityContext)
+        protected override IEnumerable<Review> GetEntities(JobMtaaniDbContext entityContext)
         {
             return from e in entityContext.ReviewSet
                    select e;
         }
 
-        protected override Review GetEntity(JobMtaaniContext entityContext, int id)
+        protected override Review GetEntity(JobMtaaniDbContext entityContext, int id)
         {
             return (from e in entityContext.ReviewSet
                     where e.ReviewId == id
                     select e).FirstOrDefault();
         }
-        protected override Review UpdateEntity(JobMtaaniContext entityContext, Review entity)
+        protected override Review UpdateEntity(JobMtaaniDbContext entityContext, Review entity)
         {
             return (from e in entityContext.ReviewSet
                     where e.ReviewId == entity.ReviewId

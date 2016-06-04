@@ -11,7 +11,7 @@
         ///*
         //*feature areas
         //*/
-        //'app.dashboard',
+        'app.dashboard',
         'app.ads',
         'app.profile',
         //'app.users',
@@ -61,6 +61,12 @@
             controller: 'app.payments.PaymentController',
             controllerAs: 'vm'
         })
+            .when('/category', {
+            templateUrl: '/app/dashboard/categoryTemplate.html',
+            controller: 'app.dashboard.CategoryController',
+            controllerAs: 'vm'
+        })
             .otherwise('/home');
     }
 })();
+//# sourceMappingURL=app.module.js.map

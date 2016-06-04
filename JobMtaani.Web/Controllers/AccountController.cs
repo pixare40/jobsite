@@ -17,6 +17,7 @@ using JobMtaani.Web.Models;
 using JobMtaani.Web.Providers;
 using JobMtaani.Web.Results;
 using JobMtaani.Web.Core;
+using JobMtaani.Business.Entities;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -251,7 +252,7 @@ namespace JobMtaani.Web.Controllers
                 return new ChallengeResult(provider, this);
             }
 
-            ApplicationUser user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
+            Account user = await UserManager.FindAsync(new UserLoginInfo(externalLogin.LoginProvider,
                 externalLogin.ProviderKey));
 
             bool hasRegistered = user != null;
@@ -329,7 +330,7 @@ namespace JobMtaani.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new Account() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -358,7 +359,7 @@ namespace JobMtaani.Web.Controllers
                 return InternalServerError();
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new Account() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user);
             if (!result.Succeeded)

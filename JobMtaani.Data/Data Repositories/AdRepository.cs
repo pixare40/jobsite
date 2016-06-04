@@ -13,26 +13,25 @@ namespace JobMtaani.Data
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AdRepository : DataRepositoryBase<Ad>, IAdRepository
     {
-        protected override Ad AddEntity(JobMtaaniContext entityContext, Ad entity)
+        protected override Ad AddEntity(JobMtaaniDbContext entityContext, Ad entity)
         {
-            entityContext.Database.Connection.Open();
             return entityContext.AdSet.Add(entity);
         }
 
-        protected override IEnumerable<Ad> GetEntities(JobMtaaniContext entityContext)
+        protected override IEnumerable<Ad> GetEntities(JobMtaaniDbContext entityContext)
         {
             return from e in entityContext.AdSet
                    select e;
         }
 
-        protected override Ad GetEntity(JobMtaaniContext entityContext, int id)
+        protected override Ad GetEntity(JobMtaaniDbContext entityContext, int id)
         {
             return (from e in entityContext.AdSet
                     where e.AdId == id
                     select e).FirstOrDefault();
         }
 
-        protected override Ad UpdateEntity(JobMtaaniContext entityContext, Ad entity)
+        protected override Ad UpdateEntity(JobMtaaniDbContext entityContext, Ad entity)
         {
             return (from e in entityContext.AdSet
                     where e.AdId == entity.AdId

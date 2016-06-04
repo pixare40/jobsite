@@ -9,24 +9,16 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Business.Entities
 {
-    [DataContract]
     public class Ad : EntityBase, IAccountOwnedEntity, IIdentifiableEntity
     {
-        [DataMember]
         public int AdId { get; set; }
-        [DataMember]
-        public int AccountId { get; set; }
-        [DataMember]
+        public string AccountId { get; set; }
         public int CategoryId { get; set; }
-        [DataMember]
         public string AdLocation { get; set; }
-        [DataMember]
-        public List<Account> AdApplicants { get; set; }
-        [DataMember]
+        public int[] AdApplicants { get; set; }
         public bool AdClosed { get; set; }
-        [DataMember]
         public string AdDescription { get; set; }
-        public int EntityId
+        public object EntityId
         {
             get
             {
@@ -35,11 +27,11 @@ namespace JobMtaani.Business.Entities
 
             set
             {
-                AdId = value;
+                AdId = (int)value;
             }
         }
 
-        public int OwnerAccountId
+        public string OwnerAccountId
         {
             get
             {

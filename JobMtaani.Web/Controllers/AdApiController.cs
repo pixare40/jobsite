@@ -45,7 +45,7 @@ namespace JobMtaani.Web.Controllers
         }
 
         [HttpPost]
-        [Route("createad")]
+        [Route("CreateAd")]
         public HttpResponseMessage CreateNewAd(HttpRequestMessage request, Ad newAd)
         {
             return GetHttpResponse(request, () =>

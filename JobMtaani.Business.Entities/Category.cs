@@ -16,7 +16,7 @@ namespace JobMtaani.Business.Entities
         public int CategoryId { get; set; }
         [DataMember]
         public string CategoryName { get; set; }
-        public int EntityId
+        public object EntityId
         {
             get
             {
@@ -25,7 +25,7 @@ namespace JobMtaani.Business.Entities
 
             set
             {
-                CategoryId = value;
+                CategoryId = (int)value;
             }
         }
     }

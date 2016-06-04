@@ -51,7 +51,7 @@ namespace JobMtaani.Business.Managers
             {
                 if (_AuthorizationAccount != null)
                 {
-                    if (_LoginName != string.Empty && entity.OwnerAccountId != _AuthorizationAccount.AccountId)
+                    if (_LoginName != string.Empty && entity.OwnerAccountId != _AuthorizationAccount.Id)
                     {
                         AuthorizationValidationException ex = new AuthorizationValidationException("Attempt to access a secure record with improper user authorization validation.");
                         throw new FaultException<AuthorizationValidationException>(ex, ex.Message);

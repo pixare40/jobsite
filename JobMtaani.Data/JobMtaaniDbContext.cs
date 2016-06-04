@@ -1,5 +1,6 @@
 ﻿using Core.Common.Contracts;
 using JobMtaani.Business.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,15 +13,13 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Data
 {
-    public class JobMtaaniContext : DbContext
+    public class JobMtaaniDbContext : IdentityDbContext<Account>
     {
-        public JobMtaaniContext()
-            : base("JobMtaani")
+        public JobMtaaniDbContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer<JobMtaaniContext>(null);
         }
 
-        public DbSet<Account> AccountSet { get; set; }
         public DbSet<Ad> AdSet { get; set; }
         public DbSet<Category> CategorySet { get; set; }
         public DbSet<Review> ReviewSet { get; set; }
@@ -30,15 +29,23 @@ namespace JobMtaani.Data
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Ignore<PropertyChangedEventHandler>();
             modelBuilder.Ignore<ExtensionDataObject>();
             modelBuilder.Ignore<IIdentifiableEntity>();
 
-            modelBuilder.Entity<Account>().HasKey<int>(e => e.AccountId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Account>()
+            .ToTable("AspNetUsers");
             modelBuilder.Entity<Ad>().HasKey<int>(e => e.AdId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Category>().HasKey<int>(e => e.CategoryId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Review>().HasKey<int>(e => e.ReviewId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Payment>().HasKey<int>(e => e.PaymentId).Ignore(e => e.EntityId);
+        }
+
+        public static JobMtaaniDbContext Create()
+        {
+            return new JobMtaaniDbContext();
         }
 
     }

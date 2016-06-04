@@ -19,7 +19,7 @@
     interface IAccountController {
         message: string;
         userdata: IUserData;
-        isLoggedIn(): boolean;
+        isLoggedIn: boolean;
         registerUser(): void;
         login(): void;
     }
@@ -28,27 +28,24 @@
 
         message: string;
         userdata: UserData;
+        isLoggedIn: boolean;
 
         static $inject = ['app.services.AccountService', 'app.services.CurrentUser'];
         constructor(private accountService: app.services.AccountService, private currentUser: app.services.CurrentUser) {
             this.message = "";
-            this.userdata = new UserData("", "", "", "","");
-        }
-
-        isLoggedIn(): boolean {
-            return this.currentUser.profile.isLoggedIn;
+            this.userdata = new UserData("", "", "", "", "");
         }
 
         registerUser() : void {
             this.userdata.confirmPassword = this.userdata.password;
             this.accountService.register(this.userdata)
                 .success(
-                function (data) {
-                    this.confirmPassword = "";
+                (data, status) => {
+                    this.userdata.confirmPassword = "";
                     this.message = "... Registration successful";
                     this.login();})
                 .error(
-                function (response) {
+                (response, status) => {
                     this.isLoggedIn = false;
                     this.message = response.statusText + "\r\n";
                     if (response.data.exceptionMessage)
@@ -67,20 +64,21 @@
             this.userdata.username = this.userdata.email;
             this.userdata.grant_type = "password";
             this.accountService.login(this.userdata).success(
-                function (data) {
-                    this.message = "";
-                    this.password = "";
-                    this.currentUser.setProfile(this.userData.userName, data.access_token);
+                (data, status) => {
+                    this.message = "Login Succesful";
+                    this.userdata.password = "";
+                    this.isLoggedIn = true;
+                    this.currentUser.setProfile(this.userdata.username, data.access_token);
                 }
             ).error(
-                function (response) {
-                    this.password = "";
+                (response, status) => {
+                    this.userdata.password = "";
                     this.message = response.statusText + "\r\n";
-                    if (response.data.exceptionMessage)
-                        this.message += response.data.exceptionMessage;
+                    if (response.error_description)
+                        this.message += response.error_description;
 
-                    if (response.data.error) {
-                        this.message += response.data.error;
+                    if (response.error) {
+                        this.message += response.error;
                     }
                 }
                 );

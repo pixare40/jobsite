@@ -1,0 +1,16 @@
+﻿<div>Categories</div>
+
+<form>
+    <div class="form-group">
+        <input type="text"
+               class="form-control"
+               placeholder="Category"
+               ng-model="vm.categoryName">
+    </div>
+    <button type="submit"
+            class="btn btn-default"
+            ng-click="vm.createCategory()">
+        Create Category
+    </button>
+</form>
+<div>{{vm.message}}</div>

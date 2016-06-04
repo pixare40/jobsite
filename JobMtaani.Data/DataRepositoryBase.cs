@@ -6,7 +6,7 @@ using Core.Common.Data;
 
 namespace JobMtaani.Data
 {
-    public abstract class DataRepositoryBase<T> : DataRepositoryBase<T, JobMtaaniContext>
+    public abstract class DataRepositoryBase<T> : DataRepositoryBase<T, JobMtaaniDbContext>
         where T : class, IIdentifiableEntity, new()
     {
     }

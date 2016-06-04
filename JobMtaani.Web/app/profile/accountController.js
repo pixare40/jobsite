@@ -20,44 +20,44 @@ var app;
                 this.message = "";
                 this.userdata = new UserData("", "", "", "", "");
             }
-            AccountController.prototype.isLoggedIn = function () {
-                return this.currentUser.profile.isLoggedIn;
-            };
             AccountController.prototype.registerUser = function () {
+                var _this = this;
                 this.userdata.confirmPassword = this.userdata.password;
                 this.accountService.register(this.userdata)
-                    .success(function (data) {
-                    this.confirmPassword = "";
-                    this.message = "... Registration successful";
-                    this.login();
+                    .success(function (data, status) {
+                    _this.userdata.confirmPassword = "";
+                    _this.message = "... Registration successful";
+                    _this.login();
                 })
-                    .error(function (response) {
-                    this.isLoggedIn = false;
-                    this.message = response.statusText + "\r\n";
+                    .error(function (response, status) {
+                    _this.isLoggedIn = false;
+                    _this.message = response.statusText + "\r\n";
                     if (response.data.exceptionMessage)
-                        this.message += response.data.exceptionMessage;
+                        _this.message += response.data.exceptionMessage;
                     // Validation errors
                     if (response.data.modelState) {
                         for (var key in response.data.modelState) {
-                            this.message += response.data.modelState[key] + "\r\n";
+                            _this.message += response.data.modelState[key] + "\r\n";
                         }
                     }
                 });
             };
             AccountController.prototype.login = function () {
+                var _this = this;
                 this.userdata.username = this.userdata.email;
                 this.userdata.grant_type = "password";
-                this.accountService.login(this.userdata).success(function (data) {
-                    this.message = "";
-                    this.password = "";
-                    this.currentUser.setProfile(this.userData.userName, data.access_token);
-                }).error(function (response) {
-                    this.password = "";
-                    this.message = response.statusText + "\r\n";
-                    if (response.data.exceptionMessage)
-                        this.message += response.data.exceptionMessage;
-                    if (response.data.error) {
-                        this.message += response.data.error;
+                this.accountService.login(this.userdata).success(function (data, status) {
+                    _this.message = "Login Succesful";
+                    _this.userdata.password = "";
+                    _this.isLoggedIn = true;
+                    _this.currentUser.setProfile(_this.userdata.username, data.access_token);
+                }).error(function (response, status) {
+                    _this.userdata.password = "";
+                    _this.message = response.statusText + "\r\n";
+                    if (response.error_description)
+                        _this.message += response.error_description;
+                    if (response.error) {
+                        _this.message += response.error;
                     }
                 });
             };
@@ -69,3 +69,4 @@ var app;
             .controller('app.profile.AccountController', AccountController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountController.js.map
