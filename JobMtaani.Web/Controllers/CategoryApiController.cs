@@ -1,6 +1,7 @@
 ﻿using JobMtaani.Business.Entities;
 using JobMtaani.Data.Contracts;
 using JobMtaani.Web.Core;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -14,7 +15,6 @@ namespace JobMtaani.Web.Controllers
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/category")]
-    [AllowAnonymous]
     [UsesDisposableService]
     public class CategoryApiController : ApiControllerBase
     {
@@ -27,6 +27,8 @@ namespace JobMtaani.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("CreateCategory")]
         public HttpResponseMessage CreateNewCategory(HttpRequestMessage request, Category category)
         {

@@ -1212,6 +1212,7 @@
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
+    <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />

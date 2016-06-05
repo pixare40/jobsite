@@ -61,6 +61,16 @@ var app;
                     }
                 });
             };
+            AccountController.prototype.logout = function () {
+                var _this = this;
+                this.accountService.logout().success(function (data, status) {
+                    _this.isLoggedIn = false;
+                    _this.currentUser.setProfile("", "");
+                    _this.message = "Logout Succesful";
+                    _this.userdata = new UserData("", "", "", "", "");
+                }).error(function (data, status) {
+                });
+            };
             AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser'];
             return AccountController;
         }());

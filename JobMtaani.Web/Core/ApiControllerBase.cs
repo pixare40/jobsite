@@ -10,6 +10,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using JobMtaani.Common;
 using Core.Common.Contracts;
+using Microsoft.AspNet.Identity;
 
 namespace JobMtaani.Web.Core
 {
@@ -39,7 +40,7 @@ namespace JobMtaani.Web.Core
 
         protected void ValidateAuthorizedUser(string userRequested)
         {
-            string userLoggedIn = User.Identity.Name;
+            string userLoggedIn = User.Identity.GetUserId();
             if (userLoggedIn != userRequested)
                 throw new SecurityException("Attempting to access data for another user.");
         }

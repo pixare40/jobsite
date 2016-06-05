@@ -3,8 +3,9 @@ var app;
     var services;
     (function (services) {
         var AccountService = (function () {
-            function AccountService($http) {
+            function AccountService($http, currentUser) {
                 this.$http = $http;
+                this.currentUser = currentUser;
             }
             AccountService.prototype.register = function (userdata) {
                 return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
@@ -21,7 +22,12 @@ var app;
                     }
                 });
             };
-            AccountService.$inject = ['$http'];
+            AccountService.prototype.logout = function () {
+                return this.$http.post("http://localhost:53039/api/Account/Logout", {}, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            AccountService.$inject = ['$http', 'app.services.CurrentUser'];
             return AccountService;
         }());
         services.AccountService = AccountService;

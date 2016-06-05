@@ -83,6 +83,18 @@
                 }
                 );
         }
+
+        logout(): void {
+            this.accountService.logout().success(
+                (data, status) => {
+                    this.isLoggedIn = false;
+                    this.currentUser.setProfile("", "");
+                    this.message = "Logout Succesful";
+                    this.userdata = new UserData("", "", "", "", "");
+                }).error(
+                (data, status) => {
+                });
+        }
         
     }
 

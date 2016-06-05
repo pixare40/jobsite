@@ -3,13 +3,16 @@ var app;
     var services;
     (function (services) {
         var CategoryService = (function () {
-            function CategoryService($http) {
+            function CategoryService($http, currentUser) {
                 this.$http = $http;
+                this.currentUser = currentUser;
             }
             CategoryService.prototype.createCategory = function (category) {
-                return this.$http.post("http://localhost:53039/api/category/CreateCategory", category);
+                return this.$http.post("http://localhost:53039/api/category/CreateCategory", category, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
             };
-            CategoryService.$inject = ["$http"];
+            CategoryService.$inject = ["$http", "app.services.CurrentUser"];
             return CategoryService;
         }());
         services.CategoryService = CategoryService;

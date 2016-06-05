@@ -25,3 +25,8 @@
     </button>
     <div ng-show="vm.message">{{vm.message}}</div>
 </form>
+<div ng-show="vm.isLoggedIn">
+    <button type="submit" class="btn btn-danger" ng-click="vm.logout()">
+        Logout
+    </button>
+</div>

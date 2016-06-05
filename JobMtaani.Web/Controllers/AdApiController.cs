@@ -45,6 +45,7 @@ namespace JobMtaani.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("CreateAd")]
         public HttpResponseMessage CreateNewAd(HttpRequestMessage request, Ad newAd)
         {
