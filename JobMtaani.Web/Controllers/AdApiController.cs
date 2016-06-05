@@ -10,13 +10,14 @@ using System.Web.Http;
 using Core.Common.Contracts;
 using JobMtaani.Business.Entities;
 using JobMtaani.Data.Contracts;
+using Microsoft.AspNet.Identity;
 
 namespace JobMtaani.Web.Controllers
 {
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/ad")]
-    [AllowAnonymous]
+    [Authorize]
     [UsesDisposableService]
     public class AdApiController : ApiControllerBase
     {
@@ -29,6 +30,7 @@ namespace JobMtaani.Web.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [Route("getad")]
         public HttpResponseMessage GetAd(HttpRequestMessage request, int adId)
         {
@@ -53,6 +55,7 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
+                newAd.AccountId = User.Identity.GetUserId();
                 Ad account = adRepository.Add(newAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
@@ -62,6 +65,7 @@ namespace JobMtaani.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("updatead")]
         public HttpResponseMessage UpdateAd(HttpRequestMessage request, Ad updatedAd)
         {

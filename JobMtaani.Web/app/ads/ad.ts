@@ -1,25 +1,25 @@
 ﻿module app.domain {
 
     export interface IAd {
-        adId: string;
-        accountId: string;
-        adApplicants: any;
-        categoryId: string;
-        adLocation: string;
-        adClosed: boolean;
-        adDescription: string;
+        AdId: string;
+        AccountId: string;
+        AdApplicants: any;
+        CategoryId: string;
+        AdLocation: string;
+        AdClosed: boolean;
+        AdDescription: string;
     }
 
     export class Ad implements IAd {
 
         constructor(
-            public adId: string,
-            public accountId: string,
-            public adApplicants: any,
-            public categoryId: string,
-            public adLocation: string,
-            public adClosed: boolean,
-            public adDescription) {
+            public AdId: string,
+            public AccountId: string,
+            public AdApplicants: any,
+            public CategoryId: string,
+            public AdLocation: string,
+            public AdClosed: boolean,
+            public AdDescription) {
         }
     }
 

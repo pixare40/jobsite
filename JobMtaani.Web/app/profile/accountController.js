@@ -19,6 +19,7 @@ var app;
                 this.currentUser = currentUser;
                 this.message = "";
                 this.userdata = new UserData("", "", "", "", "");
+                this.isLoggedIn = this.currentUser.profile.isLoggedIn;
             }
             AccountController.prototype.registerUser = function () {
                 var _this = this;
@@ -79,4 +80,3 @@ var app;
             .controller('app.profile.AccountController', AccountController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=accountController.js.map

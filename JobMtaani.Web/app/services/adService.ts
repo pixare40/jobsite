@@ -9,8 +9,8 @@
 
     export class AdService implements IAdService {
 
-        static $inject = ['$http']
-        constructor(private $http: ng.IHttpService) {
+        static $inject = ['$http', 'app.services.CurrentUser']
+        constructor(private $http: ng.IHttpService, private currentUser: app.services.CurrentUser) {
         }
 
         getAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
@@ -22,7 +22,9 @@
         }
 
         createAd(ad: app.domain.IAd): ng.IHttpPromise<app.domain.Ad>{
-            return this.$http.post('/api/ads/CreateAd', ad);
+            return this.$http.post('/api/ad/CreateAd', ad, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
         }
     }
 

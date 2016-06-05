@@ -34,6 +34,7 @@
         constructor(private accountService: app.services.AccountService, private currentUser: app.services.CurrentUser) {
             this.message = "";
             this.userdata = new UserData("", "", "", "", "");
+            this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
         registerUser() : void {

@@ -4,8 +4,9 @@ var app;
     (function (services) {
         'use strict';
         var AdService = (function () {
-            function AdService($http) {
+            function AdService($http, currentUser) {
                 this.$http = $http;
+                this.currentUser = currentUser;
             }
             AdService.prototype.getAd = function (adId) {
                 return this.$http.get('/api/ads/GetAd/' + adId);
@@ -14,9 +15,11 @@ var app;
                 return this.$http.get('/api/ads/GetAd/');
             };
             AdService.prototype.createAd = function (ad) {
-                return this.$http.post('/api/ads/CreateAd', ad);
+                return this.$http.post('/api/ad/CreateAd', ad, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
             };
-            AdService.$inject = ['$http'];
+            AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());
         services.AdService = AdService;
@@ -25,4 +28,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

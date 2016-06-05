@@ -3,18 +3,17 @@ var app;
     var domain;
     (function (domain) {
         var Ad = (function () {
-            function Ad(adId, accountId, adApplicants, categoryId, adLocation, adClosed, adDescription) {
-                this.adId = adId;
-                this.accountId = accountId;
-                this.adApplicants = adApplicants;
-                this.categoryId = categoryId;
-                this.adLocation = adLocation;
-                this.adClosed = adClosed;
-                this.adDescription = adDescription;
+            function Ad(AdId, AccountId, AdApplicants, CategoryId, AdLocation, AdClosed, AdDescription) {
+                this.AdId = AdId;
+                this.AccountId = AccountId;
+                this.AdApplicants = AdApplicants;
+                this.CategoryId = CategoryId;
+                this.AdLocation = AdLocation;
+                this.AdClosed = AdClosed;
+                this.AdDescription = AdDescription;
             }
             return Ad;
         }());
         domain.Ad = Ad;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
-//# sourceMappingURL=ad.js.map

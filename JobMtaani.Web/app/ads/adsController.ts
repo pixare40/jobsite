@@ -3,16 +3,28 @@
 
     interface IAdsController {
         title: string;
-        ads: app.domain.IAd[];
+        ad: app.domain.Ad;
     }
 
     class AdsController implements IAdsController {
         title: string
-        ads: app.domain.IAd[];
+        message: string;
+        ad: app.domain.Ad;
 
         static $inject = ['app.services.AdService']
         constructor(private adService: app.services.AdService) {
             this.title = 'Ads ';
+            this.ad = new app.domain.Ad("", "", [], "", "", false, "");
+        }
+
+        createAd(): void {
+            this.adService.createAd(this.ad).success(
+                (data, status) => {
+                    this.message = "Ad Created Succesfully";
+                }).error(
+                (data)=>{
+                    this.message = "Error";
+                });
         }
     }
 
