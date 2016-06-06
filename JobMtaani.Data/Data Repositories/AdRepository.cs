@@ -13,6 +13,16 @@ namespace JobMtaani.Data
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AdRepository : DataRepositoryBase<Ad>, IAdRepository
     {
+        public Ad[] GetAdByCategory(int categoryId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from a in entityContext.AdSet
+                        where a.CategoryId == categoryId
+                        select a).ToArray();
+            }
+        }
+
         protected override Ad AddEntity(JobMtaaniDbContext entityContext, Ad entity)
         {
             return entityContext.AdSet.Add(entity);

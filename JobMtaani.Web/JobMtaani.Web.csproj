@@ -266,11 +266,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\ads\adsTemplate.html" />
+    <Content Include="app\ads\createAdTemplate.html" />
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
     <Content Include="app\profile\registerTemplate.html" />
+    <Content Include="app\widgets\categoryWidgetTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -1208,11 +1210,14 @@
     <TypeScriptCompile Include="app\services\adService.ts" />
     <TypeScriptCompile Include="app\services\categoryService.ts" />
     <TypeScriptCompile Include="app\services\currentUser.ts" />
+    <TypeScriptCompile Include="app\services\navigationService.ts" />
     <TypeScriptCompile Include="app\services\paymentsService.ts" />
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
+    <TypeScriptCompile Include="app\widgets\adsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\searchWidget.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />

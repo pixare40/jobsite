@@ -80,5 +80,22 @@ namespace JobMtaani.Web.Controllers
                 return response;
             });
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("GetByCategory")]
+        public HttpResponseMessage GetAdByCategory(HttpRequestMessage request, [FromBody]int categoryId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad[] ads = adRepository.GetAdByCategory(categoryId);
+
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
     }
 }

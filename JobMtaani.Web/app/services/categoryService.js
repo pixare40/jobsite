@@ -8,9 +8,12 @@ var app;
                 this.currentUser = currentUser;
             }
             CategoryService.prototype.createCategory = function (category) {
-                return this.$http.post("http://localhost:53039/api/category/CreateCategory", category, {
+                return this.$http.post("/api/category/CreateCategory", category, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
+            };
+            CategoryService.prototype.getAllCategories = function () {
+                return this.$http.get("/api/category/GetAll");
             };
             CategoryService.$inject = ["$http", "app.services.CurrentUser"];
             return CategoryService;

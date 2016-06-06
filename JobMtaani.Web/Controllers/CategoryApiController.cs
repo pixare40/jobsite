@@ -44,7 +44,7 @@ namespace JobMtaani.Web.Controllers
             } );
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("GetAll")]
         public HttpResponseMessage GetAllCategories(HttpRequestMessage request)
         {

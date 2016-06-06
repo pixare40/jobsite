@@ -8,7 +8,7 @@ var app;
             }
             CategoryController.prototype.createCategory = function () {
                 var _this = this;
-                this.categoryService.createCategory(new app.domain.Category(this.categoryName)).success(function (data, status) {
+                this.categoryService.createCategory(new app.domain.Category(null, this.categoryName)).success(function (data, status) {
                     _this.message = "Success";
                 }).error(function (data, status) {
                     _this.message = "Error";

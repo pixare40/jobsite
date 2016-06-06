@@ -4,7 +4,7 @@
         AdId: string;
         AccountId: string;
         AdApplicants: any;
-        CategoryId: string;
+        CategoryId: number;
         AdLocation: string;
         AdClosed: boolean;
         AdDescription: string;
@@ -16,7 +16,7 @@
             public AdId: string,
             public AccountId: string,
             public AdApplicants: any,
-            public CategoryId: string,
+            public CategoryId: number,
             public AdLocation: string,
             public AdClosed: boolean,
             public AdDescription) {

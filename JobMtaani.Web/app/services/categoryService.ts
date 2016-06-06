@@ -12,10 +12,14 @@
         }
 
         createCategory(category: app.domain.ICategory): ng.IHttpPromise<app.domain.ICategory> {
-            return this.$http.post("http://localhost:53039/api/category/CreateCategory", category,
+            return this.$http.post("/api/category/CreateCategory", category,
                 {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
+        }
+
+        getAllCategories(): ng.IHttpPromise<app.domain.ICategory[]>{
+            return this.$http.get("/api/category/GetAll");
         }
 
     }

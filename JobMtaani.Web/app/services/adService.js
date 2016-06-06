@@ -19,6 +19,9 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getAdsByCategory = function (categoryId) {
+                return this.$http.post('/api/ad/GetByCategory', categoryId);
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

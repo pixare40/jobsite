@@ -9,6 +9,7 @@
 
     export class AdService implements IAdService {
 
+        categoryJobs: app.domain.Ad[];
         static $inject = ['$http', 'app.services.CurrentUser']
         constructor(private $http: ng.IHttpService, private currentUser: app.services.CurrentUser) {
         }
@@ -26,6 +27,10 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        getAdsByCategory(categoryId): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.post('/api/ad/GetByCategory', categoryId);
+        } 
     }
 
     angular

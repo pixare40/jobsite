@@ -10,11 +10,17 @@
         title: string
         message: string;
         ad: app.domain.Ad;
+        categoryAds: app.domain.Ad[];
 
         static $inject = ['app.services.AdService']
         constructor(private adService: app.services.AdService) {
             this.title = 'Ads ';
-            this.ad = new app.domain.Ad("", "", [], "", "", false, "");
+            this.ad = new app.domain.Ad("", "", [], 3, "", false, "");
+            if (this.adService.categoryJobs !==null || this.adService.categoryJobs.length < 1) {
+                this.categoryAds = this.adService.categoryJobs;
+            } else {
+                this.categoryAds = null;
+            }
         }
 
         createAd(): void {

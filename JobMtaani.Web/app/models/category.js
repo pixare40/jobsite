@@ -3,7 +3,8 @@ var app;
     var domain;
     (function (domain) {
         var Category = (function () {
-            function Category(CategoryName) {
+            function Category(CategoryId, CategoryName) {
+                this.CategoryId = CategoryId;
                 this.CategoryName = CategoryName;
             }
             return Category;

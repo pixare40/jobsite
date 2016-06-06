@@ -5,7 +5,7 @@
         .module('app', [
             'ngRoute',
             //'app.core',
-            //'app.widgets',
+            'app.widgets',
             //'app.blocks',
             'app.services',
             //'app.layout',
@@ -32,6 +32,11 @@
             })
             .when('/ads', {
                 templateUrl: '/app/ads/adsTemplate.html',
+                controller: 'app.ads.AdsController',
+                controllerAs: 'vm'
+            })
+            .when('/createad', {
+                templateUrl: '/app/ads/createAdTemplate.html',
                 controller: 'app.ads.AdsController',
                 controllerAs: 'vm'
             })
