@@ -1,0 +1,11 @@
+﻿<div ng-show="{{vm.successMessage != null}}" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
+<div ng-show="{{vm.errorMessage != null}}" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
+<div class="panel panel-info">
+    <div class="panel-heading">{{vm.ad.AdTitle}} Title</div>
+    <div class="panel-body">
+        {{vm.ad.AdDescription}}
+    </div>
+    <div class="panel-footer">
+        Location: {{vm.ad.AdLocation}} <button class="btn btn-success" ng-click="vm.applyForJob()">Apply</button>
+    </div>
+</div>

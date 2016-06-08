@@ -5,6 +5,7 @@
         email: string;
         password: string;
         confirmPassword: string;
+        phoneNumber: string;
     }
 
     export class UserData implements IUserData {
@@ -13,6 +14,7 @@
             public email: string,
             public password: string,
             public confirmPassword: string,
+            public phoneNumber: string,
             public grant_type: string) { }
     }
 
@@ -21,7 +23,6 @@
         userdata: IUserData;
         isLoggedIn: boolean;
         registerUser(): void;
-        login(): void;
     }
 
     class AccountController implements IAccountController {
@@ -33,7 +34,7 @@
         static $inject = ['app.services.AccountService', 'app.services.CurrentUser'];
         constructor(private accountService: app.services.AccountService, private currentUser: app.services.CurrentUser) {
             this.message = "";
-            this.userdata = new UserData("", "", "", "", "");
+            this.userdata = new UserData("", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
@@ -69,7 +70,7 @@
                     this.message = "Login Succesful";
                     this.userdata.password = "";
                     this.isLoggedIn = true;
-                    this.currentUser.setProfile(this.userdata.username, data.access_token);
+                    this.currentUser.setProfile(this.userdata.username, data.access_token, true);
                 }
             ).error(
                 (response, status) => {
@@ -89,9 +90,9 @@
             this.accountService.logout().success(
                 (data, status) => {
                     this.isLoggedIn = false;
-                    this.currentUser.setProfile("", "");
+                    this.currentUser.setProfile("", "", false);
                     this.message = "Logout Succesful";
-                    this.userdata = new UserData("", "", "", "", "");
+                    this.userdata = new UserData("", "", "", "", "","");
                 }).error(
                 (data, status) => {
                 });

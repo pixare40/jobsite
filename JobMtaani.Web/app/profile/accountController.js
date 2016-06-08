@@ -3,11 +3,12 @@ var app;
     var profile;
     (function (profile) {
         var UserData = (function () {
-            function UserData(username, email, password, confirmPassword, grant_type) {
+            function UserData(username, email, password, confirmPassword, phoneNumber, grant_type) {
                 this.username = username;
                 this.email = email;
                 this.password = password;
                 this.confirmPassword = confirmPassword;
+                this.phoneNumber = phoneNumber;
                 this.grant_type = grant_type;
             }
             return UserData;
@@ -18,7 +19,7 @@ var app;
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.message = "";
-                this.userdata = new UserData("", "", "", "", "");
+                this.userdata = new UserData("", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
             }
             AccountController.prototype.registerUser = function () {
@@ -51,7 +52,7 @@ var app;
                     _this.message = "Login Succesful";
                     _this.userdata.password = "";
                     _this.isLoggedIn = true;
-                    _this.currentUser.setProfile(_this.userdata.username, data.access_token);
+                    _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
                 }).error(function (response, status) {
                     _this.userdata.password = "";
                     _this.message = response.statusText + "\r\n";
@@ -66,9 +67,9 @@ var app;
                 var _this = this;
                 this.accountService.logout().success(function (data, status) {
                     _this.isLoggedIn = false;
-                    _this.currentUser.setProfile("", "");
+                    _this.currentUser.setProfile("", "", false);
                     _this.message = "Logout Succesful";
-                    _this.userdata = new UserData("", "", "", "", "");
+                    _this.userdata = new UserData("", "", "", "", "", "");
                 }).error(function (data, status) {
                 });
             };
@@ -80,3 +81,4 @@ var app;
             .controller('app.profile.AccountController', AccountController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountController.js.map

@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="app">
     @Html.Partial("~/Views/Shared/_Topbar.cshtml")
@@ -60,8 +61,11 @@
     <script src="~/app/ads/adsController.js"></script>
     <script src="~/app/profile/accountController.js"></script>
     <script src="~/app/dashboard/categoryController.js"></script>
+    <script src="~/app/ads/adController.js"></script>
     <!--Widgets Scripts-->
     <script src="~/app/widgets/categoryWidget.js"></script>
+    <script src="~/app/widgets/loginWidget/loginWidget.js"></script>
+    <script src="~/app/widgets/adsWidget/adsWidget.js"></script>
     <!--Other Scripts-->
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

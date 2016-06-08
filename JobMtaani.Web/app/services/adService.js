@@ -9,10 +9,10 @@ var app;
                 this.currentUser = currentUser;
             }
             AdService.prototype.getAd = function (adId) {
-                return this.$http.get('/api/ads/GetAd/' + adId);
+                return this.$http.post('/api/ad/GetAd/', adId);
             };
             AdService.prototype.getAllAds = function () {
-                return this.$http.get('/api/ads/GetAd/');
+                return this.$http.get('/api/ad/GetAds');
             };
             AdService.prototype.createAd = function (ad) {
                 return this.$http.post('/api/ad/CreateAd', ad, {
@@ -31,3 +31,4 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=adService.js.map

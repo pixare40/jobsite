@@ -266,13 +266,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\ads\adsTemplate.html" />
+    <Content Include="app\ads\adTemplate.html" />
     <Content Include="app\ads\createAdTemplate.html" />
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
     <Content Include="app\profile\registerTemplate.html" />
+    <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
     <Content Include="app\widgets\categoryWidgetTemplate.html" />
+    <Content Include="app\widgets\loginWidget\loginWidgetTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -286,6 +289,8 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\happy-family.jpg" />
+    <Content Include="Images\happy-woman.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1186,6 +1191,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\ads\ad.ts" />
+    <TypeScriptCompile Include="app\ads\adController.ts" />
     <TypeScriptCompile Include="app\ads\ads.module.ts" />
     <TypeScriptCompile Include="app\ads\adsController.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
@@ -1198,6 +1204,7 @@
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\homeController.ts" />
+    <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\payments\payment.ts" />
@@ -1216,7 +1223,9 @@
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\adsWidget\adsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\loginWidget\loginWidget.ts" />
     <TypeScriptCompile Include="app\widgets\searchWidget.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

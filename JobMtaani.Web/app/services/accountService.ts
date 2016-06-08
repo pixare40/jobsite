@@ -2,7 +2,7 @@
 
     export interface IAccountService {
         register(userdata: app.profile.IUserData, onsuccess: any, onfailure: any): ng.IHttpPromise<any>;
-        login(userdata: app.profile.IUserData): ng.IHttpPromise<any>;
+        login(userdata: app.widgets.LoginModel): ng.IHttpPromise<any>;
     }
 
     export class AccountService implements IAccountService {
@@ -15,7 +15,7 @@
             return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
         }
 
-        login(userdata: app.profile.IUserData): ng.IHttpPromise<any>{
+        login(userdata: app.widgets.LoginModel): ng.IHttpPromise<any>{
             return this.$http.post("http://localhost:53039/Token", userdata,
                 {
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

@@ -15,8 +15,8 @@ var app;
             function CurrentUser() {
                 this.profile = new Profile(false, "", "");
             }
-            CurrentUser.prototype.setProfile = function (username, token) {
-                this.profile = new Profile(true, username, token);
+            CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {
+                this.profile = new Profile(isLoggedIn, username, token);
             };
             CurrentUser.prototype.getProfile = function () {
                 return this.profile;
@@ -33,3 +33,4 @@ var app;
             .factory('app.services.CurrentUser', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=currentUser.js.map

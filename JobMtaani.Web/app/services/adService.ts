@@ -15,11 +15,11 @@
         }
 
         getAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
-            return this.$http.get('/api/ads/GetAd/' + adId);
+            return this.$http.post('/api/ad/GetAd/', adId);
         }
 
         getAllAds(): ng.IHttpPromise<app.domain.IAd[]>{
-            return this.$http.get('/api/ads/GetAd/');
+            return this.$http.get('/api/ad/GetAds');
         }
 
         createAd(ad: app.domain.IAd): ng.IHttpPromise<app.domain.Ad>{

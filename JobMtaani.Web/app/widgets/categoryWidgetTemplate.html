@@ -1,5 +1,9 @@
 ﻿<div>
-    <div ng-repeat="category in vm.categories">
-        <div ng-click="vm.goToCategory(category.CategoryId)">{{category.CategoryName}}</div>
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li ng-repeat="category in vm.categories" role="presentation" >
+                <div ng-click="vm.goToCategory(category.CategoryId)">{{category.CategoryName}}</div>
+            </li>
+        </ul>
     </div>
 </div>

@@ -1,0 +1,23 @@
+﻿<div>
+    <div id="login-container" >
+        <form class="navbar-form" ng-hide="vm.isLoggedIn">
+            <div class="form-group">
+                <label class="sr-only" for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="vm.userdata.username">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.userdata.password">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="vm.login()">Log in</button>
+            <a ng-href="#register"class="btn btn-default">Register</a>
+        </form>
+        <div id="logout-container" ng-show="vm.isLoggedIn" class="navbar-form navbar-right">
+            <div>
+                {{vm.loginMessage}}
+                <button ng-click="vm.logout()" class="btn btn-default">Log Out</button>
+            </div>
+        </div>
+    </div>
+
+</div>

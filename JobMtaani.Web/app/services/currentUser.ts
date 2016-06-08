@@ -15,7 +15,7 @@
 
     export interface ICurrentUser {
         profile: IProfile;
-        setProfile(username: string, token: string): void;
+        setProfile(username: string, token: string, isLoggedIn: boolean): void;
         getProfile(): IProfile;
     }
 
@@ -26,8 +26,8 @@
         }
 
         profile: IProfile;
-        setProfile(username: string, token: string) {
-            this.profile = new Profile(true, username, token);
+        setProfile(username: string, token: string, isLoggedIn: boolean) {
+            this.profile = new Profile(isLoggedIn, username, token);
         }
 
         getProfile(): IProfile {

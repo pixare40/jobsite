@@ -1,32 +1,57 @@
 ﻿<div>Registration Page</div>
 
-<form ng-hide="vm.isLoggedIn" class="navbar-form navbar-right">
-    <div class="form-group">
-        <input type="text"
-               class="form-control"
-               placeholder="username (email)"
-               ng-model="vm.userdata.email">
+<div class="col-md-7">
+    <div class="row">
+        <form ng-hide="vm.isLoggedIn" class="form-horizontal">
+        <div class="form-group">
+            <label for="username" class="control-label">Username</label>
+            <input type="text"
+                   class="form-control"
+                   id="username" required
+                   placeholder="username"
+                   ng-model="vm.userdata.username">
+        </div>
+        <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="text"
+                   class="form-control"
+                   id="email" required
+                   placeholder="email"
+                   ng-model="vm.userdata.email">
+        </div>
+        <div class="form-group">
+            <label for="password" class="control-label">Password</label>
+            <input type="password"
+                   class="form-control"
+                   id="password" required
+                   placeholder="Password"
+                   ng-model="vm.userdata.password">
+        </div>
+        <div class="form-group">
+            <label for="confirmpassword" class="control-label">Confirm Password</label>
+            <input type="password"
+                   class="form-control"
+                   id="confirmpassword" required
+                   placeholder="Confirm Password"
+                   ng-model="vm.userdata.confirmPassword">
+        </div>
+        <div class="form-group">
+            <label for="phonenumber" class="control-label">Phone Number</label>
+            <input type="tel"
+                   class="form-control"
+                   id="phonenumber" required
+                   placeholder="Phone Number"
+                   ng-model="vm.userdata.confirmPassword">
+        </div>
+            <div class="form-group">
+                <button type="submit"
+                        class="btn btn-default"
+                        ng-click="vm.registerUser()">
+                    Register
+                </button>
+            </div>
+        <div ng-show="vm.message">{{vm.message}}</div>
+    </form>
     </div>
-    <div class="form-group">
-        <input type="password"
-               class="form-control"
-               placeholder="password"
-               ng-model="vm.userdata.password">
-    </div>
-    <button type="submit"
-            class="btn btn-default"
-            ng-click="vm.login()">
-        Login
-    </button>
-    <button type="submit"
-            class="btn btn-default"
-            ng-click="vm.registerUser()">
-        Register
-    </button>
-    <div ng-show="vm.message">{{vm.message}}</div>
-</form>
-<div ng-show="vm.isLoggedIn">
-    <button type="submit" class="btn btn-danger" ng-click="vm.logout()">
-        Logout
-    </button>
 </div>
+<div class="col-md-5"></div>

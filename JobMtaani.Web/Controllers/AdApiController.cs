@@ -29,10 +29,10 @@ namespace JobMtaani.Web.Controllers
             this.adRepository = adRepository;
         }
 
-        [HttpGet]
+        [HttpPost]
         [AllowAnonymous]
-        [Route("getad")]
-        public HttpResponseMessage GetAd(HttpRequestMessage request, int adId)
+        [Route("GetAd")]
+        public HttpResponseMessage GetAd(HttpRequestMessage request, [FromBody]int adId)
         {
             return GetHttpResponse(request, () =>
             {
@@ -41,6 +41,23 @@ namespace JobMtaani.Web.Controllers
                 Ad account = adRepository.Get(adId);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("GetAds")]
+        public HttpResponseMessage GetAds(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad[] ads = adRepository.Get().ToArray();
+
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
 
                 return response;
             });
