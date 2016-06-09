@@ -2,6 +2,7 @@
 
     export interface IAd {
         AdId: string;
+        AdTitle: string;
         AccountId: string;
         AdApplicants: any;
         CategoryId: number;
@@ -14,6 +15,7 @@
 
         constructor(
             public AdId: string,
+            public AdTitle: string,
             public AccountId: string,
             public AdApplicants: any,
             public CategoryId: number,

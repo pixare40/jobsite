@@ -4,10 +4,17 @@ var app;
     (function (ads) {
         'use strict';
         var AdsController = (function () {
-            function AdsController(adService) {
+            function AdsController(adService, categoryService) {
+                var _this = this;
                 this.adService = adService;
+                this.categoryService = categoryService;
                 this.title = 'Ads ';
-                this.ad = new app.domain.Ad("", "", [], 3, "", false, "");
+                this.categoryService.getAllCategories().success(function (data, status) {
+                    _this.categories = data;
+                }).error(function (data) {
+                    _this.message = "Error Fetching Categories";
+                });
+                this.ad = new app.domain.Ad("", "", "", [], 3, "", false, "");
                 if (this.adService.categoryJobs !== null || this.adService.categoryJobs.length < 1) {
                     this.categoryAds = this.adService.categoryJobs;
                 }
@@ -23,7 +30,7 @@ var app;
                     _this.message = "Error";
                 });
             };
-            AdsController.$inject = ['app.services.AdService'];
+            AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService'];
             return AdsController;
         }());
         angular

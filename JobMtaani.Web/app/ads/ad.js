@@ -3,8 +3,9 @@ var app;
     var domain;
     (function (domain) {
         var Ad = (function () {
-            function Ad(AdId, AccountId, AdApplicants, CategoryId, AdLocation, AdClosed, AdDescription) {
+            function Ad(AdId, AdTitle, AccountId, AdApplicants, CategoryId, AdLocation, AdClosed, AdDescription) {
                 this.AdId = AdId;
+                this.AdTitle = AdTitle;
                 this.AccountId = AccountId;
                 this.AdApplicants = AdApplicants;
                 this.CategoryId = CategoryId;

@@ -1,17 +1,35 @@
 ﻿<div>{{vm.title}}</div>
-<form>
+<form class="form-horizontal">
     <div class="form-group">
+        <label for="adtitle" class="control-label">Title</label>
         <input type="text"
+               id="adtitle"
+               class="form-control"
+               placeholder="Ad Title"
+               ng-model="vm.ad.AdTitle"/>
+    </div>
+    <div class="form-group">
+        <label for="category" class="control-label">Category</label>
+        <select ng-model="vm.ad.CategoryId"
+                id="category" 
+                ng-options="category.CategoryId as category.CategoryName for category in vm.categories"></select>
+    </div>
+    <div class="form-group">
+        <label for="addescription" class="control-label">Description</label>
+        <textarea class="form-control"
+                  id="addescription"
+                  placeholder="Ad Description"
+                  ng-model="vm.ad.AdDescription"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="adlocation" class="control-label">Location</label>
+        <input type="text"
+               id="adlocation"
                class="form-control"
                placeholder="Ad Location"
-               ng-model="vm.ad.AdLocation">
+               ng-model="vm.ad.AdLocation" />
     </div>
-    <div class="form-group">
-        <textarea class="form-control"
-               placeholder="Ad Description"
-               ng-model="vm.ad.AdDescription">
-        </textarea>
-    </div>
+    
     <button type="submit"
             class="btn btn-default"
             ng-click="vm.createAd()">
