@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data Repositories\AdApplicationRepository.cs" />
     <Compile Include="Data Repositories\AdRepository.cs" />
     <Compile Include="Data Repositories\CategoryRepository.cs" />
     <Compile Include="Data Repositories\PaymentRepository.cs" />

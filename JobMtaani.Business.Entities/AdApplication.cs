@@ -10,24 +10,26 @@ using System.Threading.Tasks;
 namespace JobMtaani.Business.Entities
 {
     [DataContract]
-    public class Category : EntityBase, IIdentifiableEntity
+    public class AdApplication : EntityBase, IIdentifiableEntity
     {
         [DataMember]
-        public int CategoryId { get; set; }
+        public int AdApplicationId { get; set; }
         [DataMember]
-        public string CategoryName { get; set; }
+        public int AdId { get; set; }
         [DataMember]
-        public string CategoryCName { get; set; }
+        public string AdApplicantId { get; set; }
+        [DataMember]
+        public DateTime DateApplied { get; set; }
         public object EntityId
         {
             get
             {
-                return CategoryId;
+                return AdApplicationId;
             }
 
             set
             {
-                CategoryId = (int)value;
+                AdApplicationId = (int)value;
             }
         }
     }

@@ -21,11 +21,13 @@ namespace JobMtaani.Web.Controllers
     public class AdApiController : ApiControllerBase
     {
         private IAdRepository adRepository;
+        private IAdApplicationRepository adApplicationRespository;
 
         [ImportingConstructor]
-        public AdApiController(IAdRepository adRepository)
+        public AdApiController(IAdRepository adRepository, IAdApplicationRepository adApplicationRespository)
         {
             this.adRepository = adRepository;
+            this.adApplicationRespository = adApplicationRespository;
         }
 
         [HttpPost]
@@ -92,11 +94,14 @@ namespace JobMtaani.Web.Controllers
 
                 Ad ad = adRepository.Get(adId);
 
-                ad.AdApplicants.Add(User.Identity.GetUserId());
+                string userId = User.Identity.GetUserId();
 
-                adRepository.Update(ad);
+                AdApplication adApplication = new AdApplication() {
+                    AdApplicantId = userId, AdId = ad.AdId, DateApplied=DateTime.Now };
 
-                response = request.CreateResponse<Ad>(HttpStatusCode.OK, ad);
+                adApplicationRespository.Add(adApplication);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
                 return response;
             });

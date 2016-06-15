@@ -3,6 +3,7 @@ using JobMtaani.Web.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -29,6 +30,9 @@ namespace JobMtaani.Web
 
             DependencyResolver.SetResolver(new MefDependencyResolver(container)); // view controllers
             GlobalConfiguration.Configuration.DependencyResolver = new MefAPIDependencyResolver(container); // web api controllers
+
+            var migrator = new DbMigrator(new Migrations.Configuration());
+            migrator.Update();
         }
     }
 }

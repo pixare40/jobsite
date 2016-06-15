@@ -14,7 +14,7 @@
         }
 
         createCategory(): void {
-            this.categoryService.createCategory(new app.domain.Category(null,this.categoryName)).success(
+            this.categoryService.createCategory(new app.domain.Category(null,this.categoryName, null)).success(
                 (data, status) => {
                     this.message = "Success";
                 }
