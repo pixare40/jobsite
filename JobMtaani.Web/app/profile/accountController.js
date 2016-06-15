@@ -83,3 +83,4 @@ var app;
             .controller('app.profile.AccountController', AccountController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountController.js.map

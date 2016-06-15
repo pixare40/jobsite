@@ -3,6 +3,7 @@
     angular
         .module('app.services', ["ngResource"])
         .constant('appsettings', {
-        serverPath: 'http://localhost:53039'
+        serverPath: 'http://jobmtaani.co.ke'
     });
 })();
+//# sourceMappingURL=services.module.js.map

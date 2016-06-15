@@ -67,3 +67,4 @@ var app;
             .directive('jmLoginWidget', LoginWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=loginWidget.js.map

@@ -13,7 +13,7 @@
         }
         
         register(userdata: app.profile.IUserData): ng.IHttpPromise<any>{
-            return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
+            return this.$http.post("/api/Account/Register", userdata);
         }
 
         login(userdata: app.widgets.LoginModel): ng.IHttpPromise<any>{

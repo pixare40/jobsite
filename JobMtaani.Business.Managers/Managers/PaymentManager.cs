@@ -25,7 +25,7 @@ namespace JobMtaani.Business.Managers.Managers
         public string GetPesapalUrl(string userId)
         {
             Uri pesaPalUri = new Uri("http://demo.pesapal.com/API/PostPesapalDirectOrderV4");
-            Uri pesapalCallbackUri = new Uri("http://localhost:53039/#/home");
+            Uri pesapalCallbackUri = new Uri("http://jobmtaani.co.ke/#/home");
 
             IBuilder builder = new APIPostParametersBuilderV2()
                 .ConsumerKey(@"16OBkxWyEjJImD7ZOufl05rVL/e1x9cK")

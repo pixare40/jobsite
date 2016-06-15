@@ -8,7 +8,7 @@ var app;
                 this.currentUser = currentUser;
             }
             AccountService.prototype.register = function (userdata) {
-                return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
+                return this.$http.post("/api/Account/Register", userdata);
             };
             AccountService.prototype.login = function (userdata) {
                 return this.$http.post("/Token", userdata, {
@@ -36,3 +36,4 @@ var app;
             .service('app.services.AccountService', AccountService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountService.js.map
