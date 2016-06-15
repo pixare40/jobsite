@@ -30,7 +30,14 @@
 
         getAdsByCategory(categoryId): ng.IHttpPromise<app.domain.Ad[]> {
             return this.$http.post('/api/ad/GetByCategory', categoryId);
-        } 
+        }
+
+        applyToAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
+            return this.$http.post('/api/ad/Apply', adId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+
+        }
     }
 
     angular

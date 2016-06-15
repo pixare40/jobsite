@@ -73,9 +73,31 @@ namespace JobMtaani.Web.Controllers
                 HttpResponseMessage response = null;
 
                 newAd.AccountId = User.Identity.GetUserId();
+                newAd.DateCreated = DateTime.Now;
                 Ad account = adRepository.Add(newAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("Apply")]
+        public HttpResponseMessage ApplyToAd(HttpRequestMessage request, [FromBody]int adId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad ad = adRepository.Get(adId);
+
+                ad.AdApplicants.Add(User.Identity.GetUserId());
+
+                adRepository.Update(ad);
+
+                response = request.CreateResponse<Ad>(HttpStatusCode.OK, ad);
 
                 return response;
             });

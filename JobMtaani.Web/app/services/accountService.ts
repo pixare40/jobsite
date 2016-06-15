@@ -8,7 +8,8 @@
     export class AccountService implements IAccountService {
 
         static $inject = ['$http', 'app.services.CurrentUser'];
-        constructor(private $http: ng.IHttpService, private currentUser: app.services.CurrentUser) {
+        constructor(private $http: ng.IHttpService,
+            private currentUser: app.services.CurrentUser) {
         }
         
         register(userdata: app.profile.IUserData): ng.IHttpPromise<any>{
@@ -16,7 +17,7 @@
         }
 
         login(userdata: app.widgets.LoginModel): ng.IHttpPromise<any>{
-            return this.$http.post("http://localhost:53039/Token", userdata,
+            return this.$http.post("/Token", userdata,
                 {
                         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                         transformRequest: function (data, headersGetter) {
@@ -30,7 +31,7 @@
         }
 
         logout(): ng.IHttpPromise<any> {
-            return this.$http.post("http://localhost:53039/api/Account/Logout", {}, {
+            return this.$http.post("/api/Account/Logout", {}, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }

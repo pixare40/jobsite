@@ -21,7 +21,8 @@
 
     export class CurrentUser implements ICurrentUser {
 
-        constructor() {
+        static $inject = ['$http', '$scope']
+        constructor(private $http: ng.IHttpService) {
             this.profile = new Profile(false, "", "");
         }
 
@@ -33,13 +34,18 @@
         getProfile(): IProfile {
             return this.profile;
         }
+
+        getCurrentUserInfo(): ng.IHttpPromise<any> {
+            return this.$http.get('/api/Account/GetAccountInfo', {
+                headers: { 'Authorization': 'Bearer ' + this.getProfile().token }
+            })
+        }
     }
 
-    factory.$inject = [];
-    function factory(): ICurrentUser {
-        return new CurrentUser();
+    factory.$inject = ['$http'];
+    function factory($http: ng.IHttpService): ICurrentUser {
+        return new CurrentUser($http);
     }
-
 
     angular
         .module('app.services')

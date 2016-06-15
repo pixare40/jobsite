@@ -1,8 +1,8 @@
 ﻿<div>
-    <div class="row">
-        <ul class="nav nav-pills">
+    <div class="row" style="padding-bottom:10px;">
+        <ul class="nav nav-pills nav-justified">
             <li ng-repeat="category in vm.categories" role="presentation" >
-                <div ng-click="vm.goToCategory(category.CategoryId)">{{category.CategoryName}}</div>
+                <a ng-href="" ng-click="vm.goToCategory(category.CategoryId)">{{category.CategoryName}}</a>
             </li>
         </ul>
     </div>

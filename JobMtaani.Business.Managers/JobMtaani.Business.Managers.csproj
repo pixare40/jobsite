@@ -46,6 +46,13 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Pesapal.APIHelper.4.0">
+      <HintPath>..\..\..\..\..\Downloads\PesapalAPI-Files\PesapalAPI-Files\Pesapal.APIHelper.4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="ShortGuid, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ShortGuid.1.0.2\lib\net451\ShortGuid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -63,6 +70,7 @@
     <Compile Include="ManagerBase.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\AdManager.cs" />
+    <Compile Include="Managers\PaymentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

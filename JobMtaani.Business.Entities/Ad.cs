@@ -23,11 +23,13 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public string AdTitle { get; set; }
         [DataMember]
-        public int[] AdApplicants { get; set; }
+        public List<string> AdApplicants { get; set; }
         [DataMember]
         public bool AdClosed { get; set; }
         [DataMember]
         public string AdDescription { get; set; }
+        [DataMember]
+        public DateTime DateCreated { get; set; }
         public object EntityId
         {
             get

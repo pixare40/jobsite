@@ -28,7 +28,6 @@ namespace JobMtaani.Web.Controllers
 
         [HttpPost]
         [Authorize]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("CreateCategory")]
         public HttpResponseMessage CreateNewCategory(HttpRequestMessage request, Category category)
         {

@@ -14,8 +14,9 @@
         userdata: LoginModel;
         isLoggedIn: boolean;
 
-        static $inject = ['app.services.AccountService', 'app.services.CurrentUser']
-        constructor(private accountService: app.services.AccountService, private currentUser: app.services.CurrentUser) {
+        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope']
+        constructor(private accountService: app.services.AccountService,
+            private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService) {
             this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
         }
 
@@ -27,6 +28,7 @@
                     this.userdata.password = "";
                     this.currentUser.setProfile(this.userdata.username, data.access_token, true);
                     this.isLoggedIn = true;
+                    this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                 }
             ).error(
                 (response, status) => {
@@ -50,6 +52,7 @@
                     this.isLoggedIn = false;
                     this.loginMessage = "Logout Succesful";
                     this.userdata = new LoginModel;
+                    this.$rootScope.$broadcast('USER_LOGGED_OUT', null);
                 }).error(
                 (data, status) => {
                 });

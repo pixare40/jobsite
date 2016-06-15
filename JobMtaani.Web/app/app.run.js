@@ -12,4 +12,3 @@
         currentUser.userId = $cookies.userId;
     }
 })();
-//# sourceMappingURL=app.run.js.map

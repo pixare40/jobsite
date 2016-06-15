@@ -25,6 +25,13 @@
             if (!this.currentUser.profile.isLoggedIn) {
                 this.errorMessage = "Please Login First to Apply for this job";
             }
+            else {
+                this.adService.applyToAd(this.ad.AdId).success((data, status) => {
+                    this.successMessage = "Succesfully Applied to Ad";
+                }).error((data) => {
+                    this.errorMessage = "An Error was encountered applying to the ad";
+                });
+            }
         }
     }
 

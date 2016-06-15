@@ -9,9 +9,10 @@ var app;
         }());
         widgets.LoginModel = LoginModel;
         var LoginWidgetController = (function () {
-            function LoginWidgetController(accountService, currentUser) {
+            function LoginWidgetController(accountService, currentUser, $rootScope) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
+                this.$rootScope = $rootScope;
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
             }
             LoginWidgetController.prototype.login = function () {
@@ -22,6 +23,7 @@ var app;
                     _this.userdata.password = "";
                     _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
                     _this.isLoggedIn = true;
+                    _this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                 }).error(function (response, status) {
                     _this.userdata.password = "";
                     _this.isLoggedIn = false;
@@ -40,10 +42,11 @@ var app;
                     _this.isLoggedIn = false;
                     _this.loginMessage = "Logout Succesful";
                     _this.userdata = new LoginModel;
+                    _this.$rootScope.$broadcast('USER_LOGGED_OUT', null);
                 }).error(function (data, status) {
                 });
             };
-            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser'];
+            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope'];
             return LoginWidgetController;
         }());
         var LoginWidget = (function () {
@@ -64,4 +67,3 @@ var app;
             .directive('jmLoginWidget', LoginWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=loginWidget.js.map

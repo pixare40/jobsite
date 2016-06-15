@@ -1,1 +1,6 @@
 ﻿<div>{{vm.title}}</div>
+
+<div ng-show="{{vm.successString != null}}" class="alert alert-success" role="alert">{{vm.successString}}</div>
+<div ng-show="{{vm.errorString!= null}}" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
+
+{{vm.userData}}

@@ -21,8 +21,8 @@
                 this.categories = data;
             }).error((data) => {
                 this.message = "Error Fetching Categories";
-            });
-            this.ad = new app.domain.Ad("", "", "", [], 3, "", false, "");
+                });
+
             if (this.adService.categoryJobs !==null || this.adService.categoryJobs.length < 1) {
                 this.categoryAds = this.adService.categoryJobs;
             } else {

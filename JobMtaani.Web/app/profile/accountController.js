@@ -15,9 +15,10 @@ var app;
         }());
         profile.UserData = UserData;
         var AccountController = (function () {
-            function AccountController(accountService, currentUser) {
+            function AccountController(accountService, currentUser, $location) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
+                this.$location = $location;
                 this.message = "";
                 this.userdata = new UserData("", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
@@ -53,6 +54,7 @@ var app;
                     _this.userdata.password = "";
                     _this.isLoggedIn = true;
                     _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
+                    _this.$location.path('/home');
                 }).error(function (response, status) {
                     _this.userdata.password = "";
                     _this.message = response.statusText + "\r\n";
@@ -73,7 +75,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser'];
+            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location'];
             return AccountController;
         }());
         angular
@@ -81,4 +83,3 @@ var app;
             .controller('app.profile.AccountController', AccountController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=accountController.js.map

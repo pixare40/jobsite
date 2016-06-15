@@ -241,6 +241,7 @@
     <Compile Include="Controllers\AdApiController.cs" />
     <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchApiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\ApiControllerBase.cs" />
     <Compile Include="Core\ISecurityAdapter.cs" />
@@ -362,6 +363,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="Properties\PublishProfiles\jobmtaani.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1207,6 +1209,7 @@
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
+    <TypeScriptCompile Include="app\models\user.ts" />
     <TypeScriptCompile Include="app\payments\payment.ts" />
     <TypeScriptCompile Include="app\payments\payments.module.ts" />
     <TypeScriptCompile Include="app\payments\paymentsController.ts" />

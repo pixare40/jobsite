@@ -11,7 +11,7 @@ var app;
                 return this.$http.post("http://localhost:53039/api/Account/Register", userdata);
             };
             AccountService.prototype.login = function (userdata) {
-                return this.$http.post("http://localhost:53039/Token", userdata, {
+                return this.$http.post("/Token", userdata, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     transformRequest: function (data, headersGetter) {
                         var str = [];
@@ -23,7 +23,7 @@ var app;
                 });
             };
             AccountService.prototype.logout = function () {
-                return this.$http.post("http://localhost:53039/api/Account/Logout", {}, {
+                return this.$http.post("/api/Account/Logout", {}, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
@@ -36,4 +36,3 @@ var app;
             .service('app.services.AccountService', AccountService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=accountService.js.map

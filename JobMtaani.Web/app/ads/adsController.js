@@ -14,7 +14,6 @@ var app;
                 }).error(function (data) {
                     _this.message = "Error Fetching Categories";
                 });
-                this.ad = new app.domain.Ad("", "", "", [], 3, "", false, "");
                 if (this.adService.categoryJobs !== null || this.adService.categoryJobs.length < 1) {
                     this.categoryAds = this.adService.categoryJobs;
                 }
@@ -38,4 +37,3 @@ var app;
             .controller('app.ads.AdsController', AdsController);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adsController.js.map

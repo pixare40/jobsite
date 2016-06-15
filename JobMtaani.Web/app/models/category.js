@@ -12,4 +12,3 @@ var app;
         domain.Category = Category;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
-//# sourceMappingURL=category.js.map

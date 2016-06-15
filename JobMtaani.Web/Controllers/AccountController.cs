@@ -18,6 +18,7 @@ using JobMtaani.Web.Providers;
 using JobMtaani.Web.Results;
 using JobMtaani.Web.Core;
 using JobMtaani.Business.Entities;
+using System.Net;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -74,6 +75,19 @@ namespace JobMtaani.Web.Controllers
         {
             Authentication.SignOut(CookieAuthenticationDefaults.AuthenticationType);
             return Ok();
+        }
+
+        [Route("GetAccountInfo")]
+        public HttpResponseMessage GetAccountInfo(HttpRequestMessage request)
+        {
+            HttpResponseMessage response = null;
+
+            Account user = UserManager.FindById(User.Identity.GetUserId());
+
+
+            response = request.CreateResponse(HttpStatusCode.OK, user);
+
+            return response;
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true

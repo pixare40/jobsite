@@ -15,6 +15,7 @@
         <div id="logout-container" ng-show="vm.isLoggedIn" class="navbar-form navbar-right">
             <div>
                 {{vm.loginMessage}}
+                <a ng-href="#profile" class="btn btn-default">Profile</a>
                 <button ng-click="vm.logout()" class="btn btn-default">Log Out</button>
             </div>
         </div>

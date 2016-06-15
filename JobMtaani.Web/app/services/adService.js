@@ -22,6 +22,11 @@ var app;
             AdService.prototype.getAdsByCategory = function (categoryId) {
                 return this.$http.post('/api/ad/GetByCategory', categoryId);
             };
+            AdService.prototype.applyToAd = function (adId) {
+                return this.$http.post('/api/ad/Apply', adId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());
@@ -31,4 +36,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

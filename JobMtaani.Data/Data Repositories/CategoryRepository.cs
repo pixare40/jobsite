@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobMtaani.Data.Data_Repositories
+namespace JobMtaani.Data
 {
     [Export(typeof(ICategoryRepository))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
