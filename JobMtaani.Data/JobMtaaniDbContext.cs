@@ -18,6 +18,7 @@ namespace JobMtaani.Data
         public JobMtaaniDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer<JobMtaaniDbContext>(null);
         }
 
         public DbSet<Ad> AdSet { get; set; }
@@ -25,6 +26,7 @@ namespace JobMtaani.Data
         public DbSet<Review> ReviewSet { get; set; }
         public DbSet<Payment> PaymentSet { get; set; }
         public DbSet<AdApplication> AdApplicationSet { get; set; }
+        public DbSet<Subscription> SubscriptionSet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,6 +45,7 @@ namespace JobMtaani.Data
             modelBuilder.Entity<Review>().HasKey<int>(e => e.ReviewId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Payment>().HasKey<int>(e => e.PaymentId).Ignore(e => e.EntityId);
             modelBuilder.Entity<AdApplication>().HasKey<int>(e => e.AdApplicationId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Subscription>().HasKey<int>(e => e.SubscriptionId).Ignore(e => e.EntityId);
         }
 
         public static JobMtaaniDbContext Create()

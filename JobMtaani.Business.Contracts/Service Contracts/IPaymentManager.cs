@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobMtaani.Business.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace JobMtaani.Business.Contracts
 {
     public interface IPaymentManager
     {
-        string GetPesapalUrl(string userId);
+        string GetPesapalUrl(Account userAccount);
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="Data Repositories\CategoryRepository.cs" />
     <Compile Include="Data Repositories\PaymentRepository.cs" />
     <Compile Include="Data Repositories\ReviewRepository.cs" />
+    <Compile Include="Data Repositories\SubscriptionRepository.cs" />
     <Compile Include="DataRepositoryBase.cs" />
     <Compile Include="DataRepositoryFactory.cs" />
     <Compile Include="JobMtaaniDbContext.cs" />

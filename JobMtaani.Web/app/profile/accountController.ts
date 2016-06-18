@@ -1,6 +1,8 @@
 ﻿module app.profile {
 
     export interface IUserData {
+        firstname: string;
+        lastname: string;
         username: string;
         email: string;
         password: string;
@@ -10,6 +12,8 @@
 
     export class UserData implements IUserData {
         constructor(
+            public firstname: string,
+            public lastname:string,
             public username: string,
             public email: string,
             public password: string,
@@ -36,7 +40,7 @@
             private currentUser: app.services.CurrentUser,
             private $location: ng.ILocationService) {
             this.message = "";
-            this.userdata = new UserData("", "", "", "", "", "");
+            this.userdata = new UserData("","","", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
@@ -95,7 +99,7 @@
                     this.isLoggedIn = false;
                     this.currentUser.setProfile("", "", false);
                     this.message = "Logout Succesful";
-                    this.userdata = new UserData("", "", "", "", "","");
+                    this.userdata = new UserData("","","", "", "", "", "","");
                 }).error(
                 (data, status) => {
                 });

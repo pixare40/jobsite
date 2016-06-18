@@ -241,6 +241,7 @@
     <Compile Include="Controllers\AdApiController.cs" />
     <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentApiController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\ApiControllerBase.cs" />
@@ -254,9 +255,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201606152247309_Initial.cs" />
-    <Compile Include="Migrations\201606152247309_Initial.Designer.cs">
-      <DependentUpon>201606152247309_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201606182208048_NewMigration.cs" />
+    <Compile Include="Migrations\201606182208048_NewMigration.Designer.cs">
+      <DependentUpon>201606182208048_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -1168,6 +1169,10 @@
       <Project>{8648a3ad-4253-4408-83c7-4501f4b750f6}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business.Contracts\JobMtaani.Business.Contracts.csproj">
+      <Project>{728F8F2D-6909-481C-B794-7104846703EE}</Project>
+      <Name>JobMtaani.Business.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
       <Project>{ae379156-f984-4f60-bda9-dd0f17f0b7c9}</Project>
       <Name>JobMtaani.Business.Entities</Name>
@@ -1222,6 +1227,7 @@
     <TypeScriptCompile Include="app\profile\accountController.ts" />
     <TypeScriptCompile Include="app\profile\profile.module.ts" />
     <TypeScriptCompile Include="app\profile\profileController.ts" />
+    <TypeScriptCompile Include="app\profile\subscriptionController.ts" />
     <TypeScriptCompile Include="app\services\accountService.ts" />
     <TypeScriptCompile Include="app\services\adService.ts" />
     <TypeScriptCompile Include="app\services\categoryService.ts" />
@@ -1255,8 +1261,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606152247309_Initial.resx">
-      <DependentUpon>201606152247309_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606182208048_NewMigration.resx">
+      <DependentUpon>201606182208048_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

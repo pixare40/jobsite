@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JobMtaani.Business.Managers\JobMtaani.Business.Managers.csproj">
+      <Project>{399510ED-946A-4A97-BEAB-08B6A6E4C85C}</Project>
+      <Name>JobMtaani.Business.Managers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Proxies\JobMtaani.Client.Proxies.csproj">
       <Project>{2C000846-E647-42EC-AEBE-28914FB1BE26}</Project>
       <Name>JobMtaani.Client.Proxies</Name>

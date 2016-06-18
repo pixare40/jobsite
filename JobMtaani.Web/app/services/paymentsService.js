@@ -3,16 +3,22 @@ var app;
     var services;
     (function (services) {
         var PaymentsService = (function () {
-            function PaymentsService($http) {
+            function PaymentsService($http, currentUser) {
                 this.$http = $http;
+                this.currentUser = currentUser;
             }
+            PaymentsService.prototype.getPaymentUrl = function () {
+                return this.$http.get('/api/Payment/GetPaymentUrl', {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             PaymentsService.prototype.makePayment = function (payment) {
-                return this.$http.post('/api/Payments/MakePayment', payment);
+                return this.$http.post('/api/Payment/MakePayment', payment);
             };
             PaymentsService.prototype.getPayment = function (paymentId) {
-                return this.$http.get('/api/Payments/GetPayment/' + paymentId);
+                return this.$http.get('/api/Payment/GetPayment/' + paymentId);
             };
-            PaymentsService.$inject = ['$http'];
+            PaymentsService.$inject = ['$http', 'app.services.CurrentUser'];
             return PaymentsService;
         }());
         services.PaymentsService = PaymentsService;

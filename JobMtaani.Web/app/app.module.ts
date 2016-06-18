@@ -15,6 +15,7 @@
             'app.dashboard',
             'app.ads',
             'app.profile',
+            'app.payments',
             //'app.users',
             'app.home'
         ]);
@@ -62,7 +63,7 @@
             })
             .when('/payments', {
                 templateUrl: '/app/payments/paymentsTemplate.html',
-                controller: 'app.payments.PaymentController',
+                controller: 'app.payments.PaymentsController',
                 controllerAs: 'vm'
             })
             .when('/payment/:paymentId', {

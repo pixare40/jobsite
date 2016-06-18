@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace JobMtaani.Web.Core
 {
-    public class ApiControllerBase : ApiController, IServiceAwareController
+    public class ApiControllerBase : ApiController
     {
         List<IServiceContract> _DisposableServices;
 
@@ -22,12 +22,12 @@ namespace JobMtaani.Web.Core
         {
         }
 
-        void IServiceAwareController.RegisterDisposableServices(List<IServiceContract> disposableServices)
+        void RegisterDisposableServices(List<IServiceContract> disposableServices)
         {
             RegisterServices(disposableServices);
         }
 
-        List<IServiceContract> IServiceAwareController.DisposableServices
+        List<IServiceContract> DisposableServices
         {
             get
             {

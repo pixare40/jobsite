@@ -6,9 +6,20 @@
 
     class PaymentsController implements IPaymentsController {
         title: string;
+        iframeUrl: string;
+        errorMessage: string;
+        successMessage: string;
 
-        constructor() {
+        static $inject = ['app.services.CurrentUser', 'app.services.PaymentsService','$sce'];
+        constructor(private currentUser: app.services.CurrentUser,
+            private paymentsService: app.services.PaymentsService, private $sce: ng.ISCEService) {
             this.title = 'Payments';
+
+            this.paymentsService.getPaymentUrl().success((data, status) => {
+                this.iframeUrl = $sce.trustAsResourceUrl(data);
+            }).error((data) => {
+                this.errorMessage = data;
+            });
         }
     }
 
