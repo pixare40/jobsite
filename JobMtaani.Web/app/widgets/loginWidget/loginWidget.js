@@ -3,7 +3,10 @@ var app;
     var widgets;
     (function (widgets) {
         var LoginModel = (function () {
-            function LoginModel() {
+            function LoginModel(UserName, password, grant_type) {
+                this.UserName = UserName;
+                this.password = password;
+                this.grant_type = grant_type;
             }
             return LoginModel;
         }());
@@ -21,7 +24,7 @@ var app;
                 this.accountService.login(this.userdata).success(function (data, status) {
                     _this.loginMessage = "Welcome Back!";
                     _this.userdata.password = "";
-                    _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
+                    _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
                     _this.isLoggedIn = true;
                     _this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                 }).error(function (response, status) {
@@ -41,7 +44,7 @@ var app;
                     _this.currentUser.setProfile("", "", false);
                     _this.isLoggedIn = false;
                     _this.loginMessage = "Logout Succesful";
-                    _this.userdata = new LoginModel;
+                    _this.userdata = new LoginModel("", "", "");
                     _this.$rootScope.$broadcast('USER_LOGGED_OUT', null);
                 }).error(function (data, status) {
                 });

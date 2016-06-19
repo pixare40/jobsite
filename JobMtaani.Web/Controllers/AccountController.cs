@@ -344,7 +344,8 @@ namespace JobMtaani.Web.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new Account() { UserName = model.Email, Email = model.Email };
+            var user = new Account() { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName,
+                LastName = model.LastName, PhoneNumber = model.PhoneNumber };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

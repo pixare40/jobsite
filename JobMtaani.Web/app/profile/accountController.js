@@ -3,14 +3,14 @@ var app;
     var profile;
     (function (profile) {
         var UserData = (function () {
-            function UserData(firstname, lastname, username, email, password, confirmPassword, phoneNumber, grant_type) {
-                this.firstname = firstname;
-                this.lastname = lastname;
-                this.username = username;
-                this.email = email;
-                this.password = password;
-                this.confirmPassword = confirmPassword;
-                this.phoneNumber = phoneNumber;
+            function UserData(FirstName, LastName, UserName, Email, Password, ConfirmPassword, PhoneNumber, grant_type) {
+                this.FirstName = FirstName;
+                this.LastName = LastName;
+                this.UserName = UserName;
+                this.Email = Email;
+                this.Password = Password;
+                this.ConfirmPassword = ConfirmPassword;
+                this.PhoneNumber = PhoneNumber;
                 this.grant_type = grant_type;
             }
             return UserData;
@@ -27,10 +27,10 @@ var app;
             }
             AccountController.prototype.registerUser = function () {
                 var _this = this;
-                this.userdata.confirmPassword = this.userdata.password;
+                this.userdata.ConfirmPassword = this.userdata.Password;
                 this.accountService.register(this.userdata)
                     .success(function (data, status) {
-                    _this.userdata.confirmPassword = "";
+                    _this.userdata.ConfirmPassword = "";
                     _this.message = "... Registration successful";
                     _this.login();
                 })
@@ -49,16 +49,17 @@ var app;
             };
             AccountController.prototype.login = function () {
                 var _this = this;
-                this.userdata.username = this.userdata.email;
+                this.userdata.UserName = this.userdata.Email;
                 this.userdata.grant_type = "password";
-                this.accountService.login(this.userdata).success(function (data, status) {
+                var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
+                this.accountService.login(loginModel).success(function (data, status) {
                     _this.message = "Login Succesful";
-                    _this.userdata.password = "";
+                    _this.userdata.Password = "";
                     _this.isLoggedIn = true;
-                    _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
+                    _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
                     _this.$location.path('/home');
                 }).error(function (response, status) {
-                    _this.userdata.password = "";
+                    _this.userdata.Password = "";
                     _this.message = response.statusText + "\r\n";
                     if (response.error_description)
                         _this.message += response.error_description;

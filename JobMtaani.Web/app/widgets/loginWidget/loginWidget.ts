@@ -1,9 +1,11 @@
 ﻿module app.widgets {
 
     export class LoginModel {
-        username: string;
-        password: string;
-        grant_type: string;
+        constructor(
+            public UserName: string,
+            public password: string,
+            public grant_type: string
+        ) { }
     }
 
     interface ILoginWidgetController {
@@ -26,7 +28,7 @@
                 (data, status) => {
                     this.loginMessage = "Welcome Back!";
                     this.userdata.password = "";
-                    this.currentUser.setProfile(this.userdata.username, data.access_token, true);
+                    this.currentUser.setProfile(this.userdata.UserName, data.access_token, true);
                     this.isLoggedIn = true;
                     this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                 }
@@ -51,7 +53,7 @@
                     this.currentUser.setProfile("", "", false);
                     this.isLoggedIn = false;
                     this.loginMessage = "Logout Succesful";
-                    this.userdata = new LoginModel;
+                    this.userdata = new LoginModel("","","");
                     this.$rootScope.$broadcast('USER_LOGGED_OUT', null);
                 }).error(
                 (data, status) => {

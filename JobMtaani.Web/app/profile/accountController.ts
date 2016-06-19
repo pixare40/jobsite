@@ -1,24 +1,24 @@
 ﻿module app.profile {
 
     export interface IUserData {
-        firstname: string;
-        lastname: string;
-        username: string;
-        email: string;
-        password: string;
-        confirmPassword: string;
-        phoneNumber: string;
+        FirstName: string;
+        LastName: string;
+        UserName: string;
+        Email: string;
+        Password: string;
+        ConfirmPassword: string;
+        PhoneNumber: string;
     }
 
     export class UserData implements IUserData {
         constructor(
-            public firstname: string,
-            public lastname:string,
-            public username: string,
-            public email: string,
-            public password: string,
-            public confirmPassword: string,
-            public phoneNumber: string,
+            public FirstName: string,
+            public LastName:string,
+            public UserName: string,
+            public Email: string,
+            public Password: string,
+            public ConfirmPassword: string,
+            public PhoneNumber: string,
             public grant_type: string) { }
     }
 
@@ -40,16 +40,16 @@
             private currentUser: app.services.CurrentUser,
             private $location: ng.ILocationService) {
             this.message = "";
-            this.userdata = new UserData("","","", "", "", "", "", "");
+            this.userdata = new UserData("", "", "", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
         registerUser() : void {
-            this.userdata.confirmPassword = this.userdata.password;
+            this.userdata.ConfirmPassword = this.userdata.Password;
             this.accountService.register(this.userdata)
                 .success(
                 (data, status) => {
-                    this.userdata.confirmPassword = "";
+                    this.userdata.ConfirmPassword = "";
                     this.message = "... Registration successful";
                     this.login();})
                 .error(
@@ -69,19 +69,20 @@
         }
 
         login(): void {
-            this.userdata.username = this.userdata.email;
+            this.userdata.UserName = this.userdata.Email;
             this.userdata.grant_type = "password";
-            this.accountService.login(this.userdata).success(
+            var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
+            this.accountService.login(loginModel).success(
                 (data, status) => {
                     this.message = "Login Succesful";
-                    this.userdata.password = "";
+                    this.userdata.Password = "";
                     this.isLoggedIn = true;
-                    this.currentUser.setProfile(this.userdata.username, data.access_token, true);
+                    this.currentUser.setProfile(this.userdata.UserName, data.access_token, true);
                     this.$location.path('/home');
                 }
             ).error(
                 (response, status) => {
-                    this.userdata.password = "";
+                    this.userdata.Password = "";
                     this.message = response.statusText + "\r\n";
                     if (response.error_description)
                         this.message += response.error_description;
