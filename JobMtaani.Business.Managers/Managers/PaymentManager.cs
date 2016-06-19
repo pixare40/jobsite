@@ -66,7 +66,7 @@ namespace JobMtaani.Business.Managers
             subscriptionRepository.Add(newSubscriptionEntry);
         }
 
-        private static IBuilder GetApiParameterBuilder(Uri pesaPalUri, Uri pesapalCallbackUri)
+        private IBuilder GetApiParameterBuilder(Uri pesaPalUri, Uri pesapalCallbackUri)
         {
             return new APIPostParametersBuilderV2()
                             .ConsumerKey(@"16OBkxWyEjJImD7ZOufl05rVL/e1x9cK")
@@ -78,7 +78,7 @@ namespace JobMtaani.Business.Managers
                             .OAuthCallBackUri(pesapalCallbackUri);
         }
 
-        private static PesapalDirectOrderInfo GetWebOrder(Account userAccount, string SubscriptionPaymentId, List<LineItem> lineItems, LineItem subscription)
+        private PesapalDirectOrderInfo GetWebOrder(Account userAccount, string SubscriptionPaymentId, List<LineItem> lineItems, LineItem subscription)
         {
             return new PesapalDirectOrderInfo()
             {

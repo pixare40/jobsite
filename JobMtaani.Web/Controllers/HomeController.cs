@@ -11,9 +11,13 @@ namespace JobMtaani.Web.Controllers
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class HomeController : Controller
     {
+        public HomeController()
+        {
+
+        }
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Job Mtaani - Home";
 
             return View();
         }
