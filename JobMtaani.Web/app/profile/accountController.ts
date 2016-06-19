@@ -69,7 +69,6 @@
         }
 
         login(): void {
-            this.userdata.UserName = this.userdata.Email;
             this.userdata.grant_type = "password";
             var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
             this.accountService.login(loginModel).success(

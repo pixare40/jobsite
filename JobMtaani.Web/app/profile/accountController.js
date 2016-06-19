@@ -50,7 +50,6 @@ var app;
             };
             AccountController.prototype.login = function () {
                 var _this = this;
-                this.userdata.UserName = this.userdata.Email;
                 this.userdata.grant_type = "password";
                 var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
                 this.accountService.login(loginModel).success(function (data, status) {
