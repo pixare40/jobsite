@@ -12,11 +12,16 @@ var app;
         }());
         widgets.LoginModel = LoginModel;
         var LoginWidgetController = (function () {
-            function LoginWidgetController(accountService, currentUser, $rootScope) {
+            function LoginWidgetController(accountService, currentUser, $rootScope, $scope) {
+                var _this = this;
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$rootScope = $rootScope;
+                this.$scope = $scope;
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
+                this.$scope.$on("USER_LOGGED_IN", function (event, data) {
+                    _this.isLoggedIn = _this.currentUser.getProfile().isLoggedIn;
+                });
             }
             LoginWidgetController.prototype.login = function () {
                 var _this = this;
@@ -49,7 +54,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope'];
+            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope', '$scope'];
             return LoginWidgetController;
         }());
         var LoginWidget = (function () {

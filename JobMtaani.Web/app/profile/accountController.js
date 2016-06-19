@@ -17,10 +17,11 @@ var app;
         }());
         profile.UserData = UserData;
         var AccountController = (function () {
-            function AccountController(accountService, currentUser, $location) {
+            function AccountController(accountService, currentUser, $location, $rootScope) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$location = $location;
+                this.$rootScope = $rootScope;
                 this.message = "";
                 this.userdata = new UserData("", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
@@ -57,6 +58,7 @@ var app;
                     _this.userdata.Password = "";
                     _this.isLoggedIn = true;
                     _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
+                    _this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                     _this.$location.path('/home');
                 }).error(function (response, status) {
                     _this.userdata.Password = "";
@@ -78,7 +80,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location'];
+            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope'];
             return AccountController;
         }());
         angular

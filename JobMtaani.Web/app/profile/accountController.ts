@@ -35,10 +35,10 @@
         userdata: UserData;
         isLoggedIn: boolean;
 
-        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$location'];
+        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$location','$rootScope'];
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
-            private $location: ng.ILocationService) {
+            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService) {
             this.message = "";
             this.userdata = new UserData("", "", "", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
@@ -78,6 +78,7 @@
                     this.userdata.Password = "";
                     this.isLoggedIn = true;
                     this.currentUser.setProfile(this.userdata.UserName, data.access_token, true);
+                    this.$rootScope.$broadcast("USER_LOGGED_IN",null)
                     this.$location.path('/home');
                 }
             ).error(

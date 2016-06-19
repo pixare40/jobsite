@@ -16,10 +16,13 @@
         userdata: LoginModel;
         isLoggedIn: boolean;
 
-        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope']
+        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope','$scope']
         constructor(private accountService: app.services.AccountService,
-            private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService) {
+            private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService, private $scope: ng.IScope) {
             this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
+            this.$scope.$on("USER_LOGGED_IN", (event, data) => {
+                this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
+            })
         }
 
         login(): void {
