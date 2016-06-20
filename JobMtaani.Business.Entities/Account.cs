@@ -21,6 +21,12 @@ namespace JobMtaani.Business.Entities
         public string FirstName { get; set; }
         [DataMember]
         public string LastName { get; set; }
+        [DataMember]
+        public bool SubscriptionStatus { get; set; }
+        [DataMember]
+        public DateTime SubscriptionExpiry { get; set; }
+        [DataMember]
+        public DateTime DateJoined { get; set; }
 
         public object EntityId
         {

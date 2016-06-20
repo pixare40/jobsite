@@ -84,8 +84,11 @@ namespace JobMtaani.Web.Controllers
 
             Account user = UserManager.FindById(User.Identity.GetUserId());
 
+            UserAccountModel userAccountModel = new UserAccountModel() { Email=user.Email,
+                FirstName =user.FirstName, LastName=user.LastName, UserName=user.UserName,
+                SubscriptionStatus= user.SubscriptionStatus, PhoneNumber =user.PhoneNumber };
 
-            response = request.CreateResponse(HttpStatusCode.OK, user);
+            response = request.CreateResponse(HttpStatusCode.OK, userAccountModel);
 
             return response;
         }
@@ -345,7 +348,7 @@ namespace JobMtaani.Web.Controllers
             }
 
             var user = new Account() { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName,
-                LastName = model.LastName, PhoneNumber = model.PhoneNumber };
+                LastName = model.LastName, PhoneNumber = model.PhoneNumber, DateJoined = DateTime.Now };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

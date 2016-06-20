@@ -6,7 +6,7 @@
 
     class ProfileController implements IProfileController {
         title: string;
-        userData: any;
+        userdata: app.domain.ProfileModel;
         successString: string;
         errorString: string;
 
@@ -28,10 +28,12 @@
 
         getUserInfo(): void {
             this.currentUser.getCurrentUserInfo().success((data, status) => {
-                this.userData = data;
+                this.userdata = data;
                 this.successString = "Succesfully Obtained User Data";
+                this.errorString = null;
             }).error((data) => {
                 this.errorString = "Error Fetching User Data";
+                this.successString = null;
             })
         }
     }

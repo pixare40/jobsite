@@ -21,10 +21,12 @@ var app;
             ProfileController.prototype.getUserInfo = function () {
                 var _this = this;
                 this.currentUser.getCurrentUserInfo().success(function (data, status) {
-                    _this.userData = data;
+                    _this.userdata = data;
                     _this.successString = "Succesfully Obtained User Data";
+                    _this.errorString = null;
                 }).error(function (data) {
                     _this.errorString = "Error Fetching User Data";
+                    _this.successString = null;
                 });
             };
             ProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location'];

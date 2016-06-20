@@ -35,7 +35,7 @@
             return this.profile;
         }
 
-        getCurrentUserInfo(): ng.IHttpPromise<any> {
+        getCurrentUserInfo(): ng.IHttpPromise<app.domain.ProfileModel> {
             return this.$http.get('/api/Account/GetAccountInfo', {
                 headers: { 'Authorization': 'Bearer ' + this.getProfile().token }
             })
