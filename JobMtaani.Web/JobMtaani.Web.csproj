@@ -301,6 +301,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\1blackwomen.jpg" />
     <Content Include="Images\happy-family.jpg" />
     <Content Include="Images\happy-woman.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />

@@ -6,8 +6,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -15,4 +15,19 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*Home Page*/
+#home-jumbo{
+    height:500px;
+    background-image:url("../Images/1blackwomen.jpg");
+    background-size:cover;
+}
+
+.btn-outline-green {
+    border: solid 1px #762b2d;
+}
+
+.home-tagline{
+    margin-top: 180px;
 }
