@@ -16,13 +16,18 @@
         userdata: LoginModel;
         isLoggedIn: boolean;
 
-        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope','$scope']
+        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope','$scope','$location']
         constructor(private accountService: app.services.AccountService,
-            private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService, private $scope: ng.IScope) {
+            private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService,
+            private $scope: ng.IScope, private $location: ng.ILocationService) {
             this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
             this.$scope.$on("USER_LOGGED_IN", (event, data) => {
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
             })
+
+            if (this.isLoggedIn) {
+                this.$location.path('/profile');
+            }
         }
 
         login(): void {
@@ -34,6 +39,7 @@
                     this.currentUser.setProfile(this.userdata.UserName, data.access_token, true);
                     this.isLoggedIn = true;
                     this.$rootScope.$broadcast("USER_LOGGED_IN", null);
+                    this.$location.path('/profile');
                 }
             ).error(
                 (response, status) => {

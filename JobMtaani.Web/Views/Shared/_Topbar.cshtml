@@ -14,7 +14,7 @@
                 <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 <li><a ng-href="#createad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Listing</a></li>
             </ul>
-        <div jm-login-widget></div>
+        <div ng-show="vm.isLoggedIn"><u class="navbar-text navbar-right" ng-click="vm.logOut()">Log Out</u></div>
         </div>
     </div>
 </div>

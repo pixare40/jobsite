@@ -31,6 +31,11 @@
                 controller: 'app.home.HomeController',
                 controllerAs: 'vm'
             })
+            .when('/login', {
+                templateUrl: '/app/profile/loginTemplate.html',
+                controller: 'app.profile.LoginController',
+                controllerAs: 'vm'
+            })
             .when('/ads', {
                 templateUrl: '/app/ads/adsTemplate.html',
                 controller: 'app.ads.AdsController',

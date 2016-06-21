@@ -283,6 +283,7 @@
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
+    <Content Include="app\profile\loginTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
     <Content Include="app\profile\registerTemplate.html" />
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
@@ -1232,6 +1233,7 @@
     <TypeScriptCompile Include="app\payments\payments.module.ts" />
     <TypeScriptCompile Include="app\payments\paymentsController.ts" />
     <TypeScriptCompile Include="app\profile\accountController.ts" />
+    <TypeScriptCompile Include="app\profile\loginController.ts" />
     <TypeScriptCompile Include="app\profile\profile.module.ts" />
     <TypeScriptCompile Include="app\profile\profileController.ts" />
     <TypeScriptCompile Include="app\profile\subscriptionController.ts" />

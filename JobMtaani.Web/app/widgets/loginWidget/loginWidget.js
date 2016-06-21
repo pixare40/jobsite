@@ -12,16 +12,20 @@ var app;
         }());
         widgets.LoginModel = LoginModel;
         var LoginWidgetController = (function () {
-            function LoginWidgetController(accountService, currentUser, $rootScope, $scope) {
+            function LoginWidgetController(accountService, currentUser, $rootScope, $scope, $location) {
                 var _this = this;
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$rootScope = $rootScope;
                 this.$scope = $scope;
+                this.$location = $location;
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
                 this.$scope.$on("USER_LOGGED_IN", function (event, data) {
                     _this.isLoggedIn = _this.currentUser.getProfile().isLoggedIn;
                 });
+                if (this.isLoggedIn) {
+                    this.$location.path('/profile');
+                }
             }
             LoginWidgetController.prototype.login = function () {
                 var _this = this;
@@ -32,6 +36,7 @@ var app;
                     _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
                     _this.isLoggedIn = true;
                     _this.$rootScope.$broadcast("USER_LOGGED_IN", null);
+                    _this.$location.path('/profile');
                 }).error(function (response, status) {
                     _this.userdata.password = "";
                     _this.isLoggedIn = false;
@@ -54,7 +59,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope', '$scope'];
+            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope', '$scope', '$location'];
             return LoginWidgetController;
         }());
         var LoginWidget = (function () {
@@ -75,4 +80,3 @@ var app;
             .directive('jmLoginWidget', LoginWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=loginWidget.js.map
