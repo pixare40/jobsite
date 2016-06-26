@@ -12,12 +12,21 @@ var app;
                 this.$location = $location;
                 this.isLoggedIn = false;
                 this.$scope.$on('USER_LOGGED_IN', function (event, data) {
-                    _this.isLoggedIn = true;
+                    _this.onLogin();
                 });
                 this.$scope.$on('USER_LOGGED_OUT', function (event, data) {
-                    _this.isLoggedIn = false;
+                    _this.onLogout();
                 });
+                this.currentUser.checkLogin();
             }
+            HomeController.prototype.onLogin = function () {
+                this.isLoggedIn = true;
+                this.username = this.currentUser.profile.username;
+            };
+            HomeController.prototype.onLogout = function () {
+                this.isLoggedIn = false;
+                this.username == "";
+            };
             HomeController.prototype.createJob = function () {
                 if (!this.currentUser.profile.isLoggedIn) {
                     this.$location.path('/login');

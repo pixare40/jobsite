@@ -17,6 +17,7 @@ namespace JobMtaani.Web.Controllers
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/Payment")]
     [Authorize]
+    [UsesDisposableService]
     public class PaymentApiController : ApiControllerBase
     {
         private IPaymentManager paymentManager;

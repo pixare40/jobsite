@@ -15,6 +15,7 @@ namespace JobMtaani.Web.Controllers
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/category")]
+    [UsesDisposableService]
     public class CategoryApiController : ApiControllerBase
     {
         private ICategoryRepository categoryRepository;

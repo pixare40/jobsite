@@ -6,8 +6,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    /*padding-left: 15px;*/
-    /*padding-right: 15px;*/
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -30,4 +30,14 @@ textarea {
 
 .home-tagline{
     margin-top: 180px;
+}
+
+.dropdown-inline{
+    display: flex;
+    padding-left: 20px;
+}
+
+.dropdown-inline .fa{
+    height: 26px;
+    line-height: 26px;
 }

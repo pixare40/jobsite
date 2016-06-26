@@ -13,6 +13,7 @@ namespace JobMtaani.Web.Controllers
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/search")]
+    [UsesDisposableService]
     public class SearchApiController : ApiControllerBase
     {
         private IDataRepositoryFactory dataRepositoryFactory;

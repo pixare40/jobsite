@@ -4,6 +4,7 @@
 
     class HomeController implements IHomeController {
         isLoggedIn: boolean;
+        username: string;
 
         static $inject = ['app.services.CurrentUser', 'app.services.AccountService','$scope', '$rootScope','$location']
         constructor(private currentUser: app.services.CurrentUser,
@@ -12,12 +13,24 @@
             this.isLoggedIn = false;
 
             this.$scope.$on('USER_LOGGED_IN', (event, data) => {
-                this.isLoggedIn = true;
+                this.onLogin();
             });
 
             this.$scope.$on('USER_LOGGED_OUT', (event, data) => {
-                this.isLoggedIn = false;
+                this.onLogout();
             });
+
+            this.currentUser.checkLogin();
+        }
+
+        onLogin(): void {
+            this.isLoggedIn = true;
+            this.username = this.currentUser.profile.username;
+        }
+
+        onLogout(): void {
+            this.isLoggedIn = false;
+            this.username == "";
         }
 
         createJob(): void {

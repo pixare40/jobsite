@@ -1227,6 +1227,7 @@
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
+    <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />
     <TypeScriptCompile Include="app\models\profileModel.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
     <TypeScriptCompile Include="app\payments\payment.ts" />
@@ -1239,6 +1240,7 @@
     <TypeScriptCompile Include="app\profile\subscriptionController.ts" />
     <TypeScriptCompile Include="app\services\accountService.ts" />
     <TypeScriptCompile Include="app\services\adService.ts" />
+    <TypeScriptCompile Include="app\services\base\baseService.ts" />
     <TypeScriptCompile Include="app\services\categoryService.ts" />
     <TypeScriptCompile Include="app\services\currentUser.ts" />
     <TypeScriptCompile Include="app\services\navigationService.ts" />

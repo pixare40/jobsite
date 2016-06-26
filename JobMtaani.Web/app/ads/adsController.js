@@ -15,10 +15,10 @@ var app;
                     _this.message = "Error Fetching Categories";
                 });
                 if (this.adService.categoryJobs !== null || this.adService.categoryJobs.length < 1) {
-                    this.categoryAds = this.adService.categoryJobs;
+                    this.adList = this.adService.categoryJobs;
                 }
                 else {
-                    this.categoryAds = null;
+                    this.adList = null;
                 }
             }
             AdsController.prototype.createAd = function () {

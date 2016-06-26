@@ -18,6 +18,7 @@ namespace JobMtaani.Web.Controllers
     [PartCreationPolicy(CreationPolicy.NonShared)]
     [RoutePrefix("api/ad")]
     [Authorize]
+    [UsesDisposableService]
     public class AdApiController : ApiControllerBase
     {
         private IAdRepository adRepository;

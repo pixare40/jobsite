@@ -10,7 +10,7 @@
         title: string
         message: string;
         ad: app.domain.Ad;
-        categoryAds: app.domain.Ad[];
+        adList: app.domain.Ad[];
         categories: app.domain.Category[];
 
         static $inject = ['app.services.AdService', 'app.services.CategoryService']
@@ -24,9 +24,9 @@
                 });
 
             if (this.adService.categoryJobs !==null || this.adService.categoryJobs.length < 1) {
-                this.categoryAds = this.adService.categoryJobs;
+                this.adList = this.adService.categoryJobs;
             } else {
-                this.categoryAds = null;
+                this.adList = null;
             }
         }
 

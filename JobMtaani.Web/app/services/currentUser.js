@@ -12,9 +12,13 @@ var app;
         }());
         services.Profile = Profile;
         var CurrentUser = (function () {
-            function CurrentUser($http) {
+            function CurrentUser($http, $cookies, $rootScope) {
                 this.$http = $http;
+                this.$cookies = $cookies;
+                this.$rootScope = $rootScope;
                 this.profile = new Profile(false, "", "");
+                this.fetchTokenFromCookie();
+                this.setUserInfo();
             }
             CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {
                 this.profile = new Profile(isLoggedIn, username, token);
@@ -27,13 +31,37 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.getProfile().token }
                 });
             };
-            CurrentUser.$inject = ['$http', '$scope'];
+            CurrentUser.prototype.checkLogin = function () {
+                this.fetchTokenFromCookie();
+                this.setUserInfo();
+            };
+            CurrentUser.prototype.fetchTokenFromCookie = function () {
+                var token = null;
+                token = this.$cookies.get("authtoken");
+                if (token == null) {
+                }
+                this.profile.token = token;
+            };
+            CurrentUser.prototype.setUserInfo = function () {
+                var _this = this;
+                if (this.profile.token == null) {
+                    return;
+                }
+                this.getCurrentUserInfo().success(function (data, status) {
+                    _this.profile.username = data.UserName;
+                    _this.profile.isLoggedIn = true;
+                    _this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGGED_IN, null);
+                }).error(function (data) {
+                    _this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
+                });
+            };
+            CurrentUser.$inject = ['$http', '$cookies', '$rootScope'];
             return CurrentUser;
         }());
         services.CurrentUser = CurrentUser;
-        factory.$inject = ['$http'];
-        function factory($http) {
-            return new CurrentUser($http);
+        factory.$inject = ['$http', '$cookies', '$rootScope'];
+        function factory($http, $cookies, $rootScope) {
+            return new CurrentUser($http, $cookies, $rootScope);
         }
         angular
             .module('app.services')

@@ -12,9 +12,22 @@
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                 <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                <li><a ng-href="#createad"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Listing</a></li>
             </ul>
-        <div ng-show="vm.isLoggedIn"><u class="navbar-text navbar-right" ng-click="vm.logOut()">Log Out</u></div>
+        <div ng-show="vm.isLoggedIn">
+            <ul class="nav navbar-nav navbar-right">
+                <li><u class="navbar-text navbar-right" ng-click="vm.logOut()">Log Out</u></li>
+                <li class="dropdown">
+                    <a hr class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{vm.username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-inline"><i class="fa fa-user" aria-hidden="true"></i><a href="#profile">My Profile</a></li>
+                        <li class="dropdown-inline"><i class="fa fa-envelope" aria-hidden="true"></i><a href="#messages">My Messages</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-inline"><i class="fa fa-plus" aria-hidden="true"></i><a href="#createad">Create a Job Listing</a></li>
+                        <li class="dropdown-inline"><i class="fa fa-briefcase" aria-hidden="true"></i><a href="#ads">View Job Applications</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
         </div>
     </div>
 </div>

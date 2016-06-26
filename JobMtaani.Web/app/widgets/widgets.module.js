@@ -1,5 +1,5 @@
 (function () {
     'use strict';
     angular
-        .module('app.widgets', []);
+        .module('app.widgets', ["ngCookies"]);
 })();
