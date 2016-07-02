@@ -27,4 +27,3 @@ var app;
             .service('app.services.PaymentsService', PaymentsService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=paymentsService.js.map

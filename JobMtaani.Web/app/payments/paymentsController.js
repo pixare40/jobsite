@@ -23,4 +23,3 @@ var app;
             .controller('app.payments.PaymentsController', PaymentsController);
     })(payments = app.payments || (app.payments = {}));
 })(app || (app = {}));
-//# sourceMappingURL=paymentsController.js.map

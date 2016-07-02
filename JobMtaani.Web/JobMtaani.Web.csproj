@@ -1155,6 +1155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
+    <Folder Include="app\profile\widgets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1228,6 +1229,8 @@
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
+    <TypeScriptCompile Include="app\models\message.ts" />
+    <TypeScriptCompile Include="app\services\messagingService.ts" />
     <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />
     <TypeScriptCompile Include="app\models\profileModel.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
