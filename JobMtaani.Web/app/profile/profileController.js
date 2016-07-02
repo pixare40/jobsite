@@ -37,3 +37,4 @@ var app;
             .controller('app.profile.ProfileController', ProfileController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profileController.js.map

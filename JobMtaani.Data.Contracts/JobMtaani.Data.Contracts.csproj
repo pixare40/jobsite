@@ -63,6 +63,7 @@
     <Compile Include="Repository Interfaces\IAdApplicationRepository.cs" />
     <Compile Include="Repository Interfaces\IAdRepository.cs" />
     <Compile Include="Repository Interfaces\ICategoryRepository.cs" />
+    <Compile Include="Repository Interfaces\IMessageRepository.cs" />
     <Compile Include="Repository Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repository Interfaces\IReviewRepository.cs" />
     <Compile Include="Repository Interfaces\ISubscriptionRepository.cs" />
