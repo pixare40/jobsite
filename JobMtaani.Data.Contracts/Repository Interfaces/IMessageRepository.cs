@@ -10,5 +10,7 @@ namespace JobMtaani.Data.Contracts
 {
     public interface IMessageRepository : IDataRepository<Message>
     {
+        IEnumerable<Message> GetSentMessages(string userId);
+        IEnumerable<Message> GetReceivedMessages(string userId);
     }
 }

@@ -2,14 +2,37 @@
 using JobMtaani.Data.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace JobMtaani.Data.Data_Repositories
 {
+    [Export(typeof(IMessageRepository))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class MessageRepository : DataRepositoryBase<Message>, IMessageRepository
     {
+        public IEnumerable<Message> GetReceivedMessages(string userId)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.MessageSet
+                        where e.RecipientId == userId
+                        select e);
+            }
+        }
+
+        public IEnumerable<Message> GetSentMessages(string userId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.MessageSet
+                        where e.SenderId == userId
+                        select e);
+            }
+        }
+
         protected override Message AddEntity(JobMtaaniDbContext entityContext, Message entity)
         {
             return entityContext.MessageSet.Add(entity);

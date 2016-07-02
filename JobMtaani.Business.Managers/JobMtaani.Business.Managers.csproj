@@ -70,6 +70,7 @@
     <Compile Include="ManagerBase.cs" />
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\AdManager.cs" />
+    <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\PaymentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
