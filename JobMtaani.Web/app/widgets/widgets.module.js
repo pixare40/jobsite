@@ -3,3 +3,4 @@
     angular
         .module('app.widgets', ["ngCookies"]);
 })();
+//# sourceMappingURL=widgets.module.js.map

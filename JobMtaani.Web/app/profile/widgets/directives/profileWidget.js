@@ -49,3 +49,4 @@ var app;
             .directive('jmProfileWidget', ProfileWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profileWidget.js.map
