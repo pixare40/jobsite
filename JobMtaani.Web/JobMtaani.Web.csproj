@@ -290,6 +290,7 @@
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
     <Content Include="app\widgets\categoryWidgetTemplate.html" />
     <Content Include="app\widgets\loginWidget\loginWidgetTemplate.html" />
+    <Content Include="app\widgets\profile\profileWidgetTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -1256,6 +1257,7 @@
     <TypeScriptCompile Include="app\widgets\adsWidget\adsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
     <TypeScriptCompile Include="app\widgets\loginWidget\loginWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\profile\profileTabWidget.ts" />
     <TypeScriptCompile Include="app\widgets\searchWidget.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

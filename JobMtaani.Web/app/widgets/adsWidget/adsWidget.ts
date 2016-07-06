@@ -6,6 +6,7 @@
 
         errorMessage: string;
         successMessage: string;
+        generalMessage: string;
         ads: app.domain.Ad[];
 
         static $inject = ['app.services.AdService', '$location']
@@ -13,6 +14,9 @@
             adService.getAllAds().success(
                 (data, status) => {
                     this.ads = data;
+                    if (data.length == 0) {
+                        this.generalMessage = "No Job Listings found at this time, please check back later";
+                    }
                 })
                 .error((data) => {
                     this.errorMessage = "Error fetching ads, Check Connection";

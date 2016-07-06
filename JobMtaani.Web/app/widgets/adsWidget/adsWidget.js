@@ -9,6 +9,9 @@ var app;
                 this.$location = $location;
                 adService.getAllAds().success(function (data, status) {
                     _this.ads = data;
+                    if (data.length == 0) {
+                        _this.generalMessage = "No Job Listings found at this time, please check back later";
+                    }
                 })
                     .error(function (data) {
                     _this.errorMessage = "Error fetching ads, Check Connection";

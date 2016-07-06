@@ -4,11 +4,13 @@
     <br/>
     <br />
     <ul class="nav nav-tabs">
-        <li role="presentation"><a href="#" class="active">Dashboard</a></li>
-        <li role="presentation"><a href="#">Profile</a></li>
-        <li role="presentation"><a href="#">Messages</a></li>
+        <li role="presentation" ng-class="{active: vm.active == 'dashboard'}" ng-click="vm.loadDashboard()"><a>Dashboard</a></li>
+        <li role="presentation" ng-class="{active: vm.active == 'profile'}" ng-click="vm.loadProfile()"><a>Profile</a></li>
+        <li role="presentation" ng-class="{active: vm.active == 'messages'}" ng-click="vm.loadMessages()"><a>Messages</a></li>
+        <li role="presentation" ng-class="{active: vm.active == 'ads'}" ng-click="vm.loadAds()"><a>Ads</a></li>
     </ul>
     <br />
+    <div jm-profile-tab-widget></div>
     <div ng-show="vm.successString != null" class="alert alert-success" role="alert">{{vm.successString}}</div>
     <div ng-show="vm.errorString != null" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
     <div class="row">

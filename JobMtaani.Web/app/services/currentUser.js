@@ -13,12 +13,16 @@ var app;
         services.Profile = Profile;
         var CurrentUser = (function () {
             function CurrentUser($http, $cookies, $rootScope) {
+                var _this = this;
                 this.$http = $http;
                 this.$cookies = $cookies;
                 this.$rootScope = $rootScope;
                 this.profile = new Profile(false, "", "");
                 this.fetchTokenFromCookie();
                 this.setUserInfo();
+                this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, function (event) {
+                    _this.removeUserCookie();
+                });
             }
             CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {
                 this.profile = new Profile(isLoggedIn, username, token);
@@ -50,10 +54,15 @@ var app;
                 this.getCurrentUserInfo().success(function (data, status) {
                     _this.profile.username = data.UserName;
                     _this.profile.isLoggedIn = true;
-                    _this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGGED_IN, null);
+                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
                 }).error(function (data) {
-                    _this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
+                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                 });
+            };
+            CurrentUser.prototype.removeUserCookie = function () {
+                if (this.$cookies.get("authtoken") != null) {
+                    this.$cookies.remove("authtoken");
+                }
             };
             CurrentUser.$inject = ['$http', '$cookies', '$rootScope'];
             return CurrentUser;

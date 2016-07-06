@@ -29,6 +29,9 @@
             this.profile = new Profile(false, "", "");
             this.fetchTokenFromCookie();
             this.setUserInfo();
+            this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, (event) => {
+                this.removeUserCookie();
+            });
         }
 
         setProfile(username: string, token: string, isLoggedIn: boolean) {
@@ -66,10 +69,16 @@
             this.getCurrentUserInfo().success((data, status) => {
                 this.profile.username = data.UserName;
                 this.profile.isLoggedIn = true;
-                this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGGED_IN, null);
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
             }).error((data) => {
-                this.$rootScope.$broadcast(app.valueobjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
             });
+        }
+
+        removeUserCookie(): void {
+            if (this.$cookies.get("authtoken") != null) {
+                this.$cookies.remove("authtoken");
+            }
         }
     }
 
