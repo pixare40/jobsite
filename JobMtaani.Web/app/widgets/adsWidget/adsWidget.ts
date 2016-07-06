@@ -1,7 +1,5 @@
 ﻿module app.widgets {
 
-
-
     class AdsWidgetController {
 
         errorMessage: string;

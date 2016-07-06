@@ -12,14 +12,19 @@ var app;
                     'dashboard': '<div jm-dashboard-widget></div>',
                     'ads': '<div jm-ads-widget></div>',
                     'profile': '<div jm-profile-widget></div>',
-                    'messages': '<div jm-messages-widget></div>'
                 };
                 this.$scope.$on(app.ValueObjects.NotificationsValueObject.PROFILE_CATEGORY_CHANGE, function (event, data) {
                     if (_this.directiveValueMap[data] != null) {
-                        var compiledDirective = _this.$compile(_this.directiveValueMap[data])(_this.$scope);
-                        _this.$element.find('.widget-content')..append(compiledDirective);
+                        var newDirectiveKey = data;
+                        if (_this.activeDirectiveKey != null) {
+                            _this.$element.find('#' + _this.activeDirectiveKey).hide();
+                        }
+                        _this.$element.find('#' + data).show();
+                        _this.activeDirectiveKey = data;
                     }
                 });
+                this.$element.find('#profile').show();
+                this.activeDirectiveKey = 'profile';
             }
             ProfileTabWidgetController.$inject = ['$scope', '$element', '$compile'];
             return ProfileTabWidgetController;
@@ -30,7 +35,7 @@ var app;
                 this.controller = ProfileTabWidgetController;
                 this.controllerAs = 'vm';
                 this.scope = {};
-                this.templateUrl = '/app/widgets/profile/profileWidgetTemplate.html';
+                this.templateUrl = '/app/widgets/profile/profileTabWidgetTemplate.html';
             }
             ProfileTabWidget.instance = function () {
                 return new ProfileTabWidget;

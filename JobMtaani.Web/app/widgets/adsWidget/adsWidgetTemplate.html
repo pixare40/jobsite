@@ -1,14 +1,16 @@
-﻿<div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
-<div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
-<div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
-<br/>
-<div id="job-listings" class="col-md-12">
-    <div ng-repeat="ad in vm.ads" class="col-xs-6 col-md-3">
-        <div class="thumbnail" >
-            <div class="caption">
-                <h3>{{ad.AdTitle}}</h3>
-                <p>{{ad.AdDescription}}</p>
-                <p>Location: {{ad.AdLocation}} <button class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button></p>
+﻿<div class="widget-content">
+    <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
+    <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
+    <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
+    <br />
+    <div id="job-listings" class="col-md-12">
+        <div ng-repeat="ad in vm.ads" class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>{{ad.AdTitle}}</h3>
+                    <p>{{ad.AdDescription}}</p>
+                    <p>Location: {{ad.AdLocation}} <button class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button></p>
+                </div>
             </div>
         </div>
     </div>

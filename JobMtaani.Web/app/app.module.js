@@ -80,4 +80,3 @@
             .otherwise('/home');
     }
 })();
-//# sourceMappingURL=app.module.js.map

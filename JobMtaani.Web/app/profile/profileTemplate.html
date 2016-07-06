@@ -1,45 +1,12 @@
-﻿
-
-<div class="container">
+﻿<div class="container">
     <br/>
     <br />
     <ul class="nav nav-tabs">
         <li role="presentation" ng-class="{active: vm.active == 'dashboard'}" ng-click="vm.loadDashboard()"><a>Dashboard</a></li>
         <li role="presentation" ng-class="{active: vm.active == 'profile'}" ng-click="vm.loadProfile()"><a>Profile</a></li>
-        <li role="presentation" ng-class="{active: vm.active == 'messages'}" ng-click="vm.loadMessages()"><a>Messages</a></li>
+        <!--<li role="presentation" ng-class="{active: vm.active == 'messages'}" ng-click="vm.loadMessages()"><a>Messages</a></li>-->
         <li role="presentation" ng-class="{active: vm.active == 'ads'}" ng-click="vm.loadAds()"><a>Ads</a></li>
     </ul>
     <br />
     <div jm-profile-tab-widget></div>
-    <div ng-show="vm.successString != null" class="alert alert-success" role="alert">{{vm.successString}}</div>
-    <div ng-show="vm.errorString != null" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
-    <div class="row">
-        <div class="col-sm-12 col-md-8">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div>User Name</div>
-                    <div>First Name</div>
-                    <div>Last Name</div>
-                    <div>Email</div>
-                    <div>Date Joined</div>
-                    <div>Phone Number</div>
-                    <div>Subscription Status</div>
-                    <div ng-show="!vm.userdata.SubscriptionStatus">You need to renew your subscription to apply to a job listing</div>
-                    <div><u style="color:dodgerblue;"><a ng-href="#payments">Make Payment</a></u></div>
-                </div>
-                <div class="col-xs-6">
-                    <div>{{vm.userdata.UserName}}</div>
-                    <div>{{vm.userdata.FirstName}}</div>
-                    <div>{{vm.userdata.LastName}}</div>
-                    <div>{{vm.userdata.Email}}</div>
-                    <div>{{vm.userdata.DateJoined}}</div>
-                    <div>{{vm.userdata.PhoneNumber}}</div>
-                    <div>
-                        <span ng-show="vm.userdata.SubscriptionStatus == true" style="color:aquamarine">Active</span>
-                        <span ng-show="vm.userdata.SubscriptionStatus == false" style="color:red">Inactive</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
