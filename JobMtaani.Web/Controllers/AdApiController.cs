@@ -33,6 +33,23 @@ namespace JobMtaani.Web.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("GetByLocation")]
+        public HttpResponseMessage GetByLocation(HttpRequestMessage request, [FromBody]string location)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad[] adsByLocation = this.adRepository.GetByLocation(location);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adsByLocation);
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
         [Route("GetAd")]
         public HttpResponseMessage GetAd(HttpRequestMessage request, [FromBody]int adId)
         {

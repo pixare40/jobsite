@@ -23,6 +23,17 @@ namespace JobMtaani.Data
             }
         }
 
+        public Ad[] GetByLocation(string locationString)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                 where e.AdLocation == locationString
+                 orderby e.DateCreated descending
+                 select e).ToArray<Ad>();
+            }
+        }
+
         protected override Ad AddEntity(JobMtaaniDbContext entityContext, Ad entity)
         {
             return entityContext.AdSet.Add(entity);
