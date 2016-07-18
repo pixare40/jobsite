@@ -6,6 +6,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobMtaani.Business.Common;
 
 namespace JobMtaani.Data
 {
@@ -31,6 +32,26 @@ namespace JobMtaani.Data
                  where e.AdLocation == locationString
                  orderby e.DateCreated descending
                  select e).ToArray<Ad>();
+            }
+        }
+
+        public Ad[] GetBySearchTerms(SearchModel searchModel)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AdTitle.Contains(searchModel.JobType)
+                        select e).ToArray();
+            }
+        }
+
+        public Ad[] GetTopAds()
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        orderby e.DateCreated descending
+                        select e).ToArray();
             }
         }
 

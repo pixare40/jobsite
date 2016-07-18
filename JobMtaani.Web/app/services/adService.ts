@@ -38,6 +38,14 @@
             });
 
         }
+
+        getTopAds(): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.get('/api/ad/GetTopAds');
+        }
+
+        search(searchModel: app.widgets.SearchModel): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.post('/api/ad/Search', searchModel);
+        }
     }
 
     angular

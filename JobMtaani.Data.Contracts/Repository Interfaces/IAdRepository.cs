@@ -1,4 +1,5 @@
 ﻿using Core.Common.Contracts;
+using JobMtaani.Business.Common;
 using JobMtaani.Business.Entities;
 
 namespace JobMtaani.Data.Contracts
@@ -7,5 +8,7 @@ namespace JobMtaani.Data.Contracts
     {
         Ad[] GetAdByCategory(int categoryId);
         Ad[] GetByLocation(string locationString);
+        Ad[] GetBySearchTerms(SearchModel searchModel);
+        Ad[] GetTopAds();
     }
 }

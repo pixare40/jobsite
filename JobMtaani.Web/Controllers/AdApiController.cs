@@ -67,6 +67,19 @@ namespace JobMtaani.Web.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("GetTopAds")]
+        public HttpResponseMessage GetTopAds(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () => {
+                HttpResponseMessage response = null;
+                Ad[] ads = adRepository.GetTopAds();
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         [Route("GetAds")]
         public HttpResponseMessage GetAds(HttpRequestMessage request)
         {

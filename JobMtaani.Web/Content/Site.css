@@ -4,6 +4,10 @@
     font-family: 'Raleway', sans-serif;
 }
 
+.nav, .pagination, .carousel, .panel-title a {
+     cursor: pointer; 
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -48,4 +52,18 @@ textarea {
 
 .displayNone {
     display: none;
+}
+
+.top-ads-widget{
+    margin-top: 10px;
+}
+
+.ad-panel .caption{
+    text-align: center;
+    background-color: green;
+    color: white;
+}
+
+.job-icon{
+    font-size: 50px;
 }

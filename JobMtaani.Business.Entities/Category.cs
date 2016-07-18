@@ -18,6 +18,8 @@ namespace JobMtaani.Business.Entities
         public string CategoryName { get; set; }
         [DataMember]
         public string CategoryCName { get; set; }
+        [DataMember]
+        public string IconClass { get; set; }
         public object EntityId
         {
             get

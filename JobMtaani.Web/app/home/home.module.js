@@ -1,6 +1,6 @@
 (function () {
     'use strict';
     angular
-        .module('app.home', []);
+        .module('app.home', ['ui.bootstrap']);
 })();
 //# sourceMappingURL=home.module.js.map

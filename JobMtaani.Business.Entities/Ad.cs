@@ -30,6 +30,8 @@ namespace JobMtaani.Business.Entities
         public string AdDescription { get; set; }
         [DataMember]
         public DateTime DateCreated { get; set; }
+        [DataMember]
+        public string IconClass { get; set; }
         public object EntityId
         {
             get

@@ -27,6 +27,12 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getTopAds = function () {
+                return this.$http.get('/api/ad/GetTopAds');
+            };
+            AdService.prototype.search = function (searchModel) {
+                return this.$http.post('/api/ad/Search', searchModel);
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

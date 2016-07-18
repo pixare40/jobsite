@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201606202243170_AccountUpdates.Designer.cs">
       <DependentUpon>201606202243170_AccountUpdates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607182029376_IconProperty.cs" />
+    <Compile Include="Migrations\201607182029376_IconProperty.Designer.cs">
+      <DependentUpon>201607182029376_IconProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -290,9 +294,11 @@
     <Content Include="app\profile\widgets\dashboardWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\profileWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
+    <Content Include="app\widgets\adsWidget\templates\topAdsWidgetTemplate.html" />
     <Content Include="app\widgets\categoryWidgetTemplate.html" />
     <Content Include="app\widgets\loginWidget\loginWidgetTemplate.html" />
     <Content Include="app\widgets\profile\profileTabWidgetTemplate.html" />
+    <Content Include="app\widgets\searchWidgetTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -1137,6 +1143,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\ui-bootstrap-1.3.3.js" />
+    <Content Include="Scripts\ui-bootstrap-1.3.3.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1256,8 +1264,8 @@
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
-    <TypeScriptCompile Include="app\widgets\adsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\adsWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\adsWidget\logic\topAdsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
     <TypeScriptCompile Include="app\widgets\loginWidget\loginWidget.ts" />
     <TypeScriptCompile Include="app\widgets\profile\profileTabWidget.ts" />
@@ -1286,6 +1294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606202243170_AccountUpdates.resx">
       <DependentUpon>201606202243170_AccountUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607182029376_IconProperty.resx">
+      <DependentUpon>201607182029376_IconProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -81,6 +81,10 @@
       <Project>{8648a3ad-4253-4408-83c7-4501f4b750f6}</Project>
       <Name>Core.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business.Common\JobMtaani.Business.Common.csproj">
+      <Project>{d0c25d51-75e2-4cda-8ba0-4ce4438aef08}</Project>
+      <Name>JobMtaani.Business.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Business.Entities\JobMtaani.Business.Entities.csproj">
       <Project>{AE379156-F984-4F60-BDA9-DD0F17F0B7C9}</Project>
       <Name>JobMtaani.Business.Entities</Name>
