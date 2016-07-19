@@ -8,8 +8,9 @@
             'ads': '<div jm-ads-widget></div>',
             'profile': '<div jm-profile-widget></div>',
         };
-        static $inject = ['$scope', '$element', '$compile']
-        constructor(private $scope: ng.IScope, private $element: ng.IAugmentedJQuery, private $compile: ng.ICompileService) {
+        static $inject = ['$scope', '$element', '$location']
+        constructor(private $scope: ng.IScope, private $element: ng.IAugmentedJQuery,
+            private $location: ng.ILocationService) {
             this.$scope.$on(app.ValueObjects.NotificationsValueObject.PROFILE_CATEGORY_CHANGE, (event, data: string) => {
                 if (this.directiveValueMap[data] != null) {
                     var newDirectiveKey = data;
@@ -34,8 +35,8 @@
 
         restrict = 'AE';
         controller = ProfileTabWidgetController;
-        controllerAs = 'vm';
         scope = {};
+        controllerAs = 'vm';
         templateUrl = '/app/widgets/profile/profileTabWidgetTemplate.html'
     }
 

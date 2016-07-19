@@ -14,4 +14,3 @@ var app;
         ValueObjects.NotificationsValueObject = NotificationsValueObject;
     })(ValueObjects = app.ValueObjects || (app.ValueObjects = {}));
 })(app || (app = {}));
-//# sourceMappingURL=notificationsValueObject.js.map

@@ -3,11 +3,11 @@ var app;
     var widgets;
     (function (widgets) {
         var ProfileTabWidgetController = (function () {
-            function ProfileTabWidgetController($scope, $element, $compile) {
+            function ProfileTabWidgetController($scope, $element, $location) {
                 var _this = this;
                 this.$scope = $scope;
                 this.$element = $element;
-                this.$compile = $compile;
+                this.$location = $location;
                 this.directiveValueMap = {
                     'dashboard': '<div jm-dashboard-widget></div>',
                     'ads': '<div jm-ads-widget></div>',
@@ -26,15 +26,15 @@ var app;
                 this.$element.find('#profile').show();
                 this.activeDirectiveKey = 'profile';
             }
-            ProfileTabWidgetController.$inject = ['$scope', '$element', '$compile'];
+            ProfileTabWidgetController.$inject = ['$scope', '$element', '$location'];
             return ProfileTabWidgetController;
         }());
         var ProfileTabWidget = (function () {
             function ProfileTabWidget() {
                 this.restrict = 'AE';
                 this.controller = ProfileTabWidgetController;
-                this.controllerAs = 'vm';
                 this.scope = {};
+                this.controllerAs = 'vm';
                 this.templateUrl = '/app/widgets/profile/profileTabWidgetTemplate.html';
             }
             ProfileTabWidget.instance = function () {
@@ -48,4 +48,3 @@ var app;
             .directive('jmProfileTabWidget', ProfileTabWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=profileTabWidget.js.map

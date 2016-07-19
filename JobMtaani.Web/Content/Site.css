@@ -79,3 +79,13 @@ textarea {
 .job-icon{
     font-size: 50px;
 }
+
+/*Create Ad Page*/
+#create-ad-button{
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid grey;
+    color: green;
+    padding: 10px;
+    cursor: pointer;
+}

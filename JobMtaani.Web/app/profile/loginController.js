@@ -12,4 +12,3 @@ var app;
             .controller('app.profile.LoginController', LoginController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=loginController.js.map
