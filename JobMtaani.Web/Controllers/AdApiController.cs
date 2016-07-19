@@ -23,12 +23,15 @@ namespace JobMtaani.Web.Controllers
     {
         private IAdRepository adRepository;
         private IAdApplicationRepository adApplicationRespository;
+        private ICategoryRepository categoryRepository;
 
         [ImportingConstructor]
-        public AdApiController(IAdRepository adRepository, IAdApplicationRepository adApplicationRespository)
+        public AdApiController(IAdRepository adRepository, IAdApplicationRepository adApplicationRespository, 
+            ICategoryRepository categoryRepository)
         {
             this.adRepository = adRepository;
             this.adApplicationRespository = adApplicationRespository;
+            this.categoryRepository = categoryRepository;
         }
 
         [HttpPost]
@@ -73,6 +76,13 @@ namespace JobMtaani.Web.Controllers
             return GetHttpResponse(request, () => {
                 HttpResponseMessage response = null;
                 Ad[] ads = adRepository.GetTopAds();
+
+                foreach (var ad in ads)
+                {
+                    ad.IconClass = categoryRepository.Get(ad.CategoryId).IconClass;
+                    ad.CategoryName = categoryRepository.Get(ad.CategoryId).CategoryCName;
+                }
+
                 response = request.CreateResponse(HttpStatusCode.OK, ads);
                 return response;
             });

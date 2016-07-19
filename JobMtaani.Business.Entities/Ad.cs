@@ -32,6 +32,8 @@ namespace JobMtaani.Business.Entities
         public DateTime DateCreated { get; set; }
         [DataMember]
         public string IconClass { get; set; }
+        [DataMember]
+        public string CategoryName { get; set; }
         public object EntityId
         {
             get

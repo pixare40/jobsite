@@ -58,9 +58,21 @@ textarea {
     margin-top: 10px;
 }
 
-.ad-panel .caption{
+.cleaners .caption{
     text-align: center;
-    background-color: green;
+    background-color: forestgreen;
+    color: white;
+}
+
+.electricians .caption{
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
+
+.househelps .caption{
+    text-align: center;
+    background-color: dodgerblue;
     color: white;
 }
 

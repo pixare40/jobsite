@@ -9,6 +9,8 @@
         AdLocation: string;
         AdClosed: boolean;
         AdDescription: string;
+        IconClass: string;
+        CategoryName: string;
         DateCreated: Date;
     }
 
@@ -23,6 +25,8 @@
             public AdLocation: string,
             public AdClosed: boolean,
             public AdDescription,
+            public IconClass,
+            public CategoryName,
             public DateCreated) {
         }
     }
