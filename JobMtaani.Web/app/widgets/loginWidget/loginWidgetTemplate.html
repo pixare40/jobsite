@@ -1,23 +1,31 @@
 ﻿<div>
-    <div id="login-container" >
-        <form>
-            <div class="form-group">
-                <label class="sr-only" for="username">Email address</label>
-                <input type="text" class="form-control" id="username" placeholder="User Name" ng-model="vm.userdata.username">
-            </div>
-            <div class="form-group">
-                <label class="sr-only" for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.userdata.password">
-            </div>
-            <button type="submit" class="btn btn-default" ng-click="vm.login()">Log in</button>
-            <a ng-href="#register"class="btn btn-default">Register</a>
-        </form>
-        <div id="logout-container" ng-show="vm.isLoggedIn" class="navbar-form navbar-right">
-            <div>
-                {{vm.loginMessage}}
-                <button ng-click="vm.logout()" class="btn btn-default">Log Out</button>
-            </div>
-        </div>
-    </div>
+    <div class="col-md-8" id="login-container" >
+        <h2>Log in</h2>
+        <section id="loginForm">
 
+            <h4>Use an account to log in.</h4>
+            <hr />
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="username">Username</label>
+                    <input type="text" class="form-control col-sm-9" id="username" placeholder="User Name" ng-model="vm.userdata.username">
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="password">Password</label>
+                    <input type="password" class="form-control col-sm-9" id="password" placeholder="Password" ng-model="vm.userdata.password">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="vm.login()">Log in</button>
+                <a ng-href="#register" class="btn btn-default">Register</a>
+            </form>
+            <div id="logout-container" ng-show="vm.isLoggedIn" class="navbar-form navbar-right">
+                <div>
+                    {{vm.loginMessage}}
+                    <button ng-click="vm.logout()" class="btn btn-default">Log Out</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-md-4">
+        <!--Social Media Account Logins-->
+    </div>
 </div>
