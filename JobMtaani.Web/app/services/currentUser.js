@@ -25,7 +25,9 @@ var app;
                 });
             }
             CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {
-                this.profile = new Profile(isLoggedIn, username, token);
+                this.profile.isLoggedIn = isLoggedIn;
+                this.profile.token = token;
+                this.profile.username = username;
             };
             CurrentUser.prototype.getProfile = function () {
                 return this.profile;

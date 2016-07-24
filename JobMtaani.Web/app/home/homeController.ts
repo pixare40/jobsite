@@ -25,7 +25,7 @@
 
         onLogin(): void {
             this.isLoggedIn = true;
-            this.username = this.currentUser.profile.username;
+            this.username = this.currentUser.getProfile().username;
         }
 
         onLogout(): void {

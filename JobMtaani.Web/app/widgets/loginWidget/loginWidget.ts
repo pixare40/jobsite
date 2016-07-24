@@ -2,7 +2,7 @@
 
     export class LoginModel {
         constructor(
-            public UserName: string,
+            public username: string,
             public password: string,
             public grant_type: string
         ) { }
@@ -36,7 +36,7 @@
                 (data, status) => {
                     this.loginMessage = "Welcome Back!";
                     this.userdata.password = "";
-                    this.currentUser.setProfile(this.userdata.UserName, data.access_token, true);
+                    this.currentUser.setProfile(this.userdata.username, data.access_token, true);
                     this.cookies.put("authtoken", data.access_token);
                     this.isLoggedIn = true;
                     this.$rootScope.$broadcast("USER_LOGGED_IN", null);

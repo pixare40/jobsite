@@ -35,7 +35,9 @@
         }
 
         setProfile(username: string, token: string, isLoggedIn: boolean) {
-            this.profile = new Profile(isLoggedIn, username, token);
+            this.profile.isLoggedIn = isLoggedIn;
+            this.profile.token = token;
+            this.profile.username = username;
         }
 
         getProfile(): IProfile {

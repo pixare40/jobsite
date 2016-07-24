@@ -3,8 +3,8 @@ var app;
     var widgets;
     (function (widgets) {
         var LoginModel = (function () {
-            function LoginModel(UserName, password, grant_type) {
-                this.UserName = UserName;
+            function LoginModel(username, password, grant_type) {
+                this.username = username;
                 this.password = password;
                 this.grant_type = grant_type;
             }
@@ -34,7 +34,7 @@ var app;
                 this.accountService.login(this.userdata).success(function (data, status) {
                     _this.loginMessage = "Welcome Back!";
                     _this.userdata.password = "";
-                    _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
+                    _this.currentUser.setProfile(_this.userdata.username, data.access_token, true);
                     _this.cookies.put("authtoken", data.access_token);
                     _this.isLoggedIn = true;
                     _this.$rootScope.$broadcast("USER_LOGGED_IN", null);

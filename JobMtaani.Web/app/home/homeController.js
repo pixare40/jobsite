@@ -21,7 +21,7 @@ var app;
             }
             HomeController.prototype.onLogin = function () {
                 this.isLoggedIn = true;
-                this.username = this.currentUser.profile.username;
+                this.username = this.currentUser.getProfile().username;
             };
             HomeController.prototype.onLogout = function () {
                 this.isLoggedIn = false;
