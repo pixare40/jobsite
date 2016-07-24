@@ -10,5 +10,6 @@ namespace JobMtaani.Data.Contracts
         Ad[] GetByLocation(string locationString);
         Ad[] GetBySearchTerms(SearchModel searchModel);
         Ad[] GetTopAds();
+        Ad[] GetPersonalAds(string userId);
     }
 }

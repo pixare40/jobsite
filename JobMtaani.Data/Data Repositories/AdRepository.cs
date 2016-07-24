@@ -45,6 +45,16 @@ namespace JobMtaani.Data
             }
         }
 
+        public Ad[] GetPersonalAds(string userId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AccountId == userId
+                        select e).ToArray();
+            }
+        }
+
         public Ad[] GetTopAds()
         {
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
