@@ -52,4 +52,3 @@ var app;
             .directive('jmCategoryWidget', CategoryWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=categoryWidget.js.map

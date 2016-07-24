@@ -33,6 +33,7 @@
             this.modalInstance = this.$uibModal.open({
                 animation: true,
                 windowClass: 'loading-spinner',
+                backdrop: 'static',
                 template: "<div class='uil-poi-css' style='transform:scale(0.6);'><div></div></div>",
                 size: 'sm'
             });

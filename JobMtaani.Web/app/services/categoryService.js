@@ -24,4 +24,3 @@ var app;
             .service('app.services.CategoryService', CategoryService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=categoryService.js.map
