@@ -52,6 +52,10 @@
             });
         }
 
+        login(): void {
+            this.$location.path('/login');
+        }
+
         applyForJob(): void {
         }
     }

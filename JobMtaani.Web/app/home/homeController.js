@@ -45,6 +45,9 @@ var app;
                     console.error("Error Logging Out");
                 });
             };
+            HomeController.prototype.login = function () {
+                this.$location.path('/login');
+            };
             HomeController.prototype.applyForJob = function () {
             };
             HomeController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$rootScope', '$location'];
