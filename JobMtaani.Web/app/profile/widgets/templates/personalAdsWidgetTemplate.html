@@ -1,0 +1,39 @@
+﻿
+<div class="widget-content">
+    <h2>My Ads</h2>
+
+    <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
+    <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
+    <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
+    <br />
+    <div id="job-listings" class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Job</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ad in vm.ads">
+                    <td>
+                        {{$index + 1}}
+                    </td>
+                    <td>
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>{{ad.AdTitle}}</h3>
+                                <p>{{ad.AdDescription}}</p>
+                                <p>Location: {{ad.AdLocation}} </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="vm.editAd(ad.AdId)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -2,13 +2,13 @@ var app;
 (function (app) {
     var profile;
     (function (profile) {
-        var LoginController = (function () {
-            function LoginController() {
+        var PersonalAdsController = (function () {
+            function PersonalAdsController() {
             }
-            return LoginController;
+            return PersonalAdsController;
         }());
         angular
             .module('app.profile')
-            .controller('app.profile.LoginController', LoginController);
+            .controller('app.profile.PersonalAdsController', PersonalAdsController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));

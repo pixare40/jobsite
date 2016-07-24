@@ -19,6 +19,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getPersonalAds = function () {
+                return this.$http.get('/api/ad/GetPersonalAds', {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.prototype.getAdsByCategory = function (categoryId) {
                 return this.$http.post('/api/ad/GetByCategory', categoryId);
             };
@@ -42,4 +47,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

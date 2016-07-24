@@ -2,8 +2,19 @@
 
     class DashboardWidgetController {
 
-        static $inject = ['']
-        constructor() {
+        username: string;
+
+        static $inject = ['$scope','app.services.CurrentUser']
+        constructor(private $scope: ng.IScope, private currentUser: app.services.CurrentUser) {
+            this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, (event, data) => {
+                this.initialiseDashboard();
+            });
+
+            this.initialiseDashboard();
+        }
+
+        initialiseDashboard(): void {
+            this.username = this.currentUser.getProfile().username;
         }
     }
 
@@ -13,8 +24,9 @@
         }
 
         restrict = 'AE';
-        crntroller = DashboardWidgetController;
+        controller = DashboardWidgetController;
         controllerAs = 'vm';
+        scope = {};
         templateUrl = '/app/profile/widgets/dashboardWidgetTemplate.html'
     }
 

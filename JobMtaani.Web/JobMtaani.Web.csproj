@@ -293,9 +293,11 @@
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\loginTemplate.html" />
+    <Content Include="app\profile\personalAdsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
     <Content Include="app\profile\registerTemplate.html" />
     <Content Include="app\profile\widgets\dashboardWidgetTemplate.html" />
+    <Content Include="app\profile\widgets\templates\personalAdsWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\profileWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\templates\topAdsWidgetTemplate.html" />
@@ -1274,7 +1276,9 @@
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
+    <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\widgets\dashboardWidget.ts" />
+    <TypeScriptCompile Include="app\profile\widgets\directives\personalAdsWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\profileWidget.ts" />
     <TypeScriptCompile Include="app\services\messagingService.ts" />
     <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />

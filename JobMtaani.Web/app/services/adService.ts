@@ -28,6 +28,12 @@
             });
         }
 
+        getPersonalAds(): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.get('/api/ad/GetPersonalAds', {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
         getAdsByCategory(categoryId): ng.IHttpPromise<app.domain.Ad[]> {
             return this.$http.post('/api/ad/GetByCategory', categoryId);
         }

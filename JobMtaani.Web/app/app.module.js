@@ -32,6 +32,11 @@
             controller: 'app.profile.LoginController',
             controllerAs: 'vm'
         })
+            .when('/myads', {
+            templateUrl: '/app/profile/personalAdsTemplate.html',
+            controller: 'app.profile.PersonalAdsController',
+            controllerAs: 'vm'
+        })
             .when('/ads', {
             templateUrl: '/app/ads/adsTemplate.html',
             controller: 'app.ads.AdsController',
@@ -80,4 +85,3 @@
             .otherwise('/home');
     }
 })();
-//# sourceMappingURL=app.module.js.map
