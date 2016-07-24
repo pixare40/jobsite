@@ -6,10 +6,11 @@
         successString: string;
         errorString: string;
         generalMessage: string;
+        gettingUserInfo: Boolean;
 
-        static $inject = ['app.services.CurrentUser', '$scope','$location']
+        static $inject = ['app.services.CurrentUser', '$scope','$location', '$rootScope']
         constructor(private currentUser: app.services.CurrentUser, private $scope: ng.IScope,
-            private $location: ng.ILocationService) {
+            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService) {
 
             this.getUserInfo();
             this.title = 'User Profile'
@@ -23,13 +24,23 @@
         }
 
         getUserInfo(): void {
+            if (this.gettingUserInfo) {
+                return;
+            }
+
+            this.gettingUserInfo = true;
+            this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.SHOW_LOADING, null);
             this.currentUser.getCurrentUserInfo().success((data, status) => {
                 this.userdata = data;
-                this.successString = "Succesfully Obtained User Data";
+                this.successString = "Succesfully Login";
                 this.errorString = null;
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
+                this.gettingUserInfo = false;
             }).error((data) => {
                 this.errorString = "Error Fetching User Data";
                 this.successString = null;
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
+                this.gettingUserInfo = false;
             })
         }
     }

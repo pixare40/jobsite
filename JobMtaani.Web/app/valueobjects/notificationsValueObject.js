@@ -9,8 +9,11 @@ var app;
             NotificationsValueObject.USER_LOGGED_OUT = "USER_LOGGED_OUT";
             NotificationsValueObject.USER_LOGIN_FAILED = "USER_LOGIN_FAILED";
             NotificationsValueObject.PROFILE_CATEGORY_CHANGE = "PROFILE_CATEGORY_CHANGE";
+            NotificationsValueObject.SHOW_LOADING = "SHOW_LOADING";
+            NotificationsValueObject.HIDE_LOADING = "HIDE_LOADING";
             return NotificationsValueObject;
         }());
         ValueObjects.NotificationsValueObject = NotificationsValueObject;
     })(ValueObjects = app.ValueObjects || (app.ValueObjects = {}));
 })(app || (app = {}));
+//# sourceMappingURL=notificationsValueObject.js.map

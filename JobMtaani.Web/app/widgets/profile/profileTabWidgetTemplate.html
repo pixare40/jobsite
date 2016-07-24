@@ -1,8 +1,12 @@
 ﻿<div class="dash-tab-content">
+    <br/>
+    <br />
     <div class="col-md-9">
-        <div jm-dashboard-widget id="dashboard" class="displayNone"></div>
-        <div jm-profile-widget id="profile" class="displayNone"></div>
-        <div jm-ads-widget id="ads" class="displayNone"></div>
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Dashboard"><div jm-dashboard-widget></div></uib-tab>
+            <uib-tab index="1" heading="Profile"><div jm-profile-widget></div></uib-tab>
+            <uib-tab index="2" heading="Ads"><div jm-ads-widget></div></uib-tab>
+        </uib-tabset>
     </div>
     <div class="col-md-3">
         <div id="create-ad-button">
