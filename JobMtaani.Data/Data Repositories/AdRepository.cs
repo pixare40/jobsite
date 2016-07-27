@@ -24,6 +24,16 @@ namespace JobMtaani.Data
             }
         }
 
+        public Ad[] GetApplyAds(string userId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AccountId != userId
+                        select e).ToArray();
+            }
+        }
+
         public Ad[] GetByLocation(string locationString)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())

@@ -19,7 +19,9 @@
         }
 
         getAllAds(): ng.IHttpPromise<app.domain.IAd[]>{
-            return this.$http.get('/api/ad/GetAds');
+            return this.$http.get('/api/ad/GetAds', {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
         }
 
         createAd(ad: app.domain.IAd): ng.IHttpPromise<app.domain.Ad>{

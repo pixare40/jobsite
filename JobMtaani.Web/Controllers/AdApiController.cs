@@ -114,7 +114,7 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
-                Ad[] ads = adRepository.Get().ToArray();
+                Ad[] ads = adRepository.GetApplyAds(User.Identity.GetUserId());
 
                 response = request.CreateResponse(HttpStatusCode.OK, ads);
 
