@@ -24,7 +24,7 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public bool SubscriptionStatus { get; set; }
         [DataMember]
-        public DateTime SubscriptionExpiry { get; set; }
+        public DateTime? SubscriptionExpiry { get; set; }
         [DataMember]
         public DateTime DateJoined { get; set; }
 

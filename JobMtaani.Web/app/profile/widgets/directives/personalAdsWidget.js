@@ -22,7 +22,8 @@ var app;
                     _this.errorMessage = "Error Fetching Data";
                 });
             };
-            PersonalAdsWidgetController.prototype.editAd = function () {
+            PersonalAdsWidgetController.prototype.viewAd = function (adId) {
+                this.$location.path("/viewAd/" + adId);
             };
             PersonalAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
             return PersonalAdsWidgetController;
@@ -46,3 +47,4 @@ var app;
             .directive('jmPersonalAdsWidget', PersonalAdsWidget.instance);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=personalAdsWidget.js.map

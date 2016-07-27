@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201607191943035_Categoryname.Designer.cs">
       <DependentUpon>201607191943035_Categoryname.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607271839573_datetimefix.cs" />
+    <Compile Include="Migrations\201607271839573_datetimefix.Designer.cs">
+      <DependentUpon>201607271839573_datetimefix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -1303,6 +1307,7 @@
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\adsWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\adsWidget\logic\myAdWidget.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\logic\topAdsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
     <TypeScriptCompile Include="app\widgets\loadingWidget\loadingWidget.ts" />
@@ -1340,6 +1345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607191943035_Categoryname.resx">
       <DependentUpon>201607191943035_Categoryname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607271839573_datetimefix.resx">
+      <DependentUpon>201607271839573_datetimefix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
