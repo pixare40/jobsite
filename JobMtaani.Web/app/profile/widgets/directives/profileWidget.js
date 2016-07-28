@@ -31,7 +31,11 @@ var app;
                     _this.errorString = null;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                     _this.gettingUserInfo = false;
-                }).error(function (data) {
+                }).error(function (data, status) {
+                    if (status == 401) {
+                        _this.$location.path('login');
+                        return;
+                    }
                     _this.errorString = "Error Fetching User Data";
                     _this.successString = null;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);

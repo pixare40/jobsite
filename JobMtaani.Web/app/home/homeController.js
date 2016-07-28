@@ -48,7 +48,16 @@ var app;
             HomeController.prototype.login = function () {
                 this.$location.path('/login');
             };
+            HomeController.prototype.register = function () {
+                this.$location.path('/register');
+            };
             HomeController.prototype.applyForJob = function () {
+                if (!this.currentUser.profile.isLoggedIn) {
+                    this.$location.path('/login');
+                }
+                else {
+                    this.$location.path('/profile');
+                }
             };
             HomeController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$rootScope', '$location'];
             return HomeController;

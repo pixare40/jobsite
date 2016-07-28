@@ -12,11 +12,12 @@ var app;
         }());
         services.Profile = Profile;
         var CurrentUser = (function () {
-            function CurrentUser($http, $cookies, $rootScope) {
+            function CurrentUser($http, $cookies, $rootScope, $location) {
                 var _this = this;
                 this.$http = $http;
                 this.$cookies = $cookies;
                 this.$rootScope = $rootScope;
+                this.$location = $location;
                 this.profile = new Profile(false, "", "");
                 this.fetchTokenFromCookie();
                 this.setUserInfo();
@@ -57,7 +58,11 @@ var app;
                     _this.profile.username = data.UserName;
                     _this.profile.isLoggedIn = true;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
-                }).error(function (data) {
+                }).error(function (data, status) {
+                    console.log("USER_LOGIN_FAILED");
+                    if (status == 401) {
+                        _this.$location.path("/login");
+                    }
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                 });
             };
@@ -66,13 +71,13 @@ var app;
                     this.$cookies.remove("authtoken");
                 }
             };
-            CurrentUser.$inject = ['$http', '$cookies', '$rootScope'];
+            CurrentUser.$inject = ['$http', '$cookies', '$rootScope', '$location'];
             return CurrentUser;
         }());
         services.CurrentUser = CurrentUser;
-        factory.$inject = ['$http', '$cookies', '$rootScope'];
-        function factory($http, $cookies, $rootScope) {
-            return new CurrentUser($http, $cookies, $rootScope);
+        factory.$inject = ['$http', '$cookies', '$rootScope'], '$location';
+        function factory($http, $cookies, $rootScope, $location) {
+            return new CurrentUser($http, $cookies, $rootScope, $location);
         }
         angular
             .module('app.services')

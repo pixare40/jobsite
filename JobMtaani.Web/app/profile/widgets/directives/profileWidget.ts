@@ -36,7 +36,11 @@
                 this.errorString = null;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                 this.gettingUserInfo = false;
-            }).error((data) => {
+            }).error((data, status) => {
+                if (status == 401) {
+                    this.$location.path('login');
+                    return;
+                }
                 this.errorString = "Error Fetching User Data";
                 this.successString = null;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);

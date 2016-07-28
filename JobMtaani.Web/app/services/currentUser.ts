@@ -23,9 +23,9 @@
 
         profile: IProfile;
 
-        static $inject = ['$http', '$cookies', '$rootScope']
+        static $inject = ['$http', '$cookies', '$rootScope','$location']
         constructor(private $http: ng.IHttpService,
-            private $cookies: ng.cookies.ICookiesService, private $rootScope: ng.IRootScopeService) {
+            private $cookies: ng.cookies.ICookiesService, private $rootScope: ng.IRootScopeService, private $location: ng.ILocationService) {
             this.profile = new Profile(false, "", "");
             this.fetchTokenFromCookie();
             this.setUserInfo();
@@ -72,7 +72,11 @@
                 this.profile.username = data.UserName;
                 this.profile.isLoggedIn = true;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
-            }).error((data) => {
+            }).error((data, status) => {
+                console.log("USER_LOGIN_FAILED");
+                if (status == 401) {
+                    this.$location.path("/login");
+                }
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
             });
         }
@@ -84,9 +88,9 @@
         }
     }
 
-    factory.$inject = ['$http', '$cookies', '$rootScope'];
-    function factory($http: ng.IHttpService, $cookies: ng.cookies.ICookiesService, $rootScope: ng.IRootScopeService): ICurrentUser {
-        return new CurrentUser($http, $cookies, $rootScope);
+    factory.$inject = ['$http', '$cookies', '$rootScope'], '$location';
+    function factory($http: ng.IHttpService, $cookies: ng.cookies.ICookiesService, $rootScope: ng.IRootScopeService, $location: ng.ILocationService): ICurrentUser {
+        return new CurrentUser($http, $cookies, $rootScope, $location);
     }
 
     angular

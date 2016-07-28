@@ -56,7 +56,17 @@
             this.$location.path('/login');
         }
 
+        register(): void {
+            this.$location.path('/register');
+        }
+
         applyForJob(): void {
+            if (!this.currentUser.profile.isLoggedIn) {
+                this.$location.path('/login');
+            }
+            else {
+                this.$location.path('/profile');
+            }
         }
     }
 

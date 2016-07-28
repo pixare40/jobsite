@@ -18,7 +18,12 @@
         getAds(): void {
             this.adService.getPersonalAds().success((data, status) => {
                 this.ads = data;
-            }).error(() => {
+            }).error((data, status) => {
+                if (status == 401) {
+                    this.$location.path("/login");
+                    return;
+                }
+
                 this.errorMessage = "Error Fetching Data";
             })
         }

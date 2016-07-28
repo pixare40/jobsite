@@ -18,7 +18,11 @@ var app;
                 var _this = this;
                 this.adService.getPersonalAds().success(function (data, status) {
                     _this.ads = data;
-                }).error(function () {
+                }).error(function (data, status) {
+                    if (status == 401) {
+                        _this.$location.path("/login");
+                        return;
+                    }
                     _this.errorMessage = "Error Fetching Data";
                 });
             };
