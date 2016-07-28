@@ -46,3 +46,4 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=viewAdsWidget.js.map

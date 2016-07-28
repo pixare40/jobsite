@@ -51,7 +51,7 @@ var app;
             };
             CurrentUser.prototype.setUserInfo = function () {
                 var _this = this;
-                if (this.profile.token == null) {
+                if (!this.profile.token) {
                     return;
                 }
                 this.getCurrentUserInfo().success(function (data, status) {
@@ -61,7 +61,6 @@ var app;
                 }).error(function (data, status) {
                     console.log("USER_LOGIN_FAILED");
                     if (status == 401) {
-                        _this.$location.path("/login");
                     }
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                 });
@@ -84,3 +83,4 @@ var app;
             .factory('app.services.CurrentUser', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=currentUser.js.map

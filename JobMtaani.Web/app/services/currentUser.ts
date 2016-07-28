@@ -64,7 +64,7 @@
         }
 
         setUserInfo(): void {
-            if (this.profile.token == null) {
+            if (!this.profile.token) {
                 return;
             }
 
@@ -75,7 +75,7 @@
             }).error((data, status) => {
                 console.log("USER_LOGIN_FAILED");
                 if (status == 401) {
-                    this.$location.path("/login");
+                    
                 }
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
             });
