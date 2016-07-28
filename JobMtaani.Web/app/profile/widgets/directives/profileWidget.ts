@@ -37,14 +37,14 @@
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                 this.gettingUserInfo = false;
             }).error((data, status) => {
+                this.gettingUserInfo = false;
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
+                this.successString = null;
                 if (status == 401) {
-                    this.$location.path('login');
+                    this.$location.path('/login');
                     return;
                 }
                 this.errorString = "Error Fetching User Data";
-                this.successString = null;
-                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
-                this.gettingUserInfo = false;
             })
         }
     }

@@ -9,15 +9,18 @@ var app;
                 this.renderAd();
             }
             ViewAdsWidgetController.prototype.renderAd = function () {
+                var _this = this;
                 var adId = this.$routeParams.adId;
                 if (this.$routeParams.adId == null) {
                     this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                 }
                 else {
-                    this.adService.getAd(adId)
-                        .success(function () {
+                    this.adService.getAdDetails(adId)
+                        .success(function (data, status) {
+                        _this.adDetails = data;
                     })
-                        .error(function () {
+                        .error(function (data) {
+                        _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
                 }
             };

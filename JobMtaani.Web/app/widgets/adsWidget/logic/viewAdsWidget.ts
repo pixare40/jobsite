@@ -6,6 +6,7 @@
     class ViewAdsWidgetController {
 
         alerts: Array<app.models.IAlertModal>;
+        adDetails: app.models.IAdDetailsModel;
 
         static $inject = ['app.services.AdService', '$routeParams'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams) {
@@ -19,10 +20,12 @@
                 this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
             }
             else {
-                this.adService.getAd(adId)
-                    .success(() => {
+                this.adService.getAdDetails(adId)
+                    .success((data, status) => {
+                        this.adDetails = data;
                     })
-                    .error(() => {
+                    .error((data) => {
+                        this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
             }
         }

@@ -54,6 +54,12 @@
         search(searchModel: app.widgets.SearchModel): ng.IHttpPromise<app.domain.Ad[]> {
             return this.$http.post('/api/ad/Search', searchModel);
         }
+
+        getAdDetails(adId: number): ng.IHttpPromise<app.models.IAdDetailsModel> {
+            return this.$http.post('/api/ad/GetAdDetails', adId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
     }
 
     angular

@@ -32,14 +32,14 @@ var app;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                     _this.gettingUserInfo = false;
                 }).error(function (data, status) {
+                    _this.gettingUserInfo = false;
+                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
+                    _this.successString = null;
                     if (status == 401) {
-                        _this.$location.path('login');
+                        _this.$location.path('/login');
                         return;
                     }
                     _this.errorString = "Error Fetching User Data";
-                    _this.successString = null;
-                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
-                    _this.gettingUserInfo = false;
                 });
             };
             ProfileWidgetController.$inject = ['app.services.CurrentUser', '$scope', '$location', '$rootScope'];

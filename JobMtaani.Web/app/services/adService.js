@@ -40,6 +40,11 @@ var app;
             AdService.prototype.search = function (searchModel) {
                 return this.$http.post('/api/ad/Search', searchModel);
             };
+            AdService.prototype.getAdDetails = function (adId) {
+                return this.$http.post('/api/ad/GetAdDetails', adId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

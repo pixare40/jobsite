@@ -75,7 +75,7 @@ var app;
             return CurrentUser;
         }());
         services.CurrentUser = CurrentUser;
-        factory.$inject = ['$http', '$cookies', '$rootScope'], '$location';
+        factory.$inject = ['$http', '$cookies', '$rootScope', '$location'];
         function factory($http, $cookies, $rootScope, $location) {
             return new CurrentUser($http, $cookies, $rootScope, $location);
         }

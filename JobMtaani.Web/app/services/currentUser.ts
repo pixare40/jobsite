@@ -88,7 +88,7 @@
         }
     }
 
-    factory.$inject = ['$http', '$cookies', '$rootScope'], '$location';
+    factory.$inject = ['$http', '$cookies', '$rootScope', '$location'];
     function factory($http: ng.IHttpService, $cookies: ng.cookies.ICookiesService, $rootScope: ng.IRootScopeService, $location: ng.ILocationService): ICurrentUser {
         return new CurrentUser($http, $cookies, $rootScope, $location);
     }
