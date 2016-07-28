@@ -11,6 +11,8 @@ using Core.Common.Contracts;
 using JobMtaani.Business.Entities;
 using JobMtaani.Data.Contracts;
 using Microsoft.AspNet.Identity;
+using JobMtaani.Web.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -24,8 +26,21 @@ namespace JobMtaani.Web.Controllers
         private IAdRepository adRepository;
         private IAdApplicationRepository adApplicationRespository;
         private ICategoryRepository categoryRepository;
+        private ApplicationUserManager _userManager;
 
-        [ImportingConstructor]
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+            [ImportingConstructor]
         public AdApiController(IAdRepository adRepository, IAdApplicationRepository adApplicationRespository, 
             ICategoryRepository categoryRepository)
         {
@@ -80,6 +95,49 @@ namespace JobMtaani.Web.Controllers
                 Ad[] ads = adRepository.GetPersonalAds(User.Identity.GetUserId());
 
                 response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetAdDetails")]
+        public HttpResponseMessage GetAdDetails(HttpRequestMessage request, [FromBody]int adId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad ad = adRepository.Get(adId);
+                AdDetailsModel adDetails = new AdDetailsModel();
+
+                adDetails.AdDetails = ad;
+
+                List<string> adApplicantUserIds = adApplicationRespository.GetAdApplicant(ad.AdId);
+
+                foreach (var adApplicant in adApplicantUserIds)
+                {
+                    Account account = UserManager.FindById(adApplicant);
+                    if(account == null)
+                    {
+                        continue;
+                    }
+
+                    UserAccountModel userAccountModel = new UserAccountModel()
+                    {
+                        Email = account.Email,
+                        FirstName = account.FirstName,
+                        LastName = account.LastName,
+                        UserName = account.UserName,
+                        SubscriptionStatus = account.SubscriptionStatus,
+                        PhoneNumber = account.PhoneNumber
+                    };
+
+                    adDetails.AdApplicantDetails.Add(userAccountModel);
+                }
+
+                response = request.CreateResponse(HttpStatusCode.OK, adDetails);
 
                 return response;
             });

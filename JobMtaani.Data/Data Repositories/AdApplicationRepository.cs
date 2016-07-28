@@ -13,6 +13,16 @@ namespace JobMtaani.Data
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AdApplicationRepository : DataRepositoryBase<AdApplication>, IAdApplicationRepository
     {
+        public List<string> GetAdApplicant(int adId)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdId == adId
+                        select e.AdApplicantId).ToList();
+            }
+        }
+
         protected override AdApplication AddEntity(JobMtaaniDbContext entityContext, AdApplication entity)
         {
             return entityContext.AdApplicationSet.Add(entity);

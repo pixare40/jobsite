@@ -60,7 +60,7 @@
             this.$location.path('/register');
         }
 
-        applyForJob(): void {
+        applyForJobs(): void {
             if (!this.currentUser.profile.isLoggedIn) {
                 this.$location.path('/login');
             }

@@ -51,7 +51,7 @@ var app;
             HomeController.prototype.register = function () {
                 this.$location.path('/register');
             };
-            HomeController.prototype.applyForJob = function () {
+            HomeController.prototype.applyForJobs = function () {
                 if (!this.currentUser.profile.isLoggedIn) {
                     this.$location.path('/login');
                 }

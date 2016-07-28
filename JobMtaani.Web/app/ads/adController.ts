@@ -1,5 +1,5 @@
 ﻿module app.ads {
-    interface IAdRouteParams extends ng.route.IRouteParamsService {
+    export interface IAdRouteParams extends ng.route.IRouteParamsService {
         adId: number;
     }
 

@@ -282,6 +282,7 @@
     <Compile Include="Models\AccountLoginModel.cs" />
     <Compile Include="Models\AccountRegisterModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdDetailsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -310,6 +311,7 @@
     <Content Include="app\widgets\loginWidget\loginWidgetTemplate.html" />
     <Content Include="app\widgets\profile\profileTabWidgetTemplate.html" />
     <Content Include="app\widgets\searchWidgetTemplate.html" />
+    <Content Include="app\widgets\adsWidget\templates\viewAdsWidgetTemplate.html" />
     <Content Include="App_Data\JobMtaani.mdf" />
     <Content Include="App_Data\JobMtaani_log.ldf">
       <DependentUpon>JobMtaani.mdf</DependentUpon>
@@ -1206,6 +1208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />
+    <Folder Include="app\interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1278,6 +1281,7 @@
     <TypeScriptCompile Include="app\home\homeController.ts" />
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\models\alertModel.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
@@ -1285,6 +1289,7 @@
     <TypeScriptCompile Include="app\profile\widgets\directives\personalAdsWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\profileWidget.ts" />
     <TypeScriptCompile Include="app\services\messagingService.ts" />
+    <TypeScriptCompile Include="app\valueobjects\alertTypesValueObject.ts" />
     <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />
     <TypeScriptCompile Include="app\models\profileModel.ts" />
     <TypeScriptCompile Include="app\models\user.ts" />
@@ -1314,6 +1319,7 @@
     <TypeScriptCompile Include="app\widgets\loginWidget\loginWidget.ts" />
     <TypeScriptCompile Include="app\widgets\profile\profileTabWidget.ts" />
     <TypeScriptCompile Include="app\widgets\searchWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\adsWidget\logic\viewAdsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\widgets.module.ts" />
     <TypeScriptCompile Include="Scripts\typings\angular-ui-bootstrap\angular-ui-bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />

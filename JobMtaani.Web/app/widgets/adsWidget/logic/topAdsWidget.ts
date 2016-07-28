@@ -21,7 +21,7 @@
         }
     }
 
-    export class TopAdsWidget {
+    export class TopAdsWidget implements ng.IDirective {
         static instance() {
             return new TopAdsWidget;
         }
