@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('app.profile', []);
+        .module('app.profile', ["ngCookies"]);
 
 })();

@@ -17,11 +17,12 @@ var app;
         }());
         profile.UserData = UserData;
         var AccountController = (function () {
-            function AccountController(accountService, currentUser, $location, $rootScope) {
+            function AccountController(accountService, currentUser, $location, $rootScope, $cookies) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
+                this.$cookies = $cookies;
                 this.message = "";
                 this.userdata = new UserData("", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
@@ -53,12 +54,12 @@ var app;
                 this.userdata.grant_type = "password";
                 var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
                 this.accountService.login(loginModel).success(function (data, status) {
-                    _this.message = "Login Succesful";
                     _this.userdata.Password = "";
-                    _this.isLoggedIn = true;
                     _this.currentUser.setProfile(_this.userdata.UserName, data.access_token, true);
+                    _this.$cookies.put("authtoken", data.access_token);
+                    _this.isLoggedIn = true;
                     _this.$rootScope.$broadcast("USER_LOGGED_IN", null);
-                    _this.$location.path('/home');
+                    _this.$location.path('/profile');
                 }).error(function (response, status) {
                     _this.userdata.Password = "";
                     _this.message = response.statusText + "\r\n";
@@ -79,7 +80,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope'];
+            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies'];
             return AccountController;
         }());
         angular

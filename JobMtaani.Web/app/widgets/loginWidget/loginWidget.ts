@@ -19,7 +19,7 @@
         static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$rootScope','$scope','$location','$cookies']
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService,
-            private $scope: ng.IScope, private $location: ng.ILocationService, private cookies: ng.cookies.ICookiesService) {
+            private $scope: ng.IScope, private $location: ng.ILocationService, private $cookies: ng.cookies.ICookiesService) {
             this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
             this.$scope.$on("USER_LOGGED_IN", (event, data) => {
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
@@ -37,7 +37,7 @@
                     this.loginMessage = "Welcome Back!";
                     this.userdata.password = "";
                     this.currentUser.setProfile(this.userdata.username, data.access_token, true);
-                    this.cookies.put("authtoken", data.access_token);
+                    this.$cookies.put("authtoken", data.access_token);
                     this.isLoggedIn = true;
                     this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                     this.$location.path('/profile');
