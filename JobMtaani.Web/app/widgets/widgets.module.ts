@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('app.widgets', ["ngCookies","ui.bootstrap"]);
+        .module('app.widgets', ["ngCookies", "ngAnimate", "ui.bootstrap"]);
 
 })();

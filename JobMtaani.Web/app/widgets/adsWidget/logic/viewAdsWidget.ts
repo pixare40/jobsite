@@ -23,12 +23,16 @@
             else {
                 this.adService.getAdDetails(adId)
                     .success((data, status) => {
+                        this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Success"));
                         this.adDetails = data;
                     })
                     .error((data) => {
                         this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
             }
+        }
+
+        closeAlert(index: number):void {
         }
     }
 
@@ -40,7 +44,6 @@
         restrict = 'AE';
         controllerAs = 'vm';
         controller = ViewAdsWidgetController;
-        scope = {};
         templateUrl = '/app/widgets/adsWidget/templates/viewAdsWidgetTemplate.html';
     }
 

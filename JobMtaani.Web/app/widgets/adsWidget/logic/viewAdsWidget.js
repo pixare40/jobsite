@@ -18,12 +18,15 @@ var app;
                 else {
                     this.adService.getAdDetails(adId)
                         .success(function (data, status) {
+                        _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Success"));
                         _this.adDetails = data;
                     })
                         .error(function (data) {
                         _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
                 }
+            };
+            ViewAdsWidgetController.prototype.closeAlert = function (index) {
             };
             ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams'];
             return ViewAdsWidgetController;
@@ -33,7 +36,6 @@ var app;
                 this.restrict = 'AE';
                 this.controllerAs = 'vm';
                 this.controller = ViewAdsWidgetController;
-                this.scope = {};
                 this.templateUrl = '/app/widgets/adsWidget/templates/viewAdsWidgetTemplate.html';
             }
             ViewAdsWidget.instance = function () {

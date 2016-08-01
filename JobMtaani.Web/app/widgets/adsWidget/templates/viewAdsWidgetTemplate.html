@@ -1,8 +1,5 @@
 ﻿<div>
-    <script type="text/ng-template" id="alert.html">
-        <div ng-transclude></div>
-    </script>
-    <!--<div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>-->
+    <div uib-alert ng-repeat="alert in vm.alerts">{{alert.msg}}</div>
     <div class="col-lg-6">
         <h1>{{vm.adDetails.AdDetails.AdTitle}}</h1>
         <p>{{vm.adDetails.AdDetails.AdDescription}}</p>
