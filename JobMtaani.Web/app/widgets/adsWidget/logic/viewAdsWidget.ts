@@ -10,6 +10,7 @@
 
         static $inject = ['app.services.AdService', '$routeParams'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams) {
+            this.alerts = [];
             this.renderAd();
         }
 

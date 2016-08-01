@@ -44,7 +44,6 @@
             return this.$http.post('/api/ad/Apply', adId, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
-
         }
 
         getTopAds(): ng.IHttpPromise<app.domain.Ad[]> {

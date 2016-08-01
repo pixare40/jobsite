@@ -73,8 +73,13 @@
             controllerAs: 'vm'
         })
             .when('/payment/:paymentId', {
-            templateUrl: '/app/payments.paymentTemplate',
+            templateUrl: '/app/payments/paymentTemplate.html',
             controller: 'app.payments.PaymentController',
+            controllerAs: 'vm'
+        })
+            .when('/viewAd/:adId', {
+            templateUrl: '/app/profile/viewAdsTemplate.html',
+            controller: 'app.profile.ViewAdController',
             controllerAs: 'vm'
         })
             .when('/category', {

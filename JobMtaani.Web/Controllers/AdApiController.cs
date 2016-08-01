@@ -100,7 +100,7 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         [Route("GetAdDetails")]
         public HttpResponseMessage GetAdDetails(HttpRequestMessage request, [FromBody]int adId)
@@ -111,10 +111,11 @@ namespace JobMtaani.Web.Controllers
 
                 Ad ad = adRepository.Get(adId);
                 AdDetailsModel adDetails = new AdDetailsModel();
+                List<string> adApplicantUserIds = new List<string>();
 
                 adDetails.AdDetails = ad;
 
-                List<string> adApplicantUserIds = adApplicationRespository.GetAdApplicant(ad.AdId);
+                adApplicantUserIds = adApplicationRespository.GetAdApplicant(ad.AdId);
 
                 foreach (var adApplicant in adApplicantUserIds)
                 {

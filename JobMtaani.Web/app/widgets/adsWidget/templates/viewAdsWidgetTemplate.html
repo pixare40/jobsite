@@ -1,1 +1,19 @@
-﻿
+﻿<div>
+    <script type="text/ng-template" id="alert.html">
+        <div ng-transclude></div>
+    </script>
+    <!--<div uib-alert ng-repeat="alert in vm.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>-->
+    <div class="col-lg-6">
+        <h1>{{vm.adDetails.AdDetails.AdTitle}}</h1>
+        <p>{{vm.adDetails.AdDetails.AdDescription}}</p>
+    </div>
+    <div class="col-lg-6">
+        <div id="ad-applicants">
+            <div class="ad-applicant" ng-repeat="adApplicant in vm.adDetails.AdApplicantDetails">
+                <h3>{{adApplicant.FirstName}} {{adApplicant.LastName}}</h3>
+                <p>{{adApplicant.Phonenumber}}</p>
+            </div>
+        </div>
+    </div>
+    
+</div>

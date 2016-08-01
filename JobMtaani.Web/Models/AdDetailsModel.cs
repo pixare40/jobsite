@@ -10,5 +10,11 @@ namespace JobMtaani.Web.Models
     {
         public Ad AdDetails { get; set; }
         public List<UserAccountModel> AdApplicantDetails { get; set; }
+
+        public AdDetailsModel()
+        {
+            AdDetails = new Ad();
+            AdApplicantDetails = new List<UserAccountModel>();
+        }
     }
 }

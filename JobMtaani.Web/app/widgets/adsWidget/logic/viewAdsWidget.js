@@ -6,6 +6,7 @@ var app;
             function ViewAdsWidgetController(adService, $routeParams) {
                 this.adService = adService;
                 this.$routeParams = $routeParams;
+                this.alerts = [];
                 this.renderAd();
             }
             ViewAdsWidgetController.prototype.renderAd = function () {

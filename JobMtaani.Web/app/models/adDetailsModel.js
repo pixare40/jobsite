@@ -3,9 +3,9 @@ var app;
     var models;
     (function (models) {
         var AdDetailsModel = (function () {
-            function AdDetailsModel(ad, user) {
-                this.ad = ad;
-                this.user = user;
+            function AdDetailsModel(AdDetails, AdApplicantDetails) {
+                this.AdDetails = AdDetails;
+                this.AdApplicantDetails = AdApplicantDetails;
             }
             return AdDetailsModel;
         }());
