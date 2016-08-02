@@ -102,6 +102,19 @@ namespace JobMtaani.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("HireEmployee")]
+        public HttpResponseMessage HireEmployee(HttpRequestMessage request, AdApplication adApplication)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
         [Route("GetAdDetails")]
         public HttpResponseMessage GetAdDetails(HttpRequestMessage request, [FromBody]int adId)
         {

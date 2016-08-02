@@ -26,7 +26,10 @@ var app;
                     });
                 }
             };
+            ViewAdsWidgetController.prototype.hire = function (username) {
+            };
             ViewAdsWidgetController.prototype.closeAlert = function (index) {
+                console.log(index);
             };
             ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams'];
             return ViewAdsWidgetController;

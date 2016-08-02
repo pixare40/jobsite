@@ -59,6 +59,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        hireEmployee(adApplication: app.models.IAdApplicationModel): ng.IHttpPromise<any> {
+            return this.$http.post('/api/ad/HireEmployee', adApplication, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
     }
 
     angular

@@ -1282,6 +1282,7 @@
     <TypeScriptCompile Include="app\home\homeController.ts" />
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\models\adApplicationModel.ts" />
     <TypeScriptCompile Include="app\models\adDetailsModel.ts" />
     <TypeScriptCompile Include="app\models\alertModel.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />

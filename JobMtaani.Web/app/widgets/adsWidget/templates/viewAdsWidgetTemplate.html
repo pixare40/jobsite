@@ -1,16 +1,40 @@
 ﻿<div>
-    <div uib-alert ng-repeat="alert in vm.alerts">{{alert.msg}}</div>
+    <div ng-repeat="alert in vm.alerts" close="vm.closeAlert($index)">
+        <div class="alert alert-{{alert.type}}">
+            {{alert.msg}}
+        </div>
+    </div>
     <div class="col-lg-6">
         <h1>{{vm.adDetails.AdDetails.AdTitle}}</h1>
         <p>{{vm.adDetails.AdDetails.AdDescription}}</p>
     </div>
     <div class="col-lg-6">
         <div id="ad-applicants">
-            <div class="ad-applicant" ng-repeat="adApplicant in vm.adDetails.AdApplicantDetails">
-                <h3>{{adApplicant.FirstName}} {{adApplicant.LastName}}</h3>
-                <p>{{adApplicant.Phonenumber}}</p>
-            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Applicants
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="ad-applicant" ng-repeat="adApplicant in vm.adDetails.AdApplicantDetails">
+                        <td>
+                            <div>
+                                <h5>{{adApplicant.FirstName}} {{adApplicant.LastName}}</h5>
+                                <p>{{adApplicant.Phonenumber}}</p>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <button class="btn btn-primary" ng-click="vm.hire(adApplicant.UserName)">Hire</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+           
         </div>
     </div>
-    
 </div>

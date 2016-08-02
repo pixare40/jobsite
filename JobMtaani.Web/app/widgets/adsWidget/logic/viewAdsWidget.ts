@@ -32,7 +32,12 @@
             }
         }
 
-        closeAlert(index: number):void {
+        hire(username: string): void {
+            
+        }
+
+        closeAlert(index: number): void {
+            console.log(index);
         }
     }
 
