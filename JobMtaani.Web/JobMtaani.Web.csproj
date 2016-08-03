@@ -315,6 +315,7 @@
     <Content Include="app\widgets\categoryWidgetTemplate.html" />
     <Content Include="app\widgets\loadingWidget\loadingWidgetTemplate.html" />
     <Content Include="app\widgets\loginWidget\loginWidgetTemplate.html" />
+    <Content Include="app\widgets\newsfeed\newsFeedWidgetTemplate.html" />
     <Content Include="app\widgets\profile\profileTabWidgetTemplate.html" />
     <Content Include="app\widgets\searchWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\templates\viewAdsWidgetTemplate.html" />
@@ -1293,6 +1294,7 @@
     <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\models\hireModel.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
+    <TypeScriptCompile Include="app\models\newsFeedModel.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
     <TypeScriptCompile Include="app\profile\widgets\dashboardWidget.ts" />
@@ -1327,6 +1329,7 @@
     <TypeScriptCompile Include="app\widgets\categoryWidget.ts" />
     <TypeScriptCompile Include="app\widgets\loadingWidget\loadingWidget.ts" />
     <TypeScriptCompile Include="app\widgets\loginWidget\loginWidget.ts" />
+    <TypeScriptCompile Include="app\widgets\newsfeed\newsFeedWidget.ts" />
     <TypeScriptCompile Include="app\widgets\profile\profileTabWidget.ts" />
     <TypeScriptCompile Include="app\widgets\searchWidget.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\logic\viewAdsWidget.ts" />

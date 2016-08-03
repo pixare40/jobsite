@@ -83,6 +83,27 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("CloseAd")]
+        public HttpResponseMessage CloseAd(HttpRequestMessage request, [FromBody]int adId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad ad = adRepository.Get(adId);
+
+                ad.AdClosed = true;
+
+                adRepository.Update(ad);
+
+                response = request.CreateResponse<Ad>(HttpStatusCode.OK, ad);
+
+                return response;
+            });
+        }
+
         [HttpGet]
         [Authorize]
         [Route("GetPersonalAds")]
@@ -95,6 +116,39 @@ namespace JobMtaani.Web.Controllers
                 Ad[] ads = adRepository.GetPersonalAds(User.Identity.GetUserId());
 
                 response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetNewsFeed")]
+        public HttpResponseMessage GetNewsFeed(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                string userId = User.Identity.GetUserId();
+
+                List<NewsFeedModel> newsFeedModel = new List<NewsFeedModel>();
+                List<Ad> ads = new List<Ad>();
+
+                List<AdApplication> adApplications = adApplicationRespository.FindUserAdApplications(userId);
+
+                foreach(var adapplication in adApplications)
+                {
+                    NewsFeedModel newsFeedItem = new NewsFeedModel();
+                    Ad newsfeedad = adRepository.Get(adapplication.AdId);
+
+                    newsFeedItem.AdDetails = newsfeedad;
+                    newsFeedItem.AdApplication = adapplication;
+
+                    newsFeedModel.Add(newsFeedItem);
+                }
+
+                response = request.CreateResponse(HttpStatusCode.OK, newsFeedModel);
 
                 return response;
             });
@@ -114,6 +168,7 @@ namespace JobMtaani.Web.Controllers
                 Ad closedAd = adRepository.Get(hireModel.AdId);
 
                 adApplication.Status = ApplicationStatus.Accepted;
+                adApplication.DateClosed = DateTime.Now;
                 closedAd.AdClosed = true;
 
                 adApplicationRespository.Update(adApplication);
@@ -242,11 +297,23 @@ namespace JobMtaani.Web.Controllers
                 AdApplication adApplication = new AdApplication() {
                     AdApplicantId = userId, AdId = ad.AdId, DateApplied=DateTime.Now, Status=ApplicationStatus.Open };
 
-                adApplicationRespository.Add(adApplication);
+                AdApplication existingAdApplication = adApplicationRespository.FindbyHireModel(userId, adId);
 
-                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                if(existingAdApplication != null)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
 
-                return response;
+                    return response;
+                }
+                else
+                {
+                    adApplicationRespository.Add(adApplication);
+
+                    response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+
+                    return response;
+                }
+                
             });
         }
 

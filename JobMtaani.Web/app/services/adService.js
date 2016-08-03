@@ -50,6 +50,16 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.closeAd = function (adId) {
+                return this.$http.post('/api/ad/CloseAd', adId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            AdService.prototype.getNewsFeed = function () {
+                return this.$http.get('/api/ad/GetNewsFeed', {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());
@@ -59,4 +69,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

@@ -31,13 +31,15 @@ var app;
                 var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
                 this.adService.hireEmployee(hireModel).success(function () {
                     console.log("Successful hire");
-                })
-                    .error(function () {
+                }).error(function () {
                     console.log("Unsuccesful hire");
                 });
             };
             ViewAdsWidgetController.prototype.closeAlert = function (index) {
-                console.log(index);
+                this.alerts.pop();
+            };
+            ViewAdsWidgetController.prototype.closeAd = function () {
+                this.adService.closeAd(this.adDetails.AdDetails.AdId);
             };
             ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams'];
             return ViewAdsWidgetController;
@@ -60,4 +62,3 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewAdsWidget.js.map

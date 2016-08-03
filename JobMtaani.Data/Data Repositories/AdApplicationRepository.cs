@@ -23,6 +23,16 @@ namespace JobMtaani.Data
             }
         }
 
+        public List<AdApplication> FindUserAdApplications(string userId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdApplicantId == userId
+                        select e).ToList();
+            }
+        }
+
         public List<string> GetAdApplicant(int adId)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())

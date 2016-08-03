@@ -22,6 +22,8 @@ namespace JobMtaani.Business.Entities
         public DateTime? DateApplied { get; set; }
         [DataMember]
         public ApplicationStatus Status { get; set; }
+        [DataMember]
+        public DateTime? DateClosed { get; set; }
         public object EntityId
         {
             get

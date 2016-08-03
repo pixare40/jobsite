@@ -38,14 +38,17 @@
             var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
             this.adService.hireEmployee(hireModel).success(() => {
                 console.log("Successful hire");
-            })
-                .error(() => {
+            }).error(() => {
                     console.log("Unsuccesful hire");
             });
         }
 
         closeAlert(index: number): void {
-            console.log(index);
+            this.alerts.pop();
+        }
+
+        closeAd() {
+            this.adService.closeAd(this.adDetails.AdDetails.AdId);
         }
     }
 

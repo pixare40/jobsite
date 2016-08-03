@@ -1,0 +1,10 @@
+﻿<div>
+    <div ng-repeat="alert in vm.alerts" close="vm.closeAlert($index)">
+        <div class="alert alert-{{alert.type}}">
+            {{alert.msg}}
+        </div>
+    </div>
+    <div>
+
+    </div>
+</div>

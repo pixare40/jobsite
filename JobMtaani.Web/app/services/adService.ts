@@ -65,6 +65,18 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        closeAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
+            return this.$http.post('/api/ad/CloseAd', adId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
+        getNewsFeed(): ng.IHttpPromise<app.models.NewsFeedModel[]> {
+            return this.$http.get('/api/ad/GetNewsFeed', {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
     }
 
     angular
