@@ -26,7 +26,7 @@ var app;
                     _this.errorMessage = "Error Fetching Data";
                 });
             };
-            PersonalAdsWidgetController.prototype.viewAd = function (adId) {
+            PersonalAdsWidgetController.prototype.viewDetails = function (adId) {
                 this.$location.path("/viewAd/" + adId);
             };
             PersonalAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];

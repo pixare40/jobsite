@@ -11,5 +11,6 @@ namespace JobMtaani.Data.Contracts
     public interface IAdApplicationRepository : IDataRepository<AdApplication>
     {
         List<string> GetAdApplicant(int adId);
+        AdApplication FindbyHireModel(string userName, int adId);
     }
 }

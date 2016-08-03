@@ -7,6 +7,7 @@
 
         alerts: Array<app.models.IAlertModal>;
         adDetails: app.models.IAdDetailsModel;
+        adClosed: boolean;
 
         static $inject = ['app.services.AdService', '$routeParams'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams) {
@@ -32,8 +33,15 @@
             }
         }
 
-        hire(username: string): void {
-            
+        hire(index: number): void {
+            var profileModel = this.adDetails.AdApplicantDetails[index];
+            var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
+            this.adService.hireEmployee(hireModel).success(() => {
+                console.log("Successful hire");
+            })
+                .error(() => {
+                    console.log("Unsuccesful hire");
+            });
         }
 
         closeAlert(index: number): void {

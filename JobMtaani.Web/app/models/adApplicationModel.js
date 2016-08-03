@@ -3,11 +3,12 @@ var app;
     var models;
     (function (models) {
         var AdApplicantModel = (function () {
-            function AdApplicantModel(AdApplicationId, AdId, AdApplicantId, DateApplied) {
+            function AdApplicantModel(AdApplicationId, AdId, AdApplicantId, DateApplied, Status) {
                 this.AdApplicationId = AdApplicationId;
                 this.AdId = AdId;
                 this.AdApplicantId = AdApplicantId;
                 this.DateApplied = DateApplied;
+                this.Status = Status;
             }
             return AdApplicantModel;
         }());

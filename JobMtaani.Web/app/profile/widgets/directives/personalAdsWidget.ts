@@ -28,7 +28,7 @@
             })
         }
 
-        viewAd(adId: number): void {
+        viewDetails(adId: number): void {
             this.$location.path("/viewAd/" + adId);
         }
     }

@@ -103,11 +103,23 @@ namespace JobMtaani.Web.Controllers
         [HttpPost]
         [Authorize]
         [Route("HireEmployee")]
-        public HttpResponseMessage HireEmployee(HttpRequestMessage request, AdApplication adApplication)
+        public HttpResponseMessage HireEmployee(HttpRequestMessage request, HireModel hireModel)
         {
             return GetHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
+
+                string applicantId = UserManager.FindByName(hireModel.UserName).Id;
+                AdApplication adApplication = adApplicationRespository.FindbyHireModel(applicantId, hireModel.AdId);
+                Ad closedAd = adRepository.Get(hireModel.AdId);
+
+                adApplication.Status = ApplicationStatus.Accepted;
+                closedAd.AdClosed = true;
+
+                adApplicationRespository.Update(adApplication);
+                adRepository.Update(closedAd);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
                 return response;
             });
@@ -205,6 +217,7 @@ namespace JobMtaani.Web.Controllers
 
                 newAd.AccountId = User.Identity.GetUserId();
                 newAd.DateCreated = DateTime.Now;
+                newAd.AdClosed = false;
                 Ad account = adRepository.Add(newAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
@@ -227,7 +240,7 @@ namespace JobMtaani.Web.Controllers
                 string userId = User.Identity.GetUserId();
 
                 AdApplication adApplication = new AdApplication() {
-                    AdApplicantId = userId, AdId = ad.AdId, DateApplied=DateTime.Now };
+                    AdApplicantId = userId, AdId = ad.AdId, DateApplied=DateTime.Now, Status=ApplicationStatus.Open };
 
                 adApplicationRespository.Add(adApplication);
 

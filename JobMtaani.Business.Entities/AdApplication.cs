@@ -19,7 +19,9 @@ namespace JobMtaani.Business.Entities
         [DataMember]
         public string AdApplicantId { get; set; }
         [DataMember]
-        public DateTime DateApplied { get; set; }
+        public DateTime? DateApplied { get; set; }
+        [DataMember]
+        public ApplicationStatus Status { get; set; }
         public object EntityId
         {
             get
@@ -32,5 +34,12 @@ namespace JobMtaani.Business.Entities
                 AdApplicationId = (int)value;
             }
         }
+    }
+
+    public enum ApplicationStatus
+    {
+        Accepted = 1,
+        Denied = 2,
+        Open = 3
     }
 }

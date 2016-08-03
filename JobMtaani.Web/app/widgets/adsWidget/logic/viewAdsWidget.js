@@ -26,7 +26,15 @@ var app;
                     });
                 }
             };
-            ViewAdsWidgetController.prototype.hire = function (username) {
+            ViewAdsWidgetController.prototype.hire = function (index) {
+                var profileModel = this.adDetails.AdApplicantDetails[index];
+                var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
+                this.adService.hireEmployee(hireModel).success(function () {
+                    console.log("Successful hire");
+                })
+                    .error(function () {
+                    console.log("Unsuccesful hire");
+                });
             };
             ViewAdsWidgetController.prototype.closeAlert = function (index) {
                 console.log(index);

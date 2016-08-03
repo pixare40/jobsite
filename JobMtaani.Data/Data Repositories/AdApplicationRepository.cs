@@ -13,6 +13,16 @@ namespace JobMtaani.Data
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class AdApplicationRepository : DataRepositoryBase<AdApplication>, IAdApplicationRepository
     {
+        public AdApplication FindbyHireModel(string userName, int adId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdApplicantId == userName && e.AdId == adId
+                        select e).FirstOrDefault();
+            }
+        }
+
         public List<string> GetAdApplicant(int adId)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())

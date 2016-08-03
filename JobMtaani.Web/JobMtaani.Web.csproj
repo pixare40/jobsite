@@ -276,6 +276,10 @@
     <Compile Include="Migrations\201607271839573_datetimefix.Designer.cs">
       <DependentUpon>201607271839573_datetimefix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608031647009_ApplicationStatus.cs" />
+    <Compile Include="Migrations\201608031647009_ApplicationStatus.Designer.cs">
+      <DependentUpon>201608031647009_ApplicationStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -283,6 +287,7 @@
     <Compile Include="Models\AccountRegisterModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdDetailsModel.cs" />
+    <Compile Include="Models\HireModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1286,6 +1291,7 @@
     <TypeScriptCompile Include="app\models\adDetailsModel.ts" />
     <TypeScriptCompile Include="app\models\alertModel.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
+    <TypeScriptCompile Include="app\models\hireModel.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
@@ -1358,6 +1364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607271839573_datetimefix.resx">
       <DependentUpon>201607271839573_datetimefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608031647009_ApplicationStatus.resx">
+      <DependentUpon>201608031647009_ApplicationStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
