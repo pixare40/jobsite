@@ -11,6 +11,9 @@
     </div>
     <div class="col-lg-6">
         <div id="ad-applicants">
+            <div ng-show="vm.applicantsNotification != null" class="alert alert-info" role="alert">
+                {{vm.applicantsNotification}}
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,7 +33,7 @@
                             </div>
                         </td>
                         <td class="text-right">
-                            <button class="btn btn-primary" ng-click="vm.hire($index)">Hire</button>
+                            <button class="btn btn-primary" ng-click="vm.hire($index)" ng-disabled="vm.adDetails.AdDetails.AdClosed == 1">Hire</button>
                         </td>
                     </tr>
                 </tbody>

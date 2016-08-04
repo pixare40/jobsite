@@ -18,22 +18,30 @@ var app;
                 else {
                     this.adService.getAdDetails(adId)
                         .success(function (data, status) {
-                        _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Success"));
+                        //this.alerts.push();
                         _this.adDetails = data;
+                        if (_this.adDetails.AdApplicantDetails.length < 1) {
+                            _this.applicantsNotification = "Nobody has applied to this ad yet";
+                        }
                     })
                         .error(function (data) {
-                        _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
+                        _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
                 }
             };
             ViewAdsWidgetController.prototype.hire = function (index) {
+                var _this = this;
                 var profileModel = this.adDetails.AdApplicantDetails[index];
                 var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
-                this.adService.hireEmployee(hireModel).success(function () {
-                    console.log("Successful hire");
+                this.adService.hireEmployee(hireModel).success(function (data) {
+                    _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Person hired succesfully"));
                 }).error(function () {
-                    console.log("Unsuccesful hire");
+                    _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
                 });
+            };
+            ViewAdsWidgetController.prototype.addAlert = function (alert) {
+                this.alerts.pop();
+                this.alerts.push(alert);
             };
             ViewAdsWidgetController.prototype.closeAlert = function (index) {
                 this.alerts.pop();

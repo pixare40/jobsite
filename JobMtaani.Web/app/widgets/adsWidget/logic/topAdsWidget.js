@@ -26,6 +26,10 @@ var app;
                             _this.goToPersonalAd(selectedAd.AdId);
                             return;
                         }
+                        else {
+                            _this.goToViewAd(selectedAd.AdId);
+                            return;
+                        }
                     }).error(function () {
                         _this.goToViewAd(selectedAd.AdId);
                         return;

@@ -28,6 +28,10 @@
                         this.goToPersonalAd(selectedAd.AdId);
                         return;
                     }
+                    else {
+                        this.goToViewAd(selectedAd.AdId);
+                        return;
+                    }
                 }).error(() => {
                     this.goToViewAd(selectedAd.AdId);
                     return;

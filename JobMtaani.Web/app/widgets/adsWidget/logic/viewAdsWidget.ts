@@ -7,7 +7,8 @@
 
         alerts: Array<app.models.IAlertModal>;
         adDetails: app.models.IAdDetailsModel;
-        adClosed: boolean;
+        adStatus: number;
+        applicantsNotification: string;
 
         static $inject = ['app.services.AdService', '$routeParams'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams) {
@@ -24,11 +25,14 @@
             else {
                 this.adService.getAdDetails(adId)
                     .success((data, status) => {
-                        this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Success"));
+                        //this.alerts.push();
                         this.adDetails = data;
+                        if (this.adDetails.AdApplicantDetails.length < 1) {
+                            this.applicantsNotification = "Nobody has applied to this ad yet";
+                        }
                     })
                     .error((data) => {
-                        this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
+                        this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
                     });
             }
         }
@@ -36,11 +40,16 @@
         hire(index: number): void {
             var profileModel = this.adDetails.AdApplicantDetails[index];
             var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
-            this.adService.hireEmployee(hireModel).success(() => {
-                console.log("Successful hire");
+            this.adService.hireEmployee(hireModel).success((data) => {
+                this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Person hired succesfully"));
             }).error(() => {
-                    console.log("Unsuccesful hire");
+                this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
             });
+        }
+
+        addAlert(alert: app.models.AlertModel) {
+            this.alerts.pop();
+            this.alerts.push(alert);
         }
 
         closeAlert(index: number): void {

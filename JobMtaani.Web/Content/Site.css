@@ -51,6 +51,7 @@ textarea {
 .dropdown-inline .fa{
     height: 26px;
     line-height: 26px;
+    padding-right: 10px;
 }
 
 .displayNone {
