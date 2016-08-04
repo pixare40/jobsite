@@ -47,7 +47,12 @@ var app;
                 this.alerts.pop();
             };
             ViewAdsWidgetController.prototype.closeAd = function () {
-                this.adService.closeAd(this.adDetails.AdDetails.AdId);
+                var _this = this;
+                this.adService.closeAd(this.adDetails.AdDetails.AdId).success(function () {
+                    _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Ad Closed Succesfully"));
+                }).error(function () {
+                    _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
+                });
             };
             ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams'];
             return ViewAdsWidgetController;

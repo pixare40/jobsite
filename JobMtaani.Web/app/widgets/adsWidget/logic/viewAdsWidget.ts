@@ -57,7 +57,11 @@
         }
 
         closeAd() {
-            this.adService.closeAd(this.adDetails.AdDetails.AdId);
+            this.adService.closeAd(this.adDetails.AdDetails.AdId).success(() => {
+                this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Ad Closed Succesfully"));
+            }).error(() => {
+                this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
+            });
         }
     }
 

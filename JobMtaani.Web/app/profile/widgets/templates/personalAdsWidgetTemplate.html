@@ -30,7 +30,10 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-success" ng-click="vm.viewDetails(ad.AdId)">View Applicants &amp; Edit</button>
+                        <button class="btn btn-success" ng-click="vm.viewDetails(ad.AdId)" ng-disabled="ad.AdClosed">View Applicants &amp; Edit</button><br/>
+                        <div ng-show="ad.AdClosed">
+                            <p style="color: red">This Ad Has Been Closed</p>
+                        </div>
                     </td>
                 </tr>
             </tbody>
