@@ -4,7 +4,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.nav, .pagination, .carousel, .panel-title a {
+.nav, .pagination, .carousel, .ad-panel, .panel-title a {
      cursor: pointer; 
 }
 
@@ -78,6 +78,15 @@ textarea {
 
 .job-icon{
     font-size: 50px;
+}
+
+.ad-panel h3, .ad-panel p {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 /*Create Ad Page*/

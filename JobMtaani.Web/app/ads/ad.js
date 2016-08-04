@@ -21,3 +21,4 @@ var app;
         domain.Ad = Ad;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=ad.js.map
