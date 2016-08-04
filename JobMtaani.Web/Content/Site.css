@@ -21,6 +21,10 @@ textarea {
     max-width: 280px;
 }
 
+.page-title{
+    border-bottom: 1px solid #949393;
+}
+
 /*Home Page*/
 #home-jumbo{
     height:500px;
@@ -97,6 +101,20 @@ textarea {
     color: green;
     padding: 10px;
     cursor: pointer;
+}
+
+/*View Ad Details Page*/
+.ad-description {
+    min-height: 100px;
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+}
+
+.innerContent {
+    padding: 10px;
+}
+
+.ad-title h2{
 }
 
 /** Loading Spinner */

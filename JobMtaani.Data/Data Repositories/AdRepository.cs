@@ -71,7 +71,7 @@ namespace JobMtaani.Data
             {
                 return (from e in entityContext.AdSet
                         orderby e.DateCreated descending
-                        select e).ToArray();
+                        select e).Take(12).ToArray();
             }
         }
 

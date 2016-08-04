@@ -1,13 +1,20 @@
 ﻿<div class="container">
-    <div ng-show="{{vm.successMessage != null}}" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
-    <div ng-show="{{vm.errorMessage != null}}" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
-    <div class="panel panel-info">
-        <div class="panel-heading">{{vm.ad.AdTitle}} Title</div>
-        <div class="panel-body">
-            {{vm.ad.AdDescription}}
+    <br/>
+    <h1 class="page-title">Ad Details</h1>
+    <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}} <a ng-href="#profile">View Other Ads</a></div>
+    <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
+
+    <div>
+        <div class="ad-title">
+            <h2>{{vm.ad.AdTitle}}</h2>
+            <h5><u>Location: {{vm.ad.AdLocation}}</u> <button class="btn btn-primary pull-right" ng-click="vm.applyForJob()">Apply For Job</button></h5>
         </div>
-        <div class="panel-footer">
-            Location: {{vm.ad.AdLocation}} <button class="btn btn-success" ng-click="vm.applyForJob()">Apply</button>
+        <br/>
+        <div class="ad-description">
+            <div class="innerContent">
+                <h4><u>Description</u></h4>
+                {{vm.ad.AdDescription}}
+            </div>
         </div>
     </div>
 </div>
