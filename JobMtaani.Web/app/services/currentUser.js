@@ -61,8 +61,8 @@ var app;
                 }).error(function (data, status) {
                     console.log("USER_LOGIN_FAILED");
                     if (status == 401) {
+                        _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                     }
-                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                 });
             };
             CurrentUser.prototype.removeUserCookie = function () {
@@ -83,4 +83,3 @@ var app;
             .factory('app.services.CurrentUser', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=currentUser.js.map

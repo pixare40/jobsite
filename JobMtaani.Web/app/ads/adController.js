@@ -35,4 +35,3 @@ var app;
             .controller('app.ads.AdController', AdController);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adController.js.map

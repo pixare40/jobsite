@@ -75,9 +75,8 @@
             }).error((data, status) => {
                 console.log("USER_LOGIN_FAILED");
                 if (status == 401) {
-                    
+                    this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
                 }
-                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGIN_FAILED, data);
             });
         }
 

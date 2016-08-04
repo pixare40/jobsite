@@ -12,4 +12,3 @@ var app;
         models.NewsFeedModel = NewsFeedModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
-//# sourceMappingURL=newsFeedModel.js.map
