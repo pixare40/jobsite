@@ -84,7 +84,7 @@ namespace JobMtaani.Web.Controllers
 
             Account user = UserManager.FindById(User.Identity.GetUserId());
 
-            UserAccountModel userAccountModel = new UserAccountModel() { Email=user.Email,
+            UserAccountModel userAccountModel = new UserAccountModel() {UserId = user.Id, Email=user.Email,
                 FirstName =user.FirstName, LastName=user.LastName, UserName=user.UserName,
                 SubscriptionStatus= user.SubscriptionStatus, PhoneNumber =user.PhoneNumber };
 

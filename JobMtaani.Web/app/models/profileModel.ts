@@ -1,6 +1,7 @@
 ﻿module app.domain {
     export class ProfileModel{
         constructor(
+            public UserId: string,
             public Email: string,
             public UserName: string,
             public FirstName: string,

@@ -3,8 +3,10 @@ var app;
     var widgets;
     (function (widgets) {
         var TopAdsWidgetController = (function () {
-            function TopAdsWidgetController(adService) {
+            function TopAdsWidgetController(adService, currentUser, $location) {
                 this.adService = adService;
+                this.currentUser = currentUser;
+                this.$location = $location;
                 this.getTopAds();
             }
             TopAdsWidgetController.prototype.getTopAds = function () {
@@ -15,7 +17,31 @@ var app;
                     console.log('Error Fetching Top Ads');
                 });
             };
-            TopAdsWidgetController.$inject = ['app.services.AdService'];
+            TopAdsWidgetController.prototype.goToAd = function (index) {
+                var _this = this;
+                var selectedAd = this.ads[index];
+                if (this.currentUser.getProfile().isLoggedIn) {
+                    this.currentUser.getCurrentUserInfo().success(function (data) {
+                        if (selectedAd.AccountId == data.UserId) {
+                            _this.goToPersonalAd(selectedAd.AdId);
+                            return;
+                        }
+                    }).error(function () {
+                        _this.goToViewAd(selectedAd.AdId);
+                        return;
+                    });
+                }
+                else {
+                    this.goToViewAd(selectedAd.AdId);
+                }
+            };
+            TopAdsWidgetController.prototype.goToPersonalAd = function (adId) {
+                this.$location.path("/viewAd/" + adId);
+            };
+            TopAdsWidgetController.prototype.goToViewAd = function (adId) {
+                this.$location.path("/ad/" + adId);
+            };
+            TopAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
             return TopAdsWidgetController;
         }());
         var TopAdsWidget = (function () {

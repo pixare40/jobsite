@@ -7,6 +7,7 @@ namespace JobMtaani.Web.Models
 {
     public class UserAccountModel
     {
+        public string UserId { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }

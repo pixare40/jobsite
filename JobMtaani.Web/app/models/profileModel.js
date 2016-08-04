@@ -3,7 +3,8 @@ var app;
     var domain;
     (function (domain) {
         var ProfileModel = (function () {
-            function ProfileModel(Email, UserName, FirstName, LastName, DateJoined, PhoneNumber, SubscriptionStatus) {
+            function ProfileModel(UserId, Email, UserName, FirstName, LastName, DateJoined, PhoneNumber, SubscriptionStatus) {
+                this.UserId = UserId;
                 this.Email = Email;
                 this.UserName = UserName;
                 this.FirstName = FirstName;
