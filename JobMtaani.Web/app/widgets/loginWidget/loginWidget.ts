@@ -20,14 +20,9 @@
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser, private $rootScope: ng.IRootScopeService,
             private $scope: ng.IScope, private $location: ng.ILocationService, private $cookies: ng.cookies.ICookiesService) {
-            this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
             this.$scope.$on("USER_LOGGED_IN", (event, data) => {
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
-            })
-
-            if (this.isLoggedIn) {
-                this.$location.path('/profile');
-            }
+            });
         }
 
         login(): void {

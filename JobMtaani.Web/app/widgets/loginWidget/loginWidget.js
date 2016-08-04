@@ -20,13 +20,9 @@ var app;
                 this.$scope = $scope;
                 this.$location = $location;
                 this.$cookies = $cookies;
-                this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
                 this.$scope.$on("USER_LOGGED_IN", function (event, data) {
                     _this.isLoggedIn = _this.currentUser.getProfile().isLoggedIn;
                 });
-                if (this.isLoggedIn) {
-                    this.$location.path('/profile');
-                }
             }
             LoginWidgetController.prototype.login = function () {
                 var _this = this;
