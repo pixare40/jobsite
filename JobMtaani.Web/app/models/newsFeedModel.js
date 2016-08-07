@@ -3,12 +3,13 @@ var app;
     var models;
     (function (models) {
         var NewsFeedModel = (function () {
-            function NewsFeedModel(ad, adApplication) {
-                this.ad = ad;
-                this.adApplication = adApplication;
+            function NewsFeedModel(AdDetails, AdApplication) {
+                this.AdDetails = AdDetails;
+                this.AdApplication = AdApplication;
             }
             return NewsFeedModel;
         }());
         models.NewsFeedModel = NewsFeedModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=newsFeedModel.js.map

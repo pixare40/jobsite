@@ -13,6 +13,7 @@ using JobMtaani.Data.Contracts;
 using Microsoft.AspNet.Identity;
 using JobMtaani.Web.Models;
 using Microsoft.AspNet.Identity.Owin;
+using JobMtaani.Business.Managers;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -26,6 +27,8 @@ namespace JobMtaani.Web.Controllers
         private IAdRepository adRepository;
         private IAdApplicationRepository adApplicationRespository;
         private ICategoryRepository categoryRepository;
+        private IMessageManager messageManager;
+
         private ApplicationUserManager _userManager;
 
         public ApplicationUserManager UserManager
@@ -42,11 +45,12 @@ namespace JobMtaani.Web.Controllers
 
             [ImportingConstructor]
         public AdApiController(IAdRepository adRepository, IAdApplicationRepository adApplicationRespository, 
-            ICategoryRepository categoryRepository)
+            ICategoryRepository categoryRepository, IMessageManager messageManager)
         {
             this.adRepository = adRepository;
             this.adApplicationRespository = adApplicationRespository;
             this.categoryRepository = categoryRepository;
+            this.messageManager = messageManager;
         }
 
         [HttpPost]
@@ -273,6 +277,11 @@ namespace JobMtaani.Web.Controllers
                 newAd.AccountId = User.Identity.GetUserId();
                 newAd.DateCreated = DateTime.Now;
                 newAd.AdClosed = false;
+                if(newAd.CategoryId == 0)
+                {
+                    newAd.CategoryId = 4;
+                }
+
                 Ad account = adRepository.Add(newAd);
 
                 response = request.CreateResponse<Ad>(HttpStatusCode.OK, account);
@@ -349,6 +358,17 @@ namespace JobMtaani.Web.Controllers
 
                 return response;
             });
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && _userManager != null)
+            {
+                _userManager.Dispose();
+                _userManager = null;
+            }
+
+            base.Dispose(disposing);
         }
     }
 }

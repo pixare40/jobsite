@@ -22,3 +22,4 @@
         return $delegate;
     }
 });
+//# sourceMappingURL=logdecorator.config.js.map

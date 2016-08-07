@@ -23,7 +23,8 @@
     }
 
     interface IAccountController {
-        message: string;
+        errorMessage: string;
+        successMessage: string;
         userdata: IUserData;
         isLoggedIn: boolean;
         registerUser(): void;
@@ -31,7 +32,8 @@
 
     class AccountController implements IAccountController {
 
-        message: string;
+        errorMessage: string;
+        successMessage: string;
         userdata: UserData;
         isLoggedIn: boolean;
 
@@ -39,36 +41,38 @@
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
             private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService) {
-            this.message = "";
             this.userdata = new UserData("", "", "", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
-        registerUser() : void {
+        registerUser(): void {
+            this.errorMessage = null;
+            this.successMessage = null;
+
             this.userdata.ConfirmPassword = this.userdata.Password;
             this.accountService.register(this.userdata)
                 .success(
                 (data, status) => {
                     this.userdata.ConfirmPassword = "";
-                    this.message = "... Registration successful";
+                    this.successMessage = "... Registration successful";
                     this.login();})
                 .error(
                 (response, status) => {
+                    this.errorMessage = "";
                     this.isLoggedIn = false;
-                    this.message = response.statusText + "\r\n";
-                    if (response.data.exceptionMessage)
-                        this.message += response.data.exceptionMessage;
 
                     // Validation errors
-                    if (response.data.modelState) {
-                        for (var key in response.data.modelState) {
-                            this.message += response.data.modelState[key] + "\r\n";
+                    if (response.ModelState) {
+                        for (var key in response.ModelState) {
+                            this.errorMessage += response.ModelState[key] + "\r\n";
                         }
                     }
                 });
         }
 
         login(): void {
+            this.errorMessage = null;
+            this.successMessage = null;
             this.userdata.grant_type = "password";
             var loginModel = new app.widgets.LoginModel(this.userdata.UserName, this.userdata.Password, "password");
             this.accountService.login(loginModel).success(
@@ -82,24 +86,27 @@
                 }
             ).error(
                 (response, status) => {
+                    this.errorMessage = "";
                     this.userdata.Password = "";
-                    this.message = response.statusText + "\r\n";
+                    this.errorMessage = response.statusText + "\r\n";
                     if (response.error_description)
-                        this.message += response.error_description;
+                        this.errorMessage += response.error_description;
 
                     if (response.error) {
-                        this.message += response.error;
+                        this.errorMessage += response.error;
                     }
                 }
                 );
         }
 
         logout(): void {
+            this.errorMessage = null;
+            this.successMessage = null;
             this.accountService.logout().success(
                 (data, status) => {
                     this.isLoggedIn = false;
                     this.currentUser.setProfile("", "", false);
-                    this.message = "Logout Succesful";
+                    this.successMessage = "Logout Succesful";
                     this.userdata = new UserData("","","", "", "", "", "","");
                 }).error(
                 (data, status) => {

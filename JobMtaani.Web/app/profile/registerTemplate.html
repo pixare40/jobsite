@@ -6,6 +6,9 @@
     </div>
     <div class="col-md-7">
         <div class="row">
+            <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}}</div>
+            <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
+
             <form ng-hide="vm.isLoggedIn" class="form-horizontal">
                 <div class="form-group">
                     <label for="username" class="control-label">Username</label>
@@ -70,7 +73,6 @@
                         Register
                     </button>
                 </div>
-                <div ng-show="vm.message">{{vm.message}}</div>
             </form>
         </div>
     </div>

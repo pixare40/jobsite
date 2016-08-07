@@ -22,3 +22,4 @@ var app;
             .controller('app.dashboard.CategoryController', CategoryController);
     })(dashboard = app.dashboard || (app.dashboard = {}));
 })(app || (app = {}));
+//# sourceMappingURL=categoryController.js.map

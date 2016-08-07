@@ -13,3 +13,4 @@ var app;
         domain.Message = Message;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=message.js.map

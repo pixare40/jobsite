@@ -1246,6 +1246,10 @@
       <Project>{ae379156-f984-4f60-bda9-dd0f17f0b7c9}</Project>
       <Name>JobMtaani.Business.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business.Managers\JobMtaani.Business.Managers.csproj">
+      <Project>{399510ED-946A-4A97-BEAB-08B6A6E4C85C}</Project>
+      <Name>JobMtaani.Business.Managers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Bootstrapper\JobMtaani.Client.Bootstrapper.csproj">
       <Project>{6F848176-FD73-40D5-8E0F-47D798D695F1}</Project>
       <Name>JobMtaani.Client.Bootstrapper</Name>
