@@ -7,6 +7,8 @@ namespace JobMtaani.Data.Contracts
     public interface IAdRepository : IDataRepository<Ad>
     {
         Ad[] GetAdByCategory(int categoryId);
+        Ad[] GetByLocation(string userId, string locationString);
+        Ad[] GetByLocation();
         Ad[] GetByLocation(string locationString);
         Ad[] GetBySearchTerms(SearchModel searchModel);
         Ad[] GetTopAds();

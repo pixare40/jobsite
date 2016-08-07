@@ -77,6 +77,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        getLocalAds(): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.get('/api/ad/GetLocalJobs', {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            })
+        }
     }
 
     angular

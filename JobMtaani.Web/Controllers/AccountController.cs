@@ -348,7 +348,7 @@ namespace JobMtaani.Web.Controllers
             }
 
             var user = new Account() { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName,
-                LastName = model.LastName, PhoneNumber = model.PhoneNumber, DateJoined = DateTime.Now };
+                LastName = model.LastName, Location = model.Location, PhoneNumber = model.PhoneNumber, DateJoined = DateTime.Now };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

@@ -5,19 +5,30 @@ var app;
         var widgets;
         (function (widgets) {
             var DashboardWidgetController = (function () {
-                function DashboardWidgetController($scope, currentUser) {
+                function DashboardWidgetController($scope, currentUser, adService, $location) {
                     var _this = this;
                     this.$scope = $scope;
                     this.currentUser = currentUser;
+                    this.adService = adService;
+                    this.$location = $location;
                     this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, function (event, data) {
                         _this.initialiseDashboard();
                     });
                     this.initialiseDashboard();
                 }
                 DashboardWidgetController.prototype.initialiseDashboard = function () {
+                    var _this = this;
                     this.username = this.currentUser.getProfile().username;
+                    this.adService.getLocalAds().success(function (data, status) {
+                        _this.jobs = data;
+                    }).error(function () {
+                        console.log("Error fetching local jobs");
+                    });
                 };
-                DashboardWidgetController.$inject = ['$scope', 'app.services.CurrentUser'];
+                DashboardWidgetController.prototype.applyToJob = function (adId) {
+                    this.$location.path("/ad/" + adId);
+                };
+                DashboardWidgetController.$inject = ['$scope', 'app.services.CurrentUser', 'app.services.AdService', '$location'];
                 return DashboardWidgetController;
             }());
             var DashboardWidget = (function () {

@@ -27,6 +27,8 @@ namespace JobMtaani.Business.Entities
         public DateTime? SubscriptionExpiry { get; set; }
         [DataMember]
         public DateTime DateJoined { get; set; }
+        [DataMember]
+        public string Location { get; set; }
 
         public object EntityId
         {

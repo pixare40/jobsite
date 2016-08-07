@@ -2,10 +2,12 @@
 
     class DashboardWidgetController {
 
+        jobs: app.domain.Ad[];
         username: string;
 
-        static $inject = ['$scope','app.services.CurrentUser']
-        constructor(private $scope: ng.IScope, private currentUser: app.services.CurrentUser) {
+        static $inject = ['$scope', 'app.services.CurrentUser', 'app.services.AdService','$location']
+        constructor(private $scope: ng.IScope, private currentUser: app.services.CurrentUser,
+            private adService: app.services.AdService, private $location: ng.ILocationService) {
             this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, (event, data) => {
                 this.initialiseDashboard();
             });
@@ -15,6 +17,15 @@
 
         initialiseDashboard(): void {
             this.username = this.currentUser.getProfile().username;
+            this.adService.getLocalAds().success((data, status) => {
+                this.jobs = data;
+            }).error(() => {
+                console.log("Error fetching local jobs");
+            });
+        }
+
+        applyToJob(adId: number) {
+            this.$location.path("/ad/" + adId);
         }
     }
 

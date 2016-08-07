@@ -3,10 +3,11 @@ var app;
     var profile;
     (function (profile) {
         var UserData = (function () {
-            function UserData(FirstName, LastName, UserName, Email, Password, ConfirmPassword, PhoneNumber, grant_type) {
+            function UserData(FirstName, LastName, UserName, Location, Email, Password, ConfirmPassword, PhoneNumber, grant_type) {
                 this.FirstName = FirstName;
                 this.LastName = LastName;
                 this.UserName = UserName;
+                this.Location = Location;
                 this.Email = Email;
                 this.Password = Password;
                 this.ConfirmPassword = ConfirmPassword;
@@ -23,7 +24,7 @@ var app;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
                 this.$cookies = $cookies;
-                this.userdata = new UserData("", "", "", "", "", "", "", "");
+                this.userdata = new UserData("", "", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
             }
             AccountController.prototype.registerUser = function () {
@@ -80,7 +81,7 @@ var app;
                     _this.isLoggedIn = false;
                     _this.currentUser.setProfile("", "", false);
                     _this.successMessage = "Logout Succesful";
-                    _this.userdata = new UserData("", "", "", "", "", "", "", "");
+                    _this.userdata = new UserData("", "", "", "", "", "", "", "", "");
                 }).error(function (data, status) {
                 });
             };

@@ -360,6 +360,36 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("GetLocalJobs")]
+        public HttpResponseMessage GetLocalAds(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                string userId = User.Identity.GetUserId();
+
+                Ad[] ads;
+
+                Account currentUserAccount = UserManager.FindById(userId);
+
+                if (string.IsNullOrEmpty(currentUserAccount.Location))
+                {
+                    ads = adRepository.GetByLocation();
+                }
+                else
+                {
+                    ads = adRepository.GetByLocation(currentUserAccount.Id,currentUserAccount.Location);
+                }
+
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

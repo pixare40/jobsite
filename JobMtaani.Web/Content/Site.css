@@ -4,7 +4,7 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.nav, .pagination, .carousel, .ad-panel, .panel-title a {
+.nav, .pagination, .carousel, .ad-panel, .panel-title a, a {
      cursor: pointer; 
 }
 

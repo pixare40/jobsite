@@ -34,14 +34,35 @@ namespace JobMtaani.Data
             }
         }
 
+        public Ad[] GetByLocation(string userId, string locationString)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                 where e.AdLocation == locationString && e.AccountId != userId
+                 orderby e.DateCreated descending
+                 select e).Take(7).ToArray<Ad>();
+            }
+        }
+
         public Ad[] GetByLocation(string locationString)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
-                 where e.AdLocation == locationString
-                 orderby e.DateCreated descending
-                 select e).ToArray<Ad>();
+                        where e.AdLocation == locationString
+                        orderby e.DateCreated descending
+                        select e).Take(7).ToArray<Ad>();
+            }
+        }
+
+        public Ad[] GetByLocation()
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        orderby e.DateCreated descending
+                        select e).Take(7).ToArray<Ad>();
             }
         }
 

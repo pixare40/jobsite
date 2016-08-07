@@ -24,6 +24,13 @@
                         <td>{{job.AdTitle}}</td>
                         <td><a ng-click="vm.applyToJob(job.AdId)">Apply</a></td>
                     </tr>
+                    <tr ng-if="vm.jobs.length < 1">
+                        <td colspan="2">
+                            <div class="text-center">
+                                <b>No Local Jobs To Display</b>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -4,6 +4,7 @@
         FirstName: string;
         LastName: string;
         UserName: string;
+        Location: string;
         Email: string;
         Password: string;
         ConfirmPassword: string;
@@ -15,6 +16,7 @@
             public FirstName: string,
             public LastName:string,
             public UserName: string,
+            public Location: string,
             public Email: string,
             public Password: string,
             public ConfirmPassword: string,
@@ -41,7 +43,7 @@
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
             private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService) {
-            this.userdata = new UserData("", "", "", "", "", "", "", "");
+            this.userdata = new UserData("", "", "","", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
         }
 
@@ -107,7 +109,7 @@
                     this.isLoggedIn = false;
                     this.currentUser.setProfile("", "", false);
                     this.successMessage = "Logout Succesful";
-                    this.userdata = new UserData("","","", "", "", "", "","");
+                    this.userdata = new UserData("","","","", "", "", "", "","");
                 }).error(
                 (data, status) => {
                 });
