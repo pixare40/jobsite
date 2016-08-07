@@ -29,6 +29,7 @@ namespace JobMtaani.Data
             {
                 return (from e in entityContext.AdApplicationSet
                         where e.AdApplicantId == userId
+                        orderby e.DateApplied descending
                         select e).ToList();
             }
         }
