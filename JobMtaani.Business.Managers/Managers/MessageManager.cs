@@ -48,7 +48,7 @@ namespace JobMtaani.Business.Managers
                                                        succesfull, Please log on to http://www.jobmtaani.co.ke/#/profile to view succesful applications, meanwhile expect a call from {1} on {2}",
                                                        adApplication.AdId, jobOwner.FirstName, jobOwner.PhoneNumber);
 
-            string hiredEmployeeDetailsMessage = string.Format(@"You have hired a new employee, call or text {0} on {2} to set up a meeting",
+            string hiredEmployeeDetailsMessage = string.Format(@"You have hired a new employee, call or text {0} on {1} to set up a meeting",
                 hiredEmployee.FirstName, hiredEmployee.PhoneNumber);
 
             SendEmailMessage(client, hiredEmployee.Email, jobApplicationSuccessfulMessage);
