@@ -171,16 +171,24 @@ namespace JobMtaani.Web.Controllers
                 AdApplication adApplication = adApplicationRespository.FindbyHireModel(applicantId, hireModel.AdId);
                 Ad closedAd = adRepository.Get(hireModel.AdId);
 
-                adApplication.Status = ApplicationStatus.Accepted;
-                adApplication.DateClosed = DateTime.Now;
-                closedAd.AdClosed = true;
+                if(adApplication.AdApplicantId == closedAd.AccountId)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
+                    return response;
+                }
+                else
+                {
+                    adApplication.Status = ApplicationStatus.Accepted;
+                    adApplication.DateClosed = DateTime.Now;
+                    closedAd.AdClosed = true;
 
-                adApplicationRespository.Update(adApplication);
-                adRepository.Update(closedAd);
+                    adApplicationRespository.Update(adApplication);
+                    adRepository.Update(closedAd);
 
-                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                    response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
-                return response;
+                    return response;
+                }
             });
         }
 
