@@ -81,7 +81,7 @@ namespace JobMtaani.Business.Managers
 
         private static void SendEmailMessage(SmtpClient client,string sendTo, string messageToSend)
         {
-            MailMessage message = new MailMessage("donotreply@jobmtaani.co.ke", "kabajiegara@live.com", "Job Mtaani job application",
+            MailMessage message = new MailMessage("donotreply@jobmtaani.co.ke", sendTo, "Job Mtaani job application",
                             messageToSend);
 
             message.BodyEncoding = Encoding.UTF8;
