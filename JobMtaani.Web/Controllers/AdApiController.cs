@@ -171,6 +171,9 @@ namespace JobMtaani.Web.Controllers
                 AdApplication adApplication = adApplicationRespository.FindbyHireModel(applicantId, hireModel.AdId);
                 Ad closedAd = adRepository.Get(hireModel.AdId);
 
+                Account applicant = UserManager.FindById(applicantId);
+                Account jobOwner = UserManager.FindById(closedAd.AccountId);
+
                 if(adApplication.AdApplicantId == closedAd.AccountId)
                 {
                     response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
@@ -184,6 +187,8 @@ namespace JobMtaani.Web.Controllers
 
                     adApplicationRespository.Update(adApplication);
                     adRepository.Update(closedAd);
+
+                    this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
 
                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
@@ -325,6 +330,11 @@ namespace JobMtaani.Web.Controllers
                 else
                 {
                     adApplicationRespository.Add(adApplication);
+
+                    Account applicant = UserManager.FindById(adApplication.AdApplicantId);
+                    Account jobOwner = UserManager.FindById(ad.AccountId);
+
+                    messageManager.NewJobApplicationMessage(adApplication, jobOwner, applicant);
 
                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 

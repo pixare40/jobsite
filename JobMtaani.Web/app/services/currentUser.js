@@ -23,6 +23,7 @@ var app;
                 this.setUserInfo();
                 this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, function (event) {
                     _this.removeUserCookie();
+                    _this.$location.path("/home");
                 });
             }
             CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {

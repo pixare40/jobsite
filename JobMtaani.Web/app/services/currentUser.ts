@@ -32,6 +32,7 @@
             this.setUserInfo();
             this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, (event) => {
                 this.removeUserCookie();
+                this.$location.path("/home");
             });
         }
 

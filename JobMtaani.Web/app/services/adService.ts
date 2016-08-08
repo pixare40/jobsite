@@ -10,6 +10,7 @@
     export class AdService implements IAdService {
 
         categoryJobs: app.domain.Ad[];
+        topAds: app.domain.Ad[];
         static $inject = ['$http', 'app.services.CurrentUser']
         constructor(private $http: ng.IHttpService, private currentUser: app.services.CurrentUser) {
         }
