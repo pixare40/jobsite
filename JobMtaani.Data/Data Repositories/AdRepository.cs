@@ -39,18 +39,18 @@ namespace JobMtaani.Data
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
-                 where e.AdLocation == locationString && e.AccountId != userId
+                 where e.AdLocation == locationString where e.AccountId != userId
                  orderby e.DateCreated descending
                  select e).Take(7).ToArray<Ad>();
             }
         }
 
-        public Ad[] GetByLocation(string locationString)
+        public Ad[] GetByLocation(string userId)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
-                        where e.AdLocation == locationString
+                        where e.AccountId != userId
                         orderby e.DateCreated descending
                         select e).Take(7).ToArray<Ad>();
             }

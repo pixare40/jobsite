@@ -9,7 +9,7 @@ namespace JobMtaani.Data.Contracts
         Ad[] GetAdByCategory(int categoryId);
         Ad[] GetByLocation(string userId, string locationString);
         Ad[] GetByLocation();
-        Ad[] GetByLocation(string locationString);
+        Ad[] GetByLocation(string userId);
         Ad[] GetBySearchTerms(SearchModel searchModel);
         Ad[] GetTopAds();
         Ad[] GetPersonalAds(string userId);

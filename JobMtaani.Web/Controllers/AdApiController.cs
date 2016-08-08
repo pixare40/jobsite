@@ -385,7 +385,7 @@ namespace JobMtaani.Web.Controllers
 
                 if (string.IsNullOrEmpty(currentUserAccount.Location))
                 {
-                    ads = adRepository.GetByLocation();
+                    ads = adRepository.GetByLocation(userId);
                 }
                 else
                 {
