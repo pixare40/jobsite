@@ -22,6 +22,7 @@
     export class CurrentUser implements ICurrentUser {
 
         profile: IProfile;
+        currentUserId: string;
 
         static $inject = ['$http', '$cookies', '$rootScope','$location']
         constructor(private $http: ng.IHttpService,
@@ -71,6 +72,7 @@
             this.getCurrentUserInfo().success((data, status) => {
                 this.profile.username = data.UserName;
                 this.profile.isLoggedIn = true;
+                this.currentUserId = data.UserId;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
             }).error((data, status) => {
                 console.log("USER_LOGIN_FAILED");

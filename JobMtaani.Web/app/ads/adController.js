@@ -3,17 +3,25 @@ var app;
     var ads;
     (function (ads) {
         var AdController = (function () {
-            function AdController(adService, $routeParams, currentUser) {
-                var _this = this;
+            function AdController(adService, $routeParams, currentUser, $location) {
                 this.adService = adService;
                 this.$routeParams = $routeParams;
                 this.currentUser = currentUser;
-                this.adService.getAd($routeParams.adId).success(function (data, status) {
+                this.$location = $location;
+                this.renderAd();
+            }
+            AdController.prototype.renderAd = function () {
+                var _this = this;
+                this.adService.getAd(this.$routeParams.adId).success(function (data, status) {
+                    if (_this.currentUser.currentUserId == data.AccountId) {
+                        _this.$location.path("/viewAd/" + data.AdId);
+                        return;
+                    }
                     _this.ad = data;
                 }).error(function (data) {
                     _this.errorMessage = "Error fetching Ad Data";
                 });
-            }
+            };
             AdController.prototype.applyForJob = function () {
                 var _this = this;
                 if (!this.currentUser.profile.isLoggedIn) {
@@ -27,7 +35,7 @@ var app;
                     });
                 }
             };
-            AdController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser'];
+            AdController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
             return AdController;
         }());
         angular

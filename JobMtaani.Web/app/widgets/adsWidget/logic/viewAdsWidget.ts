@@ -10,8 +10,8 @@
         adStatus: number;
         applicantsNotification: string;
 
-        static $inject = ['app.services.AdService', '$routeParams'];
-        constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams) {
+        static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser'];
+        constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams, private currentUser: app.services.CurrentUser) {
             this.alerts = [];
             this.renderAd();
         }
@@ -25,7 +25,6 @@
             else {
                 this.adService.getAdDetails(adId)
                     .success((data, status) => {
-                        //this.alerts.push();
                         this.adDetails = data;
                         if (this.adDetails.AdApplicantDetails.length < 1) {
                             this.applicantsNotification = "Nobody has applied to this ad yet";

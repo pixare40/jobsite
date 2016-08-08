@@ -3,9 +3,10 @@ var app;
     var widgets;
     (function (widgets) {
         var ViewAdsWidgetController = (function () {
-            function ViewAdsWidgetController(adService, $routeParams) {
+            function ViewAdsWidgetController(adService, $routeParams, currentUser) {
                 this.adService = adService;
                 this.$routeParams = $routeParams;
+                this.currentUser = currentUser;
                 this.alerts = [];
                 this.renderAd();
             }
@@ -18,7 +19,6 @@ var app;
                 else {
                     this.adService.getAdDetails(adId)
                         .success(function (data, status) {
-                        //this.alerts.push();
                         _this.adDetails = data;
                         if (_this.adDetails.AdApplicantDetails.length < 1) {
                             _this.applicantsNotification = "Nobody has applied to this ad yet";
@@ -54,7 +54,7 @@ var app;
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
                 });
             };
-            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams'];
+            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser'];
             return ViewAdsWidgetController;
         }());
         var ViewAdsWidget = (function () {

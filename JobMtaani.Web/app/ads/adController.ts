@@ -12,13 +12,22 @@
         successMessage: string;
         errorMessage: string;
 
-        static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser']
-        constructor(private adService: app.services.AdService, private $routeParams: IAdRouteParams, private currentUser: app.services.CurrentUser) {
-            this.adService.getAd($routeParams.adId).success((data, status) => {
+        static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location']
+        constructor(private adService: app.services.AdService, private $routeParams: IAdRouteParams,
+            private currentUser: app.services.CurrentUser, private $location: ng.ILocationService) {
+            this.renderAd();
+        }
+
+        renderAd(): void {
+            this.adService.getAd(this.$routeParams.adId).success((data, status) => {
+                if (this.currentUser.currentUserId == data.AccountId) {
+                    this.$location.path("/viewAd/" + data.AdId);
+                    return;
+                }
                 this.ad = data;
             }).error((data) => {
                 this.errorMessage = "Error fetching Ad Data";
-            })
+            });
         }
 
         applyForJob(): void {

@@ -57,6 +57,7 @@ var app;
                 this.getCurrentUserInfo().success(function (data, status) {
                     _this.profile.username = data.UserName;
                     _this.profile.isLoggedIn = true;
+                    _this.currentUserId = data.UserId;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
                 }).error(function (data, status) {
                     console.log("USER_LOGIN_FAILED");
