@@ -11,7 +11,7 @@ var app;
                 this.$rootScope = $rootScope;
                 this.$location = $location;
                 this.isLoggedIn = false;
-                this.$scope.$on('USER_LOGGED_IN', function (event, data) {
+                this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, function (event, data) {
                     _this.onLogin();
                 });
                 this.$scope.$on('USER_LOGGED_OUT', function (event, data) {
@@ -67,4 +67,3 @@ var app;
             .controller('app.home.HomeController', HomeController);
     })(home = app.home || (app.home = {}));
 })(app || (app = {}));
-//# sourceMappingURL=homeController.js.map

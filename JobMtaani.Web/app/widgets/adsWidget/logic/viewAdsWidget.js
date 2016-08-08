@@ -3,10 +3,11 @@ var app;
     var widgets;
     (function (widgets) {
         var ViewAdsWidgetController = (function () {
-            function ViewAdsWidgetController(adService, $routeParams, currentUser) {
+            function ViewAdsWidgetController(adService, $routeParams, currentUser, $location) {
                 this.adService = adService;
                 this.$routeParams = $routeParams;
                 this.currentUser = currentUser;
+                this.$location = $location;
                 this.alerts = [];
                 this.renderAd();
             }
@@ -20,6 +21,10 @@ var app;
                     this.adService.getAdDetails(adId)
                         .success(function (data, status) {
                         _this.adDetails = data;
+                        if (_this.currentUser.currentUserId !== data.AdDetails.AccountId) {
+                            _this.$location.path("/ad/" + data.AdDetails.AdId);
+                            return;
+                        }
                         if (_this.adDetails.AdApplicantDetails.length < 1) {
                             _this.applicantsNotification = "Nobody has applied to this ad yet";
                         }
@@ -54,7 +59,7 @@ var app;
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
                 });
             };
-            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser'];
+            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
             return ViewAdsWidgetController;
         }());
         var ViewAdsWidget = (function () {
@@ -75,4 +80,3 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewAdsWidget.js.map

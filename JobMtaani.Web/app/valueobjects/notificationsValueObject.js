@@ -11,9 +11,9 @@ var app;
             NotificationsValueObject.PROFILE_CATEGORY_CHANGE = "PROFILE_CATEGORY_CHANGE";
             NotificationsValueObject.SHOW_LOADING = "SHOW_LOADING";
             NotificationsValueObject.HIDE_LOADING = "HIDE_LOADING";
+            NotificationsValueObject.USER_INFO_AVAILABLE = "USER_INFO_AVAILABLE";
             return NotificationsValueObject;
         }());
         ValueObjects.NotificationsValueObject = NotificationsValueObject;
     })(ValueObjects = app.ValueObjects || (app.ValueObjects = {}));
 })(app || (app = {}));
-//# sourceMappingURL=notificationsValueObject.js.map

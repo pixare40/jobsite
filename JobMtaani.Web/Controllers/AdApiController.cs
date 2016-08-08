@@ -185,10 +185,11 @@ namespace JobMtaani.Web.Controllers
                     adApplication.DateClosed = DateTime.Now;
                     closedAd.AdClosed = true;
 
+                    this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
+
                     adApplicationRespository.Update(adApplication);
                     adRepository.Update(closedAd);
 
-                    this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
 
                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 

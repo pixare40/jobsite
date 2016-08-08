@@ -8,7 +8,7 @@
         static $inject = ['$scope', 'app.services.CurrentUser', 'app.services.AdService','$location']
         constructor(private $scope: ng.IScope, private currentUser: app.services.CurrentUser,
             private adService: app.services.AdService, private $location: ng.ILocationService) {
-            this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, (event, data) => {
+            this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, (event, data) => {
                 this.initialiseDashboard();
             });
 

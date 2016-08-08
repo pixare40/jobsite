@@ -6,5 +6,6 @@
         public static PROFILE_CATEGORY_CHANGE: string = "PROFILE_CATEGORY_CHANGE";
         public static SHOW_LOADING: string = "SHOW_LOADING";
         public static HIDE_LOADING: string = "HIDE_LOADING";
+        public static USER_INFO_AVAILABLE: string = "USER_INFO_AVAILABLE";
     }
 }

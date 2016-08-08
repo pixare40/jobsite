@@ -23,7 +23,11 @@ var app;
                 this.setUserInfo();
                 this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, function (event) {
                     _this.removeUserCookie();
+                    _this.currentUserId = null;
                     _this.$location.path("/home");
+                });
+                this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, function (event) {
+                    _this.setUserInfo();
                 });
             }
             CurrentUser.prototype.setProfile = function (username, token, isLoggedIn) {
@@ -59,7 +63,7 @@ var app;
                     _this.profile.username = data.UserName;
                     _this.profile.isLoggedIn = true;
                     _this.currentUserId = data.UserId;
-                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
+                    _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, null);
                 }).error(function (data, status) {
                     console.log("USER_LOGIN_FAILED");
                     if (status == 401) {
@@ -85,4 +89,3 @@ var app;
             .factory('app.services.CurrentUser', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=currentUser.js.map

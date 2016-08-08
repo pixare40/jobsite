@@ -32,7 +32,12 @@
             this.setUserInfo();
             this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_OUT, (event) => {
                 this.removeUserCookie();
+                this.currentUserId = null;
                 this.$location.path("/home");
+            });
+
+            this.$rootScope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, (event) => {
+                this.setUserInfo();
             });
         }
 
@@ -74,7 +79,7 @@
                 this.profile.username = data.UserName;
                 this.profile.isLoggedIn = true;
                 this.currentUserId = data.UserId;
-                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, null);
+                this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, null);
             }).error((data, status) => {
                 console.log("USER_LOGIN_FAILED");
                 if (status == 401) {

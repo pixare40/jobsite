@@ -12,7 +12,7 @@
             private $rootScope: ng.IRootScopeService, private $location: ng.ILocationService) {
             this.isLoggedIn = false;
 
-            this.$scope.$on('USER_LOGGED_IN', (event, data) => {
+            this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, (event, data) => {
                 this.onLogin();
             });
 

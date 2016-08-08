@@ -11,7 +11,7 @@ var app;
                     this.currentUser = currentUser;
                     this.adService = adService;
                     this.$location = $location;
-                    this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_LOGGED_IN, function (event, data) {
+                    this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, function (event, data) {
                         _this.initialiseDashboard();
                     });
                     this.initialiseDashboard();
@@ -50,4 +50,3 @@ var app;
         })(widgets = profile.widgets || (profile.widgets = {}));
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=dashboardWidget.js.map
