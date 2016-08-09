@@ -84,6 +84,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             })
         }
+
+        reopenAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
+            return this.$http.post("/api/ad/ReopenAd", adId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            })
+        }
     }
 
     angular

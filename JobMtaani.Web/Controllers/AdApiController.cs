@@ -243,6 +243,27 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
+        [HttpPost]
+        [Authorize]
+        [Route("ReopenAd")]
+        public HttpResponseMessage ReopenAd(HttpRequestMessage request, [FromBody]int adId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad closedAd = adRepository.Get(adId);
+
+                closedAd.AdClosed = false;
+
+                adRepository.Update(closedAd);
+
+                response = request.CreateResponse(HttpStatusCode.OK, closedAd);
+
+                return response;
+            });
+        }
+
         [HttpGet]
         [AllowAnonymous]
         [Route("GetTopAds")]

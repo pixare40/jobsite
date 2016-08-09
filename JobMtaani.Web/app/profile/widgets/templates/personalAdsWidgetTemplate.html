@@ -6,7 +6,7 @@
     <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}}</div>
     <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
     <br />
-    <div id="job-listings" class="col-md-12">
+    <div id="job-listings" class="col-md-8">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -32,11 +32,17 @@
                     <td>
                         <button class="btn btn-success" ng-click="vm.viewDetails(ad.AdId)" ng-disabled="ad.AdClosed">View Applicants &amp; Edit</button><br/>
                         <div ng-show="ad.AdClosed">
-                            <p style="color: red">This Ad Has Been Closed</p>
+                            <p style="color: red">This Ad Has Been Closed </p>
+                            <button class="btn btn-primary" ng-click="vm.reopenAd(ad.AdId)">Re-Open</button>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+    <div id="my-ads" class="col-md-4">
+        <h3>Tip</h3>
+        <p>Here you can view all your opened ads as well as close them</p>
+        <p>You can also hire applicants for a role</p>
     </div>
 </div>

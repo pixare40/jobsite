@@ -55,6 +55,7 @@ var app;
                 var _this = this;
                 this.adService.closeAd(this.adDetails.AdDetails.AdId).success(function () {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Ad Closed Succesfully"));
+                    _this.renderAd();
                 }).error(function () {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
                 });
@@ -80,4 +81,3 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewAdsWidget.js.map

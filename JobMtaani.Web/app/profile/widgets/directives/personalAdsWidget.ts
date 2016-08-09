@@ -4,6 +4,7 @@
 
         ads: app.domain.Ad[];
         errorMessage: string;
+        successMessage: string;
 
         static $inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
         constructor(private adService: app.services.AdService, private currentUser: app.services.CurrentUser, private $location: ng.ILocationService) {
@@ -30,6 +31,21 @@
 
         viewDetails(adId: number): void {
             this.$location.path("/viewAd/" + adId);
+        }
+
+        nullifyMessages(): void {
+            this.errorMessage = null;
+            this.successMessage = null;
+        }
+
+        reopenAd(adId: number): void {
+            this.nullifyMessages();
+            this.adService.reopenAd(adId).success(() => {
+                this.getAds();
+                this.successMessage = "Success Re-Opening Advert";
+            }).error(() => {
+                this.errorMessage = "Error closing ad";
+            })
         }
     }
 

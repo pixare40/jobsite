@@ -29,6 +29,20 @@ var app;
             PersonalAdsWidgetController.prototype.viewDetails = function (adId) {
                 this.$location.path("/viewAd/" + adId);
             };
+            PersonalAdsWidgetController.prototype.nullifyMessages = function () {
+                this.errorMessage = null;
+                this.successMessage = null;
+            };
+            PersonalAdsWidgetController.prototype.reopenAd = function (adId) {
+                var _this = this;
+                this.nullifyMessages();
+                this.adService.reopenAd(adId).success(function () {
+                    _this.getAds();
+                    _this.successMessage = "Success Re-Opening Advert";
+                }).error(function () {
+                    _this.errorMessage = "Error closing ad";
+                });
+            };
             PersonalAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
             return PersonalAdsWidgetController;
         }());
@@ -51,4 +65,3 @@ var app;
             .directive('jmPersonalAdsWidget', PersonalAdsWidget.instance);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=personalAdsWidget.js.map
