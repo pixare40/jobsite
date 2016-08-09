@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 using JobMtaani.Web.Models;
 using Microsoft.AspNet.Identity.Owin;
 using JobMtaani.Business.Managers;
+using System.Threading.Tasks;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -185,7 +186,7 @@ namespace JobMtaani.Web.Controllers
                     adApplication.DateClosed = DateTime.Now;
                     closedAd.AdClosed = true;
 
-                    this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
+                   // this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
 
                     adApplicationRespository.Update(adApplication);
                     adRepository.Update(closedAd);
@@ -335,7 +336,7 @@ namespace JobMtaani.Web.Controllers
                     Account applicant = UserManager.FindById(adApplication.AdApplicantId);
                     Account jobOwner = UserManager.FindById(ad.AccountId);
 
-                    messageManager.NewJobApplicationMessage(adApplication, jobOwner, applicant);
+                   // messageManager.NewJobApplicationMessage(adApplication, jobOwner, applicant);
 
                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 

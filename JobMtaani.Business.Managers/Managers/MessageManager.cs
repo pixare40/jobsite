@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.ComponentModel;
 
 namespace JobMtaani.Business.Managers
 {
@@ -40,7 +41,7 @@ namespace JobMtaani.Business.Managers
             return client;
         }
 
-        public Message SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee)
+        public void SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee)
         {
             SmtpClient client = CreateSmtpClient();
 
@@ -53,13 +54,9 @@ namespace JobMtaani.Business.Managers
 
             SendEmailMessage(client, hiredEmployee.Email, jobApplicationSuccessfulMessage);
             SendEmailMessage(client, jobOwner.Email, hiredEmployeeDetailsMessage);
-
-            Message message = new Message();
-
-            return message;
         }
 
-        public Message NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant)
+        public void NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant)
         {
             SmtpClient client = CreateSmtpClient();
 
@@ -73,10 +70,6 @@ namespace JobMtaani.Business.Managers
 
             SendEmailMessage(client, jobApplicant.Email, newJobApplicationMessage);
             SendEmailMessage(client, jobOwner.Email, newPotentialHireJobApplication);
-
-            Message message = new Message();
-
-            return message;
         }
 
         private static void SendEmailMessage(SmtpClient client,string sendTo, string messageToSend)
@@ -85,15 +78,20 @@ namespace JobMtaani.Business.Managers
                             messageToSend);
 
             message.BodyEncoding = Encoding.UTF8;
-            message.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+            client.SendAsync(message, null);
 
-            client.Send(message);
+            message.Dispose();
+        }
+
+        private static void SendCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            //No action we ignore success or failure of message send
         }
     }
 
     public interface IMessageManager
     {
-        Message SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
-        Message NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);
+        void SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
+        void NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);
     }
 }
