@@ -252,7 +252,15 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
+                string userId = User.Identity.GetUserId();
+
                 Ad closedAd = adRepository.Get(adId);
+
+                if (userId != closedAd.AccountId)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, "Not authorised to make this request");
+                    return response;
+                }
 
                 closedAd.AdClosed = false;
 

@@ -28,3 +28,4 @@ var app;
         services.MessagingService = MessagingService;
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=messagingService.js.map
