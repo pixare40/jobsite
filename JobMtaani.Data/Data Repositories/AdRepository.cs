@@ -45,7 +45,7 @@ namespace JobMtaani.Data
             }
         }
 
-        public Ad[] GetPageAds(string userId, int pageNumber)
+        public Ad[] GetPageAds(string userId, int pageNumber, bool userOwned)
         {
             if(pageNumber == 0)
             {
@@ -57,6 +57,13 @@ namespace JobMtaani.Data
 
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
+                if (!userOwned)
+                {
+                    return (from e in entityContext.AdSet
+                            where e.AccountId != userId
+                            orderby e.DateCreated descending
+                            select e).Skip(skip).Take(pageSize).ToArray();
+                }
                 return (from e in entityContext.AdSet
                         where e.AccountId == userId
                         orderby e.DateCreated descending
@@ -64,15 +71,32 @@ namespace JobMtaani.Data
             }
         }
 
-        public int GetTotalUserAds(string userId)
+        public int GetTotalUserAds(string userId, bool forUser)
         {
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
+                if (!forUser)
+                {
+                    return (from e in entityContext.AdSet
+                            where e.AccountId != userId
+                            select e).Count();
+                }
                 return  (from e in entityContext.AdSet
                          where e.AccountId == userId
                          select e).Count();
             }
         }
+
+        public int GetTotalAds(string userId)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AccountId != userId
+                        select e).Count();
+            }
+        }
+
 
         public Ad[] GetByLocation(string userId)
         {

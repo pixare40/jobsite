@@ -91,14 +91,14 @@
             });
         }
 
-        getPageAds(pageNumber: number): ng.IHttpPromise<app.domain.Ad[]> {
-            return this.$http.post("/api/ad/GetPageAds", pageNumber, {
+        getPageAds(pageNumber: number, forUser: boolean): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.get("/api/ad/GetPageAds?pageNumber=" + pageNumber + "&userOwned=" + forUser, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
 
-        getTotalUserAds(): ng.IHttpPromise<number> {
-            return this.$http.get("/api/ad/GetTotalUserAds", {
+        getTotalUserAds(forUser: boolean): ng.IHttpPromise<number> {
+            return this.$http.get("/api/ad/GetTotalUserAds?forUser=" + forUser, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }

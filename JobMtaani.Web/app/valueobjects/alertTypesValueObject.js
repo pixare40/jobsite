@@ -14,4 +14,3 @@ var app;
         ValueObjects.AlertTypesValueObject = AlertTypesValueObject;
     })(ValueObjects = app.ValueObjects || (app.ValueObjects = {}));
 })(app || (app = {}));
-//# sourceMappingURL=alertTypesValueObject.js.map

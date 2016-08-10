@@ -31,13 +31,13 @@ var app;
             };
             PersonalAdsWidgetController.prototype.getTotalUserAds = function () {
                 var _this = this;
-                this.adService.getTotalUserAds().success(function (data) {
+                this.adService.getTotalUserAds(true).success(function (data) {
                     _this.totalItems = data;
                 });
             };
             PersonalAdsWidgetController.prototype.pageChanged = function () {
                 var _this = this;
-                this.adService.getPageAds(this.currentPage).success(function (data, status) {
+                this.adService.getPageAds(this.currentPage, true).success(function (data, status) {
                     _this.ads = data;
                 }).error(function () {
                     _this.errorMessage = "Error fetching page data, please check you internet connection";
@@ -82,4 +82,3 @@ var app;
             .directive('jmPersonalAdsWidget', PersonalAdsWidget.instance);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=personalAdsWidget.js.map

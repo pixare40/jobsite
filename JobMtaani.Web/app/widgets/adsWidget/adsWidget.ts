@@ -6,19 +6,36 @@
         successMessage: string;
         generalMessage: string;
         ads: app.domain.Ad[];
+        totalItems: number;
+        currentPage: number;
+        maxSize: number;
 
         static $inject = ['app.services.AdService', '$location']
         constructor(private adService: app.services.AdService, private $location: ng.ILocationService) {
-            adService.getAllAds().success(
-                (data, status) => {
-                    this.ads = data;
-                    if (data.length == 0) {
-                        this.generalMessage = "No Job Listings found at this time, please check back later";
-                    }
-                })
-                .error((data) => {
-                    this.errorMessage = "Error fetching ads, Check Connection";
-                });
+            this.currentPage = 1;
+            this.maxSize = 6;
+
+            this.getTotalAds();
+            this.pageChanged();
+        }
+
+        getTotalAds(): void {
+            this.adService.getTotalUserAds(false).success((data) => {
+                this.totalItems = data;
+            }).error(() => {
+                this.errorMessage = "Error fetching ads, Check Connection";
+            })
+        }
+
+        pageChanged(): void {
+            this.adService.getPageAds(this.currentPage, false).success((data) => {
+                this.ads = data;
+                if (data.length == 0) {
+                    this.generalMessage = "No Job Listings found at this time, please check back later";
+                }
+            }).error(() => {
+                this.errorMessage = "Error fetching ads, Check Connection";
+            })
         }
 
         goToAd(adId: number) {

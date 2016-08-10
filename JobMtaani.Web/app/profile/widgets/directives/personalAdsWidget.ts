@@ -37,13 +37,13 @@
         }
 
         getTotalUserAds(): void {
-            this.adService.getTotalUserAds().success((data) => {
+            this.adService.getTotalUserAds(true).success((data) => {
                 this.totalItems = data;
             });
         }
 
         pageChanged(): void {
-            this.adService.getPageAds(this.currentPage).success((data, status) => {
+            this.adService.getPageAds(this.currentPage, true).success((data, status) => {
                 this.ads = data;
             }).error(() => {
                 this.errorMessage = "Error fetching page data, please check you internet connection";

@@ -339,10 +339,10 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
-        [HttpPost]
+        [HttpGet]
         [Authorize]
         [Route("GetPageAds")]
-        public HttpResponseMessage GetPageAds(HttpRequestMessage request, [FromBody]int pageNumber)
+        public HttpResponseMessage GetPageAds(HttpRequestMessage request, [FromUri]int pageNumber, [FromUri]bool userOwned)
         {
             return GetHttpResponse(request, () =>
             {
@@ -350,7 +350,7 @@ namespace JobMtaani.Web.Controllers
 
                 string currentUserId = User.Identity.GetUserId();
 
-                Ad[] ads = adRepository.GetPageAds(currentUserId, pageNumber);
+                Ad[] ads = adRepository.GetPageAds(currentUserId, pageNumber, userOwned);
 
                 response = request.CreateResponse(HttpStatusCode.OK, ads);
 
@@ -361,7 +361,7 @@ namespace JobMtaani.Web.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetTotalUserAds")]
-        public HttpResponseMessage GetTotalUserAds(HttpRequestMessage request)
+        public HttpResponseMessage GetTotalUserAds(HttpRequestMessage request, [FromUri]bool forUser)
         {
             return GetHttpResponse(request, () =>
             {
@@ -369,7 +369,7 @@ namespace JobMtaani.Web.Controllers
 
                 string currentUserId = User.Identity.GetUserId();
 
-                int totalAds = adRepository.GetTotalUserAds(currentUserId);
+                int totalAds = adRepository.GetTotalUserAds(currentUserId, forUser);
 
                 response = request.CreateResponse(HttpStatusCode.OK, totalAds);
 

@@ -70,13 +70,13 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            AdService.prototype.getPageAds = function (pageNumber) {
-                return this.$http.post("/api/ad/GetPageAds", pageNumber, {
+            AdService.prototype.getPageAds = function (pageNumber, forUser) {
+                return this.$http.get("/api/ad/GetPageAds?pageNumber=" + pageNumber + "&userOwned=" + forUser, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            AdService.prototype.getTotalUserAds = function () {
-                return this.$http.get("/api/ad/GetTotalUserAds", {
+            AdService.prototype.getTotalUserAds = function (forUser) {
+                return this.$http.get("/api/ad/GetTotalUserAds?forUser=" + forUser, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
@@ -89,4 +89,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

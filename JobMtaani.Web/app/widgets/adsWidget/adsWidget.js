@@ -4,19 +4,32 @@ var app;
     (function (widgets) {
         var AdsWidgetController = (function () {
             function AdsWidgetController(adService, $location) {
-                var _this = this;
                 this.adService = adService;
                 this.$location = $location;
-                adService.getAllAds().success(function (data, status) {
+                this.currentPage = 1;
+                this.maxSize = 6;
+                this.getTotalAds();
+                this.pageChanged();
+            }
+            AdsWidgetController.prototype.getTotalAds = function () {
+                var _this = this;
+                this.adService.getTotalUserAds(false).success(function (data) {
+                    _this.totalItems = data;
+                }).error(function () {
+                    _this.errorMessage = "Error fetching ads, Check Connection";
+                });
+            };
+            AdsWidgetController.prototype.pageChanged = function () {
+                var _this = this;
+                this.adService.getPageAds(this.currentPage, false).success(function (data) {
                     _this.ads = data;
                     if (data.length == 0) {
                         _this.generalMessage = "No Job Listings found at this time, please check back later";
                     }
-                })
-                    .error(function (data) {
+                }).error(function () {
                     _this.errorMessage = "Error fetching ads, Check Connection";
                 });
-            }
+            };
             AdsWidgetController.prototype.goToAd = function (adId) {
                 this.$location.path('/ad/' + adId);
             };
@@ -41,4 +54,3 @@ var app;
             .directive('jmAdsWidget', AdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adsWidget.js.map
