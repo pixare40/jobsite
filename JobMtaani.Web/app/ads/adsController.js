@@ -12,7 +12,7 @@ var app;
                 this.categoryService.getAllCategories().success(function (data, status) {
                     _this.categories = data;
                 }).error(function (data) {
-                    _this.message = "Error Fetching Categories";
+                    _this.errorString = "Error Fetching Categories";
                 });
                 if (this.adService.categoryJobs !== null || this.adService.categoryJobs.length < 1) {
                     this.adList = this.adService.categoryJobs;
@@ -24,9 +24,9 @@ var app;
             AdsController.prototype.createAd = function () {
                 var _this = this;
                 this.adService.createAd(this.ad).success(function (data, status) {
-                    _this.message = "Ad Created Succesfully";
+                    _this.successString = "Ad Created Succesfully";
                 }).error(function (data) {
-                    _this.message = "Error";
+                    _this.errorString = "Error creating ad, please fill all the fields required";
                 });
             };
             AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService'];

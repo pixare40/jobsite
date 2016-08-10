@@ -12,7 +12,9 @@
     }
 
     class LoginWidgetController implements ILoginWidgetController {
-        loginMessage: string;
+        successString: string;
+        errorString: string;
+        generalMessage: string;
         userdata: LoginModel;
         isLoggedIn: boolean;
 
@@ -29,7 +31,7 @@
             this.userdata.grant_type = "password";
             this.accountService.login(this.userdata).success(
                 (data, status) => {
-                    this.loginMessage = "Welcome Back!";
+                    this.successString = "Welcome Back!";
                     this.userdata.password = "";
                     this.currentUser.setProfile(this.userdata.username, data.access_token, true);
                     this.$cookies.put("authtoken", data.access_token);
@@ -37,19 +39,14 @@
                     this.$rootScope.$broadcast("USER_LOGGED_IN", null);
                     this.$location.path('/profile');
                 }
-            ).error(
-                (response, status) => {
-                    this.userdata.password = "";
-                    this.isLoggedIn = false;
-                    this.loginMessage = response.statusText + "\r\n";
-                    if (response.error_description)
-                        this.loginMessage += response.error_description;
-
-                    if (response.error) {
-                        this.loginMessage += response.error;
-                    }
+            ).error((response, status) => {
+                this.errorString = null;
+                this.userdata.password = "";
+                this.isLoggedIn = false;
+                if (response.error_description) {
+                    this.errorString = response.error_description;
                 }
-                );
+            });
         }
 
         logout(): void {
@@ -57,7 +54,7 @@
                 (data, status) => {
                     this.currentUser.setProfile("", "", false);
                     this.isLoggedIn = false;
-                    this.loginMessage = "Logout Succesful";
+                    this.successString = "Logout Succesful";
                     this.userdata = new LoginModel("","","");
                     this.$rootScope.$broadcast('USER_LOGGED_OUT', null);
                 }).error(

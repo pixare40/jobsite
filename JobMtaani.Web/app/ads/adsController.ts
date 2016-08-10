@@ -8,7 +8,9 @@
 
     class AdsController implements IAdsController {
         title: string
-        message: string;
+        successString: string;
+        errorString: string;
+        generalMessage: string;
         ad: app.domain.Ad;
         adList: app.domain.Ad[];
         categories: app.domain.Category[];
@@ -20,7 +22,7 @@
             this.categoryService.getAllCategories().success((data, status) => {
                 this.categories = data;
             }).error((data) => {
-                this.message = "Error Fetching Categories";
+                this.errorString = "Error Fetching Categories";
                 });
 
             if (this.adService.categoryJobs !==null || this.adService.categoryJobs.length < 1) {
@@ -33,10 +35,10 @@
         createAd(): void {
             this.adService.createAd(this.ad).success(
                 (data, status) => {
-                    this.message = "Ad Created Succesfully";
+                    this.successString = "Ad Created Succesfully";
                 }).error(
-                (data)=>{
-                    this.message = "Error";
+                (data) => {
+                    this.errorString = "Error creating ad, please fill all the fields required";
                 });
         }
     }

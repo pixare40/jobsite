@@ -1,6 +1,10 @@
 ﻿<div>
     <div class="col-md-8" id="login-container" >
         <h2>Log in</h2>
+        <br />
+        <div ng-show="vm.successString != null" class="alert alert-success" role="alert">{{vm.successString}}</div>
+        <div ng-show="vm.errorString != null" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
+        <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
         <section id="loginForm">
 
             <h4>Use an account to log in.</h4>
