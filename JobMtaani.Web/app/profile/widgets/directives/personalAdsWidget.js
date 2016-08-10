@@ -7,8 +7,11 @@ var app;
                 this.adService = adService;
                 this.currentUser = currentUser;
                 this.$location = $location;
+                this.currentPage = 1;
+                this.maxSize = 6;
                 if (this, currentUser.getProfile().isLoggedIn) {
-                    this.getAds();
+                    this.getTotalUserAds();
+                    this.pageChanged();
                 }
                 else {
                     this.$location.path('/home');
@@ -24,6 +27,20 @@ var app;
                         return;
                     }
                     _this.errorMessage = "Error Fetching Data";
+                });
+            };
+            PersonalAdsWidgetController.prototype.getTotalUserAds = function () {
+                var _this = this;
+                this.adService.getTotalUserAds().success(function (data) {
+                    _this.totalItems = data;
+                });
+            };
+            PersonalAdsWidgetController.prototype.pageChanged = function () {
+                var _this = this;
+                this.adService.getPageAds(this.currentPage).success(function (data, status) {
+                    _this.ads = data;
+                }).error(function () {
+                    _this.errorMessage = "Error fetching page data, please check you internet connection";
                 });
             };
             PersonalAdsWidgetController.prototype.viewDetails = function (adId) {

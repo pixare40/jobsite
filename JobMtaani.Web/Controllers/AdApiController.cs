@@ -341,6 +341,44 @@ namespace JobMtaani.Web.Controllers
 
         [HttpPost]
         [Authorize]
+        [Route("GetPageAds")]
+        public HttpResponseMessage GetPageAds(HttpRequestMessage request, [FromBody]int pageNumber)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                string currentUserId = User.Identity.GetUserId();
+
+                Ad[] ads = adRepository.GetPageAds(currentUserId, pageNumber);
+
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetTotalUserAds")]
+        public HttpResponseMessage GetTotalUserAds(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                string currentUserId = User.Identity.GetUserId();
+
+                int totalAds = adRepository.GetTotalUserAds(currentUserId);
+
+                response = request.CreateResponse(HttpStatusCode.OK, totalAds);
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Authorize]
         [Route("Apply")]
         public HttpResponseMessage ApplyToAd(HttpRequestMessage request, [FromBody]int adId)
         {

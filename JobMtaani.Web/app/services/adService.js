@@ -70,6 +70,16 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getPageAds = function (pageNumber) {
+                return this.$http.post("/api/ad/GetPageAds", pageNumber, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            AdService.prototype.getTotalUserAds = function () {
+                return this.$http.get("/api/ad/GetTotalUserAds", {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

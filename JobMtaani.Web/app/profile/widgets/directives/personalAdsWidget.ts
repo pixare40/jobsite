@@ -5,11 +5,18 @@
         ads: app.domain.Ad[];
         errorMessage: string;
         successMessage: string;
+        totalItems: number;
+        currentPage: number;
+        maxSize: number;
 
         static $inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
         constructor(private adService: app.services.AdService, private currentUser: app.services.CurrentUser, private $location: ng.ILocationService) {
+            this.currentPage = 1;
+            this.maxSize = 6;
+
             if (this, currentUser.getProfile().isLoggedIn) {
-                this.getAds();
+                this.getTotalUserAds();
+                this.pageChanged();
             }
             else {
                 this.$location.path('/home');
@@ -26,6 +33,20 @@
                 }
 
                 this.errorMessage = "Error Fetching Data";
+            })
+        }
+
+        getTotalUserAds(): void {
+            this.adService.getTotalUserAds().success((data) => {
+                this.totalItems = data;
+            });
+        }
+
+        pageChanged(): void {
+            this.adService.getPageAds(this.currentPage).success((data, status) => {
+                this.ads = data;
+            }).error(() => {
+                this.errorMessage = "Error fetching page data, please check you internet connection";
             })
         }
 

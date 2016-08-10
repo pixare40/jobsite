@@ -82,13 +82,25 @@
         getLocalAds(): ng.IHttpPromise<app.domain.Ad[]> {
             return this.$http.get('/api/ad/GetLocalJobs', {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
-            })
+            });
         }
 
         reopenAd(adId: number): ng.IHttpPromise<app.domain.Ad> {
             return this.$http.post("/api/ad/ReopenAd", adId, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
-            })
+            });
+        }
+
+        getPageAds(pageNumber: number): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.post("/api/ad/GetPageAds", pageNumber, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
+        getTotalUserAds(): ng.IHttpPromise<number> {
+            return this.$http.get("/api/ad/GetTotalUserAds", {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
         }
     }
 
