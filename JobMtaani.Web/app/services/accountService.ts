@@ -35,6 +35,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        updateUserDetails(updatedDetails: app.domain.ProfileModel) {
+            return this.$http.post("/api/Account/UpdateAccountDetails", updatedDetails, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
     }
 
 

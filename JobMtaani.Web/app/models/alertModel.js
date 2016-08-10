@@ -12,3 +12,4 @@ var app;
         models.AlertModel = AlertModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=alertModel.js.map

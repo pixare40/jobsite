@@ -85,12 +85,37 @@ namespace JobMtaani.Web.Controllers
             Account user = UserManager.FindById(User.Identity.GetUserId());
 
             UserAccountModel userAccountModel = new UserAccountModel() {UserId = user.Id, Email=user.Email,
-                FirstName =user.FirstName, LastName=user.LastName, UserName=user.UserName,
+                FirstName =user.FirstName, LastName=user.LastName, UserName=user.UserName, Location = user.Location,
                 SubscriptionStatus= user.SubscriptionStatus, PhoneNumber =user.PhoneNumber };
 
             response = request.CreateResponse(HttpStatusCode.OK, userAccountModel);
 
             return response;
+        }
+
+        [HttpPost]
+        [Route("UpdateAccountDetails")]
+        public async Task<IHttpActionResult> UpdateAccountDetails(UserAccountModel model)
+        {
+            string currentUser = User.Identity.GetUserId();
+
+            Account currentUserAccount = UserManager.FindById(currentUser);
+
+            currentUserAccount.UserName = model.UserName;
+            currentUserAccount.Email = model.Email;
+            currentUserAccount.FirstName = model.FirstName;
+            currentUserAccount.LastName = model.LastName;
+            currentUserAccount.Location = model.Location;
+            currentUserAccount.PhoneNumber = model.PhoneNumber;
+
+            IdentityResult result = await UserManager.UpdateAsync(currentUserAccount);
+
+            if (!result.Succeeded)
+            {
+                return GetErrorResult(result);
+            }
+
+            return Ok();
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
@@ -171,6 +196,8 @@ namespace JobMtaani.Web.Controllers
 
             return Ok();
         }
+
+        
 
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]

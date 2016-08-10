@@ -1,6 +1,8 @@
 ﻿<div class="widget-content">
+    <br />
     <div ng-show="vm.successString != null" class="alert alert-success" role="alert">{{vm.successString}}</div>
     <div ng-show="vm.errorString != null" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
+    <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
     <div class="row">
         <table class="table table-condensed">
             <tbody>
@@ -39,5 +41,6 @@
                 </tr>
             </tbody>
         </table>
+        <button ng-click="vm.goToEditProfile()" class="btn btn-info">Edit Profile</button>
     </div>
 </div>

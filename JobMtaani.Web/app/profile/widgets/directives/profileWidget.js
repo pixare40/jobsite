@@ -27,7 +27,9 @@ var app;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.SHOW_LOADING, null);
                 this.currentUser.getCurrentUserInfo().success(function (data, status) {
                     _this.userdata = data;
-                    _this.successString = "Succesfully Login";
+                    if (_this.userdata.Location == null) {
+                        _this.generalMessage = "Consider setting your location to get more relevant job suggestions";
+                    }
                     _this.errorString = null;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                     _this.gettingUserInfo = false;
@@ -41,6 +43,9 @@ var app;
                     }
                     _this.errorString = "Error Fetching User Data";
                 });
+            };
+            ProfileWidgetController.prototype.goToEditProfile = function () {
+                this.$location.path("/editProfile");
             };
             ProfileWidgetController.$inject = ['app.services.CurrentUser', '$scope', '$location', '$rootScope'];
             return ProfileWidgetController;
@@ -63,3 +68,4 @@ var app;
             .directive('jmProfileWidget', ProfileWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profileWidget.js.map

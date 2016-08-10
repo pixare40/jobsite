@@ -9,7 +9,36 @@ var app;
                 this.$scope = $scope;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
+                this.initialiseProfile();
             }
+            ProfileController.prototype.initialiseProfile = function () {
+                var _this = this;
+                if (!this.currentUser.getProfile().isLoggedIn) {
+                    this.$location.path("/login");
+                    return;
+                }
+                this.currentUser.getCurrentUserInfo().success(function (data) {
+                    _this.userdata = data;
+                }).error(function () {
+                    _this.errorMessage = "Error fetching your details, please check your internet connection";
+                });
+            };
+            ProfileController.prototype.editProfile = function () {
+                var _this = this;
+                this.accountService.updateUserDetails(this.userdata).success(function () {
+                    _this.errorMessage = null;
+                    _this.successMessage = "Succesfully updated your details";
+                }).error(function (response) {
+                    _this.errorMessage = "";
+                    _this.isLoggedIn = false;
+                    // Validation errors
+                    if (response.ModelState) {
+                        for (var key in response.ModelState) {
+                            _this.errorMessage += response.ModelState[key] + "\r\n";
+                        }
+                    }
+                });
+            };
             ProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope'];
             return ProfileController;
         }());
@@ -18,3 +47,4 @@ var app;
             .controller('app.profile.ProfileController', ProfileController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profileController.js.map

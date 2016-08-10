@@ -16,3 +16,4 @@ var app;
         domain.Payment = Payment;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=payment.js.map

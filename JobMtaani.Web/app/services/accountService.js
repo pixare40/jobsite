@@ -27,6 +27,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AccountService.prototype.updateUserDetails = function (updatedDetails) {
+                return this.$http.post("/api/Account/UpdateAccountDetails", updatedDetails, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AccountService.$inject = ['$http', 'app.services.CurrentUser'];
             return AccountService;
         }());
@@ -36,3 +41,4 @@ var app;
             .service('app.services.AccountService', AccountService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountService.js.map

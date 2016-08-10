@@ -66,6 +66,11 @@
                 controller: 'app.dashboard.DashboardController',
                 controllerAs: 'vm'
             })
+            .when('/editProfile', {
+                templateUrl: '/app/profile/editProfileTemplate.html',
+                controller: 'app.profile.ProfileController',
+                controllerAs: 'vm'
+            })
             .when('/profile', {
                 templateUrl: '/app/profile/profileTemplate.html',
                 controller: 'app.profile.ProfileController',

@@ -6,6 +6,7 @@
             public UserName: string,
             public FirstName: string,
             public LastName: string,
+            public Location: string,
             public DateJoined: Date,
             public PhoneNumber: string,
             public SubscriptionStatus: boolean

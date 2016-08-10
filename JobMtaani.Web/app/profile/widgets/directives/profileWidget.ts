@@ -32,7 +32,9 @@
             this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.SHOW_LOADING, null);
             this.currentUser.getCurrentUserInfo().success((data, status) => {
                 this.userdata = data;
-                this.successString = "Succesfully Login";
+                if (this.userdata.Location == null) {
+                    this.generalMessage = "Consider setting your location to get more relevant job suggestions"
+                }
                 this.errorString = null;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                 this.gettingUserInfo = false;
@@ -46,6 +48,10 @@
                 }
                 this.errorString = "Error Fetching User Data";
             })
+        }
+
+        goToEditProfile(): void {
+            this.$location.path("/editProfile");
         }
     }
 

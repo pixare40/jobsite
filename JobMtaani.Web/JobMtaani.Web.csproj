@@ -306,6 +306,7 @@
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
+    <Content Include="app\profile\editProfileTemplate.html" />
     <Content Include="app\profile\loginTemplate.html" />
     <Content Include="app\profile\personalAdsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
