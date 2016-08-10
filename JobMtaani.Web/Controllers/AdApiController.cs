@@ -318,6 +318,11 @@ namespace JobMtaani.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
+                if(newAd.AdTitle == null || newAd.AdLocation == null || newAd.AdDescription == null)
+                {
+                    return response = request.CreateResponse(HttpStatusCode.BadRequest, "Not all required fields have been filled");
+                }
+
                 newAd.AccountId = User.Identity.GetUserId();
                 newAd.DateCreated = DateTime.Now;
                 newAd.AdClosed = false;
