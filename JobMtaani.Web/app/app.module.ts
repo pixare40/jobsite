@@ -96,6 +96,11 @@
                 controller: 'app.dashboard.CategoryController',
                 controllerAs: 'vm'
             })
+            .when('/adApplication/:applicationId', {
+                templateUrl: '/app/ads/adApplicationTemplate.html',
+                controller: 'app.ads.AdApplicationController',
+                controllerAs: 'vm'
+            })
             .otherwise('/home');
     }
 

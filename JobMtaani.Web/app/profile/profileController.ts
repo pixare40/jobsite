@@ -16,6 +16,9 @@
             private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService) {
 
             this.initialiseProfile();
+            this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, (event, data) => {
+                this.$location.path("/profile");
+            });
         }
 
         initialiseProfile(): void {

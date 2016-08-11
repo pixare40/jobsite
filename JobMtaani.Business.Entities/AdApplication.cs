@@ -42,6 +42,7 @@ namespace JobMtaani.Business.Entities
     {
         Accepted = 1,
         Denied = 2,
-        Open = 3
+        Open = 3,
+        Withdrawn = 4
     }
 }

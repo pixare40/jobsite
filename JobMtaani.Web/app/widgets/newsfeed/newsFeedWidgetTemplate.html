@@ -6,19 +6,24 @@
     </div>
     <div>
         <div class="news-feed-items">
-            <ul>
-                <li ng-repeat="newsFeedItem in vm.newsFeedItems">
-                    <div class="news-feed-item" >
-                    Application made to job title <b>{{newsFeedItem.AdDetails.AdTitle}}</b> based in <b>{{newsFeedItem.AdDetails.AdLocation}}</b>
-                    <p>
-                        Status : <span ng-if="newsFeedItem.AdApplication.Status == 3">Job application is still open</span>
-                        <span ng-if="newsFeedItem.AdApplication.Status == 1">Accepted</span>
-                        <span ng-if="newsFeedItem.AdApplication.Status == 2">Your application was not succesful</span>
-                    </p>
-                </div>
-                                </li>
-            </ul>
-            
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="newsFeedItem in vm.newsFeedItems">
+                        <td>
+                            <div class="news-feed-item">
+                                <p>Application made to job title <b>{{newsFeedItem.AdDetails.AdTitle}}</b> based in <b>{{newsFeedItem.AdDetails.AdLocation}}</b></p>
+                                <p>
+                                    Status : <span ng-if="newsFeedItem.AdApplication.Status == 3">Job application is still open</span>
+                                    <span ng-if="newsFeedItem.AdApplication.Status == 1">Accepted</span>
+                                    <span ng-if="newsFeedItem.AdApplication.Status == 2">Your application was not succesful</span>
+                                    <span ng-if="newsFeedItem.AdApplication.Status == 4">Your application was withdrawn</span>
+                                </p>
+                                <a ng-click="vm.viewApplication(newsFeedItem.AdApplication.AdApplicationId)">View Application</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

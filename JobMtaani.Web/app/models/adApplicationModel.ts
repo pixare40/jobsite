@@ -7,7 +7,7 @@
         Status: number
     }
 
-    export class AdApplicantModel implements IAdApplicationModel {
+    export class AdApplicationModel implements IAdApplicationModel {
         constructor(public AdApplicationId: number, public AdId: number, public AdApplicantId: string, public DateApplied: Date, public Status: number) {
         }
     }

@@ -300,6 +300,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\ads\adApplicationTemplate.html" />
     <Content Include="app\ads\adsTemplate.html" />
     <Content Include="app\ads\adTemplate.html" />
     <Content Include="app\ads\createAdTemplate.html" />
@@ -1255,6 +1256,10 @@
       <Project>{399510ED-946A-4A97-BEAB-08B6A6E4C85C}</Project>
       <Name>JobMtaani.Business.Managers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JobMtaani.Business\JobMtaani.Business.csproj">
+      <Project>{B922A82A-08D6-40ED-8C80-E4B1B739B5D4}</Project>
+      <Name>JobMtaani.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JobMtaani.Client.Bootstrapper\JobMtaani.Client.Bootstrapper.csproj">
       <Project>{6F848176-FD73-40D5-8E0F-47D798D695F1}</Project>
       <Name>JobMtaani.Client.Bootstrapper</Name>
@@ -1282,6 +1287,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\ads\ad.ts" />
+    <TypeScriptCompile Include="app\ads\adApplicationController.ts" />
     <TypeScriptCompile Include="app\ads\adController.ts" />
     <TypeScriptCompile Include="app\ads\ads.module.ts" />
     <TypeScriptCompile Include="app\ads\adsController.ts" />
@@ -1297,6 +1303,7 @@
     <TypeScriptCompile Include="app\home\homeController.ts" />
     <TypeScriptCompile Include="app\home\indexController.ts" />
     <TypeScriptCompile Include="app\layout\layout.module.ts" />
+    <TypeScriptCompile Include="app\models\adApplicationDetailsModel.ts" />
     <TypeScriptCompile Include="app\models\adApplicationModel.ts" />
     <TypeScriptCompile Include="app\models\adDetailsModel.ts" />
     <TypeScriptCompile Include="app\models\alertModel.ts" />

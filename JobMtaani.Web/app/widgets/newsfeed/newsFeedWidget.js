@@ -3,8 +3,9 @@ var app;
     var widgets;
     (function (widgets) {
         var NewsFeedWidgetController = (function () {
-            function NewsFeedWidgetController(adService) {
+            function NewsFeedWidgetController(adService, $location) {
                 this.adService = adService;
+                this.$location = $location;
                 this.alerts = [];
                 this.getNewsFeedItems();
             }
@@ -21,7 +22,10 @@ var app;
                     console.log("Error Fetching News Feed");
                 });
             };
-            NewsFeedWidgetController.$inject = ["app.services.AdService"];
+            NewsFeedWidgetController.prototype.viewApplication = function (adApplicationId) {
+                this.$location.path("/adApplication/" + adApplicationId);
+            };
+            NewsFeedWidgetController.$inject = ["app.services.AdService", "$location"];
             return NewsFeedWidgetController;
         }());
         var NewsFeedWidget = (function () {

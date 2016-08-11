@@ -1,0 +1,71 @@
+﻿<div class="container">
+    <br/>
+    <div class="row">
+        <h1>Your application for the role of {{vm.adApplication.AdDetails.AdTitle}}</h1>
+        <div ng-show="vm.successString != null" class="alert alert-success" role="alert">{{vm.successString}}</div>
+        <div ng-show="vm.errorString != null" class="alert alert-danger" role="alert">{{vm.errorString}}</div>
+        <div ng-show="vm.generalMessage != null" class="alert alert-info" role="alert">{{vm.generalMessage}}</div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="ad-details">
+                <h3>Ad Details</h3>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Job Title</td>
+                            <td>{{vm.adApplication.AdDetails.AdTitle}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{vm.adApplication.AdDetails.AdDescription}}</td>
+                        </tr>
+                        <tr>
+                            <td>Location</td>
+                            <td>{{vm.adApplication.AdDetails.AdLocation}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date Created</td>
+                            <td>{{vm.adApplication.AdDetails.DateCreated | date:'medium'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="ad-application-details">
+                <h3>Application Details</h3>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Date Applied</td>
+                            <td>{{vm.adApplication.AdApplication.DateApplied | date:'medium'}}</td>
+                        </tr>
+                        <tr ng-show="vm.adApplication.AdApplication.Status == 1">
+                            <td>Status</td>
+                            <td class="accepted">Accepted</td>
+                        </tr>
+                        <tr ng-show="vm.adApplication.AdApplication.Status == 2">
+                            <td>Status</td>
+                            <td class="denied">Denied</td>
+                        </tr>
+                        <tr ng-show="vm.adApplication.AdApplication.Status == 3">
+                            <td>Status</td>
+                            <td class="openApplication">Open</td>
+                        </tr>
+                        <tr ng-show="vm.adApplication.AdApplication.Status == 4">
+                            <td>Status</td>
+                            <td class="withdrawn">Withdrawn</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ng-show="vm.adApplication.AdApplication.Status != 1 || vm.adApplication.AdApplication.Status != 2">
+                                <button class="btn btn-sm btn-info" ng-click="vm.withdrawApplication()" ng-disabled="vm.adApplication.AdApplication.Status == 4">Withdraw Application</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

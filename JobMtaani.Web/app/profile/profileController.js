@@ -4,12 +4,16 @@ var app;
     (function (profile) {
         var ProfileController = (function () {
             function ProfileController(currentUser, accountService, $scope, $location, $rootScope) {
+                var _this = this;
                 this.currentUser = currentUser;
                 this.accountService = accountService;
                 this.$scope = $scope;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
                 this.initialiseProfile();
+                this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, function (event, data) {
+                    _this.$location.path("/profile");
+                });
             }
             ProfileController.prototype.initialiseProfile = function () {
                 var _this = this;

@@ -80,6 +80,16 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getAdApplication = function (adApplicationId) {
+                return this.$http.get("/api/ad/GetApplicationDetails?applicationId=" + adApplicationId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            AdService.prototype.withdrawAdApplication = function (applicationid) {
+                return this.$http.get("/api/ad/WithdrawAdApplication?applicationId=" + applicationid, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

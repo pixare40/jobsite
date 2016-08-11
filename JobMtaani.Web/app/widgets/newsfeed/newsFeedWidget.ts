@@ -5,8 +5,8 @@
         alerts: Array<app.models.IAlertModal>;
         newsFeedItems: app.models.NewsFeedModel[];
 
-        static $inject = ["app.services.AdService"];
-        constructor(private adService: app.services.AdService) {
+        static $inject = ["app.services.AdService", "$location"];
+        constructor(private adService: app.services.AdService,private $location: ng.ILocationService) {
             this.alerts = [];
             this.getNewsFeedItems();
         }
@@ -23,6 +23,10 @@
             }).error((data, status) => {
                 console.log("Error Fetching News Feed");
             });
+        }
+
+        viewApplication(adApplicationId: number): void {
+            this.$location.path("/adApplication/" + adApplicationId);
         }
     }
 

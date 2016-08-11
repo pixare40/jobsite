@@ -123,6 +123,23 @@ textarea {
 .ad-title h2{
 }
 
+/*View Application Page*/
+.accepted{
+    color: azure;
+}
+
+.denied{
+    color: red;
+}
+
+.openApplication{
+    color: dodgerblue;
+}
+
+.withdrawn{
+    color: indianred;
+}
+
 /** Loading Spinner */
 .loading-spinner .modal-content {
     height: 0px;

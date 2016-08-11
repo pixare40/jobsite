@@ -15,6 +15,7 @@ using JobMtaani.Web.Models;
 using Microsoft.AspNet.Identity.Owin;
 using JobMtaani.Business.Managers;
 using System.Threading.Tasks;
+using JobMtaani.Business.Models;
 
 namespace JobMtaani.Web.Controllers
 {
@@ -377,6 +378,75 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
+        [HttpGet]
+        [Authorize]
+        [Route("GetApplicationDetails")]
+        public HttpResponseMessage GetApplicationDetails(HttpRequestMessage request, [FromUri]int applicationId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                if (applicationId == 0)
+                {
+                    return request.CreateResponse(HttpStatusCode.BadRequest, "No Application Selected");
+                }
+
+                string userId = User.Identity.GetUserId();
+
+                AdApplicationDetailsModel adDetails = new AdApplicationDetailsModel();
+
+                AdApplication adApplication = adApplicationRespository.Get(applicationId);
+
+                if(adApplication.AdApplicantId != userId)
+                {
+                    return request.CreateResponse(HttpStatusCode.Unauthorized);
+                }
+
+                Ad ad = adRepository.Get(adApplication.AdId);
+
+                adDetails.AdApplication = adApplication;
+                adDetails.AdDetails = ad;
+
+                response = request.CreateResponse(HttpStatusCode.OK, adDetails);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("WithdrawAdApplication")]
+        public HttpResponseMessage WithdrawApplication(HttpRequestMessage request, [FromUri]int applicationId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                if (applicationId == 0)
+                {
+                    return request.CreateResponse(HttpStatusCode.BadRequest, "No Application Selected");
+                }
+
+                string userId = User.Identity.GetUserId();
+
+                AdApplication adApplication = adApplicationRespository.Get(applicationId);
+
+                adApplication.Status = ApplicationStatus.Withdrawn;
+
+                if (adApplication.AdApplicantId != userId)
+                {
+                    return request.CreateResponse(HttpStatusCode.Unauthorized);
+                }
+
+                adApplicationRespository.Update(adApplication);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+
+                return response;
+            });
+        }
+
         [HttpPost]
         [Authorize]
         [Route("Apply")]
@@ -397,9 +467,20 @@ namespace JobMtaani.Web.Controllers
 
                 if(existingAdApplication != null)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
+                    if(existingAdApplication.Status == ApplicationStatus.Withdrawn)
+                    {
+                        existingAdApplication.Status = ApplicationStatus.Open;
+                        adApplicationRespository.Update(existingAdApplication);
 
-                    return response;
+                        response = request.CreateResponse(HttpStatusCode.OK, existingAdApplication);
+                        return response;
+                    }
+                    else
+                    {
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
+
+                        return response;
+                    }
                 }
                 else
                 {
