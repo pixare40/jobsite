@@ -25,6 +25,9 @@
                     return;
                 }
                 this.ad = data;
+                if (this.ad.AdClosed) {
+                    this.errorMessage = "This ad has been closed"
+                }
             }).error((data) => {
                 this.errorMessage = "Error fetching Ad Data";
             });

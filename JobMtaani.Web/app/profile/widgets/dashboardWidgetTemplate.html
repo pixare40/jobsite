@@ -22,7 +22,7 @@
                 <tbody>
                     <tr ng-repeat="job in vm.jobs">
                         <td>{{job.AdTitle}}</td>
-                        <td><a ng-click="vm.applyToJob(job.AdId)">Apply</a></td>
+                        <td ng-hide="job.AdClosed"><a ng-click="vm.applyToJob(job.AdId)">Apply</a></td>
                     </tr>
                     <tr ng-if="vm.jobs.length < 1">
                         <td colspan="2">

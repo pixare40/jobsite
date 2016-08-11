@@ -18,6 +18,9 @@ var app;
                         return;
                     }
                     _this.ad = data;
+                    if (_this.ad.AdClosed) {
+                        _this.errorMessage = "This ad has been closed";
+                    }
                 }).error(function (data) {
                     _this.errorMessage = "Error fetching Ad Data";
                 });

@@ -19,6 +19,7 @@ namespace JobMtaani.Data
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from a in entityContext.AdSet
+                        where a.AdClosed == false
                         where a.CategoryId == categoryId
                         select a).ToArray();
             }
@@ -30,6 +31,7 @@ namespace JobMtaani.Data
             {
                 return (from e in entityContext.AdSet
                         where e.AccountId != userId
+                        where e.AdClosed == false
                         select e).ToArray();
             }
         }
@@ -39,9 +41,11 @@ namespace JobMtaani.Data
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
-                 where e.AdLocation == locationString where e.AccountId != userId
-                 orderby e.DateCreated descending
-                 select e).Take(7).ToArray<Ad>();
+                        where e.AdClosed == false
+                        where e.AdLocation == locationString
+                        where e.AccountId != userId
+                        orderby e.DateCreated descending
+                        select e).Take(7).ToArray<Ad>();
             }
         }
 
@@ -87,23 +91,13 @@ namespace JobMtaani.Data
             }
         }
 
-        public int GetTotalAds(string userId)
-        {
-            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
-            {
-                return (from e in entityContext.AdSet
-                        where e.AccountId != userId
-                        select e).Count();
-            }
-        }
-
-
         public Ad[] GetByLocation(string userId)
         {
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
                         where e.AccountId != userId
+                        where e.AdClosed == false
                         orderby e.DateCreated descending
                         select e).Take(7).ToArray<Ad>();
             }
@@ -114,6 +108,7 @@ namespace JobMtaani.Data
             using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
+                        where e.AdClosed == false
                         orderby e.DateCreated descending
                         select e).Take(7).ToArray<Ad>();
             }
@@ -124,6 +119,7 @@ namespace JobMtaani.Data
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
+                        where e.AdClosed == false
                         where e.AdTitle.Contains(searchModel.JobType)
                         select e).ToArray();
             }
@@ -144,6 +140,7 @@ namespace JobMtaani.Data
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdSet
+                        where e.AdClosed == false
                         orderby e.DateCreated descending
                         select e).Take(12).ToArray();
             }
