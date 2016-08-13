@@ -40,6 +40,7 @@ var app;
                 var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
                 this.adService.hireEmployee(hireModel).success(function (data) {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Person hired succesfully"));
+                    _this.renderAd();
                 }).error(function () {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
                 });
@@ -81,4 +82,3 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewAdsWidget.js.map

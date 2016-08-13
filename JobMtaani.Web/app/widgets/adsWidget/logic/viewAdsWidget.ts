@@ -46,6 +46,7 @@
             var hireModel = new app.models.HireModel(this.adDetails.AdDetails.AdId, profileModel.UserName);
             this.adService.hireEmployee(hireModel).success((data) => {
                 this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.SUCCESS, "Person hired succesfully"));
+                this.renderAd();
             }).error(() => {
                 this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
             });

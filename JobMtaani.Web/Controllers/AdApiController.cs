@@ -163,9 +163,9 @@ namespace JobMtaani.Web.Controllers
         [HttpPost]
         [Authorize]
         [Route("HireEmployee")]
-        public HttpResponseMessage HireEmployee(HttpRequestMessage request, HireModel hireModel)
+        public async Task<HttpResponseMessage> HireEmployee(HttpRequestMessage request, HireModel hireModel)
         {
-            return GetHttpResponse(request, () =>
+            return await GetHttpResponseAsync(request, async () =>
             {
                 HttpResponseMessage response = null;
 
@@ -176,7 +176,7 @@ namespace JobMtaani.Web.Controllers
                 Account applicant = UserManager.FindById(applicantId);
                 Account jobOwner = UserManager.FindById(closedAd.AccountId);
 
-                if(adApplication.AdApplicantId == closedAd.AccountId)
+                if (adApplication.AdApplicantId == closedAd.AccountId)
                 {
                     response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
                     return response;
@@ -187,7 +187,7 @@ namespace JobMtaani.Web.Controllers
                     adApplication.DateClosed = DateTime.Now;
                     closedAd.AdClosed = true;
 
-                   // this.messageManager.SendHiredMessage(adApplication,jobOwner, applicant);
+                    bool c = await messageManager.SendHiredMessage(adApplication, jobOwner, applicant);
 
                     adApplicationRespository.Update(adApplication);
                     adRepository.Update(closedAd);
@@ -450,53 +450,58 @@ namespace JobMtaani.Web.Controllers
         [HttpPost]
         [Authorize]
         [Route("Apply")]
-        public HttpResponseMessage ApplyToAd(HttpRequestMessage request, [FromBody]int adId)
+        public async Task<HttpResponseMessage> ApplyToAd(HttpRequestMessage request, [FromBody]int adId)
         {
-            return GetHttpResponse(request, () =>
-            {
-                HttpResponseMessage response = null;
+            return await GetHttpResponseAsync(request, async () =>
+             {
+                 HttpResponseMessage response = null;
 
-                Ad ad = adRepository.Get(adId);
+                 Ad ad = adRepository.Get(adId);
 
-                string userId = User.Identity.GetUserId();
+                 string userId = User.Identity.GetUserId();
 
-                AdApplication adApplication = new AdApplication() {
-                    AdApplicantId = userId, AdId = ad.AdId, DateApplied=DateTime.Now, Status=ApplicationStatus.Open };
+                 AdApplication adApplication = new AdApplication()
+                 {
+                     AdApplicantId = userId,
+                     AdId = ad.AdId,
+                     DateApplied = DateTime.Now,
+                     Status = ApplicationStatus.Open
+                 };
 
-                AdApplication existingAdApplication = adApplicationRespository.FindbyHireModel(userId, adId);
+                 AdApplication existingAdApplication = adApplicationRespository.FindbyHireModel(userId, adId);
 
-                if(existingAdApplication != null)
-                {
-                    if(existingAdApplication.Status == ApplicationStatus.Withdrawn)
-                    {
-                        existingAdApplication.Status = ApplicationStatus.Open;
-                        adApplicationRespository.Update(existingAdApplication);
+                 if (existingAdApplication != null)
+                 {
+                     if (existingAdApplication.Status == ApplicationStatus.Withdrawn)
+                     {
+                         existingAdApplication.Status = ApplicationStatus.Open;
+                         adApplicationRespository.Update(existingAdApplication);
 
-                        response = request.CreateResponse(HttpStatusCode.OK, existingAdApplication);
-                        return response;
-                    }
-                    else
-                    {
-                        response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
+                         response = request.CreateResponse(HttpStatusCode.OK, existingAdApplication);
+                         return response;
+                     }
+                     else
+                     {
+                         response = request.CreateResponse(HttpStatusCode.BadRequest, adApplication);
 
-                        return response;
-                    }
-                }
-                else
-                {
-                    adApplicationRespository.Add(adApplication);
+                         return response;
+                     }
+                 }
+                 else
+                 {
+                     adApplicationRespository.Add(adApplication);
 
-                    Account applicant = UserManager.FindById(adApplication.AdApplicantId);
-                    Account jobOwner = UserManager.FindById(ad.AccountId);
+                     Account applicant = UserManager.FindById(adApplication.AdApplicantId);
+                     Account jobOwner = UserManager.FindById(ad.AccountId);
 
-                   // messageManager.NewJobApplicationMessage(adApplication, jobOwner, applicant);
+                     bool messagedelivered = await messageManager.NewJobApplicationMessage(adApplication, jobOwner, applicant);
 
-                    response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
-                    return response;
-                }
-                
-            });
+                     return response;
+                 }
+
+             });
         }
 
         [HttpPost]

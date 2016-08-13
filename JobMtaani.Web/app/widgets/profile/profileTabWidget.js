@@ -35,4 +35,3 @@ var app;
             .directive('jmProfileTabWidget', ProfileTabWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=profileTabWidget.js.map

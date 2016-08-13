@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.ComponentModel;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace JobMtaani.Business.Managers
 {
@@ -28,38 +30,22 @@ namespace JobMtaani.Business.Managers
             messagesRepository = messageRepo;
         }
 
-        private static SmtpClient CreateSmtpClient()
+        public async Task<bool> SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee)
         {
-            SmtpClient client = new SmtpClient();
-            client.Port = 587;
-            client.Host = "smtp.gmail.com";
-            client.EnableSsl = true;
-            client.Timeout = 10000;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("kabzegara@gmail.com", "miriam12");
-            return client;
-        }
-
-        public void SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee)
-        {
-            SmtpClient client = CreateSmtpClient();
-
-            string jobApplicationSuccessfulMessage = string.Format(@"Your Job Application to job number {0} was 
-                                                       succesfull, Please log on to http://www.jobmtaani.co.ke/#/profile to view succesful applications, meanwhile expect a call from {1} on {2}",
+            string jobApplicationSuccessfulMessage = string.Format(@"Your Job Application to job number {0} was succesfull, Please log on to http://www.jobmtaani.co.ke/#/profile to view succesful applications, meanwhile expect a call from {1} on {2}",
                                                        adApplication.AdId, jobOwner.FirstName, jobOwner.PhoneNumber);
 
             string hiredEmployeeDetailsMessage = string.Format(@"You have hired a new employee, call or text {0} on {1} to set up a meeting",
                 hiredEmployee.FirstName, hiredEmployee.PhoneNumber);
 
-            SendEmailMessage(client, hiredEmployee.Email, jobApplicationSuccessfulMessage);
-            SendEmailMessage(client, jobOwner.Email, hiredEmployeeDetailsMessage);
+            await SendEmailMessage(hiredEmployee.Email, jobApplicationSuccessfulMessage);
+            await SendEmailMessage(jobOwner.Email, hiredEmployeeDetailsMessage);
+
+            return true;
         }
 
-        public void NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant)
+        public async Task<bool> NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant)
         {
-            SmtpClient client = CreateSmtpClient();
-
             Ad ad = this.adRepository.Get(adApplication.AdId);
 
             string newJobApplicationMessage = string.Format(@"Your have applied to job titled {0} Please log on to http://www.jobmtaani.co.ke/#/profile to all applications, we will notify you if the application is succesful",
@@ -68,30 +54,41 @@ namespace JobMtaani.Business.Managers
             string newPotentialHireJobApplication = string.Format(@"There has been a new application to the position you opened titled {0} log on to  http://www.jobmtaani.co.ke/#/profile to view all applications",
                 ad.AdTitle);
 
-            SendEmailMessage(client, jobApplicant.Email, newJobApplicationMessage);
-            SendEmailMessage(client, jobOwner.Email, newPotentialHireJobApplication);
+            await SendEmailMessage(jobApplicant.Email, newJobApplicationMessage);
+            await SendEmailMessage(jobOwner.Email, newPotentialHireJobApplication);
+
+            return true;
         }
 
-        private static void SendEmailMessage(SmtpClient client,string sendTo, string messageToSend)
+        private async Task<IRestResponse> SendEmailMessage(string sendTo, string messageToSend)
         {
-            MailMessage message = new MailMessage("donotreply@jobmtaani.co.ke", sendTo, "Job Mtaani job application",
-                            messageToSend);
-
-            message.BodyEncoding = Encoding.UTF8;
-            client.SendAsync(message, null);
-
-            message.Dispose();
+            RestClient restclient = new RestClient();
+            restclient.BaseUrl = new Uri("https://api.mailgun.net/v3");
+            restclient.Authenticator =
+                    new HttpBasicAuthenticator("api",
+                                               "key-8e75e1172a6db68ad916d00668843662");
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain",
+                                 "jobmtaani.co.ke", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Job Mtaani <mailgun@jobmtaani.co.ke>");
+            request.AddParameter("to", sendTo);
+            request.AddParameter("subject", "Job Mtaani Job Activity");
+            request.AddParameter("text", messageToSend);
+            request.Method = Method.POST;
+            IRestResponse x = await restclient.ExecuteTaskAsync(request);
+            return x;
         }
 
-        private static void SendCompleted(object sender, AsyncCompletedEventArgs e)
+        private void OnRestCallExecuted(IRestResponse arg1, RestRequestAsyncHandle arg2)
         {
-            //No action we ignore success or failure of message send
+            //ignore callback
         }
     }
 
     public interface IMessageManager
     {
-        void SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
-        void NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);
+        Task<bool> SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
+        Task<bool> NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);
     }
 }

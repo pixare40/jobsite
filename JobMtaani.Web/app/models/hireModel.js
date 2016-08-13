@@ -12,4 +12,3 @@ var app;
         models.HireModel = HireModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
-//# sourceMappingURL=hireModel.js.map
