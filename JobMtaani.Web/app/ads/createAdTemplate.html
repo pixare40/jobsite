@@ -15,6 +15,7 @@
                     <input type="text"
                            id="adtitle"
                            class="form-control"
+                           required
                            placeholder="Ad Title"
                            ng-model="vm.ad.AdTitle" />
                 </div>
@@ -22,6 +23,7 @@
                     <label for="category" class="control-label">Category</label>
                     <select ng-model="vm.ad.CategoryId"
                             id="category"
+                            required
                             ng-options="category.CategoryId as category.CategoryName for category in vm.categories"></select>
                 </div>
                 <div class="form-group">
@@ -29,6 +31,7 @@
                     <textarea class="form-control"
                               id="addescription"
                               placeholder="Ad Description"
+                              required
                               ng-model="vm.ad.AdDescription"></textarea>
                 </div>
                 <div class="form-group">
@@ -37,6 +40,7 @@
                            id="adlocation"
                            class="form-control"
                            placeholder="Ad Location"
+                           required
                            ng-model="vm.ad.AdLocation" />
                 </div>
 

@@ -43,7 +43,10 @@
         }
 
         isValidForm(): boolean {
-            if (this.ad.AdTitle || this.ad.AdDescription || this.ad.AdLocation) {
+            if (!this.ad) {
+                return false;
+            }
+            if (this.ad.AdTitle && this.ad.AdDescription && this.ad.AdLocation) {
                 return true;
             }
             else {
