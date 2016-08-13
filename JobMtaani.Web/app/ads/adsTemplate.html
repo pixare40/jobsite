@@ -1,18 +1,20 @@
 ﻿<div class="container">
     <div class="row">
-        <div ng-show="{{vm.categoryAds !== null}}" class="categoryAds">
-            <div class="panel panel-info" ng-repeat="ad in vm.categoryAds">
-                <div class="panel-heading">{{ad.AdTitle}}</div>
-                <div class="panel-body">
-                    {{ad.AdDescription}}
-                </div>
-                <div class="panel-footer">
-                    Location: {{ad.AdLocation}} <button class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button>
+        <div class="col-md-7">
+            <div ng-show="{{vm.categoryAds !== null}}" class="categoryAds">
+                <div class="panel panel-info" ng-repeat="ad in vm.categoryAds">
+                    <div class="panel-heading">{{ad.AdTitle}}</div>
+                    <div class="panel-body">
+                        {{ad.AdDescription}}
+                    </div>
+                    <div class="panel-footer">
+                        Location: {{ad.AdLocation}} <button class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-
+        <div class="col-md-5">
+            <div jm-quick-links-widget></div>
+        </div>
     </div>
 </div>

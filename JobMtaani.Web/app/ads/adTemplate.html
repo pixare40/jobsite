@@ -4,7 +4,7 @@
     <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}} <a ng-href="#profile">View Other Ads</a></div>
     <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}} <a ng-href="#profile">View Other Ads</a></div>
 
-    <div>
+    <div class="col-md-7">
         <div class="ad-title">
             <h2>{{vm.ad.AdTitle}}</h2>
             <h5><u>Location: {{vm.ad.AdLocation}}</u> <button class="btn btn-primary pull-right" ng-disabled="vm.ad.AdClosed" ng-click="vm.applyForJob()">Apply For Job</button></h5>
@@ -16,6 +16,9 @@
                 {{vm.ad.AdDescription}}
             </div>
         </div>
+    </div>
+    <div class="col-md-5">
+        <div jm-quick-links-widget></div>
     </div>
 </div>
 
