@@ -41,6 +41,15 @@
                     this.errorString = "Error creating ad, please fill all the fields required";
                 });
         }
+
+        isValidForm(): boolean {
+            if (this.ad.AdTitle || this.ad.AdDescription || this.ad.AdLocation) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
 
     angular

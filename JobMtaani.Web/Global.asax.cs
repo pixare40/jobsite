@@ -31,8 +31,8 @@ namespace JobMtaani.Web
             DependencyResolver.SetResolver(new MefDependencyResolver(container)); // view controllers
             GlobalConfiguration.Configuration.DependencyResolver = new MefAPIDependencyResolver(container); // web api controllers
 
-            var migrator = new DbMigrator(new Migrations.Configuration());
-            migrator.Update();
+            //var migrator = new DbMigrator(new Migrations.Configuration());
+            //migrator.Update();
         }
     }
 }

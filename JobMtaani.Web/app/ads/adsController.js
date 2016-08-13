@@ -29,6 +29,14 @@ var app;
                     _this.errorString = "Error creating ad, please fill all the fields required";
                 });
             };
+            AdsController.prototype.isValidForm = function () {
+                if (this.ad.AdTitle || this.ad.AdDescription || this.ad.AdLocation) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            };
             AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService'];
             return AdsController;
         }());

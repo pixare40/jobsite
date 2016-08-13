@@ -304,6 +304,7 @@
     <Content Include="app\ads\adsTemplate.html" />
     <Content Include="app\ads\adTemplate.html" />
     <Content Include="app\ads\createAdTemplate.html" />
+    <Content Include="app\blocks\widgets\quicklinks\quickLinksWidgetTemplate.html" />
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
@@ -1297,6 +1298,7 @@
     <TypeScriptCompile Include="app\app.values.ts" />
     <TypeScriptCompile Include="app\blocks\blocks.module.ts" />
     <TypeScriptCompile Include="app\blocks\logdecorator.config.ts" />
+    <TypeScriptCompile Include="app\blocks\widgets\quicklinks\quickLinksWidget.ts" />
     <TypeScriptCompile Include="app\dashboard\categoryController.ts" />
     <TypeScriptCompile Include="app\dashboard\dashboard.module.ts" />
     <TypeScriptCompile Include="app\home\home.module.ts" />

@@ -5,7 +5,7 @@
         'ngRoute',
         //'app.core',
         'app.widgets',
-        //'app.blocks',
+        'app.blocks',
         'app.services',
         //'app.layout',
         ///*
