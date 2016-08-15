@@ -52,6 +52,7 @@
             this.successMessage = null;
 
             this.userdata.ConfirmPassword = this.userdata.Password;
+            this.userdata.UserName = this.userdata.PhoneNumber;
             this.accountService.register(this.userdata)
                 .success(
                 (data, status) => {

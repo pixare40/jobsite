@@ -46,7 +46,7 @@
             if (!this.ad) {
                 return false;
             }
-            if (this.ad.AdTitle && this.ad.AdDescription && this.ad.AdLocation) {
+            if (this.ad.AdTitle && this.ad.AdDescription && this.ad.AdLocation && this.ad.ApproximateWage) {
                 return true;
             }
             else {

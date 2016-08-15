@@ -29,6 +29,7 @@ var app;
             };
             ProfileController.prototype.editProfile = function () {
                 var _this = this;
+                this.userdata.UserName = this.userdata.PhoneNumber;
                 this.accountService.updateUserDetails(this.userdata).success(function () {
                     _this.errorMessage = null;
                     _this.successMessage = "Succesfully updated your details";

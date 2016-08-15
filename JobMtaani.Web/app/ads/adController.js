@@ -18,6 +18,7 @@ var app;
                         return;
                     }
                     _this.ad = data;
+                    _this.timelapse = _this.dateDiffInDays(_this.ad.DateCreated);
                     if (_this.ad.AdClosed) {
                         _this.errorMessage = "This ad has been closed";
                     }
@@ -37,6 +38,16 @@ var app;
                         _this.errorMessage = "An Error was encountered applying to the ad";
                     });
                 }
+            };
+            AdController.prototype.dateDiffInDays = function (dateCreated) {
+                var currentDate = new Date();
+                var mydate = dateCreated;
+                var adDateCreation = new Date(mydate);
+                var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+                // Discard the time and time-zone information.
+                var utc1 = Date.UTC(adDateCreation.getFullYear(), adDateCreation.getMonth(), adDateCreation.getDate());
+                var utc2 = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+                return Math.floor((utc2 - utc1) / _MS_PER_DAY);
             };
             AdController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
             return AdController;

@@ -35,6 +35,7 @@
         }
 
         editProfile(): void {
+            this.userdata.UserName = this.userdata.PhoneNumber;
             this.accountService.updateUserDetails(this.userdata).success(() => {
                 this.errorMessage = null;
                 this.successMessage = "Succesfully updated your details";

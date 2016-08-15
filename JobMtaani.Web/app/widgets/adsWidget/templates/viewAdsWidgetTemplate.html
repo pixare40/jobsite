@@ -8,6 +8,8 @@
         <a ng-href="#/myads">Back to your ads</a>
         <h1>{{vm.adDetails.AdDetails.AdTitle}}</h1>
         <p>{{vm.adDetails.AdDetails.AdDescription}}</p>
+        <p>Pays {{vm.adDetails.AdDetails.ApproximateWage}} Kenya Shillings</p>
+        <p>Days on the site: <b>{{vm.timelapse}}</b> Days</p>
         <button class="btn btn-default" ng-click="vm.closeAd()" ng-disabled="vm.adDetails.AdDetails.AdClosed">Close Advertisement</button>
     </div>
     <div class="col-lg-6">

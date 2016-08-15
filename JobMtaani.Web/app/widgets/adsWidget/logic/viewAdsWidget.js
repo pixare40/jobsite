@@ -21,6 +21,7 @@ var app;
                     this.adService.getAdDetails(adId)
                         .success(function (data, status) {
                         _this.adDetails = data;
+                        _this.timelapse = _this.dateDiffInDays(_this.adDetails.AdDetails.DateCreated);
                         if (_this.currentUser.currentUserId !== data.AdDetails.AccountId) {
                             _this.$location.path("/ad/" + data.AdDetails.AdId);
                             return;
@@ -60,6 +61,16 @@ var app;
                 }).error(function () {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Closing Ad, please try again later"));
                 });
+            };
+            ViewAdsWidgetController.prototype.dateDiffInDays = function (dateCreated) {
+                var currentDate = new Date();
+                var mydate = dateCreated;
+                var adDateCreation = new Date(mydate);
+                var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+                // Discard the time and time-zone information.
+                var utc1 = Date.UTC(adDateCreation.getFullYear(), adDateCreation.getMonth(), adDateCreation.getDate());
+                var utc2 = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+                return Math.floor((utc2 - utc1) / _MS_PER_DAY);
             };
             ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
             return ViewAdsWidgetController;

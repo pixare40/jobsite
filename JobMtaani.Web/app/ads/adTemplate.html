@@ -8,6 +8,8 @@
         <div class="ad-title">
             <h2>{{vm.ad.AdTitle}}</h2>
             <h5><u>Location: {{vm.ad.AdLocation}}</u> <button class="btn btn-primary pull-right" ng-disabled="vm.ad.AdClosed" ng-click="vm.applyForJob()">Apply For Job</button></h5>
+            <p>Days on the site: <b>{{vm.timelapse}}</b> Days</p>
+            <p>Pays {{vm.ad.ApproximateWage}} Kenya Shillings</p>
         </div>
         <br/>
         <div class="ad-description">

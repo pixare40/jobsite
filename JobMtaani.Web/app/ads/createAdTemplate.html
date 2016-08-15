@@ -43,6 +43,15 @@
                            required
                            ng-model="vm.ad.AdLocation" />
                 </div>
+                <div class="form-group">
+                    <label for="approximatewage" class="control-label">Approximate Wage</label>
+                    <input type="number"
+                           id="approximatewage"
+                           class="form-control"
+                           placeholder="Approximate Wage"
+                           required
+                           ng-model="vm.ad.ApproximateWage" min="0"/> Ksh
+                </div>
 
                 <button type="submit"
                         class="btn btn-default"
