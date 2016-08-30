@@ -27,7 +27,7 @@ namespace JobMtaani.Web.Controllers
         }
 
         [AllowAnonymous]
-        public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]string location)
+        public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]int location)
         {
             return GetHttpResponse(request, () =>
             {

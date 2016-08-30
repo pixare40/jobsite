@@ -8,13 +8,13 @@ namespace JobMtaani.Business.Common
 {
     public class SearchModel
     {
-        private string jobType;
+        private string searchTerm;
         private string jobLocation;
 
-        public string JobType
+        public string SearchTerm
         {
-            get { return JobType; }
-            set { jobType = value; }
+            get { return SearchTerm; }
+            set { searchTerm = value; }
         }
 
         public string JobLocation
@@ -26,9 +26,9 @@ namespace JobMtaani.Business.Common
         {
         }
 
-        public SearchModel(string jobtype, string jobLocation)
+        public SearchModel(string searchTerm, string jobLocation)
         {
-            this.jobType = jobtype;
+            this.searchTerm = searchTerm;
             this.jobLocation = jobLocation;
         }
     }

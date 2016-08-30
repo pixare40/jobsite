@@ -12,22 +12,27 @@ namespace JobMtaani.Data.Data_Repositories
     {
         protected override Location AddEntity(JobMtaaniDbContext entityContext, Location entity)
         {
-            throw new NotImplementedException();
+            return entityContext.LocationSet.Add(entity);
         }
 
         protected override IEnumerable<Location> GetEntities(JobMtaaniDbContext entityContext)
         {
-            throw new NotImplementedException();
+            return entityContext.LocationSet.ToArray();
+
         }
 
         protected override Location GetEntity(JobMtaaniDbContext entityContext, int id)
         {
-            throw new NotImplementedException();
+            return (from e in entityContext.LocationSet
+                    where e.LocationId == id
+                    select e).FirstOrDefault();
         }
 
         protected override Location UpdateEntity(JobMtaaniDbContext entityContext, Location entity)
         {
-            throw new NotImplementedException();
+            return (from e in entityContext.LocationSet
+                    where e.LocationId == entity.LocationId
+                    select e).FirstOrDefault();
         }
     }
 }

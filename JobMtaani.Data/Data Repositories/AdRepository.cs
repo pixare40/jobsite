@@ -118,10 +118,23 @@ namespace JobMtaani.Data
         {
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
-                return (from e in entityContext.AdSet
-                        where e.AdClosed == false
-                        where e.AdTitle.Contains(searchModel.JobType)
-                        select e).ToArray();
+                if(searchModel.JobLocation != null)
+                {
+                    return (from e in entityContext.AdSet
+                            where e.AdClosed == false
+                            where (e.AdTitle.Contains(searchModel.SearchTerm) ||
+                            e.AdDescription.Contains(searchModel.SearchTerm)) &&
+                            e.AdLocation == searchModel.JobLocation
+                            select e).ToArray();
+                }
+                else
+                {
+                    return (from e in entityContext.AdSet
+                            where e.AdClosed == false
+                            where (e.AdTitle.Contains(searchModel.SearchTerm) ||
+                            e.AdDescription.Contains(searchModel.SearchTerm))
+                            select e).ToArray();
+                }
             }
         }
 
