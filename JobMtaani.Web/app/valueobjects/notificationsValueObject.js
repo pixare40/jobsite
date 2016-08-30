@@ -12,9 +12,10 @@ var app;
             NotificationsValueObject.SHOW_LOADING = "SHOW_LOADING";
             NotificationsValueObject.HIDE_LOADING = "HIDE_LOADING";
             NotificationsValueObject.USER_INFO_AVAILABLE = "USER_INFO_AVAILABLE";
+            NotificationsValueObject.SEARCHING = "SEARCHING";
+            NotificationsValueObject.SEARCH_END = "SEARCH_END";
             return NotificationsValueObject;
         }());
         ValueObjects.NotificationsValueObject = NotificationsValueObject;
     })(ValueObjects = app.ValueObjects || (app.ValueObjects = {}));
 })(app || (app = {}));
-//# sourceMappingURL=notificationsValueObject.js.map

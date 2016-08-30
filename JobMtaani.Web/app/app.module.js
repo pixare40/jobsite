@@ -97,7 +97,11 @@
             controller: 'app.ads.AdApplicationController',
             controllerAs: 'vm'
         })
+            .when('/search', {
+            templateUrl: '/app/ads/searchTemplate.html',
+            controller: 'app.ads.SearchController',
+            controllerAs: 'vm'
+        })
             .otherwise('/home');
     }
 })();
-//# sourceMappingURL=app.module.js.map

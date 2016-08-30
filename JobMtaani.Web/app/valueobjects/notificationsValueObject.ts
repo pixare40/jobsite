@@ -7,5 +7,7 @@
         public static SHOW_LOADING: string = "SHOW_LOADING";
         public static HIDE_LOADING: string = "HIDE_LOADING";
         public static USER_INFO_AVAILABLE: string = "USER_INFO_AVAILABLE";
+        public static SEARCHING: string = "SEARCHING";
+        public static SEARCH_END: string = "SEARCH_END";
     }
 }

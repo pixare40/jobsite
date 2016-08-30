@@ -26,7 +26,9 @@ namespace JobMtaani.Web.Controllers
             this.searchManager = searchManager;
         }
 
+        [Route("Search")]
         [AllowAnonymous]
+        [HttpGet]
         public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]int location)
         {
             return GetHttpResponse(request, () =>
@@ -34,6 +36,8 @@ namespace JobMtaani.Web.Controllers
                 HttpResponseMessage response = null;
 
                 Ad[] searchResults = searchManager.Search(term, location);
+
+                response = request.CreateResponse(HttpStatusCode.OK, searchResults);
 
                 return response;
             });
