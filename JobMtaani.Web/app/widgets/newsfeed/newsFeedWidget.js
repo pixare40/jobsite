@@ -47,3 +47,4 @@ var app;
             .directive("jmNewsFeedWidget", NewsFeedWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=newsFeedWidget.js.map

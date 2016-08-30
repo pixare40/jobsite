@@ -19,6 +19,9 @@ var app;
                     _this.$location.path("/search");
                 }, function () { });
             };
+            SearchService.prototype.getLocations = function () {
+                return this.$http.get("/api/search/GetLocations");
+            };
             SearchService.$inject = ['$http', '$location', '$rootScope'];
             return SearchService;
         }());
@@ -28,3 +31,4 @@ var app;
             .service('app.services.SearchService', SearchService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=searchService.js.map

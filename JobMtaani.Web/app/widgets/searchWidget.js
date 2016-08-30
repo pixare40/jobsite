@@ -11,21 +11,29 @@ var app;
         }());
         widgets.SearchModel = SearchModel;
         var SearchWidgetController = (function () {
-            function SearchWidgetController(adService) {
+            function SearchWidgetController(adService, searchService) {
+                var _this = this;
                 this.adService = adService;
+                this.searchService = searchService;
                 this.jobType = null;
                 this.jobLocation = null;
+                if (this.searchService.locations) {
+                    this.locations = this.searchService.locations;
+                }
+                else {
+                    this.searchService.getLocations().success(function (data) {
+                        _this.locations = data;
+                        _this.searchService.locations = data;
+                    });
+                }
             }
             SearchWidgetController.prototype.searchForJob = function () {
                 if (this.jobType !== null) {
                     var searchModel = new SearchModel(this.jobType, this.jobLocation);
-                    this.adService.search(searchModel).success(function (data, status) {
-                        if (data.length > 0) {
-                        }
-                    });
+                    this.searchService.search(this.jobType, this.jobLocation);
                 }
             };
-            SearchWidgetController.$inject = ['app.services.AdService'];
+            SearchWidgetController.$inject = ['app.services.AdService', 'app.services.SearchService'];
             return SearchWidgetController;
         }());
         var SearchWidget = (function () {
@@ -47,3 +55,4 @@ var app;
             .directive('jmSearchWidget', SearchWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=searchWidget.js.map

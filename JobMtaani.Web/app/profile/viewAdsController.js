@@ -12,3 +12,4 @@ var app;
             .controller('app.profile.ViewAdController', ViewAdController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=viewAdsController.js.map

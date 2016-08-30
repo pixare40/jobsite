@@ -4,6 +4,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Web.Mvc;
 using Core.Common.Extensions;
+using System.ComponentModel.Composition;
 
 namespace JobMtaani.Web.Core
 {
@@ -11,19 +12,30 @@ namespace JobMtaani.Web.Core
     {
         public MefDependencyResolver(CompositionContainer container)
         {
-            _Container = container;
+            _container = container;
         }
 
-        CompositionContainer _Container;
+        CompositionContainer _container;
 
         public object GetService(Type serviceType)
         {
-            return _Container.GetExportedValueByType(serviceType);
+            //return _Container.GetExportedValueByType(serviceType);
+            if (serviceType == null)
+                throw new ArgumentNullException("serviceType");
+
+            var name = AttributedModelServices.GetContractName(serviceType);
+            var export = _container.GetExportedValueOrDefault<object>(name);
+            return export;
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return _Container.GetExportedValuesByType(serviceType);
+            //return _container.GetExportedValuesByType(serviceType);
+            if (serviceType == null)
+                throw new ArgumentNullException("serviceType");
+
+            var exports = _container.GetExportedValues<object>(AttributedModelServices.GetContractName(serviceType));
+            return exports;
         }
     }
 }

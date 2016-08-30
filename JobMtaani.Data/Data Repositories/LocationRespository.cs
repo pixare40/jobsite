@@ -2,12 +2,15 @@
 using JobMtaani.Data.Contracts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace JobMtaani.Data.Data_Repositories
 {
+    [Export(typeof(ILocationRepository))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class LocationRespository : DataRepositoryBase<Location>, ILocationRepository
     {
         protected override Location AddEntity(JobMtaaniDbContext entityContext, Location entity)

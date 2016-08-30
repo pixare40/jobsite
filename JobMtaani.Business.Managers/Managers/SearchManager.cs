@@ -24,10 +24,10 @@ namespace JobMtaani.Business.Managers
             this.locationRepository = locationRepository;
         }
 
-        public Ad[] Search(string serchTerm, int locationId)
+        public Ad[] Search(string searchTerm, int locationId)
         {
             Location location = locationRepository.Get(locationId);
-            SearchModel searchModel = new SearchModel(serchTerm, location != null?location.LocationCName: null);
+            SearchModel searchModel = new SearchModel(searchTerm, location != null?location.LocationCName: null);
 
             return adRepository.GetBySearchTerms(searchModel);
         }

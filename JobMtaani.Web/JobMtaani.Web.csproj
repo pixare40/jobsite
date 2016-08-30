@@ -1322,6 +1322,7 @@
     <TypeScriptCompile Include="app\models\alertModel.ts" />
     <TypeScriptCompile Include="app\models\category.ts" />
     <TypeScriptCompile Include="app\models\hireModel.ts" />
+    <TypeScriptCompile Include="app\models\location.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\models\newsFeedModel.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />

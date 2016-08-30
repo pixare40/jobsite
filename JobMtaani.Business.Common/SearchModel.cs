@@ -13,7 +13,7 @@ namespace JobMtaani.Business.Common
 
         public string SearchTerm
         {
-            get { return SearchTerm; }
+            get { return searchTerm; }
             set { searchTerm = value; }
         }
 

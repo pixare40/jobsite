@@ -82,3 +82,4 @@ var app;
             .directive('jmPersonalAdsWidget', PersonalAdsWidget.instance);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=personalAdsWidget.js.map

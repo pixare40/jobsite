@@ -14,10 +14,11 @@
         ad: app.domain.Ad;
         adList: app.domain.Ad[];
         categories: app.domain.Category[];
+        locations: app.models.Location[];
 
-        static $inject = ['app.services.AdService', 'app.services.CategoryService']
+        static $inject = ['app.services.AdService', 'app.services.CategoryService','app.services.SearchService']
         constructor(private adService: app.services.AdService,
-            private categoryService: app.services.CategoryService) {
+            private categoryService: app.services.CategoryService, private searchService: app.services.SearchService) {
             this.title = 'Ads ';
             this.categoryService.getAllCategories().success((data, status) => {
                 this.categories = data;
@@ -29,6 +30,21 @@
                 this.adList = this.adService.categoryJobs;
             } else {
                 this.adList = null;
+            }
+
+            this.setLocations();
+            
+        }
+
+        setLocations(): void {
+            if (this.searchService.locations) {
+                this.locations = this.searchService.locations;
+            }
+            else {
+                this.searchService.getLocations().success((data) => {
+                    this.locations = data;
+                    this.searchService.locations = data;
+                });
             }
         }
 

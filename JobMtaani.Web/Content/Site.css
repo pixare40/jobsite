@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 65px;
     padding-bottom: 20px;
     font-family: 'Raleway', sans-serif;
 }
@@ -18,7 +18,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 400px;
 }
 
 .page-title{
@@ -139,6 +139,18 @@ textarea {
 .withdrawn{
     color: indianred;
 }
+
+/*Search Widget*/
+[jm-search-widget]{
+    height: 55px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.search-box {
+    width: 700px;
+}
+
 
 /** Loading Spinner */
 .loading-spinner .modal-content {

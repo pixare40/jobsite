@@ -23,8 +23,10 @@
                     <label for="category" class="control-label">Category</label>
                     <select ng-model="vm.ad.CategoryId"
                             id="category"
-                            required
-                            ng-options="category.CategoryId as category.CategoryName for category in vm.categories"></select>
+                            required class="form-control"
+                            ng-options="category.CategoryId as category.CategoryName for category in vm.categories">
+                        <option value="" disabled selected>Select Category</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="addescription" class="control-label">Description</label>
@@ -36,12 +38,12 @@
                 </div>
                 <div class="form-group">
                     <label for="adlocation" class="control-label">Location</label>
-                    <input type="text"
-                           id="adlocation"
-                           class="form-control"
-                           placeholder="Ad Location"
-                           required
-                           ng-model="vm.ad.AdLocation" />
+                    <select ng-model="vm.ad.AdLocation"
+                            id="category"
+                            required class="form-control"
+                            ng-options="location.LocationCName as location.LocationName for location in vm.locations">
+                        <option value="" disabled selected>Select Location</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="approximatewage" class="control-label">Approximate Wage</label>

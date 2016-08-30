@@ -10,21 +10,28 @@
 
     class SearchWidgetController implements ISearchWidgetController {
         jobType: string;
-        jobLocation: string;
+        jobLocation: number;
+        locations: app.models.Location[];
 
-        static $inject = ['app.services.AdService']
-        constructor(private adService: app.services.AdService) {
+        static $inject = ['app.services.AdService', 'app.services.SearchService']
+        constructor(private adService: app.services.AdService, private searchService: app.services.SearchService) {
             this.jobType = null;
             this.jobLocation = null;
+            if (this.searchService.locations) {
+                this.locations = this.searchService.locations;
+            }
+            else {
+                this.searchService.getLocations().success((data) => {
+                    this.locations = data;
+                    this.searchService.locations = data;
+                });
+            }
         }
 
         searchForJob() {
             if (this.jobType !== null) {
                 var searchModel = new SearchModel(this.jobType, this.jobLocation);
-                this.adService.search(searchModel).success((data, status) => {
-                    if (data.length > 0) {
-                    }
-                });
+                this.searchService.search(this.jobType, this.jobLocation);
             }
         }
     }

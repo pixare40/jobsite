@@ -7,6 +7,8 @@
     export class SearchService implements ISearchService {
 
         searchResults: app.domain.Ad[];
+        locations: app.models.Location[];
+
         static $inject = ['$http','$location','$rootScope'];
 
         constructor(private $http: ng.IHttpService, private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService) {
@@ -20,6 +22,10 @@
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.SEARCH_END, null);
                 this.$location.path("/search");
             }, ()=> {});
+        }
+
+        getLocations(): ng.IHttpPromise<app.models.Location[]> {
+            return this.$http.get("/api/search/GetLocations");
         }
     }
 

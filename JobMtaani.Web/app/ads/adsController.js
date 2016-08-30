@@ -4,10 +4,11 @@ var app;
     (function (ads) {
         'use strict';
         var AdsController = (function () {
-            function AdsController(adService, categoryService) {
+            function AdsController(adService, categoryService, searchService) {
                 var _this = this;
                 this.adService = adService;
                 this.categoryService = categoryService;
+                this.searchService = searchService;
                 this.title = 'Ads ';
                 this.categoryService.getAllCategories().success(function (data, status) {
                     _this.categories = data;
@@ -20,7 +21,20 @@ var app;
                 else {
                     this.adList = null;
                 }
+                this.setLocations();
             }
+            AdsController.prototype.setLocations = function () {
+                var _this = this;
+                if (this.searchService.locations) {
+                    this.locations = this.searchService.locations;
+                }
+                else {
+                    this.searchService.getLocations().success(function (data) {
+                        _this.locations = data;
+                        _this.searchService.locations = data;
+                    });
+                }
+            };
             AdsController.prototype.createAd = function () {
                 var _this = this;
                 this.adService.createAd(this.ad).success(function (data, status) {
@@ -40,7 +54,7 @@ var app;
                     return false;
                 }
             };
-            AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService'];
+            AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService', 'app.services.SearchService'];
             return AdsController;
         }());
         angular
@@ -48,3 +62,4 @@ var app;
             .controller('app.ads.AdsController', AdsController);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
+//# sourceMappingURL=adsController.js.map
