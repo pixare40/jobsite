@@ -62,6 +62,7 @@
     <Compile Include="Data Repositories\AdApplicationRepository.cs" />
     <Compile Include="Data Repositories\AdRepository.cs" />
     <Compile Include="Data Repositories\CategoryRepository.cs" />
+    <Compile Include="Data Repositories\LocationRespository.cs" />
     <Compile Include="Data Repositories\MessageRepository.cs" />
     <Compile Include="Data Repositories\PaymentRepository.cs" />
     <Compile Include="Data Repositories\ReviewRepository.cs" />

@@ -1,4 +1,6 @@
 ﻿using Core.Common.Contracts;
+using JobMtaani.Business.Entities;
+using JobMtaani.Business.Managers;
 using JobMtaani.Web.Core;
 using System;
 using System.Collections.Generic;
@@ -16,14 +18,26 @@ namespace JobMtaani.Web.Controllers
     [UsesDisposableService]
     public class SearchApiController : ApiControllerBase
     {
-        private IDataRepositoryFactory dataRepositoryFactory;
+        private ISearchManager searchManager;
 
         [ImportingConstructor]
-        public SearchApiController(IDataRepositoryFactory dataRepositoryFactory)
+        public SearchApiController(ISearchManager searchManager)
         {
-            this.dataRepositoryFactory = dataRepositoryFactory;
+            this.searchManager = searchManager;
         }
 
+        [AllowAnonymous]
+        public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]string location)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad[] searchResults = searchManager.Search(term, location);
+
+                return response;
+            });
+        }
 
     }
 }

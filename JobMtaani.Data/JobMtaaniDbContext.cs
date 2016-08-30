@@ -28,6 +28,7 @@ namespace JobMtaani.Data
         public DbSet<AdApplication> AdApplicationSet { get; set; }
         public DbSet<Subscription> SubscriptionSet { get; set; }
         public DbSet<Message> MessageSet { get; set; }
+        public DbSet<Location> LocationSet { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -47,6 +48,7 @@ namespace JobMtaani.Data
             modelBuilder.Entity<AdApplication>().HasKey<int>(e => e.AdApplicationId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Subscription>().HasKey<int>(e => e.SubscriptionId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Message>().HasKey<int>(e => e.MessageId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Location>().HasKey<int>(e => e.LocationId).Ignore(e => e.EntityId);
         }
 
         public static JobMtaaniDbContext Create()

@@ -61,6 +61,7 @@
     <Compile Include="Ad.cs" />
     <Compile Include="AdApplication.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

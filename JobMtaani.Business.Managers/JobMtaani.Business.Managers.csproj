@@ -76,6 +76,7 @@
     <Compile Include="Managers\AdManager.cs" />
     <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\PaymentManager.cs" />
+    <Compile Include="Managers\SearchManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
