@@ -11,6 +11,7 @@ var app;
                 this.initialiseNotificationListeners();
                 this.renderData();
                 this.searching = false;
+                this.noSearchResultsContainer.hide();
             }
             SearchResultsWidgetController.prototype.initialiseElements = function () {
                 this.loadingContainer = this.$element.find(".loading-container");
