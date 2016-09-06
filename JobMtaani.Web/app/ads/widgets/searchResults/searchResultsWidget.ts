@@ -42,13 +42,13 @@
 
         renderData(): void {
             this.searchResults = this.searchService.searchResults;
+            this.showEmptySearchMessage();
         }
 
         showResults(): void {
             this.loadingContainer.hide();
             this.searchResultsContainer.show();
             this.renderData();
-            this.showEmptySearchMessage();
         }
 
         hideResults(): void {

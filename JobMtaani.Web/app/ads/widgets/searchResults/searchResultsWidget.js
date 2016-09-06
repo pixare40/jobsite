@@ -32,12 +32,12 @@ var app;
             };
             SearchResultsWidgetController.prototype.renderData = function () {
                 this.searchResults = this.searchService.searchResults;
+                this.showEmptySearchMessage();
             };
             SearchResultsWidgetController.prototype.showResults = function () {
                 this.loadingContainer.hide();
                 this.searchResultsContainer.show();
                 this.renderData();
-                this.showEmptySearchMessage();
             };
             SearchResultsWidgetController.prototype.hideResults = function () {
                 this.loadingContainer.show();
@@ -75,4 +75,3 @@ var app;
             .directive("jmSearchResultsWidget", SearchResultsWidget.instance);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
-//# sourceMappingURL=searchResultsWidget.js.map

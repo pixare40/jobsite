@@ -55,4 +55,3 @@ var app;
             .directive('jmSearchWidget', SearchWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=searchWidget.js.map
