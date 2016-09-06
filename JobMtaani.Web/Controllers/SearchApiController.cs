@@ -21,24 +21,32 @@ namespace JobMtaani.Web.Controllers
     {
         private ISearchManager searchManager;
         private ILocationRepository locationRepository;
+        private ICategoryRepository categoryRepository;
 
         [ImportingConstructor]
-        public SearchApiController(ISearchManager searchManager, ILocationRepository locationRepository)
+        public SearchApiController(ISearchManager searchManager, ILocationRepository locationRepository, ICategoryRepository categoryRepository)
         {
             this.searchManager = searchManager;
             this.locationRepository = locationRepository;
+            this.categoryRepository = categoryRepository;
         }
 
         [HttpGet]
         [Route("Search")]
         [AllowAnonymous]
-        public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]int location)
+        public HttpResponseMessage Search(HttpRequestMessage request, [FromUri]string term, [FromUri]int? location)
         {
             return GetHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
 
                 Ad[] searchResults = searchManager.Search(term, location);
+
+                foreach(var ad in searchResults)
+                {
+                    ad.IconClass = categoryRepository.Get(ad.CategoryId).IconClass;
+                    ad.CategoryName = categoryRepository.Get(ad.CategoryId).CategoryCName;
+                }
 
                 response = request.CreateResponse(HttpStatusCode.OK, searchResults);
 

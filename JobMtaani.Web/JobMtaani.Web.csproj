@@ -314,6 +314,7 @@
     <Content Include="app\ads\adTemplate.html" />
     <Content Include="app\ads\createAdTemplate.html" />
     <Content Include="app\ads\searchTemplate.html" />
+    <Content Include="app\ads\widgets\searchResults\searchResultsWidgetTemplate.html" />
     <Content Include="app\blocks\widgets\quicklinks\quickLinksWidgetTemplate.html" />
     <Content Include="app\dashboard\categoryTemplate.html" />
     <Content Include="app\home\homeTemplate.html" />
@@ -1303,6 +1304,7 @@
     <TypeScriptCompile Include="app\ads\ads.module.ts" />
     <TypeScriptCompile Include="app\ads\adsController.ts" />
     <TypeScriptCompile Include="app\ads\searchController.ts" />
+    <TypeScriptCompile Include="app\ads\widgets\searchResults\searchResultsWidget.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
     <TypeScriptCompile Include="app\app.core.module.ts" />
     <TypeScriptCompile Include="app\app.run.ts" />

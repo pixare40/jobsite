@@ -31,4 +31,3 @@ var app;
             .service('app.services.SearchService', SearchService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=searchService.js.map

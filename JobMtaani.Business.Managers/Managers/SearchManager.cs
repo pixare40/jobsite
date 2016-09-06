@@ -24,9 +24,14 @@ namespace JobMtaani.Business.Managers
             this.locationRepository = locationRepository;
         }
 
-        public Ad[] Search(string searchTerm, int locationId)
+        public Ad[] Search(string searchTerm, int? locationId)
         {
-            Location location = locationRepository.Get(locationId);
+            if(locationId == null)
+            {
+                locationId = 999;
+            }
+
+            Location location = locationRepository.Get(locationId.Value);
             SearchModel searchModel = new SearchModel(searchTerm, location != null?location.LocationCName: null);
 
             return adRepository.GetBySearchTerms(searchModel);
@@ -35,6 +40,6 @@ namespace JobMtaani.Business.Managers
 
     public interface ISearchManager
     {
-        Ad[] Search(string serchTerm, int location);
+        Ad[] Search(string serchTerm, int? location);
     }
 }
