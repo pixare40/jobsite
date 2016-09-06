@@ -18,7 +18,6 @@
             this.initialiseNotificationListeners();
             this.renderData();
             this.searching = false;
-            this.noSearchResultsContainer.hide();
         }
 
         initialiseElements(): void {

@@ -41,3 +41,4 @@ var app;
             .service('app.services.AccountService', AccountService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=accountService.js.map

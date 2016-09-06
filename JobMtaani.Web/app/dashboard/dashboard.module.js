@@ -3,3 +3,4 @@
     angular
         .module('app.dashboard', []);
 })();
+//# sourceMappingURL=dashboard.module.js.map
