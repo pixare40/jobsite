@@ -68,7 +68,7 @@
             })
             .when('/editProfile', {
                 templateUrl: '/app/profile/editProfileTemplate.html',
-                controller: 'app.profile.ProfileController',
+                controller: 'app.profile.EditProfileController',
                 controllerAs: 'vm'
             })
             .when('/profile', {
