@@ -74,3 +74,4 @@ var app;
             .directive("jmSearchResultsWidget", SearchResultsWidget.instance);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
+//# sourceMappingURL=searchResultsWidget.js.map
