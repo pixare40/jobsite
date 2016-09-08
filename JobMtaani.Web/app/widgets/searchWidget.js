@@ -28,7 +28,7 @@ var app;
                 }
             }
             SearchWidgetController.prototype.searchForJob = function () {
-                if (this.jobType !== null) {
+                if (this.jobType) {
                     var searchModel = new SearchModel(this.jobType, this.jobLocation);
                     this.searchService.search(this.jobType, this.jobLocation);
                 }
@@ -55,4 +55,3 @@ var app;
             .directive('jmSearchWidget', SearchWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=searchWidget.js.map

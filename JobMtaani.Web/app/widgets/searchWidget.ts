@@ -29,7 +29,7 @@
         }
 
         searchForJob() {
-            if (this.jobType !== null) {
+            if (this.jobType) {
                 var searchModel = new SearchModel(this.jobType, this.jobLocation);
                 this.searchService.search(this.jobType, this.jobLocation);
             }
