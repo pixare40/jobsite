@@ -14,6 +14,7 @@ var app;
             NotificationsValueObject.USER_INFO_AVAILABLE = "USER_INFO_AVAILABLE";
             NotificationsValueObject.SEARCHING = "SEARCHING";
             NotificationsValueObject.SEARCH_END = "SEARCH_END";
+            NotificationsValueObject.USER_NOT_LOGGED_IN = "USER_NOT_LOGGED_IN";
             return NotificationsValueObject;
         }());
         ValueObjects.NotificationsValueObject = NotificationsValueObject;

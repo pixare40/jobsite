@@ -14,6 +14,9 @@ var app;
                 this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, function (event, data) {
                     _this.onLogin();
                 });
+                this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_NOT_LOGGED_IN, function (event, data) {
+                    _this.onLogout();
+                });
                 this.$scope.$on('USER_LOGGED_OUT', function (event, data) {
                     _this.onLogout();
                 });

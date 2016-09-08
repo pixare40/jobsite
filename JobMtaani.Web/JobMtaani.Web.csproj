@@ -243,6 +243,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\PaymentApiController.cs" />
+    <Compile Include="Controllers\ReviewApiController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\ApiControllerBase.cs" />

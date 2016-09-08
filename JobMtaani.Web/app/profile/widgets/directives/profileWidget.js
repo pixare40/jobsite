@@ -38,6 +38,7 @@ var app;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                     _this.successString = null;
                     if (status == 401) {
+                        _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.USER_NOT_LOGGED_IN, null);
                         _this.$location.path('/login');
                         return;
                     }

@@ -13,7 +13,7 @@ namespace JobMtaani.Business.Entities
     {
         public int ReviewId { get; set; }
         public string AccountId { get; set; }
-        public int ReviewFor { get; set; }
+        public string ReviewFor { get; set; }
         public string ReviewTitle { get; set; }
         public string ReviewText { get; set; }
         public int Rating { get; set; }

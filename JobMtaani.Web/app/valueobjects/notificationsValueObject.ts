@@ -9,5 +9,6 @@
         public static USER_INFO_AVAILABLE: string = "USER_INFO_AVAILABLE";
         public static SEARCHING: string = "SEARCHING";
         public static SEARCH_END: string = "SEARCH_END";
+        public static USER_NOT_LOGGED_IN: string = "USER_NOT_LOGGED_IN";
     }
 }
