@@ -106,6 +106,11 @@
                 controller: 'app.ads.SearchController',
                 controllerAs: 'vm'
             })
+            .when('/viewApplicant', {
+                templateUrl: '/app/profile/viewApplicantTemplate.html',
+                controller: 'app.profile.ViewApplicantController',
+                controllerAs: 'vm'
+            })
             .otherwise('/home');
     }
 

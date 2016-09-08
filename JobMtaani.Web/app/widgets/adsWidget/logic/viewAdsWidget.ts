@@ -11,9 +11,9 @@
         applicantsNotification: string;
         timelapse: number;
 
-        static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser','$location'];
+        static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser','$location','app.services.ReviewService'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams,
-            private currentUser: app.services.CurrentUser, private $location: ng.ILocationService) {
+            private currentUser: app.services.CurrentUser, private $location: ng.ILocationService, private reviewService: app.services.ReviewService) {
             this.alerts = [];
             this.renderAd();
         }
@@ -37,6 +37,9 @@
                         if (this.adDetails.AdApplicantDetails.length < 1) {
                             this.applicantsNotification = "Nobody has applied to this ad yet";
                         }
+                        else {
+                            this.getReviews();
+                        }
                     })
                     .error((data) => {
                         this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
@@ -53,6 +56,18 @@
             }).error(() => {
                 this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
             });
+        }
+
+        getReviews(): void {
+
+        }
+
+        viewApplicant(userId): void {
+        }
+
+        getNumber(times: number): Array<number> {
+            var newArray = new Array(times);
+            return newArray;
         }
 
         addAlert(alert: app.models.AlertModel) {

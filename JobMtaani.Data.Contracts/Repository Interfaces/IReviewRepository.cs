@@ -5,5 +5,6 @@ namespace JobMtaani.Data.Contracts
 {
     public interface IReviewRepository : IDataRepository<Review>
     {
+        
     }
 }

@@ -29,6 +29,10 @@ namespace JobMtaani.Business.Entities
         public DateTime DateJoined { get; set; }
         [DataMember]
         public string Location { get; set; }
+        [DataMember]
+        public int NumberOfReviews { get; set; }
+        [DataMember]
+        public int CurrentRating { get; set; }
 
         public object EntityId
         {

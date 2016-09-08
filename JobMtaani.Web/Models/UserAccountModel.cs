@@ -16,5 +16,7 @@ namespace JobMtaani.Web.Models
         public string Location { get; set; }
         public DateTime DateJoined { get; set; }
         public bool SubscriptionStatus { get; set; }
+        public int CurrentRating { get; set; }
+        public int NumberOfReviews { get; set; }
     }
 }

@@ -3,11 +3,12 @@ var app;
     var widgets;
     (function (widgets) {
         var ViewAdsWidgetController = (function () {
-            function ViewAdsWidgetController(adService, $routeParams, currentUser, $location) {
+            function ViewAdsWidgetController(adService, $routeParams, currentUser, $location, reviewService) {
                 this.adService = adService;
                 this.$routeParams = $routeParams;
                 this.currentUser = currentUser;
                 this.$location = $location;
+                this.reviewService = reviewService;
                 this.alerts = [];
                 this.renderAd();
             }
@@ -29,6 +30,9 @@ var app;
                         if (_this.adDetails.AdApplicantDetails.length < 1) {
                             _this.applicantsNotification = "Nobody has applied to this ad yet";
                         }
+                        else {
+                            _this.getReviews();
+                        }
                     })
                         .error(function (data) {
                         _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error Fetching Ad"));
@@ -45,6 +49,14 @@ var app;
                 }).error(function () {
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
                 });
+            };
+            ViewAdsWidgetController.prototype.getReviews = function () {
+            };
+            ViewAdsWidgetController.prototype.viewApplicant = function (userId) {
+            };
+            ViewAdsWidgetController.prototype.getNumber = function (times) {
+                var newArray = new Array(times);
+                return newArray;
             };
             ViewAdsWidgetController.prototype.addAlert = function (alert) {
                 this.alerts.pop();
@@ -72,7 +84,7 @@ var app;
                 var utc2 = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
                 return Math.floor((utc2 - utc1) / _MS_PER_DAY);
             };
-            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
+            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location', 'app.services.ReviewService'];
             return ViewAdsWidgetController;
         }());
         var ViewAdsWidget = (function () {

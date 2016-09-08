@@ -127,6 +127,9 @@ textarea {
 .ad-title h2{
 }
 
+.rating {
+    color: yellowgreen;
+}
 /*View Application Page*/
 .accepted{
     color: darkcyan;

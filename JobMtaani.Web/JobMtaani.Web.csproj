@@ -297,6 +297,10 @@
     <Compile Include="Migrations\201609081844054_adapplied.Designer.cs">
       <DependentUpon>201609081844054_adapplied.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609082138505_reviews.cs" />
+    <Compile Include="Migrations\201609082138505_reviews.Designer.cs">
+      <DependentUpon>201609082138505_reviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -330,6 +334,7 @@
     <Content Include="app\profile\profileTemplate.html" />
     <Content Include="app\profile\registerTemplate.html" />
     <Content Include="app\profile\viewAdsTemplate.html" />
+    <Content Include="app\profile\viewApplicantTemplate.html" />
     <Content Include="app\profile\widgets\dashboardWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\personalAdsWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\profileWidgetTemplate.html" />
@@ -1334,13 +1339,16 @@
     <TypeScriptCompile Include="app\models\location.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\models\newsFeedModel.ts" />
+    <TypeScriptCompile Include="app\models\review.ts" />
     <TypeScriptCompile Include="app\profile\editProfileController.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
+    <TypeScriptCompile Include="app\profile\viewApplicantController.ts" />
     <TypeScriptCompile Include="app\profile\widgets\dashboardWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\personalAdsWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\profileWidget.ts" />
     <TypeScriptCompile Include="app\services\messagingService.ts" />
+    <TypeScriptCompile Include="app\services\reviewService.ts" />
     <TypeScriptCompile Include="app\services\searchService.ts" />
     <TypeScriptCompile Include="app\valueobjects\alertTypesValueObject.ts" />
     <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />
@@ -1423,6 +1431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609081844054_adapplied.resx">
       <DependentUpon>201609081844054_adapplied.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609082138505_reviews.resx">
+      <DependentUpon>201609082138505_reviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

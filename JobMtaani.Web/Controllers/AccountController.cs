@@ -24,7 +24,7 @@ namespace JobMtaani.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
-    public class AccountController : ApiController
+    public class AccountController : ApiControllerBase
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
@@ -116,6 +116,36 @@ namespace JobMtaani.Web.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("GetApplicantInfo")]
+        public HttpResponseMessage GetApplicantInfo(HttpRequestMessage request, [FromUri]string uid)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Account user = UserManager.FindById(uid);
+
+                UserAccountModel userAccountModel = new UserAccountModel()
+                {
+                    UserId = user.Id,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    UserName = user.UserName,
+                    Location = user.Location,
+                    SubscriptionStatus = user.SubscriptionStatus,
+                    PhoneNumber = user.PhoneNumber,
+                    CurrentRating = user.CurrentRating,
+                    NumberOfReviews = user.NumberOfReviews
+                };
+
+                response = request.CreateResponse(HttpStatusCode.OK, userAccountModel);
+
+                return response;
+            });
         }
 
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true

@@ -32,6 +32,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AccountService.prototype.getApplicantInfo = function (userId) {
+                return this.$http.get("/api/Account/GetApplicantInfo?uid=" + userId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AccountService.$inject = ['$http', 'app.services.CurrentUser'];
             return AccountService;
         }());

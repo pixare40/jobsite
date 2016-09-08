@@ -41,6 +41,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        getApplicantInfo(userId: string): ng.IHttpPromise<app.domain.ProfileModel> {
+            return this.$http.get("/api/Account/GetApplicantInfo?uid=" + userId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
     }
 
 

@@ -232,7 +232,10 @@ namespace JobMtaani.Web.Controllers
                         LastName = account.LastName,
                         UserName = account.UserName,
                         SubscriptionStatus = account.SubscriptionStatus,
-                        PhoneNumber = account.PhoneNumber
+                        PhoneNumber = account.PhoneNumber,
+                        UserId = account.Id,
+                        CurrentRating = account.CurrentRating,
+                        NumberOfReviews = account.NumberOfReviews
                     };
 
                     adDetails.AdApplicantDetails.Add(userAccountModel);

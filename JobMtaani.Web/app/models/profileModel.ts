@@ -9,6 +9,8 @@
             public Location: string,
             public DateJoined: Date,
             public PhoneNumber: string,
+            public NumberOfReviews: number,
+            public CurrentRating: number,
             public SubscriptionStatus: boolean
         ) { }
     }

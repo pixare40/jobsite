@@ -31,11 +31,17 @@
                     <tr class="ad-applicant" ng-repeat="adApplicant in vm.adDetails.AdApplicantDetails">
                         <td>
                             <div>
-                                <h5>{{adApplicant.FirstName}} {{adApplicant.LastName}}</h5>
+                                <a ng-click="vm.viewApplicant(adApplicant.UserId)"><h5>{{adApplicant.FirstName}} {{adApplicant.LastName}}</h5></a>
                                 <p>{{adApplicant.Phonenumber}}</p>
                             </div>
                         </td>
                         <td class="text-right">
+                            <span class="rating" ng-show="adApplicant.CurrentRating">
+                                <i class="fa fa-star" aria-hidden="true" ng-repeat="i in vm.getNumber(adApplicant.CurrentRating) track by $index"></i>
+                            </span>
+                            <span ng-hide="adApplicant.CurrentRating">
+                                No Reviews Yet &nbsp;
+                            </span>
                             <button class="btn btn-primary" ng-click="vm.hire($index)" ng-disabled="vm.adDetails.AdDetails.AdClosed">Hire</button>
                         </td>
                     </tr>
