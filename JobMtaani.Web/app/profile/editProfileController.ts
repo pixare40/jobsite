@@ -5,16 +5,30 @@
         errorMessage: string;
         userdata: app.domain.ProfileModel;
         isLoggedIn: boolean;
+        locations: app.models.Location[];
 
-        static $inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope']
+        static $inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope', 'app.services.SearchService']
         constructor(private currentUser: app.services.CurrentUser,
             private accountService: app.services.AccountService, private $scope: ng.IScope,
-            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService) {
+            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private searchService: app.services.SearchService) {
 
+            this.setLocations();
             this.initialiseProfile();
             this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, (event, data) => {
                 this.$location.path("/profile");
             });
+        }
+
+        setLocations(): void {
+            if (this.searchService.locations) {
+                this.locations = this.searchService.locations;
+            }
+            else {
+                this.searchService.getLocations().success((data) => {
+                    this.locations = data;
+                    this.searchService.locations = data;
+                });
+            }
         }
 
         initialiseProfile(): void {

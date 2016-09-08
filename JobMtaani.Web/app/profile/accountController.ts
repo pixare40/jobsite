@@ -38,13 +38,27 @@
         successMessage: string;
         userdata: UserData;
         isLoggedIn: boolean;
+        locations: app.models.Location[];
 
-        static $inject = ['app.services.AccountService', 'app.services.CurrentUser','$location','$rootScope','$cookies'];
+        static $inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies', 'app.services.SearchService'];
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
-            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService) {
+            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService, private searchService: app.services.SearchService) {
             this.userdata = new UserData("", "", "","", "", "", "", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
+            this.setLocations();
+        }
+
+        setLocations(): void {
+            if (this.searchService.locations) {
+                this.locations = this.searchService.locations;
+            }
+            else {
+                this.searchService.getLocations().success((data) => {
+                    this.locations = data;
+                    this.searchService.locations = data;
+                });
+            }
         }
 
         registerUser(): void {

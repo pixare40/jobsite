@@ -3,18 +3,32 @@ var app;
     var profile;
     (function (profile) {
         var EditProfileController = (function () {
-            function EditProfileController(currentUser, accountService, $scope, $location, $rootScope) {
+            function EditProfileController(currentUser, accountService, $scope, $location, $rootScope, searchService) {
                 var _this = this;
                 this.currentUser = currentUser;
                 this.accountService = accountService;
                 this.$scope = $scope;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
+                this.searchService = searchService;
+                this.setLocations();
                 this.initialiseProfile();
                 this.$scope.$on(app.ValueObjects.NotificationsValueObject.USER_INFO_AVAILABLE, function (event, data) {
                     _this.$location.path("/profile");
                 });
             }
+            EditProfileController.prototype.setLocations = function () {
+                var _this = this;
+                if (this.searchService.locations) {
+                    this.locations = this.searchService.locations;
+                }
+                else {
+                    this.searchService.getLocations().success(function (data) {
+                        _this.locations = data;
+                        _this.searchService.locations = data;
+                    });
+                }
+            };
             EditProfileController.prototype.initialiseProfile = function () {
                 var _this = this;
                 if (!this.currentUser.getProfile().isLoggedIn) {
@@ -44,7 +58,7 @@ var app;
                     }
                 });
             };
-            EditProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope'];
+            EditProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope', 'app.services.SearchService'];
             return EditProfileController;
         }());
         angular

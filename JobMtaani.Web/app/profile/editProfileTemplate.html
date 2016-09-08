@@ -27,11 +27,12 @@
                     </div>
                     <div class="form-group">
                         <label for="location" class="control-label">Where Are You Based</label>
-                        <input type="text"
-                               class="form-control"
-                               id="location" required
-                               placeholder="location"
-                               ng-model="vm.userdata.Location">
+                        <select ng-model="vm.userdata.Location"
+                                id="category"
+                                required class="form-control"
+                                ng-options="location.LocationCName as location.LocationName for location in vm.locations">
+                            <option value="" disabled selected>Select Location</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="email" class="control-label">Email</label>

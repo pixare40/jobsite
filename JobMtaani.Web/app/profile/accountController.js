@@ -18,15 +18,29 @@ var app;
         }());
         profile.UserData = UserData;
         var AccountController = (function () {
-            function AccountController(accountService, currentUser, $location, $rootScope, $cookies) {
+            function AccountController(accountService, currentUser, $location, $rootScope, $cookies, searchService) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
                 this.$cookies = $cookies;
+                this.searchService = searchService;
                 this.userdata = new UserData("", "", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
+                this.setLocations();
             }
+            AccountController.prototype.setLocations = function () {
+                var _this = this;
+                if (this.searchService.locations) {
+                    this.locations = this.searchService.locations;
+                }
+                else {
+                    this.searchService.getLocations().success(function (data) {
+                        _this.locations = data;
+                        _this.searchService.locations = data;
+                    });
+                }
+            };
             AccountController.prototype.registerUser = function () {
                 var _this = this;
                 this.errorMessage = null;
@@ -86,7 +100,7 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies'];
+            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies', 'app.services.SearchService'];
             return AccountController;
         }());
         angular

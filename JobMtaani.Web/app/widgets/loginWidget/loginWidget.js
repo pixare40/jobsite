@@ -22,6 +22,8 @@ var app;
                 this.$cookies = $cookies;
                 this.$scope.$on("USER_LOGGED_IN", function (event, data) {
                     _this.isLoggedIn = _this.currentUser.getProfile().isLoggedIn;
+                    _this.$location.path('/profile');
+                    console.log("User logged in");
                 });
             }
             LoginWidgetController.prototype.login = function () {
