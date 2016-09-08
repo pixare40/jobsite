@@ -10,7 +10,7 @@
                         id="category"
                         required class="form-control" 
                         ng-options="location.LocationId as location.LocationName for location in vm.locations">
-                    <option value="" disabled selected>Select Location</option>
+                    <option value="" selected>All</option>
                 </select>
             </div>
             <button ng-click="vm.searchForJob()" class="btn btn-success" type="button">Search!</button>
