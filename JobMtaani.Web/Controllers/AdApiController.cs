@@ -416,6 +416,22 @@ namespace JobMtaani.Web.Controllers
 
         [HttpGet]
         [Authorize]
+        [Route("GetAdApplication")]
+        public HttpResponseMessage GetAdApplication(HttpRequestMessage request, [FromUri]int adId)
+        {
+            return GetHttpResponse(request, () => {
+                HttpResponseMessage response = null;
+
+                AdApplication adApplication = adApplicationRespository.FindbyHireModel(User.Identity.GetUserId(), adId);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
         [Route("WithdrawAdApplication")]
         public HttpResponseMessage WithdrawApplication(HttpRequestMessage request, [FromUri]int applicationId)
         {

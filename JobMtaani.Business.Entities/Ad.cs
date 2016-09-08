@@ -36,6 +36,8 @@ namespace JobMtaani.Business.Entities
         public string CategoryName { get; set; }
         [DataMember]
         public decimal ApproximateWage { get; set; }
+        [DataMember]
+        public bool AdApplied { get; set; }
         public object EntityId
         {
             get

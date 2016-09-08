@@ -292,6 +292,10 @@
     <Compile Include="Migrations\201608301420378_location.Designer.cs">
       <DependentUpon>201608301420378_location.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609081844054_adapplied.cs" />
+    <Compile Include="Migrations\201609081844054_adapplied.Designer.cs">
+      <DependentUpon>201609081844054_adapplied.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -1415,6 +1419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608301420378_location.resx">
       <DependentUpon>201608301420378_location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609081844054_adapplied.resx">
+      <DependentUpon>201609081844054_adapplied.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

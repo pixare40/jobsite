@@ -85,6 +85,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getAdApplicationByAdId = function (adId) {
+                return this.$http.get("/api/ad/GetAdApplication?adId=" + adId, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.prototype.withdrawAdApplication = function (applicationid) {
                 return this.$http.get("/api/ad/WithdrawAdApplication?applicationId=" + applicationid, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }

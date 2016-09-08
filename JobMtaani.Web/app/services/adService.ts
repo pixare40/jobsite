@@ -109,6 +109,12 @@
             });
         }
 
+        getAdApplicationByAdId(adId): ng.IHttpPromise<app.models.AdApplicationModel> {
+            return this.$http.get("/api/ad/GetAdApplication?adId=" + adId, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
         withdrawAdApplication(applicationid: number): ng.IHttpPromise<app.models.AdApplicationModel> {
             return this.$http.get("/api/ad/WithdrawAdApplication?applicationId=" + applicationid, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }

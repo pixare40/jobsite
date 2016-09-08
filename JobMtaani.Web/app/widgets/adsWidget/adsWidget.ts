@@ -42,6 +42,12 @@
             this.$location.path('/ad/' + adId);
         }
 
+        goToApplication(adId: number) {
+            this.adService.getAdApplicationByAdId(adId).success((data) => {
+                this.$location.path("/adApplication/" + data.AdApplicationId);
+            });
+        }
+
     }
 
     export class AdsWidget implements ng.IDirective {

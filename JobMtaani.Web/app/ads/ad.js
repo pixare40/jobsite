@@ -3,7 +3,7 @@ var app;
     var domain;
     (function (domain) {
         var Ad = (function () {
-            function Ad(AdId, AdTitle, AccountId, AdApplicants, CategoryId, AdLocation, AdClosed, AdDescription, IconClass, CategoryName, ApproximateWage, DateCreated) {
+            function Ad(AdId, AdTitle, AccountId, AdApplicants, CategoryId, AdLocation, AdClosed, AdDescription, IconClass, CategoryName, ApproximateWage, AdApplied, DateCreated) {
                 this.AdId = AdId;
                 this.AdTitle = AdTitle;
                 this.AccountId = AccountId;
@@ -15,6 +15,7 @@ var app;
                 this.IconClass = IconClass;
                 this.CategoryName = CategoryName;
                 this.ApproximateWage = ApproximateWage;
+                this.AdApplied = AdApplied;
                 this.DateCreated = DateCreated;
             }
             return Ad;

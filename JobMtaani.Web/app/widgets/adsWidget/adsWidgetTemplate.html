@@ -27,7 +27,8 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button>
+                        <button ng-hide="ad.AdApplied" class="btn btn-success" ng-click="vm.goToAd(ad.AdId)">Apply</button>
+                        <button ng-show="ad.AdApplied" class="btn btn-info" ng-click="vm.goToApplication(ad.AdId)">View Application</button>
                     </td>
                 </tr>
             </tbody>

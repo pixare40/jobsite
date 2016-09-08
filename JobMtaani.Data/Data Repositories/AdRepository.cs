@@ -63,15 +63,31 @@ namespace JobMtaani.Data
             {
                 if (!userOwned)
                 {
-                    return (from e in entityContext.AdSet
+                    Ad[] ads = (from e in entityContext.AdSet
                             where e.AccountId != userId
                             orderby e.DateCreated descending
                             select e).Skip(skip).Take(pageSize).ToArray();
+
+                    foreach(var ad in ads)
+                    {
+                        AdApplication adApplication = (from e in entityContext.AdApplicationSet
+                                                       where e.AdId == ad.AdId && e.AdApplicantId == userId
+                                                       select e).FirstOrDefault();
+                        if (adApplication != null)
+                        {
+                            ad.AdApplied = true;
+                        }
+                    }
+
+                    return ads;
                 }
-                return (from e in entityContext.AdSet
-                        where e.AccountId == userId
-                        orderby e.DateCreated descending
-                        select e).Skip(skip).Take(pageSize).ToArray();
+                else
+                {
+                    return (from e in entityContext.AdSet
+                            where e.AccountId == userId
+                            orderby e.DateCreated descending
+                            select e).Skip(skip).Take(pageSize).ToArray();
+                }
             }
         }
 

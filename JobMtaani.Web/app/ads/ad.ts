@@ -12,6 +12,7 @@
         IconClass: string;
         CategoryName: string;
         ApproximateWage: number;
+        AdApplied: boolean;
         DateCreated: Date;
     }
 
@@ -29,6 +30,7 @@
             public IconClass,
             public CategoryName,
             public ApproximateWage,
+            public AdApplied,
             public DateCreated) {
         }
     }

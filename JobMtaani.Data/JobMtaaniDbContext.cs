@@ -41,7 +41,7 @@ namespace JobMtaani.Data
 
             modelBuilder.Entity<Account>()
             .ToTable("AspNetUsers");
-            modelBuilder.Entity<Ad>().HasKey<int>(e => e.AdId).Ignore(e => e.EntityId);
+            modelBuilder.Entity<Ad>().HasKey<int>(e => e.AdId).Ignore(e => e.EntityId).Ignore(e=>e.AdApplied);
             modelBuilder.Entity<Category>().HasKey<int>(e => e.CategoryId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Review>().HasKey<int>(e => e.ReviewId).Ignore(e => e.EntityId);
             modelBuilder.Entity<Payment>().HasKey<int>(e => e.PaymentId).Ignore(e => e.EntityId);

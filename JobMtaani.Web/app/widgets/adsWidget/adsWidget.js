@@ -33,6 +33,12 @@ var app;
             AdsWidgetController.prototype.goToAd = function (adId) {
                 this.$location.path('/ad/' + adId);
             };
+            AdsWidgetController.prototype.goToApplication = function (adId) {
+                var _this = this;
+                this.adService.getAdApplicationByAdId(adId).success(function (data) {
+                    _this.$location.path("/adApplication/" + data.AdApplicationId);
+                });
+            };
             AdsWidgetController.$inject = ['app.services.AdService', '$location'];
             return AdsWidgetController;
         }());
