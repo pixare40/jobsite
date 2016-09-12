@@ -14,5 +14,6 @@ namespace JobMtaani.Data.Contracts
         AdApplication FindbyHireModel(string userName, int adId);
         List<AdApplication> FindUserAdApplications(string userId, int page);
         int GetTotalAdApplications(string userid);
+        AdApplication[] GetAdApplicationsById(int adId);
     }
 }

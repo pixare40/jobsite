@@ -15,3 +15,4 @@ var app;
         models.AdApplicationModel = AdApplicationModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=adApplicationModel.js.map

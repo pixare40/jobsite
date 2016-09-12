@@ -60,3 +60,4 @@ var app;
             .directive('jmAdsWidget', AdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
+//# sourceMappingURL=adsWidget.js.map

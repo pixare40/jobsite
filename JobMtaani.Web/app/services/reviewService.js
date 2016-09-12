@@ -27,3 +27,4 @@ var app;
             .service('app.services.ReviewService', ReviewService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=reviewService.js.map

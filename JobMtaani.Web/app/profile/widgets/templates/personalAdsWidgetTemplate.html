@@ -31,10 +31,11 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn btn-success" ng-click="vm.viewDetails(ad.AdId)" ng-disabled="ad.AdClosed">View Applicants &amp; Edit</button><br/>
+                        <button class="btn btn-success btn-sm" ng-click="vm.viewDetails(ad.AdId)" ng-disabled="ad.AdClosed">View Applicants &amp; Edit</button><br/>
                         <div ng-show="ad.AdClosed">
                             <p style="color: red">This Ad Has Been Closed </p>
-                            <button class="btn btn-primary" ng-click="vm.reopenAd(ad.AdId)">Re-Open</button>
+                            <button class="btn btn-primary btn-sm" ng-click="vm.reopenAd(ad.AdId)">Re-Open</button>
+                            <button class="btn btn-default btn-sm" ng-click="vm.reviewAd(ad.AdId)">Review</button>
                         </div>
                     </td>
                 </tr>

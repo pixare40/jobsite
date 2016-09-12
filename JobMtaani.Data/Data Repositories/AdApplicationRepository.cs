@@ -62,6 +62,16 @@ namespace JobMtaani.Data
             }
         }
 
+        public AdApplication[] GetAdApplicationsById(int adId)
+        {
+            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdId == adId && e.Status == ApplicationStatus.Open
+                        select e).ToArray();
+            }
+        }
+
         protected override AdApplication AddEntity(JobMtaaniDbContext entityContext, AdApplication entity)
         {
             return entityContext.AdApplicationSet.Add(entity);

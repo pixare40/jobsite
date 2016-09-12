@@ -192,12 +192,32 @@ namespace JobMtaani.Web.Controllers
                     adApplicationRespository.Update(adApplication);
                     adRepository.Update(closedAd);
 
+                    await DenyOtherApplications(closedAd);
 
                     response = request.CreateResponse(HttpStatusCode.OK, adApplication);
 
                     return response;
                 }
             });
+        }
+
+        private Task DenyOtherApplications(Ad closedAd)
+        {
+            AdApplication[] otherApplications = adApplicationRespository.GetAdApplicationsById(closedAd.AdId);
+
+            Task tasks = Task.Run(() => {
+                foreach (var adapplication in otherApplications)
+                {
+                    adapplication.Status = ApplicationStatus.Denied;
+                    adApplicationRespository.Update(adapplication);
+
+                    Account applicationUser = UserManager.FindById(adapplication.AdApplicantId);
+
+                    messageManager.SendDeniedMessage(adapplication, applicationUser);
+                }
+            });
+
+            return tasks;
         }
 
         [HttpPost]

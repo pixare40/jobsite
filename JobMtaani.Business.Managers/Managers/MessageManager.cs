@@ -44,6 +44,7 @@ namespace JobMtaani.Business.Managers
             return true;
         }
 
+
         public async Task<bool> NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant)
         {
             Ad ad = this.adRepository.Get(adApplication.AdId);
@@ -84,11 +85,21 @@ namespace JobMtaani.Business.Managers
         {
             //ignore callback
         }
+
+        public Task SendDeniedMessage(AdApplication adApplication, Account userAccount)
+        {
+            Ad ad = adRepository.Get(adApplication.AdId);
+            string jobApplicationUnSuccessfulMessage = string.Format(@"Your Job Application to job {0} was unsuccesful, Please log on to http://www.jobmtaani.co.ke/#/profile to apply for more roles",
+                                                       ad.AdTitle);
+
+            return SendEmailMessage(userAccount.Email, jobApplicationUnSuccessfulMessage);
+        }
     }
 
     public interface IMessageManager
     {
         Task<bool> SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
         Task<bool> NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);
+        Task SendDeniedMessage(AdApplication adApplication, Account userAccount);
     }
 }
