@@ -12,6 +12,7 @@ namespace JobMtaani.Data.Contracts
     {
         List<string> GetAdApplicant(int adId);
         AdApplication FindbyHireModel(string userName, int adId);
-        List<AdApplication> FindUserAdApplications(string userId);
+        List<AdApplication> FindUserAdApplications(string userId, int page);
+        int GetTotalAdApplications(string userid);
     }
 }

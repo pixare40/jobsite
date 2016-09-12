@@ -2,12 +2,11 @@ var app;
 (function (app) {
     var models;
     (function (models) {
-        var ReviewModel = (function () {
-            function ReviewModel() {
+        var Review = (function () {
+            function Review() {
             }
-            return ReviewModel;
+            return Review;
         }());
-        models.ReviewModel = ReviewModel;
+        models.Review = Review;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
-//# sourceMappingURL=review.js.map

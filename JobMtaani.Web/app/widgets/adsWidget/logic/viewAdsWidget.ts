@@ -63,6 +63,7 @@
         }
 
         viewApplicant(userId): void {
+            this.$location.path("/viewApplicant/" + userId);
         }
 
         getNumber(times: number): Array<number> {

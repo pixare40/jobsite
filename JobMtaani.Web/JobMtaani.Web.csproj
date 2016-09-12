@@ -301,6 +301,10 @@
     <Compile Include="Migrations\201609082138505_reviews.Designer.cs">
       <DependentUpon>201609082138505_reviews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609121822064_reviews1.cs" />
+    <Compile Include="Migrations\201609121822064_reviews1.Designer.cs">
+      <DependentUpon>201609121822064_reviews1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -310,6 +314,7 @@
     <Compile Include="Models\AdDetailsModel.cs" />
     <Compile Include="Models\HireModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ReviewModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\UserAccountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1340,6 +1345,7 @@
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\models\newsFeedModel.ts" />
     <TypeScriptCompile Include="app\models\review.ts" />
+    <TypeScriptCompile Include="app\models\reviewModel.ts" />
     <TypeScriptCompile Include="app\profile\editProfileController.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
@@ -1434,6 +1440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609082138505_reviews.resx">
       <DependentUpon>201609082138505_reviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609121822064_reviews1.resx">
+      <DependentUpon>201609121822064_reviews1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

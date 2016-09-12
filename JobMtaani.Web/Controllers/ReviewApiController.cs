@@ -1,6 +1,7 @@
 ﻿using JobMtaani.Business.Entities;
 using JobMtaani.Data.Contracts;
 using JobMtaani.Web.Core;
+using JobMtaani.Web.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -54,6 +55,7 @@ namespace JobMtaani.Web.Controllers
                 {
                     return response = request.CreateResponse(HttpStatusCode.BadRequest, review);
                 }
+                review.DateCreated = DateTime.Now;
 
                 Review addedReview = reviewRepository.Add(review);
 
@@ -76,6 +78,26 @@ namespace JobMtaani.Web.Controllers
                 int currentRating = user.CurrentRating;
 
                 response = request.CreateResponse(HttpStatusCode.OK, currentRating);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Route("GetReviews")]
+        public HttpResponseMessage GetReviews(HttpRequestMessage request, [FromUri]string uid, [FromUri]int page)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Review[] userReviews = reviewRepository.GetUserReviews(uid, page);
+
+                int totalReviews = reviewRepository.GetTotalUserReviews(uid);
+
+                ReviewModel reviewModel = new ReviewModel() { TotalReviews = totalReviews, Reviews = userReviews };
+
+                response = request.CreateResponse(HttpStatusCode.OK, reviewModel);
 
                 return response;
             });

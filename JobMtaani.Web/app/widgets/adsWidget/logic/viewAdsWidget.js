@@ -53,6 +53,7 @@ var app;
             ViewAdsWidgetController.prototype.getReviews = function () {
             };
             ViewAdsWidgetController.prototype.viewApplicant = function (userId) {
+                this.$location.path("/viewApplicant/" + userId);
             };
             ViewAdsWidgetController.prototype.getNumber = function (times) {
                 var newArray = new Array(times);
@@ -105,4 +106,3 @@ var app;
             .directive('jmViewAdsWidget', ViewAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewAdsWidget.js.map

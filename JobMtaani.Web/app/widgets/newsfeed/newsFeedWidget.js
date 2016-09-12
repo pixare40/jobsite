@@ -6,12 +6,21 @@ var app;
             function NewsFeedWidgetController(adService, $location) {
                 this.adService = adService;
                 this.$location = $location;
+                this.currentPage = 1;
+                this.maxSize = 6;
                 this.alerts = [];
-                this.getNewsFeedItems();
+                this.getTotalNewsFeedItems();
+                this.pageChanged();
             }
-            NewsFeedWidgetController.prototype.getNewsFeedItems = function () {
+            NewsFeedWidgetController.prototype.getTotalNewsFeedItems = function () {
                 var _this = this;
-                this.adService.getNewsFeed().success(function (data, status) {
+                this.adService.getTotalAdApplications().success(function (data) {
+                    _this.totalItems = data;
+                });
+            };
+            NewsFeedWidgetController.prototype.pageChanged = function () {
+                var _this = this;
+                this.adService.getNewsFeed(this.currentPage).success(function (data, status) {
                     if (data.length < 1) {
                         _this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.INFO, "No news items to show"));
                         return;
@@ -47,4 +56,3 @@ var app;
             .directive("jmNewsFeedWidget", NewsFeedWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=newsFeedWidget.js.map

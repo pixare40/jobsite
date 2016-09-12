@@ -23,9 +23,17 @@ namespace JobMtaani.Data
             }
         }
 
-        public List<AdApplication> FindUserAdApplications(string userId)
+        public List<AdApplication> FindUserAdApplications(string userId, int pageNumber)
         {
-            using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            if (pageNumber == 0)
+            {
+                pageNumber = 1;
+            }
+
+            int pageSize = 10;
+            int skip = (pageNumber * pageSize) - pageSize;
+
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
             {
                 return (from e in entityContext.AdApplicationSet
                         where e.AdApplicantId == userId
@@ -41,6 +49,16 @@ namespace JobMtaani.Data
                 return (from e in entityContext.AdApplicationSet
                         where e.AdId == adId
                         select e.AdApplicantId).ToList();
+            }
+        }
+
+        public int GetTotalAdApplications(string userId)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdApplicantId == userId
+                        select e).Count();
             }
         }
 

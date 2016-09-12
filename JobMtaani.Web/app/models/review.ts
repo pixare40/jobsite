@@ -1,5 +1,5 @@
 ﻿module app.models {
-    export class ReviewModel {
+    export class Review {
         constructor(
         ) { }
     }

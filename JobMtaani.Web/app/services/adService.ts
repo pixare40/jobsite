@@ -37,6 +37,12 @@
             });
         }
 
+        getTotalAdApplications(): ng.IHttpPromise<number> {
+            return this.$http.get('/api/ad/GetTotalAdApplications', {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
         getAdsByCategory(categoryId): ng.IHttpPromise<app.domain.Ad[]> {
             return this.$http.post('/api/ad/GetByCategory', categoryId);
         }
@@ -73,8 +79,8 @@
             });
         }
 
-        getNewsFeed(): ng.IHttpPromise<app.models.NewsFeedModel[]> {
-            return this.$http.get('/api/ad/GetNewsFeed', {
+        getNewsFeed(page: number): ng.IHttpPromise<app.models.NewsFeedModel[]> {
+            return this.$http.get('/api/ad/GetNewsFeed?page=' + page, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }

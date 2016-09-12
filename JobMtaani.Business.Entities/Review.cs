@@ -16,6 +16,7 @@ namespace JobMtaani.Business.Entities
         public string ReviewFor { get; set; }
         public string ReviewTitle { get; set; }
         public string ReviewText { get; set; }
+        public DateTime DateCreated { get; set; }
         public int Rating { get; set; }
         public object EntityId
         {

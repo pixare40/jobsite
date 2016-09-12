@@ -1,1 +1,13 @@
-﻿
+﻿<div class="container">
+    <div class="col-md-4">
+        <h1>{{vm.applicantDetails.FirstName}}</h1>
+    </div>
+    <div class="col-md-8">
+        <div ng-show="vm.showEmptyContainer()">
+            <h1>There are no reviews to show</h1>
+        </div>
+        <div ng-hide="vm.showEmptyContainer()">
+            <ul uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
+        </div>
+    </div>
+</div>

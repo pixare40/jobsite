@@ -4,15 +4,28 @@
 
         alerts: Array<app.models.IAlertModal>;
         newsFeedItems: app.models.NewsFeedModel[];
+        totalItems: number;
+        currentPage: number;
+        maxSize: number;
 
         static $inject = ["app.services.AdService", "$location"];
-        constructor(private adService: app.services.AdService,private $location: ng.ILocationService) {
+        constructor(private adService: app.services.AdService, private $location: ng.ILocationService) {
+            this.currentPage = 1;
+            this.maxSize = 6;
+
             this.alerts = [];
-            this.getNewsFeedItems();
+            this.getTotalNewsFeedItems();
+            this.pageChanged();
         }
 
-        getNewsFeedItems(): void {
-            this.adService.getNewsFeed().success((data, status) => {
+        getTotalNewsFeedItems(): void {
+            this.adService.getTotalAdApplications().success((data) => {
+                this.totalItems = data;
+            })
+        }
+
+        pageChanged(): void {
+            this.adService.getNewsFeed(this.currentPage).success((data, status) => {
                 if (data.length < 1) {
                     this.alerts.push(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.INFO, "No news items to show"));
                     return;

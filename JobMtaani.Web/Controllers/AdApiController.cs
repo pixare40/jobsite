@@ -130,7 +130,7 @@ namespace JobMtaani.Web.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetNewsFeed")]
-        public HttpResponseMessage GetNewsFeed(HttpRequestMessage request)
+        public HttpResponseMessage GetNewsFeed(HttpRequestMessage request, [FromUri]int page)
         {
             return GetHttpResponse(request, () =>
             {
@@ -141,7 +141,7 @@ namespace JobMtaani.Web.Controllers
                 List<NewsFeedModel> newsFeedModel = new List<NewsFeedModel>();
                 List<Ad> ads = new List<Ad>();
 
-                List<AdApplication> adApplications = adApplicationRespository.FindUserAdApplications(userId);
+                List<AdApplication> adApplications = adApplicationRespository.FindUserAdApplications(userId, page);
 
                 foreach(var adapplication in adApplications)
                 {
@@ -376,6 +376,25 @@ namespace JobMtaani.Web.Controllers
                 int totalAds = adRepository.GetTotalUserAds(currentUserId, forUser);
 
                 response = request.CreateResponse(HttpStatusCode.OK, totalAds);
+
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetTotalAdApplications")]
+        public HttpResponseMessage GetTotalAdApplications(HttpRequestMessage request)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                string currentUserId = User.Identity.GetUserId();
+
+                int totalAdApplications = adApplicationRespository.GetTotalAdApplications(currentUserId);
+
+                response = request.CreateResponse(HttpStatusCode.OK, totalAdApplications);
 
                 return response;
             });

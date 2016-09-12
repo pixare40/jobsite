@@ -26,6 +26,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getTotalAdApplications = function () {
+                return this.$http.get('/api/ad/GetTotalAdApplications', {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             AdService.prototype.getAdsByCategory = function (categoryId) {
                 return this.$http.post('/api/ad/GetByCategory', categoryId);
             };
@@ -55,8 +60,8 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            AdService.prototype.getNewsFeed = function () {
-                return this.$http.get('/api/ad/GetNewsFeed', {
+            AdService.prototype.getNewsFeed = function (page) {
+                return this.$http.get('/api/ad/GetNewsFeed?page=' + page, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
@@ -104,4 +109,3 @@ var app;
             .service('app.services.AdService', AdService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=adService.js.map

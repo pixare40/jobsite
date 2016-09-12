@@ -16,6 +16,12 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        getUserReviews(userId: string, page: number): ng.IHttpPromise<models.ReviewModel> {
+            return this.$http.get("/api/Review/GetReviews?uid=" + userId + "&page=" + page, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
         
     }
 

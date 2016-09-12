@@ -106,7 +106,7 @@
                 controller: 'app.ads.SearchController',
                 controllerAs: 'vm'
             })
-            .when('/viewApplicant', {
+            .when('/viewApplicant/:user', {
                 templateUrl: '/app/profile/viewApplicantTemplate.html',
                 controller: 'app.profile.ViewApplicantController',
                 controllerAs: 'vm'

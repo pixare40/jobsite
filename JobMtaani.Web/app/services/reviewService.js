@@ -13,6 +13,11 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            ReviewService.prototype.getUserReviews = function (userId, page) {
+                return this.$http.get("/api/Review/GetReviews?uid=" + userId + "&page=" + page, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
             ReviewService.$inject = ['$http', 'app.services.CurrentUser'];
             return ReviewService;
         }());
@@ -22,4 +27,3 @@ var app;
             .service('app.services.ReviewService', ReviewService);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
-//# sourceMappingURL=reviewService.js.map
