@@ -62,6 +62,16 @@ namespace JobMtaani.Data
             }
         }
 
+        public AdApplication GetSuccesfulAdApplication(int adId)
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdApplicationSet
+                        where e.AdId == adId && e.Status == ApplicationStatus.Accepted
+                        select e).FirstOrDefault();
+            }
+        }
+
         public AdApplication[] GetAdApplicationsById(int adId)
         {
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())

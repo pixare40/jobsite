@@ -12,13 +12,19 @@
         }
 
         getReview(userId: string): ng.IHttpPromise<number> {
-            return this.$http.get("/api/Review/GetReview?uid=" + userId, {
+            return this.$http.get("/api/review/GetReview?uid=" + userId, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
 
         getUserReviews(userId: string, page: number): ng.IHttpPromise<models.ReviewModel> {
-            return this.$http.get("/api/Review/GetReviews?uid=" + userId + "&page=" + page, {
+            return this.$http.get("/api/review/GetReviews?uid=" + userId + "&page=" + page, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
+        saveReview(review: models.IReview): ng.IHttpPromise<models.Review> {
+            return this.$http.post("/api/review/SaveReview", review, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }

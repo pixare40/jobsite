@@ -46,6 +46,9 @@ var app;
             PersonalAdsWidgetController.prototype.viewDetails = function (adId) {
                 this.$location.path("/viewAd/" + adId);
             };
+            PersonalAdsWidgetController.prototype.reviewAd = function (adId) {
+                this.$location.path("/viewAd/" + adId);
+            };
             PersonalAdsWidgetController.prototype.nullifyMessages = function () {
                 this.errorMessage = null;
                 this.successMessage = null;

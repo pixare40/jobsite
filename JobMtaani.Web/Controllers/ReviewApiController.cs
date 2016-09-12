@@ -16,7 +16,7 @@ namespace JobMtaani.Web.Controllers
 {
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    [RoutePrefix("api/Review")]
+    [RoutePrefix("api/review")]
     [Authorize]
     [UsesDisposableService]
     public class ReviewApiController : ApiControllerBase
@@ -45,24 +45,47 @@ namespace JobMtaani.Web.Controllers
 
         [HttpPost]
         [Route("SaveReview")]
-        public HttpResponseMessage SaveReview(HttpRequestMessage request, [FromBody]Review review)
+        public HttpResponseMessage SaveReview(HttpRequestMessage request, Review review)
         {
             return GetHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
 
-                if(review == null)
+                if (string.IsNullOrEmpty(review.ReviewText) || string.IsNullOrEmpty(review.ReviewTitle))
                 {
                     return response = request.CreateResponse(HttpStatusCode.BadRequest, review);
                 }
+
                 review.DateCreated = DateTime.Now;
+                string currentUserId = User.Identity.GetUserId();
+                review.AccountId = currentUserId;
 
                 Review addedReview = reviewRepository.Add(review);
+
+                SetNewRating(addedReview.Rating, review.ReviewFor);
 
                 response = request.CreateResponse(HttpStatusCode.OK, addedReview);
 
                 return response;
             });
+        }
+
+        private void SetNewRating(int rating, string reviewedUserId)
+        {
+            Account account = UserManager.FindById(reviewedUserId);
+
+            int numberOfReviews = account.NumberOfReviews;
+            int currentRating = account.CurrentRating;
+
+            int totalrating = currentRating + rating;
+            int totalreviews = numberOfReviews + 1;
+
+            int newRating = totalrating / totalreviews;
+
+            account.CurrentRating = newRating;
+            account.NumberOfReviews = totalreviews;
+
+            UserManager.Update(account);
         }
 
         [HttpGet]

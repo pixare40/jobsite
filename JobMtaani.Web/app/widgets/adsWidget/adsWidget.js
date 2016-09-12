@@ -35,7 +35,7 @@ var app;
             };
             AdsWidgetController.prototype.goToApplication = function (adId) {
                 var _this = this;
-                this.adService.getAdApplicationByAdId(adId).success(function (data) {
+                this.adService.getAdApplicationByAdId(adId, "").success(function (data) {
                     _this.$location.path("/adApplication/" + data.AdApplicationId);
                 });
             };

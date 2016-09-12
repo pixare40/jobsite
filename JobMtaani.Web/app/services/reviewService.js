@@ -9,12 +9,17 @@ var app;
                 this.currentUser = currentUser;
             }
             ReviewService.prototype.getReview = function (userId) {
-                return this.$http.get("/api/Review/GetReview?uid=" + userId, {
+                return this.$http.get("/api/review/GetReview?uid=" + userId, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
             ReviewService.prototype.getUserReviews = function (userId, page) {
-                return this.$http.get("/api/Review/GetReviews?uid=" + userId + "&page=" + page, {
+                return this.$http.get("/api/review/GetReviews?uid=" + userId + "&page=" + page, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            ReviewService.prototype.saveReview = function (review) {
+                return this.$http.post("/api/review/SaveReview", review, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };

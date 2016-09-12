@@ -10,6 +10,7 @@
         adStatus: number;
         applicantsNotification: string;
         timelapse: number;
+        successfulAdApplication: models.AdApplicationModel;
 
         static $inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser','$location','app.services.ReviewService'];
         constructor(private adService: app.services.AdService, private $routeParams: app.ads.IAdRouteParams,
@@ -29,6 +30,10 @@
                     .success((data, status) => {
                         this.adDetails = data;
                         this.timelapse = this.dateDiffInDays(this.adDetails.AdDetails.DateCreated);
+
+                        if (this.adDetails.AdDetails.AdClosed) {
+                            this.getSuccesfulAdApplication();
+                        }
 
                         if (this.currentUser.currentUserId !== data.AdDetails.AccountId) {
                             this.$location.path("/ad/" + data.AdDetails.AdId);
@@ -58,8 +63,36 @@
             });
         }
 
+        review(index: number): void {
+            var profileModel = this.adDetails.AdApplicantDetails[index];
+            var userId: string = profileModel.UserId;
+            this.$location.path("/reviewUser/" + userId + "/" + this.adDetails.AdDetails.AdId);
+        }
+
+        getSuccesfulAdApplication(): void {
+            this.adService.getSuccesfulAdApplication(this.adDetails.AdDetails.AdId).success((data) => {
+                if (data) {
+                    this.successfulAdApplication = data;
+                }
+            })
+        }
+
         getReviews(): void {
 
+        }
+
+        showReviewButton(index: number): boolean {
+            if (!this.successfulAdApplication) {
+                return false;
+            }
+            var profileModel = this.adDetails.AdApplicantDetails[index];
+            if (this.successfulAdApplication.AdApplicantId == profileModel.UserId) {
+                return true;
+            }
+            else {
+                return false;
+            }
+            
         }
 
         viewApplicant(userId): void {

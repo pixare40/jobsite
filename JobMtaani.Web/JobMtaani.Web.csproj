@@ -343,6 +343,7 @@
     <Content Include="app\profile\widgets\dashboardWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\personalAdsWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\profileWidgetTemplate.html" />
+    <Content Include="app\users\review\reviewTemplate.html" />
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\templates\topAdsWidgetTemplate.html" />
     <Content Include="app\widgets\categoryWidgetTemplate.html" />
@@ -1356,6 +1357,7 @@
     <TypeScriptCompile Include="app\services\messagingService.ts" />
     <TypeScriptCompile Include="app\services\reviewService.ts" />
     <TypeScriptCompile Include="app\services\searchService.ts" />
+    <TypeScriptCompile Include="app\users\review\reviewController.ts" />
     <TypeScriptCompile Include="app\valueobjects\alertTypesValueObject.ts" />
     <TypeScriptCompile Include="app\valueobjects\notificationsValueObject.ts" />
     <TypeScriptCompile Include="app\models\profileModel.ts" />

@@ -9,14 +9,22 @@ using System.Threading.Tasks;
 
 namespace JobMtaani.Business.Entities
 {
+    [DataContract]
     public class Review : EntityBase, IAccountOwnedEntity, IIdentifiableEntity
     {
+        [DataMember]
         public int ReviewId { get; set; }
+        [DataMember]
         public string AccountId { get; set; }
+        [DataMember]
         public string ReviewFor { get; set; }
+        [DataMember]
         public string ReviewTitle { get; set; }
+        [DataMember]
         public string ReviewText { get; set; }
+        [DataMember]
         public DateTime DateCreated { get; set; }
+        [DataMember]
         public int Rating { get; set; }
         public object EntityId
         {

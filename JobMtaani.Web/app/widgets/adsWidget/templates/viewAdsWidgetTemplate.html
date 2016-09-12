@@ -42,7 +42,8 @@
                             <span ng-hide="adApplicant.CurrentRating">
                                 No Reviews Yet &nbsp;
                             </span>
-                            <button class="btn btn-primary" ng-click="vm.hire($index)" ng-disabled="vm.adDetails.AdDetails.AdClosed">Hire</button>
+                            <button ng-hide="vm.adDetails.AdDetails.AdClosed" class="btn btn-primary btn-sm" ng-click="vm.hire($index)">Hire</button>
+                            <button ng-show="vm.showReviewButton($index)" class="btn btn-default btn-sm" ng-click="vm.review($index)">Review</button>
                         </td>
                     </tr>
                 </tbody>

@@ -23,6 +23,9 @@ var app;
                         .success(function (data, status) {
                         _this.adDetails = data;
                         _this.timelapse = _this.dateDiffInDays(_this.adDetails.AdDetails.DateCreated);
+                        if (_this.adDetails.AdDetails.AdClosed) {
+                            _this.getSuccesfulAdApplication();
+                        }
                         if (_this.currentUser.currentUserId !== data.AdDetails.AccountId) {
                             _this.$location.path("/ad/" + data.AdDetails.AdId);
                             return;
@@ -50,7 +53,32 @@ var app;
                     _this.addAlert(new app.models.AlertModel(app.ValueObjects.AlertTypesValueObject.ERROR, "Error hiring person"));
                 });
             };
+            ViewAdsWidgetController.prototype.review = function (index) {
+                var profileModel = this.adDetails.AdApplicantDetails[index];
+                var userId = profileModel.UserId;
+                this.$location.path("/reviewUser/" + userId + "/" + this.adDetails.AdDetails.AdId);
+            };
+            ViewAdsWidgetController.prototype.getSuccesfulAdApplication = function () {
+                var _this = this;
+                this.adService.getSuccesfulAdApplication(this.adDetails.AdDetails.AdId).success(function (data) {
+                    if (data) {
+                        _this.successfulAdApplication = data;
+                    }
+                });
+            };
             ViewAdsWidgetController.prototype.getReviews = function () {
+            };
+            ViewAdsWidgetController.prototype.showReviewButton = function (index) {
+                if (!this.successfulAdApplication) {
+                    return false;
+                }
+                var profileModel = this.adDetails.AdApplicantDetails[index];
+                if (this.successfulAdApplication.AdApplicantId == profileModel.UserId) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             };
             ViewAdsWidgetController.prototype.viewApplicant = function (userId) {
                 this.$location.path("/viewApplicant/" + userId);

@@ -115,14 +115,20 @@
             });
         }
 
-        getAdApplicationByAdId(adId): ng.IHttpPromise<app.models.AdApplicationModel> {
-            return this.$http.get("/api/ad/GetAdApplication?adId=" + adId, {
+        getAdApplicationByAdId(adId: number, uid: string): ng.IHttpPromise<app.models.AdApplicationModel> {
+            return this.$http.get("/api/ad/GetAdApplication?adId=" + adId + "&uid=" + uid, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
 
         withdrawAdApplication(applicationid: number): ng.IHttpPromise<app.models.AdApplicationModel> {
             return this.$http.get("/api/ad/WithdrawAdApplication?applicationId=" + applicationid, {
+                headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+            });
+        }
+
+        getSuccesfulAdApplication(adId: number): ng.IHttpPromise<app.models.AdApplicationModel> {
+            return this.$http.get("/api/ad/GetSuccesfulAdApplication?adId=" + adId, {
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }

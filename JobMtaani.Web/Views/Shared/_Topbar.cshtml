@@ -15,7 +15,7 @@
             </ul>
             <div ng-show="vm.isLoggedIn">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button class="navbar-text navbar-right btn btn-danger" style="color:white;" ng-click="vm.logOut()">Log Out</button></li>
+                    <li><button class="navbar-text navbar-right btn btn-danger btn-sm" style="color:white;" ng-click="vm.logOut()">Log Out</button></li>
                     <li class="dropdown">
                         <a hr class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{vm.username}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -30,8 +30,8 @@
             </div>
             <div ng-hide="vm.isLoggedIn">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button class="navbar-text navbar-right btn btn-success" ng-click="vm.login()" style="color:white;">Log In</button></li>
-                    <li><button class="navbar-text navbar-right btn btn-info" ng-click="vm.register()" style="color:white;">Register</button></li>
+                    <li><button class="navbar-text navbar-right btn btn-success btn-sm" ng-click="vm.login()" style="color:white;">Log In</button></li>
+                    <li><button class="navbar-text navbar-right btn btn-info btn-sm" ng-click="vm.register()" style="color:white;">Register</button></li>
                 </ul>
             </div>
         </div>

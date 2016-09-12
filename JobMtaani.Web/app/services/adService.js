@@ -90,13 +90,18 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            AdService.prototype.getAdApplicationByAdId = function (adId) {
-                return this.$http.get("/api/ad/GetAdApplication?adId=" + adId, {
+            AdService.prototype.getAdApplicationByAdId = function (adId, uid) {
+                return this.$http.get("/api/ad/GetAdApplication?adId=" + adId + "&uid=" + uid, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
             AdService.prototype.withdrawAdApplication = function (applicationid) {
                 return this.$http.get("/api/ad/WithdrawAdApplication?applicationId=" + applicationid, {
+                    headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
+                });
+            };
+            AdService.prototype.getSuccesfulAdApplication = function (adId) {
+                return this.$http.get("/api/ad/GetSuccesfulAdApplication?adId=" + adId, {
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };

@@ -54,6 +54,10 @@
             this.$location.path("/viewAd/" + adId);
         }
 
+        reviewAd(adId: number): void {
+            this.$location.path("/viewAd/" + adId);
+        }
+
         nullifyMessages(): void {
             this.errorMessage = null;
             this.successMessage = null;

@@ -16,7 +16,7 @@
             'app.ads',
             'app.profile',
             'app.payments',
-            //'app.users',
+            'app.users',
             'app.home'
         ]);
 
@@ -109,6 +109,11 @@
             .when('/viewApplicant/:user', {
                 templateUrl: '/app/profile/viewApplicantTemplate.html',
                 controller: 'app.profile.ViewApplicantController',
+                controllerAs: 'vm'
+            })
+            .when('/reviewUser/:user/:adId', {
+                templateUrl: '/app/users/review/reviewTemplate.html',
+                controller: 'app.users.ReviewController',
                 controllerAs: 'vm'
             })
             .otherwise('/home');

@@ -459,14 +459,38 @@ namespace JobMtaani.Web.Controllers
         [HttpGet]
         [Authorize]
         [Route("GetAdApplication")]
-        public HttpResponseMessage GetAdApplication(HttpRequestMessage request, [FromUri]int adId)
+        public HttpResponseMessage GetAdApplication(HttpRequestMessage request, [FromUri]int adId, [FromUri]string uid)
         {
             return GetHttpResponse(request, () => {
                 HttpResponseMessage response = null;
 
-                AdApplication adApplication = adApplicationRespository.FindbyHireModel(User.Identity.GetUserId(), adId);
+                if(!string.IsNullOrEmpty(uid))
+                {
+                    AdApplication adApplication = adApplicationRespository.FindbyHireModel(uid, adId);
+                    response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                }
+                else
+                {
+                    AdApplication adApplication = adApplicationRespository.FindbyHireModel(User.Identity.GetUserId(), adId);
+                    response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                }
 
-                response = request.CreateResponse(HttpStatusCode.OK, adApplication);
+                return response;
+            });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("GetSuccesfulAdApplication")]
+        public HttpResponseMessage GetSuccesfulAdApplication(HttpRequestMessage request, [FromUri]int adId)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                AdApplication adapplication = adApplicationRespository.GetSuccesfulAdApplication(adId);
+
+                response = request.CreateResponse(HttpStatusCode.OK, adapplication);
 
                 return response;
             });

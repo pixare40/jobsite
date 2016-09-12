@@ -43,7 +43,7 @@
         }
 
         goToApplication(adId: number) {
-            this.adService.getAdApplicationByAdId(adId).success((data) => {
+            this.adService.getAdApplicationByAdId(adId, "").success((data) => {
                 this.$location.path("/adApplication/" + data.AdApplicationId);
             });
         }

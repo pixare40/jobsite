@@ -3,7 +3,14 @@ var app;
     var models;
     (function (models) {
         var Review = (function () {
-            function Review() {
+            function Review(ReviewId, AccountId, ReviewFor, ReviewTitle, ReviewText, DateCreated, Rating) {
+                this.ReviewId = ReviewId;
+                this.AccountId = AccountId;
+                this.ReviewFor = ReviewFor;
+                this.ReviewTitle = ReviewTitle;
+                this.ReviewText = ReviewText;
+                this.DateCreated = DateCreated;
+                this.Rating = Rating;
             }
             return Review;
         }());
