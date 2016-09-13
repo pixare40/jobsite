@@ -43,6 +43,11 @@
             }
         }
 
+        getNumber(times: number): Array<number> {
+            var newArray = new Array(times);
+            return newArray;
+        }
+
         pageChanged(): void {
             this.reviewService.getUserReviews(this.applicantDetails.UserId, this.currentPage).success((data) => {
                 this.totalItems = data.TotalReviews;

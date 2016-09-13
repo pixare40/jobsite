@@ -1345,6 +1345,7 @@
     <TypeScriptCompile Include="app\models\location.ts" />
     <TypeScriptCompile Include="app\models\message.ts" />
     <TypeScriptCompile Include="app\models\newsFeedModel.ts" />
+    <TypeScriptCompile Include="app\models\ratingState.ts" />
     <TypeScriptCompile Include="app\models\review.ts" />
     <TypeScriptCompile Include="app\models\reviewModel.ts" />
     <TypeScriptCompile Include="app\profile\editProfileController.ts" />

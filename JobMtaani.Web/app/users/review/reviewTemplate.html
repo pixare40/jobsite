@@ -26,13 +26,7 @@
                               ng-model="vm.review.ReviewText"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="rating" class="control-label">Rating</label>
-                    <input type="number"
-                           id="rating"
-                           class="form-control"
-                           placeholder="Rating"
-                           required
-                           ng-model="vm.review.Rating" min="1" max="5" />
+                    <span class="rating-box" uib-rating ng-model="vm.review.Rating" max="vm.max" read-only="vm.isReadonly" aria-labelledby="default-rating"></span>
                 </div>
                 <button type="submit"
                         class="btn btn-default"

@@ -16,4 +16,3 @@ var app;
             .controller("app.ads.SearchController", SearchController);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
-//# sourceMappingURL=searchController.js.map

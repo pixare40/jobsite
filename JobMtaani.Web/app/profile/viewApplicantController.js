@@ -29,6 +29,10 @@ var app;
                     return false;
                 }
             };
+            ViewApplicantController.prototype.getNumber = function (times) {
+                var newArray = new Array(times);
+                return newArray;
+            };
             ViewApplicantController.prototype.pageChanged = function () {
                 var _this = this;
                 this.reviewService.getUserReviews(this.applicantDetails.UserId, this.currentPage).success(function (data) {
@@ -44,4 +48,3 @@ var app;
             .controller('app.profile.ViewApplicantController', ViewApplicantController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewApplicantController.js.map

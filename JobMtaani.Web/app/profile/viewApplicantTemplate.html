@@ -1,12 +1,49 @@
 ﻿<div class="container">
     <div class="col-md-4">
-        <h1>{{vm.applicantDetails.FirstName}}</h1>
+        <h1>{{vm.applicantDetails.FirstName}} {{vm.applicantDetails.LastName}}</h1>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Location</td>
+                    <td>{{vm.applicantDetails.Location}}</td>
+                </tr>
+                <tr>
+                    <td>Date Joined</td>
+                    <td>{{vm.applicantDetails.DateJoined | date:'medium'}}</td>
+                </tr>
+                <tr>
+                    <td>Number of Reviews</td>
+                    <td>{{vm.applicantDetails.NumberOfReviews}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div jm-quick-links-widget></div>
     </div>
     <div class="col-md-8">
         <div ng-show="vm.showEmptyContainer()">
             <h1>There are no reviews to show</h1>
         </div>
         <div ng-hide="vm.showEmptyContainer()">
+            <h2>Latest Customer Reviews</h2>
+            <div class="review-container">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr ng-repeat="review in vm.reviews">
+                            <td>
+                                <div>
+                                    <h3>
+                                        <span class="rating" ng-show="review.Rating">
+                                            <i class="fa fa-star" aria-hidden="true" ng-repeat="i in vm.getNumber(review.Rating) track by $index"></i>
+                                        </span>
+                                        &nbsp; {{review.ReviewTitle}}
+                                    </h3>
+                                    <p>{{review.ReviewText}}</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <ul uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
         </div>
     </div>

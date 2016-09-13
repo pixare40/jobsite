@@ -3,16 +3,23 @@ var app;
     var users;
     (function (users) {
         var ReviewController = (function () {
-            function ReviewController(reviewService, accountService, $routeParams, adService) {
+            function ReviewController(reviewService, accountService, $routeParams, adService, $location) {
                 this.reviewService = reviewService;
                 this.accountService = accountService;
                 this.$routeParams = $routeParams;
                 this.adService = adService;
+                this.$location = $location;
                 this.initialise();
             }
             ReviewController.prototype.initialise = function () {
+                this.rate = 3;
+                this.max = 5;
+                this.isReadonly = false;
                 this.getAd();
                 this.getUser();
+            };
+            ReviewController.prototype.initialiseRatingStates = function () {
+                this.ratingStates.push(new app.models.RatingState("glyphicon-star", "glyphicon-star-empty"));
             };
             ReviewController.prototype.getAd = function () {
                 var _this = this;
@@ -31,20 +38,21 @@ var app;
                 this.review.ReviewFor = this.user.UserId;
                 this.reviewService.saveReview(this.review).success(function () {
                     _this.successString = "Review Saved!";
+                    _this.$location.path("/viewApplicant/" + _this.review.ReviewFor);
                 });
             };
             ReviewController.prototype.isValidForm = function () {
                 if (!this.review) {
                     return false;
                 }
-                else if (!this.review.ReviewText || !this.review.ReviewTitle || !this.review.Rating) {
+                else if (!this.review.ReviewText || !this.review.ReviewTitle) {
                     return false;
                 }
                 else {
                     return true;
                 }
             };
-            ReviewController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams", "app.services.AdService"];
+            ReviewController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams", "app.services.AdService", "$location"];
             return ReviewController;
         }());
         angular
@@ -52,4 +60,3 @@ var app;
             .controller('app.users.ReviewController', ReviewController);
     })(users = app.users || (app.users = {}));
 })(app || (app = {}));
-//# sourceMappingURL=reviewController.js.map

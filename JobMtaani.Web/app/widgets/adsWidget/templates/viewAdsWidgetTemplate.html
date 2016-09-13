@@ -37,7 +37,7 @@
                         </td>
                         <td class="text-right">
                             <span class="rating" ng-show="adApplicant.CurrentRating">
-                                <i class="fa fa-star" aria-hidden="true" ng-repeat="i in vm.getNumber(adApplicant.CurrentRating) track by $index"></i>
+                                <a ng-click="vm.viewApplicant(adApplicant.UserId)">View Reviews</a>
                             </span>
                             <span ng-hide="adApplicant.CurrentRating">
                                 No Reviews Yet &nbsp;
