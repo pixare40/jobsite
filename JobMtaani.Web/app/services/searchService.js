@@ -22,6 +22,9 @@ var app;
             SearchService.prototype.getLocations = function () {
                 return this.$http.get("/api/search/GetLocations");
             };
+            SearchService.prototype.browseAdsPaged = function (pageNumber) {
+                return this.$http.get("/api/search/BrowseAds?page=" + pageNumber);
+            };
             SearchService.$inject = ['$http', '$location', '$rootScope'];
             return SearchService;
         }());

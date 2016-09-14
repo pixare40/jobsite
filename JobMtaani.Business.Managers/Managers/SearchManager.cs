@@ -16,12 +16,14 @@ namespace JobMtaani.Business.Managers
     {
         private IAdRepository adRepository;
         private ILocationRepository locationRepository;
+        private ICategoryRepository categoryRepository;
 
         [ImportingConstructor]
-        public SearchManager(IAdRepository adRepository, ILocationRepository locationRepository)
+        public SearchManager(IAdRepository adRepository, ILocationRepository locationRepository, ICategoryRepository categoryRepository)
         {
             this.adRepository = adRepository;
             this.locationRepository = locationRepository;
+            this.categoryRepository = categoryRepository;
         }
 
         public Ad[] Search(string searchTerm, int? locationId)
@@ -36,10 +38,25 @@ namespace JobMtaani.Business.Managers
 
             return adRepository.GetBySearchTerms(searchModel);
         }
+
+        public Ad[] GetAllAdsPaged(int page)
+        {
+            Ad[] ads = adRepository.GetAllAdsPaged(page);
+
+            foreach (var ad in ads)
+            {
+                ad.IconClass = categoryRepository.Get(ad.CategoryId).IconClass;
+                ad.CategoryName = categoryRepository.Get(ad.CategoryId).CategoryCName;
+            }
+
+            return ads;
+        }
     }
 
     public interface ISearchManager
     {
         Ad[] Search(string serchTerm, int? location);
+
+        Ad[] GetAllAdsPaged(int page);
     }
 }

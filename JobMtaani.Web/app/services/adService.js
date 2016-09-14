@@ -105,6 +105,9 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
+            AdService.prototype.getTotalAds = function () {
+                return this.$http.get("/api/ad/GetTotalAds");
+            };
             AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());

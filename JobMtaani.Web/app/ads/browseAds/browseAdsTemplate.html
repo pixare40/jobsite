@@ -1,5 +1,11 @@
-﻿<div class="top-ads-widget">
-    <div class="col-md-12">
+﻿<div class="container">
+    <div jm-search-widget></div>
+    <div class="loading-container">
+        <div class='uil-poi-css' style='transform:scale(0.6);'>
+            <div></div>
+        </div>
+    </div>
+    <div class="search-results-container">
         <div class="col-xs-12 col-md-4 ad-holder" ng-repeat="ad in vm.ads">
             <div class="ad-panel {{ad.CategoryName}}">
                 <div class="thumbnail" ng-click="vm.goToAd($index)">
@@ -14,4 +20,7 @@
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    <ul uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" ng-change="vm.pageChanged()" max-size="vm.maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
 </div>

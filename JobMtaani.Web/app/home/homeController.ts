@@ -72,6 +72,10 @@
                 this.$location.path('/profile');
             }
         }
+
+        showMoreAds(): void {
+            this.$location.path("/browse");
+        }
     }
 
     angular

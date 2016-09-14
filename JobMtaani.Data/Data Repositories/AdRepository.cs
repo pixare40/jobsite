@@ -154,6 +154,35 @@ namespace JobMtaani.Data
             }
         }
 
+        public Ad[] GetAllAdsPaged(int pageId)
+        {
+            if (pageId == 0)
+            {
+                pageId = 1;
+            }
+
+            int pageSize = 12;
+            int skip = (pageId * pageSize) - pageSize;
+
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AdClosed == false
+                        orderby e.DateCreated descending
+                        select e).Skip(skip).Take(pageSize).ToArray();
+            }
+        }
+
+        public int GetTotalAds()
+        {
+            using (JobMtaaniDbContext entityContext = new JobMtaaniDbContext())
+            {
+                return (from e in entityContext.AdSet
+                        where e.AdClosed == false
+                        select e).Count();
+            }
+        }
+
         public Ad[] GetPersonalAds(string userId)
         {
             using(JobMtaaniDbContext entityContext = new JobMtaaniDbContext())

@@ -16,5 +16,7 @@ namespace JobMtaani.Data.Contracts
         Ad[] GetApplyAds(string userId);
         Ad[] GetPageAds(string userId, int pageNumber, bool userOwned);
         int GetTotalUserAds(string userId, bool forUser);
+        int GetTotalAds();
+        Ad[] GetAllAdsPaged(int page);
     }
 }

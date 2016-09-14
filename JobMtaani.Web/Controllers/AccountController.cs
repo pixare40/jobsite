@@ -107,6 +107,7 @@ namespace JobMtaani.Web.Controllers
             currentUserAccount.LastName = model.LastName;
             currentUserAccount.Location = model.Location;
             currentUserAccount.PhoneNumber = model.PhoneNumber;
+            currentUserAccount.IDCardNumber = model.IDCardNumber;
 
             IdentityResult result = await UserManager.UpdateAsync(currentUserAccount);
 
@@ -405,7 +406,7 @@ namespace JobMtaani.Web.Controllers
             }
 
             var user = new Account() { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName,
-                LastName = model.LastName, Location = model.Location, PhoneNumber = model.PhoneNumber, DateJoined = DateTime.Now };
+                LastName = model.LastName, Location = model.Location, PhoneNumber = model.PhoneNumber,IDCardNumber = model.IDCardNumber, DateJoined = DateTime.Now };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

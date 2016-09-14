@@ -14,6 +14,7 @@ namespace JobMtaani.Web.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string Location { get; set; }
+        public int IDCardNumber { get; set; }
         public DateTime DateJoined { get; set; }
         public bool SubscriptionStatus { get; set; }
         public int CurrentRating { get; set; }

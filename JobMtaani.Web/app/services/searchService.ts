@@ -27,6 +27,10 @@
         getLocations(): ng.IHttpPromise<app.models.Location[]> {
             return this.$http.get("/api/search/GetLocations");
         }
+
+        browseAdsPaged(pageNumber: number): ng.IHttpPromise<app.domain.Ad[]> {
+            return this.$http.get("/api/search/BrowseAds?page=" + pageNumber);
+        }
     }
 
     angular

@@ -3,7 +3,7 @@ var app;
     var profile;
     (function (profile) {
         var UserData = (function () {
-            function UserData(FirstName, LastName, UserName, Location, Email, Password, ConfirmPassword, PhoneNumber, grant_type) {
+            function UserData(FirstName, LastName, UserName, Location, Email, Password, ConfirmPassword, PhoneNumber, IDCardNumber, grant_type) {
                 this.FirstName = FirstName;
                 this.LastName = LastName;
                 this.UserName = UserName;
@@ -12,6 +12,7 @@ var app;
                 this.Password = Password;
                 this.ConfirmPassword = ConfirmPassword;
                 this.PhoneNumber = PhoneNumber;
+                this.IDCardNumber = IDCardNumber;
                 this.grant_type = grant_type;
             }
             return UserData;
@@ -25,7 +26,7 @@ var app;
                 this.$rootScope = $rootScope;
                 this.$cookies = $cookies;
                 this.searchService = searchService;
-                this.userdata = new UserData("", "", "", "", "", "", "", "", "");
+                this.userdata = new UserData("", "", "", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
                 this.setLocations();
             }
@@ -96,7 +97,7 @@ var app;
                     _this.isLoggedIn = false;
                     _this.currentUser.setProfile("", "", false);
                     _this.successMessage = "Logout Succesful";
-                    _this.userdata = new UserData("", "", "", "", "", "", "", "", "");
+                    _this.userdata = new UserData("", "", "", "", "", "", "", "", "", "");
                 }).error(function (data, status) {
                 });
             };

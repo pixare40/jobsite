@@ -11,6 +11,7 @@
             public PhoneNumber: string,
             public NumberOfReviews: number,
             public CurrentRating: number,
+            public IDCardNumber: string,
             public SubscriptionStatus: boolean
         ) { }
     }

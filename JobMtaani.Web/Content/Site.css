@@ -36,6 +36,21 @@ textarea {
     background-size:cover;
 }
 
+.show-more {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    border: 1px green solid;
+    border-radius: 3px;
+    cursor: pointer; 
+}
+
+.show-more p{
+    line-height: 50px;
+    color: green;
+    font-size: large;
+}
+
 .btn-outline-green {
     border: solid 1px #762b2d;
 }

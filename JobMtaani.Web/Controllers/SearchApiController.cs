@@ -71,5 +71,22 @@ namespace JobMtaani.Web.Controllers
             });
         }
 
+
+        [HttpGet]
+        [Route("BrowseAds")]
+        [AllowAnonymous]
+        public HttpResponseMessage BrowseAds(HttpRequestMessage request, [FromUri]int page)
+        {
+            return GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                Ad[] ads = searchManager.GetAllAdsPaged(page);
+
+                response = request.CreateResponse(HttpStatusCode.OK, ads);
+
+                return response;
+            });
+        }
     }
 }

@@ -132,6 +132,10 @@
                 headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
             });
         }
+
+        getTotalAds(): ng.IHttpPromise<number> {
+            return this.$http.get("/api/ad/GetTotalAds");
+        }
     }
 
     angular

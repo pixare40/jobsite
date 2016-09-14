@@ -305,6 +305,14 @@
     <Compile Include="Migrations\201609121822064_reviews1.Designer.cs">
       <DependentUpon>201609121822064_reviews1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609131955552_idcardnumber.cs" />
+    <Compile Include="Migrations\201609131955552_idcardnumber.Designer.cs">
+      <DependentUpon>201609131955552_idcardnumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609132003467_idcardnumber1.cs" />
+    <Compile Include="Migrations\201609132003467_idcardnumber1.Designer.cs">
+      <DependentUpon>201609132003467_idcardnumber1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -326,6 +334,7 @@
     <Content Include="app\ads\adApplicationTemplate.html" />
     <Content Include="app\ads\adsTemplate.html" />
     <Content Include="app\ads\adTemplate.html" />
+    <Content Include="app\ads\browseAds\browseAdsTemplate.html" />
     <Content Include="app\ads\createAdTemplate.html" />
     <Content Include="app\ads\searchTemplate.html" />
     <Content Include="app\ads\widgets\searchResults\searchResultsWidgetTemplate.html" />
@@ -1321,6 +1330,7 @@
     <TypeScriptCompile Include="app\ads\adController.ts" />
     <TypeScriptCompile Include="app\ads\ads.module.ts" />
     <TypeScriptCompile Include="app\ads\adsController.ts" />
+    <TypeScriptCompile Include="app\ads\browseAds\browseAdsController.ts" />
     <TypeScriptCompile Include="app\ads\searchController.ts" />
     <TypeScriptCompile Include="app\ads\widgets\searchResults\searchResultsWidget.ts" />
     <TypeScriptCompile Include="app\app.config.ts" />
@@ -1446,6 +1456,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609121822064_reviews1.resx">
       <DependentUpon>201609121822064_reviews1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609131955552_idcardnumber.resx">
+      <DependentUpon>201609131955552_idcardnumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609132003467_idcardnumber1.resx">
+      <DependentUpon>201609132003467_idcardnumber1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

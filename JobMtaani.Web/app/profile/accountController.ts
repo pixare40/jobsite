@@ -9,6 +9,7 @@
         Password: string;
         ConfirmPassword: string;
         PhoneNumber: string;
+        IDCardNumber: string;
     }
 
     export class UserData implements IUserData {
@@ -21,6 +22,7 @@
             public Password: string,
             public ConfirmPassword: string,
             public PhoneNumber: string,
+            public IDCardNumber: string,
             public grant_type: string) { }
     }
 
@@ -44,7 +46,7 @@
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
             private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService, private searchService: app.services.SearchService) {
-            this.userdata = new UserData("", "", "","", "", "", "", "", "");
+            this.userdata = new UserData("", "", "","", "", "", "","", "", "");
             this.isLoggedIn = this.currentUser.profile.isLoggedIn;
             this.setLocations();
         }
@@ -124,7 +126,7 @@
                     this.isLoggedIn = false;
                     this.currentUser.setProfile("", "", false);
                     this.successMessage = "Logout Succesful";
-                    this.userdata = new UserData("","","","", "", "", "", "","");
+                    this.userdata = new UserData("","","","", "", "", "", "","","");
                 }).error(
                 (data, status) => {
                 });

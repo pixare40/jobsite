@@ -33,6 +33,8 @@ namespace JobMtaani.Business.Entities
         public int NumberOfReviews { get; set; }
         [DataMember]
         public int CurrentRating { get; set; }
+        [DataMember]
+        public int IDCardNumber { get; set; }
 
         public object EntityId
         {

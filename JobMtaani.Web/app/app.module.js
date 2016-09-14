@@ -112,6 +112,11 @@
             controller: 'app.users.ReviewController',
             controllerAs: 'vm'
         })
+            .when('/browse', {
+            templateUrl: '/app/ads/browseAds/browseAdsTemplate.html',
+            controller: 'app.ads.BrowseAdsController',
+            controllerAs: 'vm'
+        })
             .otherwise('/home');
     }
 })();

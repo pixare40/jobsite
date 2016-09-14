@@ -62,6 +62,9 @@ var app;
                     this.$location.path('/profile');
                 }
             };
+            HomeController.prototype.showMoreAds = function () {
+                this.$location.path("/browse");
+            };
             HomeController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$rootScope', '$location'];
             return HomeController;
         }());
