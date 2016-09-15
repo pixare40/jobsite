@@ -12,3 +12,4 @@ var app;
         models.ReviewModel = ReviewModel;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=reviewModel.js.map

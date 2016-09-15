@@ -11,12 +11,13 @@ using System.Net;
 using System.ComponentModel;
 using RestSharp;
 using RestSharp.Authenticators;
+using Microsoft.AspNet.Identity;
 
 namespace JobMtaani.Business.Managers
 {
     [Export(typeof(IMessageManager))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class MessageManager: IMessageManager
+    public class MessageManager: IMessageManager 
     {
         private IAdRepository adRepository;
         private IAdApplicationRepository adApplicationRepository;
@@ -38,8 +39,8 @@ namespace JobMtaani.Business.Managers
             string hiredEmployeeDetailsMessage = string.Format(@"You have hired a new employee, call or text {0} on {1} to set up a meeting",
                 hiredEmployee.FirstName, hiredEmployee.PhoneNumber);
 
-            await SendEmailMessage(hiredEmployee.Email, jobApplicationSuccessfulMessage);
-            await SendEmailMessage(jobOwner.Email, hiredEmployeeDetailsMessage);
+            await SendEmailMessage(hiredEmployee.Email, jobApplicationSuccessfulMessage, "Job Mtaani Job Activity");
+            await SendEmailMessage(jobOwner.Email, hiredEmployeeDetailsMessage, "Job Mtaani Job Activity");
 
             return true;
         }
@@ -55,13 +56,13 @@ namespace JobMtaani.Business.Managers
             string newPotentialHireJobApplication = string.Format(@"There has been a new application to the position you opened titled {0} log on to  http://www.jobmtaani.co.ke/#/profile to view all applications",
                 ad.AdTitle);
 
-            await SendEmailMessage(jobApplicant.Email, newJobApplicationMessage);
-            await SendEmailMessage(jobOwner.Email, newPotentialHireJobApplication);
+            await SendEmailMessage(jobApplicant.Email, newJobApplicationMessage, "Job Mtaani Job Activity");
+            await SendEmailMessage(jobOwner.Email, newPotentialHireJobApplication, "Job Mtaani Job Activity");
 
             return true;
         }
 
-        private async Task<IRestResponse> SendEmailMessage(string sendTo, string messageToSend)
+        private async Task<IRestResponse> SendEmailMessage(string sendTo, string messageToSend, string subject)
         {
             RestClient restclient = new RestClient();
             restclient.BaseUrl = new Uri("https://api.mailgun.net/v3");
@@ -74,7 +75,7 @@ namespace JobMtaani.Business.Managers
             request.Resource = "{domain}/messages";
             request.AddParameter("from", "Job Mtaani <mailgun@jobmtaani.co.ke>");
             request.AddParameter("to", sendTo);
-            request.AddParameter("subject", "Job Mtaani Job Activity");
+            request.AddParameter("subject", subject);
             request.AddParameter("text", messageToSend);
             request.Method = Method.POST;
             IRestResponse x = await restclient.ExecuteTaskAsync(request);
@@ -92,11 +93,16 @@ namespace JobMtaani.Business.Managers
             string jobApplicationUnSuccessfulMessage = string.Format(@"Your Job Application to job {0} was unsuccesful, Please log on to http://www.jobmtaani.co.ke/#/profile to apply for more roles",
                                                        ad.AdTitle);
 
-            return SendEmailMessage(userAccount.Email, jobApplicationUnSuccessfulMessage);
+            return SendEmailMessage(userAccount.Email, jobApplicationUnSuccessfulMessage, "Job Mtaani Job Activity");
+        }
+
+        public Task SendAsync(IdentityMessage message)
+        {
+            return SendEmailMessage(message.Destination, message.Body, message.Subject);
         }
     }
 
-    public interface IMessageManager
+    public interface IMessageManager : IIdentityMessageService
     {
         Task<bool> SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee);
         Task<bool> NewJobApplicationMessage(AdApplication adApplication, Account jobOwner, Account jobApplicant);

@@ -10,3 +10,4 @@ var app;
         models.RatingState = RatingState;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=ratingState.js.map

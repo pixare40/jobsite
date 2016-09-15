@@ -66,3 +66,4 @@ var app;
             .controller("app.profile.EditProfileController", EditProfileController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=editProfileController.js.map

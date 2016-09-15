@@ -17,3 +17,4 @@ var app;
         services.NavigationService = NavigationService;
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=navigationService.js.map

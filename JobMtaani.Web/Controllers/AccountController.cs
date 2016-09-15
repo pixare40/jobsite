@@ -415,6 +415,51 @@ namespace JobMtaani.Web.Controllers
                 return GetErrorResult(result);
             }
 
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+            var callbackUrl = Url.Link("Default", new
+            {
+                Controller = "Home",
+                Action = "ConfirmEmail",
+                userId = user.Id,
+                code = code
+            });
+
+            await UserManager.SendEmailAsync(user.Id,
+               "Confirm your account",
+               "Please confirm your account by clicking this link: <a href=\""
+                                               + callbackUrl + "\">link</a>");
+
+            return Ok();
+        }
+
+        // POST api/Account/ForgotPassword
+        [AllowAnonymous]
+        [Route("ForgotPassword")]
+        public async Task<IHttpActionResult> ForgotPassword(RegisterExternalBindingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Account user = await UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                {
+                    // Don't reveal that the user does not exist or is not confirmed
+                    return Ok();
+                }
+
+                var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+
+                var callbackUrl = Url.Link("ResetPassword", new
+                {
+                    Controller = "Home",
+                    Action = "ResetPassword",
+                    UserId = user.Id,
+                    code = code
+                });
+
+                await UserManager.SendEmailAsync(user.Id, "Reset Password",
+                "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+            }
+
             return Ok();
         }
 

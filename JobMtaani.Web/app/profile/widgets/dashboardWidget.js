@@ -50,3 +50,4 @@ var app;
         })(widgets = profile.widgets || (profile.widgets = {}));
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
+//# sourceMappingURL=dashboardWidget.js.map
