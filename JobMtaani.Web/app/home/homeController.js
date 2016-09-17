@@ -21,6 +21,11 @@ var app;
                     _this.onLogout();
                 });
                 this.currentUser.checkLogin();
+                if (window.JobMtaani.goToRoute) {
+                    var routeTo = window.JobMtaani.goToRoute;
+                    this.$location.path(routeTo);
+                    window.JobMtaani.goToRoute = null;
+                }
             }
             HomeController.prototype.onLogin = function () {
                 this.isLoggedIn = true;

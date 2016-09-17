@@ -1264,6 +1264,9 @@
     <Content Include="Views\Home\ConfirmEmail.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Views\Home\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\ForgotPasswordConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Adapters\" />

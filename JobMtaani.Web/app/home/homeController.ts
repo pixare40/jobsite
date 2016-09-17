@@ -25,6 +25,11 @@
             });
 
             this.currentUser.checkLogin();
+            if ((<any>window).JobMtaani.goToRoute) {
+                var routeTo = (<any>window).JobMtaani.goToRoute
+                this.$location.path(routeTo);
+                (<any>window).JobMtaani.goToRoute = null;
+            }
         }
 
         onLogin(): void {

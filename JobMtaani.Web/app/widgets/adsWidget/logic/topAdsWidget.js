@@ -3,15 +3,23 @@ var app;
     var widgets;
     (function (widgets) {
         var TopAdsWidgetController = (function () {
-            function TopAdsWidgetController(adService, currentUser, $location) {
+            function TopAdsWidgetController(adService, currentUser, $location, $element) {
                 this.adService = adService;
                 this.currentUser = currentUser;
                 this.$location = $location;
+                this.$element = $element;
+                this.initialiseElements();
                 this.getTopAds();
             }
+            TopAdsWidgetController.prototype.initialiseElements = function () {
+                this.loadingContainer = this.$element.find(".loading-container");
+                this.topAdsWidgetContainer = this.$element.find("top-ads-widget");
+            };
             TopAdsWidgetController.prototype.getTopAds = function () {
                 var _this = this;
+                this.showLoading();
                 this.adService.getTopAds().success(function (data, status) {
+                    _this.hideLoading();
                     _this.ads = data;
                 }).error(function () {
                     console.log('Error Fetching Top Ads');
@@ -45,7 +53,15 @@ var app;
             TopAdsWidgetController.prototype.goToViewAd = function (adId) {
                 this.$location.path("/ad/" + adId);
             };
-            TopAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
+            TopAdsWidgetController.prototype.showLoading = function () {
+                this.loadingContainer.show();
+                this.topAdsWidgetContainer.hide();
+            };
+            TopAdsWidgetController.prototype.hideLoading = function () {
+                this.loadingContainer.hide();
+                this.topAdsWidgetContainer.show();
+            };
+            TopAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location', "$element"];
             return TopAdsWidgetController;
         }());
         var TopAdsWidget = (function () {

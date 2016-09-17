@@ -228,8 +228,6 @@ namespace JobMtaani.Web.Controllers
             return Ok();
         }
 
-        
-
         // POST api/Account/AddExternalLogin
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
@@ -460,6 +458,28 @@ namespace JobMtaani.Web.Controllers
                 "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
             }
 
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("ResetPassword")]
+        public async Task<IHttpActionResult> ResetPassword(ResetPasswordBindingModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Ok();
+            }
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return Ok();
+            }
+            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
             return Ok();
         }
 

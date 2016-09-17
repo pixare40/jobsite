@@ -6,14 +6,25 @@
 
     class TopAdsWidgetController implements ITopAdsWidgetController {
         ads: app.domain.Ad[];
+        loadingContainer: ng.IAugmentedJQuery;
+        topAdsWidgetContainer: ng.IAugmentedJQuery;
 
-        static $inject = ['app.services.AdService', 'app.services.CurrentUser', '$location']
-        constructor(private adService: app.services.AdService, private currentUser: app.services.CurrentUser, private $location: ng.ILocationService) {
+        static $inject = ['app.services.AdService', 'app.services.CurrentUser', '$location', "$element"]
+        constructor(private adService: app.services.AdService, private currentUser: app.services.CurrentUser, private $location: ng.ILocationService, private $element: ng.IAugmentedJQuery) {
+
+            this.initialiseElements();
             this.getTopAds();
         }
 
+        initialiseElements(): void {
+            this.loadingContainer = this.$element.find(".loading-container");
+            this.topAdsWidgetContainer = this.$element.find("top-ads-widget");
+        }
+
         getTopAds() {
+            this.showLoading();
             this.adService.getTopAds().success((data, status) => {
+                this.hideLoading();
                 this.ads = data;
             }).error(() => {
                 console.log('Error Fetching Top Ads');
@@ -48,6 +59,16 @@
 
         goToViewAd(adId: number): void {
             this.$location.path("/ad/" + adId);
+        }
+
+        showLoading(): void {
+            this.loadingContainer.show();
+            this.topAdsWidgetContainer.hide();
+        }
+
+        hideLoading(): void {
+            this.loadingContainer.hide();
+            this.topAdsWidgetContainer.show();
         }
     }
 
