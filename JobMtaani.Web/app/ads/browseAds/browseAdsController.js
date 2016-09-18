@@ -26,11 +26,15 @@ var app;
                 this.loadingContainer.classList.add("displayNone");
             };
             BrowseAdsController.prototype.hideResults = function () {
+                this.loadingContainer = document.getElementsByClassName("loading-container")[0];
+                this.searchResultsContainer = document.getElementsByClassName("search-results-container")[0];
                 this.loadingContainer.classList.remove("displayNone");
                 this.searchResultsContainer.classList.add("displayNone");
                 this.ads = null;
             };
             BrowseAdsController.prototype.showResults = function () {
+                this.loadingContainer = document.getElementsByClassName("loading-container")[0];
+                this.searchResultsContainer = document.getElementsByClassName("search-results-container")[0];
                 this.loadingContainer.classList.add("displayNone");
                 this.searchResultsContainer.classList.remove("displayNone");
             };

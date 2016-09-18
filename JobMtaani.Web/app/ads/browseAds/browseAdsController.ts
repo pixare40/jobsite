@@ -33,12 +33,16 @@
             this.loadingContainer.classList.add("displayNone");        }
 
         hideResults(): void {
+            this.loadingContainer = document.getElementsByClassName("loading-container")[0];
+            this.searchResultsContainer = document.getElementsByClassName("search-results-container")[0];
             this.loadingContainer.classList.remove("displayNone");
             this.searchResultsContainer.classList.add("displayNone"); 
             this.ads = null;
         }
 
         showResults(): void {
+            this.loadingContainer = document.getElementsByClassName("loading-container")[0];
+            this.searchResultsContainer = document.getElementsByClassName("search-results-container")[0];
             this.loadingContainer.classList.add("displayNone");
             this.searchResultsContainer.classList.remove("displayNone");  
         }
