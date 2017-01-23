@@ -25,10 +25,22 @@
             });
 
             this.currentUser.checkLogin();
+
             if ((<any>window).JobMtaani.goToRoute) {
                 var routeTo = (<any>window).JobMtaani.goToRoute
                 this.$location.path(routeTo);
                 (<any>window).JobMtaani.goToRoute = null;
+            }
+
+            this.calculateHeaderSize();
+        }
+
+        calculateHeaderSize(): void {
+            var headerElement: HTMLElement = document.getElementById("home-jumbo");
+            if (headerElement) {
+                var windowHeight: number = window.innerHeight;
+                windowHeight = windowHeight - 200;
+                headerElement.style.height = windowHeight + "px";
             }
         }
 

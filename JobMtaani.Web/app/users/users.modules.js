@@ -3,4 +3,3 @@
     angular
         .module('app.users', ["ngCookies", "ngAnimate", "ui.bootstrap"]);
 })();
-//# sourceMappingURL=users.modules.js.map

@@ -48,4 +48,3 @@ var app;
             .controller('app.profile.ViewApplicantController', ViewApplicantController);
     })(profile = app.profile || (app.profile = {}));
 })(app || (app = {}));
-//# sourceMappingURL=viewApplicantController.js.map

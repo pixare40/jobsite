@@ -26,4 +26,3 @@ var app;
             .directive("jmQuickLinksWidget", QuickLinksWidget.instance);
     })(blocks = app.blocks || (app.blocks = {}));
 })(app || (app = {}));
-//# sourceMappingURL=quickLinksWidget.js.map

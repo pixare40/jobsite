@@ -83,4 +83,3 @@ var app;
             .directive('jmTopAdsWidget', TopAdsWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=topAdsWidget.js.map

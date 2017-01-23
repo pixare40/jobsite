@@ -52,4 +52,3 @@ var app;
             .directive('jmLoadingWidget', LoadingWidget.instance);
     })(widgets = app.widgets || (app.widgets = {}));
 })(app || (app = {}));
-//# sourceMappingURL=loadingWidget.js.map

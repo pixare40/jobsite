@@ -33,10 +33,12 @@ namespace JobMtaani.Business.Managers
 
         public async Task<bool> SendHiredMessage(AdApplication adApplication, Account jobOwner, Account hiredEmployee)
         {
-            string jobApplicationSuccessfulMessage = string.Format(@"Your Job Application to job number {0} was succesfull, Please log on to http://www.jobmtaani.co.ke/#/profile to view succesful applications, meanwhile expect a call from {1} on {2}",
-                                                       adApplication.AdId, jobOwner.FirstName, jobOwner.PhoneNumber);
+            string jobApplicationSuccessfulMessage = string.Format(@"Hello {0},
+Your Job Application to job number {1} was succesfull, Please log on to http://www.jobmtaani.co.ke/#/profile to view succesful applications, meanwhile expect a call from {2} on {3}",
+                                                       hiredEmployee.FirstName, adApplication.AdId, jobOwner.FirstName, jobOwner.PhoneNumber);
 
-            string hiredEmployeeDetailsMessage = string.Format(@"You have hired a new employee, call or text {0} on {1} to set up a meeting",
+            string hiredEmployeeDetailsMessage = string.Format(@"Hello {0},
+You have hired a new employee, call or text {1} on {2} to set up a meeting", jobOwner.FirstName,
                 hiredEmployee.FirstName, hiredEmployee.PhoneNumber);
 
             await SendEmailMessage(hiredEmployee.Email, jobApplicationSuccessfulMessage, "Job Mtaani Job Activity");
@@ -50,10 +52,12 @@ namespace JobMtaani.Business.Managers
         {
             Ad ad = this.adRepository.Get(adApplication.AdId);
 
-            string newJobApplicationMessage = string.Format(@"Your have applied to job titled {0} Please log on to http://www.jobmtaani.co.ke/#/profile to all applications, we will notify you if the application is succesful",
+            string newJobApplicationMessage = string.Format(@"Hello {0},
+Your have applied to job titled {1} Please log on to http://www.jobmtaani.co.ke/#/profile to all applications, we will notify you if the application is succesful", jobApplicant.FirstName,
                                                        ad.AdTitle);
 
-            string newPotentialHireJobApplication = string.Format(@"There has been a new application to the position you opened titled {0} log on to  http://www.jobmtaani.co.ke/#/profile to view all applications",
+            string newPotentialHireJobApplication = string.Format(@"Hello {0},
+There has been a new application to the position you opened titled {1} log on to  http://www.jobmtaani.co.ke/#/profile to view all applications", jobOwner.FirstName,
                 ad.AdTitle);
 
             await SendEmailMessage(jobApplicant.Email, newJobApplicationMessage, "Job Mtaani Job Activity");

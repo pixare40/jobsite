@@ -26,7 +26,16 @@ var app;
                     this.$location.path(routeTo);
                     window.JobMtaani.goToRoute = null;
                 }
+                this.calculateHeaderSize();
             }
+            HomeController.prototype.calculateHeaderSize = function () {
+                var headerElement = document.getElementById("home-jumbo");
+                if (headerElement) {
+                    var windowHeight = window.innerHeight;
+                    windowHeight = windowHeight - 200;
+                    headerElement.style.height = windowHeight + "px";
+                }
+            };
             HomeController.prototype.onLogin = function () {
                 this.isLoggedIn = true;
                 this.username = this.currentUser.getProfile().username;
@@ -78,4 +87,3 @@ var app;
             .controller('app.home.HomeController', HomeController);
     })(home = app.home || (app.home = {}));
 })(app || (app = {}));
-//# sourceMappingURL=homeController.js.map
