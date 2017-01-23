@@ -2,6 +2,7 @@
     padding-top: 65px;
     padding-bottom: 20px;
     font-family: 'Raleway', sans-serif;
+    background-color: rgb(242, 245, 247);
 }
 
 .nav, .pagination, .carousel, .ad-panel, .panel-title a, a {
@@ -235,6 +236,13 @@ textarea {
     -ms-box-shadow: 0 3px 0 #bf392b;
 }
 
+.number-project-wrapper {
+    width: 100%;
+    display: block;
+    position: relative;
+    background: #fff;
+}
+
 .number-project-wrapper h2.number-project {
     margin-bottom: 30px;
     padding-right: 170px;
@@ -265,6 +273,28 @@ h2.tabs_heading{
 
 .tabs{
     padding-top: 45px;
+}
+
+.btn-apply-project {
+    padding: 7px 25px;
+    background-color: #e74c3c;
+    box-shadow: 0 2px 0 #bf392b;
+    font-weight: 400;
+}
+
+.wrapper-btn {
+    text-align: right;
+    margin: 8px 0 0 0;
+}
+
+.title-tab-project span {
+    color: #b9c5cd;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 0.7px;
 }
 
 /*Create Ad Page*/
