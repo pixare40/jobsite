@@ -82,3 +82,4 @@ var app;
             .controller("app.ads.BrowseAdsController", BrowseAdsController);
     })(ads = app.ads || (app.ads = {}));
 })(app || (app = {}));
+//# sourceMappingURL=browseAdsController.js.map

@@ -60,3 +60,4 @@ var app;
             .controller('app.users.ReviewController', ReviewController);
     })(users = app.users || (app.users = {}));
 })(app || (app = {}));
+//# sourceMappingURL=reviewController.js.map

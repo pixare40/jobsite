@@ -22,3 +22,4 @@ var app;
         domain.ProfileModel = ProfileModel;
     })(domain = app.domain || (app.domain = {}));
 })(app || (app = {}));
+//# sourceMappingURL=profileModel.js.map

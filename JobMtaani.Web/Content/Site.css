@@ -235,6 +235,38 @@ textarea {
     -ms-box-shadow: 0 3px 0 #bf392b;
 }
 
+.number-project-wrapper h2.number-project {
+    margin-bottom: 30px;
+    padding-right: 170px;
+}
+
+h2.tabs_heading{
+    max-width: 1170px;
+    margin: 10px auto 20px;
+    color: #2c3e50;
+    font-weight: 300;
+    font-size: 48px;
+}
+
+.heading-project .btn-post-project {
+    top: 60px !important;
+}
+
+.btn-post-project {
+    position: absolute !important;
+    right: 0;
+    top: 15px;
+    background-color: #00b0ff;
+    box-shadow: 0 2px 0 #0090e9;
+    padding: 9px 25px;
+    color: #fff;
+    z-index: 9;
+}
+
+.tabs{
+    padding-top: 45px;
+}
+
 /*Create Ad Page*/
 #create-ad-button{
     text-align: center;

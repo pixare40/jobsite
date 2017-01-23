@@ -89,3 +89,4 @@ var app;
             .factory('app.services.CurrentUser', factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
+//# sourceMappingURL=currentUser.js.map

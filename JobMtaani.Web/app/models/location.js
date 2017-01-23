@@ -13,3 +13,4 @@ var app;
         models.Location = Location;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=location.js.map

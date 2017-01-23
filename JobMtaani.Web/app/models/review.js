@@ -17,3 +17,4 @@ var app;
         models.Review = Review;
     })(models = app.models || (app.models = {}));
 })(app || (app = {}));
+//# sourceMappingURL=review.js.map
