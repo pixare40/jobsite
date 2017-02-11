@@ -1,26 +1,48 @@
 ﻿<div class="container">
     <br/>
-    <h1 class="page-title">Ad Details</h1>
     <div ng-show="vm.successMessage != null" class="alert alert-success" role="alert">{{vm.successMessage}} <a ng-href="#profile">View Other Ads</a></div>
     <div ng-show="vm.errorMessage != null" class="alert alert-danger" role="alert">{{vm.errorMessage}} <a ng-href="#profile">View Other Ads</a></div>
 
-    <div class="col-md-7">
-        <div class="ad-title">
-            <h2>{{vm.ad.AdTitle}}</h2>
-            <h5><u>Location: {{vm.ad.AdLocation}}</u> <button class="btn btn-primary pull-right" ng-disabled="vm.ad.AdClosed" ng-click="vm.applyForJob()">Apply For Job</button></h5>
-            <p>Days on the site: <b>{{vm.timelapse}}</b> Days</p>
-            <p>Pays {{vm.ad.ApproximateWage}} Kenya Shillings</p>
-        </div>
-        <br/>
-        <div class="ad-description">
-            <div class="innerContent">
-                <h4><u>Description</u></h4>
-                {{vm.ad.AdDescription}}
-            </div>
+    <div class="col-md-12">
+        <div class="row">
+            <table class="title-tab-project table table-hover">
+                <thead>
+                    <tr>
+                        <th><span>TITLE</span></th>
+                        <th><span>LOCATION</span></th>
+                        <th><span>POSTED DATE</span></th>
+                        <th><span>BUDGET</span></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{vm.ad.AdTitle}}</td>
+                        <td>{{vm.ad.AdLocation}}</td>
+                        <td>{{vm.ad.DateCreated | date:'medium'}}, {{vm.timelapse}} days on site</td>
+                        <td>{{vm.ad.ApproximateWage}} Ksh</td>
+                        <td>
+                            <button class="btn btn-primary pull-right" ng-disabled="vm.ad.AdClosed" ng-click="vm.applyForJob()">Bid</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-md-5">
-        <div jm-quick-links-widget></div>
+    <div>
+        <div class="info-project-item-details">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="content-require-project">
+                        <h4>Project Description</h4>
+                        <p>{{vm.ad.AdDescription}}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div jm-quick-links-widget></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script>
