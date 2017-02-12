@@ -347,6 +347,7 @@
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\editProfileTemplate.html" />
+    <Content Include="app\profile\employerInfoTemplate.html" />
     <Content Include="app\profile\loginTemplate.html" />
     <Content Include="app\profile\personalAdsTemplate.html" />
     <Content Include="app\profile\profileTemplate.html" />
@@ -356,6 +357,7 @@
     <Content Include="app\profile\widgets\dashboardWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\personalAdsWidgetTemplate.html" />
     <Content Include="app\profile\widgets\templates\profileWidgetTemplate.html" />
+    <Content Include="app\profile\widgets\userInfoWidget\userInfoWidgetTemplate.html" />
     <Content Include="app\users\review\reviewTemplate.html" />
     <Content Include="app\widgets\adsWidget\adsWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\templates\topAdsWidgetTemplate.html" />
@@ -1272,6 +1274,8 @@
   <ItemGroup>
     <Folder Include="Adapters\" />
     <Folder Include="app\interfaces\" />
+    <Folder Include="app\profile\widgets\userStatsWIdget\" />
+    <Folder Include="app\profile\widgets\workHistoryWidget\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1369,13 +1373,16 @@
     <TypeScriptCompile Include="app\models\ratingState.ts" />
     <TypeScriptCompile Include="app\models\review.ts" />
     <TypeScriptCompile Include="app\models\reviewModel.ts" />
+    <TypeScriptCompile Include="app\models\route\employerRouteParams.ts" />
     <TypeScriptCompile Include="app\profile\editProfileController.ts" />
+    <TypeScriptCompile Include="app\profile\employerInfoController.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewApplicantController.ts" />
     <TypeScriptCompile Include="app\profile\widgets\dashboardWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\personalAdsWidget.ts" />
     <TypeScriptCompile Include="app\profile\widgets\directives\profileWidget.ts" />
+    <TypeScriptCompile Include="app\profile\widgets\userInfoWidget\userInfoWidget.ts" />
     <TypeScriptCompile Include="app\services\messagingService.ts" />
     <TypeScriptCompile Include="app\services\reviewService.ts" />
     <TypeScriptCompile Include="app\services\searchService.ts" />

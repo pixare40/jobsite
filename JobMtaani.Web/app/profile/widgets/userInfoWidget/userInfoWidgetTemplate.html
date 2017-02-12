@@ -1,0 +1,23 @@
+﻿<div class="tab-content-single-profile">
+    <div class="row title-tab-profile">
+        <div class="col-md-12">
+            <h2>About {{vm.userInfo.FirstName}} {{vm.userInfo.LastName}}</h2>
+        </div>
+    </div>
+    <div class="single-profile-content">
+        <div class="single-profile-top">
+            <ul class="single-profile">
+                <li class="info-profile">
+                    <span class="name-profile">{{vm.userInfo.FirstName}} {{vm.userInfo.LastName}}</span>
+                    <span class="number-review-profile">{{vm.userInfo.NumberOfReviews}}</span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="single-profile-bottom">
+            <div class="profile-overview"></div>
+        </div>
+        <div jm-work-history-widget></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
