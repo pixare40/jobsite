@@ -3,33 +3,40 @@ var app;
     var profile;
     (function (profile) {
         var UserData = (function () {
-            function UserData(FirstName, LastName, UserName, Location, Email, Password, ConfirmPassword, PhoneNumber, IDCardNumber, grant_type) {
+            function UserData(FirstName, LastName, UserName, Location, Email, Password, Role, ConfirmPassword, PhoneNumber, IDCardNumber, CompanyName, grant_type) {
                 this.FirstName = FirstName;
                 this.LastName = LastName;
                 this.UserName = UserName;
                 this.Location = Location;
                 this.Email = Email;
                 this.Password = Password;
+                this.Role = Role;
                 this.ConfirmPassword = ConfirmPassword;
                 this.PhoneNumber = PhoneNumber;
                 this.IDCardNumber = IDCardNumber;
+                this.CompanyName = CompanyName;
                 this.grant_type = grant_type;
             }
             return UserData;
         }());
         profile.UserData = UserData;
         var AccountController = (function () {
-            function AccountController(accountService, currentUser, $location, $rootScope, $cookies, searchService) {
+            function AccountController(accountService, currentUser, $location, $rootScope, $cookies, searchService, $scope) {
                 this.accountService = accountService;
                 this.currentUser = currentUser;
                 this.$location = $location;
                 this.$rootScope = $rootScope;
                 this.$cookies = $cookies;
                 this.searchService = searchService;
-                this.userdata = new UserData("", "", "", "", "", "", "", "", "", "");
+                this.$scope = $scope;
+                this.userdata = new UserData("", "", "", "", "", "", "", "", "", "", "", "");
                 this.isLoggedIn = this.currentUser.profile.isLoggedIn;
                 this.setLocations();
+                this.setRoles();
             }
+            AccountController.prototype.setRoles = function () {
+                this.roles = [app.ValueObjects.RolesValueObject.COMPANY_ROLE, app.ValueObjects.RolesValueObject.INDIVIDUAL_ROLE];
+            };
             AccountController.prototype.setLocations = function () {
                 var _this = this;
                 if (this.searchService.locations) {
@@ -89,6 +96,8 @@ var app;
                     }
                 });
             };
+            AccountController.prototype.registerEmployer = function () {
+            };
             AccountController.prototype.logout = function () {
                 var _this = this;
                 this.errorMessage = null;
@@ -97,13 +106,13 @@ var app;
                     _this.isLoggedIn = false;
                     _this.currentUser.setProfile("", "", false);
                     _this.successMessage = "Logout Succesful";
-                    _this.userdata = new UserData("", "", "", "", "", "", "", "", "", "");
+                    _this.userdata = new UserData("", "", "", "", "", "", "", "", "", "", "", "");
                 }).error(function (data, status) {
                 });
             };
-            AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies', 'app.services.SearchService'];
             return AccountController;
         }());
+        AccountController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies', 'app.services.SearchService'];
         angular
             .module('app.profile')
             .controller('app.profile.AccountController', AccountController);

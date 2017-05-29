@@ -27,11 +27,11 @@ var app;
                     _this.message = "An Error Was Encountered navigating to Ads";
                 });
             };
-            CategoryWidgetController.$inject = ['app.services.CategoryService',
-                'app.services.AdService',
-                '$rootScope', '$element', '$scope', '$location'];
             return CategoryWidgetController;
         }());
+        CategoryWidgetController.$inject = ['app.services.CategoryService',
+            'app.services.AdService',
+            '$rootScope', '$element', '$scope', '$location'];
         var CategoryWidget = (function () {
             function CategoryWidget() {
                 this.restrict = 'AE';

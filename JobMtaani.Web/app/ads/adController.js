@@ -49,9 +49,9 @@ var app;
                 var utc2 = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
                 return Math.floor((utc2 - utc1) / _MS_PER_DAY);
             };
-            AdController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
             return AdController;
         }());
+        AdController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location'];
         angular
             .module('app.ads')
             .controller('app.ads.AdController', AdController);

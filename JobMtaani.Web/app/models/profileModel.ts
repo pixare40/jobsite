@@ -12,6 +12,8 @@
             public NumberOfReviews: number,
             public CurrentRating: number,
             public IDCardNumber: string,
+            public CompanyName: string,
+            public Role: string,
             public SubscriptionStatus: boolean
         ) { }
     }

@@ -35,6 +35,10 @@ namespace JobMtaani.Business.Entities
         public int CurrentRating { get; set; }
         [DataMember]
         public int IDCardNumber { get; set; }
+        [DataMember]
+        public string CompanyName { get; set; }
+        [DataMember]
+        public string Role { get; set; }
 
         public object EntityId
         {

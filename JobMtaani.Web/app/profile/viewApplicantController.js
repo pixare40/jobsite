@@ -40,9 +40,9 @@ var app;
                     _this.reviews = data.Reviews;
                 });
             };
-            ViewApplicantController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams"];
             return ViewApplicantController;
         }());
+        ViewApplicantController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams"];
         angular
             .module('app.profile')
             .controller('app.profile.ViewApplicantController', ViewApplicantController);

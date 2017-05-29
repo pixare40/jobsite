@@ -8,9 +8,9 @@ var app;
                 this.$scope = $scope;
                 this.searchService = searchService;
             }
-            SearchController.$inject = ['$scope', 'app.services.SearchService'];
             return SearchController;
         }());
+        SearchController.$inject = ['$scope', 'app.services.SearchService'];
         angular
             .module("app.ads")
             .controller("app.ads.SearchController", SearchController);

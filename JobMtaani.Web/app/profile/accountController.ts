@@ -20,9 +20,11 @@
             public Location: string,
             public Email: string,
             public Password: string,
+            public Role: string,
             public ConfirmPassword: string,
             public PhoneNumber: string,
             public IDCardNumber: string,
+            public CompanyName: string,
             public grant_type: string) { }
     }
 
@@ -39,16 +41,25 @@
         errorMessage: string;
         successMessage: string;
         userdata: UserData;
+        employerData: any;
         isLoggedIn: boolean;
         locations: app.models.Location[];
+        roles: any[];
 
         static $inject = ['app.services.AccountService', 'app.services.CurrentUser', '$location', '$rootScope', '$cookies', 'app.services.SearchService'];
         constructor(private accountService: app.services.AccountService,
             private currentUser: app.services.CurrentUser,
-            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService, private $cookies: ng.cookies.ICookiesService, private searchService: app.services.SearchService) {
-            this.userdata = new UserData("", "", "","", "", "", "","", "", "");
-            this.isLoggedIn = this.currentUser.profile.isLoggedIn;
-            this.setLocations();
+            private $location: ng.ILocationService, private $rootScope: ng.IRootScopeService,
+            private $cookies: ng.cookies.ICookiesService,
+            private searchService: app.services.SearchService, private $scope: ng.IScope) {
+                this.userdata = new UserData("", "", "","", "","", "", "","", "","", "");
+                this.isLoggedIn = this.currentUser.profile.isLoggedIn;
+                this.setLocations();
+                this.setRoles();
+        }
+
+        setRoles(): void {
+            this.roles = [app.ValueObjects.RolesValueObject.COMPANY_ROLE, app.ValueObjects.RolesValueObject.INDIVIDUAL_ROLE];
         }
 
         setLocations(): void {
@@ -118,6 +129,10 @@
                 );
         }
 
+        registerEmployer(): void {
+
+        }
+
         logout(): void {
             this.errorMessage = null;
             this.successMessage = null;
@@ -126,7 +141,7 @@
                     this.isLoggedIn = false;
                     this.currentUser.setProfile("", "", false);
                     this.successMessage = "Logout Succesful";
-                    this.userdata = new UserData("","","","", "", "", "", "","","");
+                    this.userdata = new UserData("","","","","", "", "", "", "","","","");
                 }).error(
                 (data, status) => {
                 });

@@ -57,9 +57,9 @@ var app;
                 }).error(function (data, status) {
                 });
             };
-            LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope', '$scope', '$location', '$cookies'];
             return LoginWidgetController;
         }());
+        LoginWidgetController.$inject = ['app.services.AccountService', 'app.services.CurrentUser', '$rootScope', '$scope', '$location', '$cookies'];
         var LoginWidget = (function () {
             function LoginWidget() {
                 this.restrict = 'AE';

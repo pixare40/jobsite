@@ -39,9 +39,9 @@ var app;
                     _this.$location.path("/adApplication/" + data.AdApplicationId);
                 });
             };
-            AdsWidgetController.$inject = ['app.services.AdService', '$location'];
             return AdsWidgetController;
         }());
+        AdsWidgetController.$inject = ['app.services.AdService', '$location'];
         var AdsWidget = (function () {
             function AdsWidget() {
                 this.restrict = 'AE';

@@ -18,9 +18,9 @@ var app;
                         console.log("Error fetching user info");
                     });
                 };
-                UserInfoWidgetController.$inject = ["app.services.AccountService"];
                 return UserInfoWidgetController;
             }());
+            UserInfoWidgetController.$inject = ["app.services.AccountService"];
             var UserInfoWidget = (function () {
                 function UserInfoWidget() {
                     this.restrict = 'AE';

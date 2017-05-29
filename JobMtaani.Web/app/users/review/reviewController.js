@@ -52,9 +52,9 @@ var app;
                     return true;
                 }
             };
-            ReviewController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams", "app.services.AdService", "$location"];
             return ReviewController;
         }());
+        ReviewController.$inject = ["app.services.ReviewService", "app.services.AccountService", "$routeParams", "app.services.AdService", "$location"];
         angular
             .module('app.users')
             .controller('app.users.ReviewController', ReviewController);

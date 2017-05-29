@@ -58,9 +58,9 @@ var app;
                     }
                 });
             };
-            EditProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope', 'app.services.SearchService'];
             return EditProfileController;
         }());
+        EditProfileController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$location', '$rootScope', 'app.services.SearchService'];
         angular
             .module("app.profile")
             .controller("app.profile.EditProfileController", EditProfileController);

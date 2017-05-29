@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -317,6 +317,10 @@
     <Compile Include="Migrations\201609132003467_idcardnumber1.Designer.cs">
       <DependentUpon>201609132003467_idcardnumber1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704211314149_AddCompanyRole.cs" />
+    <Compile Include="Migrations\201704211314149_AddCompanyRole.Designer.cs">
+      <DependentUpon>201704211314149_AddCompanyRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountChangePasswordModel.cs" />
@@ -347,6 +351,8 @@
     <Content Include="app\home\homeTemplate.html" />
     <Content Include="app\payments\paymentsTemplate.html" />
     <Content Include="app\profile\editProfileTemplate.html" />
+    <Content Include="app\profile\employerDashboard\employerDashboardTemplate.html" />
+    <Content Include="app\profile\employerDashboard\widgets\myJobsWidget\myJobsWidgetTemplate.html" />
     <Content Include="app\profile\employerInfoTemplate.html" />
     <Content Include="app\profile\loginTemplate.html" />
     <Content Include="app\profile\personalAdsTemplate.html" />
@@ -368,10 +374,6 @@
     <Content Include="app\widgets\profile\profileTabWidgetTemplate.html" />
     <Content Include="app\widgets\searchWidgetTemplate.html" />
     <Content Include="app\widgets\adsWidget\templates\viewAdsWidgetTemplate.html" />
-    <Content Include="App_Data\JobMtaani.mdf" />
-    <Content Include="App_Data\JobMtaani_log.ldf">
-      <DependentUpon>JobMtaani.mdf</DependentUpon>
-    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -435,9 +437,6 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -1276,6 +1275,7 @@
     <Folder Include="app\interfaces\" />
     <Folder Include="app\profile\widgets\userStatsWIdget\" />
     <Folder Include="app\profile\widgets\workHistoryWidget\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1375,6 +1375,8 @@
     <TypeScriptCompile Include="app\models\reviewModel.ts" />
     <TypeScriptCompile Include="app\models\route\employerRouteParams.ts" />
     <TypeScriptCompile Include="app\profile\editProfileController.ts" />
+    <TypeScriptCompile Include="app\profile\employerDashboard\employerDashboardController.ts" />
+    <TypeScriptCompile Include="app\profile\employerDashboard\widgets\myJobsWidget\myJobsWidget.ts" />
     <TypeScriptCompile Include="app\profile\employerInfoController.ts" />
     <TypeScriptCompile Include="app\profile\personalAdsController.ts" />
     <TypeScriptCompile Include="app\profile\viewAdsController.ts" />
@@ -1409,6 +1411,7 @@
     <TypeScriptCompile Include="app\services\services.module.ts" />
     <TypeScriptCompile Include="app\sitesettings\sitesettings.module.ts" />
     <TypeScriptCompile Include="app\users\users.modules.ts" />
+    <TypeScriptCompile Include="app\valueobjects\rolesValueObject.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\adsWidget.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\logic\myAdWidget.ts" />
     <TypeScriptCompile Include="app\widgets\adsWidget\logic\topAdsWidget.ts" />
@@ -1480,6 +1483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609132003467_idcardnumber1.resx">
       <DependentUpon>201609132003467_idcardnumber1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704211314149_AddCompanyRole.resx">
+      <DependentUpon>201704211314149_AddCompanyRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -61,9 +61,9 @@ var app;
                 this.loadingContainer.hide();
                 this.topAdsWidgetContainer.show();
             };
-            TopAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location', "$element"];
             return TopAdsWidgetController;
         }());
+        TopAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location', "$element"];
         var TopAdsWidget = (function () {
             function TopAdsWidget() {
                 this.restrict = 'AE';

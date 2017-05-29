@@ -13,7 +13,7 @@
         $delegate.debug = function () {
             var args = [];
             for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i - 0] = arguments[_i];
+                args[_i] = arguments[_i];
             }
             var now = (new Date()).toLocaleTimeString();
             args[0] = now + '-' + args[0];

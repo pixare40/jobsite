@@ -54,9 +54,9 @@ var app;
                     return false;
                 }
             };
-            AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService', 'app.services.SearchService'];
             return AdsController;
         }());
+        AdsController.$inject = ['app.services.AdService', 'app.services.CategoryService', 'app.services.SearchService'];
         angular
             .module('app.ads')
             .controller('app.ads.AdsController', AdsController);

@@ -5,9 +5,9 @@ var app;
         var BaseService = (function () {
             function BaseService() {
             }
-            BaseService.$inject = ['$rootScope'];
             return BaseService;
         }());
+        BaseService.$inject = ['$rootScope'];
         services.BaseService = BaseService;
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));

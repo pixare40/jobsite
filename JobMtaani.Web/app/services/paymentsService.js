@@ -18,9 +18,9 @@ var app;
             PaymentsService.prototype.getPayment = function (paymentId) {
                 return this.$http.get('/api/Payment/GetPayment/' + paymentId);
             };
-            PaymentsService.$inject = ['$http', 'app.services.CurrentUser'];
             return PaymentsService;
         }());
+        PaymentsService.$inject = ['$http', 'app.services.CurrentUser'];
         services.PaymentsService = PaymentsService;
         angular
             .module('app.services')

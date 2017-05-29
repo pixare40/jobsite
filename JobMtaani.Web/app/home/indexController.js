@@ -5,9 +5,9 @@ var app;
         var IndexController = (function () {
             function IndexController() {
             }
-            IndexController.$inject = [];
             return IndexController;
         }());
+        IndexController.$inject = [];
     })(home = app.home || (app.home = {}));
 })(app || (app = {}));
 //# sourceMappingURL=indexController.js.map

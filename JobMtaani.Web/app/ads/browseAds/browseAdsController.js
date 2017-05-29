@@ -74,9 +74,9 @@ var app;
             BrowseAdsController.prototype.goToPersonalAd = function (adId) {
                 this.$location.path("/viewAd/" + adId);
             };
-            BrowseAdsController.$inject = ["app.services.SearchService", "$location", "app.services.CurrentUser", "app.services.AdService"];
             return BrowseAdsController;
         }());
+        BrowseAdsController.$inject = ["app.services.SearchService", "$location", "app.services.CurrentUser", "app.services.AdService"];
         angular
             .module("app.ads")
             .controller("app.ads.BrowseAdsController", BrowseAdsController);

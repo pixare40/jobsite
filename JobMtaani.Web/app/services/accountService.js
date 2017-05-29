@@ -37,9 +37,9 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            AccountService.$inject = ['$http', 'app.services.CurrentUser'];
             return AccountService;
         }());
+        AccountService.$inject = ['$http', 'app.services.CurrentUser'];
         services.AccountService = AccountService;
         angular
             .module('app.services')

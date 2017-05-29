@@ -113,9 +113,9 @@ var app;
                 var utc2 = Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
                 return Math.floor((utc2 - utc1) / _MS_PER_DAY);
             };
-            ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location', 'app.services.ReviewService'];
             return ViewAdsWidgetController;
         }());
+        ViewAdsWidgetController.$inject = ['app.services.AdService', '$routeParams', 'app.services.CurrentUser', '$location', 'app.services.ReviewService'];
         var ViewAdsWidget = (function () {
             function ViewAdsWidget() {
                 this.restrict = 'AE';

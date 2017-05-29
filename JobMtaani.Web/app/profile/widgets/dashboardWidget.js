@@ -28,9 +28,9 @@ var app;
                 DashboardWidgetController.prototype.applyToJob = function (adId) {
                     this.$location.path("/ad/" + adId);
                 };
-                DashboardWidgetController.$inject = ['$scope', 'app.services.CurrentUser', 'app.services.AdService', '$location'];
                 return DashboardWidgetController;
             }());
+            DashboardWidgetController.$inject = ['$scope', 'app.services.CurrentUser', 'app.services.AdService', '$location'];
             var DashboardWidget = (function () {
                 function DashboardWidget() {
                     this.restrict = 'AE';

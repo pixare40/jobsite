@@ -33,9 +33,9 @@ var app;
                     size: 'sm'
                 });
             };
-            LoadingWidgetController.$inject = ['$scope', '$uibModal'];
             return LoadingWidgetController;
         }());
+        LoadingWidgetController.$inject = ['$scope', '$uibModal'];
         var LoadingWidget = (function () {
             function LoadingWidget() {
                 this.restrict = 'AE';

@@ -13,9 +13,9 @@ var app;
                     { title: 'Ads', content: '<div jm-ads-widget></div>' },
                 ];
             }
-            ProfileTabWidgetController.$inject = ['$scope', '$element', '$location'];
             return ProfileTabWidgetController;
         }());
+        ProfileTabWidgetController.$inject = ['$scope', '$element', '$location'];
         var ProfileTabWidget = (function () {
             function ProfileTabWidget() {
                 this.restrict = 'AE';

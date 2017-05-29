@@ -76,9 +76,9 @@ var app;
                     this.$cookies.remove("authtoken");
                 }
             };
-            CurrentUser.$inject = ['$http', '$cookies', '$rootScope', '$location'];
             return CurrentUser;
         }());
+        CurrentUser.$inject = ['$http', '$cookies', '$rootScope', '$location'];
         services.CurrentUser = CurrentUser;
         factory.$inject = ['$http', '$cookies', '$rootScope', '$location'];
         function factory($http, $cookies, $rootScope, $location) {

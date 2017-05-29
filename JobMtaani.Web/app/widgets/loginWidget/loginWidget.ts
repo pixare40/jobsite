@@ -24,6 +24,7 @@
             private $scope: ng.IScope, private $location: ng.ILocationService, private $cookies: ng.cookies.ICookiesService) {
             this.$scope.$on("USER_LOGGED_IN", (event, data) => {
                 this.isLoggedIn = this.currentUser.getProfile().isLoggedIn;
+
                 this.$location.path('/profile');
                 console.log("User logged in");
             });

@@ -34,9 +34,9 @@ var app;
             NewsFeedWidgetController.prototype.viewApplication = function (adApplicationId) {
                 this.$location.path("/adApplication/" + adApplicationId);
             };
-            NewsFeedWidgetController.$inject = ["app.services.AdService", "$location"];
             return NewsFeedWidgetController;
         }());
+        NewsFeedWidgetController.$inject = ["app.services.AdService", "$location"];
         var NewsFeedWidget = (function () {
             function NewsFeedWidget() {
                 this.restrict = 'AE';

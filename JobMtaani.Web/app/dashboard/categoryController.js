@@ -14,9 +14,9 @@ var app;
                     _this.message = "Error";
                 });
             };
-            CategoryController.$inject = ['app.services.CategoryService'];
             return CategoryController;
         }());
+        CategoryController.$inject = ['app.services.CategoryService'];
         angular
             .module('app.dashboard')
             .controller('app.dashboard.CategoryController', CategoryController);

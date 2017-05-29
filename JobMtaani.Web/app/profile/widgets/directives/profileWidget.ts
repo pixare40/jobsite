@@ -32,12 +32,17 @@
             this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.SHOW_LOADING, null);
             this.currentUser.getCurrentUserInfo().success((data, status) => {
                 this.userdata = data;
+                
                 if (this.userdata.Location == null) {
                     this.generalMessage = "Consider setting your location to get more relevant job suggestions"
                 }
                 this.errorString = null;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                 this.gettingUserInfo = false;
+                if (this.userdata.Role == app.ValueObjects.RolesValueObject.COMPANY_ROLE) {
+                    this.$location.path('/myads');
+                    return;
+                }
             }).error((data, status) => {
                 this.gettingUserInfo = false;
                 this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);

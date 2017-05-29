@@ -33,6 +33,10 @@ var app;
                     _this.errorString = null;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
                     _this.gettingUserInfo = false;
+                    if (_this.userdata.Role == app.ValueObjects.RolesValueObject.COMPANY_ROLE) {
+                        _this.$location.path('/myads');
+                        return;
+                    }
                 }).error(function (data, status) {
                     _this.gettingUserInfo = false;
                     _this.$rootScope.$broadcast(app.ValueObjects.NotificationsValueObject.HIDE_LOADING, null);
@@ -48,9 +52,9 @@ var app;
             ProfileWidgetController.prototype.goToEditProfile = function () {
                 this.$location.path("/editProfile");
             };
-            ProfileWidgetController.$inject = ['app.services.CurrentUser', '$scope', '$location', '$rootScope'];
             return ProfileWidgetController;
         }());
+        ProfileWidgetController.$inject = ['app.services.CurrentUser', '$scope', '$location', '$rootScope'];
         var ProfileWidget = (function () {
             function ProfileWidget() {
                 this.restrict = 'AE';

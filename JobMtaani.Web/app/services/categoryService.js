@@ -15,9 +15,9 @@ var app;
             CategoryService.prototype.getAllCategories = function () {
                 return this.$http.get("/api/category/GetAll");
             };
-            CategoryService.$inject = ["$http", "app.services.CurrentUser"];
             return CategoryService;
         }());
+        CategoryService.$inject = ["$http", "app.services.CurrentUser"];
         services.CategoryService = CategoryService;
         angular
             .module('app.services')

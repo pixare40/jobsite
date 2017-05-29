@@ -47,7 +47,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Pesapal.APIHelper.4.0">
-      <HintPath>..\..\..\..\..\Downloads\PesapalAPI-Files\PesapalAPI-Files\Pesapal.APIHelper.4.0.dll</HintPath>
+      <HintPath>..\..\..\Downloads\PesapalAPI-Files\PesapalAPI-Files\Pesapal.APIHelper.4.0.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>

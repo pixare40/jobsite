@@ -117,6 +117,11 @@
             controller: 'app.ads.BrowseAdsController',
             controllerAs: 'vm'
         })
+            .when('/employerDashboard/:employerId', {
+            templateUrl: '/app/profile/employerDashboard/employerDashboardTemplate.html',
+            controller: 'app.profile.EmployerDashBoardController',
+            controllerAs: 'vm'
+        })
             .otherwise('/home');
     }
 })();

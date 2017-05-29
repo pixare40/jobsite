@@ -86,7 +86,7 @@ namespace JobMtaani.Web.Controllers
 
             UserAccountModel userAccountModel = new UserAccountModel() {UserId = user.Id, Email=user.Email,
                 FirstName =user.FirstName, LastName=user.LastName, UserName=user.UserName, Location = user.Location,
-                SubscriptionStatus= user.SubscriptionStatus, PhoneNumber =user.PhoneNumber };
+                SubscriptionStatus= user.SubscriptionStatus, PhoneNumber =user.PhoneNumber, Role=user.Role, CompanyName = user.CompanyName };
 
             response = request.CreateResponse(HttpStatusCode.OK, userAccountModel);
 
@@ -404,7 +404,8 @@ namespace JobMtaani.Web.Controllers
             }
 
             var user = new Account() { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName,
-                LastName = model.LastName, Location = model.Location, PhoneNumber = model.PhoneNumber,IDCardNumber = model.IDCardNumber, DateJoined = DateTime.Now };
+                LastName = model.LastName, Location = model.Location, PhoneNumber = model.PhoneNumber,IDCardNumber = model.IDCardNumber,
+                DateJoined = DateTime.Now, CompanyName = model.CompanyName, Role = model.Role};
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -455,7 +456,7 @@ namespace JobMtaani.Web.Controllers
                 });
 
                 await UserManager.SendEmailAsync(user.Id, "Reset Password",
-                "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                "Please reset your password by clicking here: " + callbackUrl);
             }
 
             return Ok();

@@ -9,11 +9,7 @@
         .module('app')
         .run(run);
 
-    run.$inject[
-        '$rootScope',
-        '$cookies',
-        'currentUser'
-    ];
+    //run.$inject['$rootScope','$cookies','currentUser'];
 
     function run($rootScope: ng.IRootScopeService,
         $cookies: IAppCookies,

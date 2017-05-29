@@ -11,9 +11,9 @@ var app;
             NavigationService.prototype.goToAds = function () {
                 this.$location.path('#Ads');
             };
-            NavigationService.$inject = ['$rootScope', '$location'];
             return NavigationService;
         }());
+        NavigationService.$inject = ['$rootScope', '$location'];
         services.NavigationService = NavigationService;
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));

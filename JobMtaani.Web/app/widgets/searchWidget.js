@@ -33,9 +33,9 @@ var app;
                     this.searchService.search(this.jobType, this.jobLocation);
                 }
             };
-            SearchWidgetController.$inject = ['app.services.AdService', 'app.services.SearchService'];
             return SearchWidgetController;
         }());
+        SearchWidgetController.$inject = ['app.services.AdService', 'app.services.SearchService'];
         var SearchWidget = (function () {
             function SearchWidget() {
                 this.restrict = 'AE';

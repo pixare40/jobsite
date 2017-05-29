@@ -108,9 +108,9 @@ var app;
             AdService.prototype.getTotalAds = function () {
                 return this.$http.get("/api/ad/GetTotalAds");
             };
-            AdService.$inject = ['$http', 'app.services.CurrentUser'];
             return AdService;
         }());
+        AdService.$inject = ['$http', 'app.services.CurrentUser'];
         services.AdService = AdService;
         angular
             .module('app.services')

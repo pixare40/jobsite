@@ -22,6 +22,10 @@
                     <td>Email</td>
                     <td>{{vm.userdata.Email}}</td>
                 </tr>
+                <tr ng-show="vm.userdata.Role == 'Company'">
+                    <td>Company Name</td>
+                    <td>{{vm.userdata.CompanyName}}</td>
+                </tr>
                 <tr>
                     <td>Date Joined</td>
                     <td>{{vm.userdata.DateJoined | date:'medium'}}</td>

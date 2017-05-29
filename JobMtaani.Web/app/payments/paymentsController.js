@@ -15,9 +15,9 @@ var app;
                     _this.errorMessage = data;
                 });
             }
-            PaymentsController.$inject = ['app.services.CurrentUser', 'app.services.PaymentsService', '$sce'];
             return PaymentsController;
         }());
+        PaymentsController.$inject = ['app.services.CurrentUser', 'app.services.PaymentsService', '$sce'];
         angular
             .module('app.payments')
             .controller('app.payments.PaymentsController', PaymentsController);

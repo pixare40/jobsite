@@ -22,9 +22,9 @@ var app;
                     headers: { 'Authorization': 'Bearer ' + this.currentUser.getProfile().token }
                 });
             };
-            MessagingService.$inject = ['$http', 'currentUser'];
             return MessagingService;
         }());
+        MessagingService.$inject = ['$http', 'currentUser'];
         services.MessagingService = MessagingService;
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));

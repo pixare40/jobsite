@@ -52,9 +52,9 @@ var app;
                     this.noSearchResultsContainer.show();
                 }
             };
-            SearchResultsWidgetController.$inject = ["$scope", "$element", "app.services.SearchService"];
             return SearchResultsWidgetController;
         }());
+        SearchResultsWidgetController.$inject = ["$scope", "$element", "app.services.SearchService"];
         var SearchResultsWidget = (function () {
             function SearchResultsWidget() {
                 this.restrict = 'AE';

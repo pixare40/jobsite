@@ -63,9 +63,9 @@ var app;
                     _this.errorMessage = "Error closing ad";
                 });
             };
-            PersonalAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
             return PersonalAdsWidgetController;
         }());
+        PersonalAdsWidgetController.$inject = ['app.services.AdService', 'app.services.CurrentUser', '$location'];
         var PersonalAdsWidget = (function () {
             function PersonalAdsWidget() {
                 this.restrict = 'AE';

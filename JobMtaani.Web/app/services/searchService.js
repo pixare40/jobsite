@@ -25,9 +25,9 @@ var app;
             SearchService.prototype.browseAdsPaged = function (pageNumber) {
                 return this.$http.get("/api/search/BrowseAds?page=" + pageNumber);
             };
-            SearchService.$inject = ['$http', '$location', '$rootScope'];
             return SearchService;
         }());
+        SearchService.$inject = ['$http', '$location', '$rootScope'];
         services.SearchService = SearchService;
         angular
             .module('app.services')

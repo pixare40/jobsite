@@ -79,9 +79,9 @@ var app;
             HomeController.prototype.showMoreAds = function () {
                 this.$location.path("/browse");
             };
-            HomeController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$rootScope', '$location'];
             return HomeController;
         }());
+        HomeController.$inject = ['app.services.CurrentUser', 'app.services.AccountService', '$scope', '$rootScope', '$location'];
         angular
             .module('app.home')
             .controller('app.home.HomeController', HomeController);

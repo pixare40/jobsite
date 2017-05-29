@@ -38,9 +38,9 @@ var app;
                     _this.errorString = "Error withdrawing application, please check your connection";
                 });
             };
-            AdApplicationController.$inject = ["app.services.AdService", "$routeParams", "app.services.CurrentUser", "$location"];
             return AdApplicationController;
         }());
+        AdApplicationController.$inject = ["app.services.AdService", "$routeParams", "app.services.CurrentUser", "$location"];
         angular
             .module("app.ads")
             .controller("app.ads.AdApplicationController", AdApplicationController);
